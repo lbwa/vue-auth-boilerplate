@@ -1,13 +1,15 @@
 import components from './components'
 
+// ! FIXME: 先点击 dashboard 下条目再点击 form 下条目将报错，反之，不成立
 export default [
   {
     path: '/',
-    redirect: '/dashboard/analysis'
+    component: components.analysis
+    // redirect: '/form/basic-form'
   },
   {
     path: '/dashboard',
-    component: components.dashboard,
+    component: components.wrapper,
     children: [
       {
         path: 'analysis',
@@ -24,7 +26,13 @@ export default [
     ]
   },
   {
-    path: '*',
-    redirect: '/dashboard/analysis'
+    path: '/form',
+    component: components.wrapper,
+    children: [
+      {
+        path: 'basic-form',
+        component: components.basicForm
+      }
+    ]
   }
 ]

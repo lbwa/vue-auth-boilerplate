@@ -15,21 +15,22 @@
       background-color="#001529"
       text-color="#ffffff"
     >
-      <el-submenu index="/dashboard">
+      <el-submenu index="dashboard">
         <template slot="title">
           <i class="el-icon-service"></i>
           <span slot="title">Dashboard</span>
         </template>
-        <el-menu-item index="analysis">分析页</el-menu-item>
-        <el-menu-item index="monitor">监控页</el-menu-item>
-        <el-menu-item index="workspace">工作台</el-menu-item>
+        <el-menu-item index="/dashboard/analysis">分析页</el-menu-item>
+        <el-menu-item index="/dashboard/monitor">监控页</el-menu-item>
+        <el-menu-item index="/dashboard/workspace">工作台</el-menu-item>
       </el-submenu>
-      <el-submenu index="2">
+
+      <el-submenu index="form">
         <template slot="title">
           <i class="el-icon-document"></i>
           <span slot="title">表单页</span>
         </template>
-        <el-menu-item index="2-1">基础表单</el-menu-item>
+        <el-menu-item index="/form/basic-form">基础表单</el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>

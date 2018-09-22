@@ -1,7 +1,5 @@
 <template>
-  <section class="dashboard">
-    <router-view></router-view>
-  </section>
+  <router-view class="main__wrapper"></router-view>
 </template>
 
 <script>
@@ -13,7 +11,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.dashboard
+.main__wrapper
   min-height: calc(100vh - 60px * 2)
   background-color: #f0f2f5
 </style>
