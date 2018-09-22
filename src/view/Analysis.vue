@@ -1,14 +1,14 @@
 <template>
-  <main class="home">
+  <el-main>
     {{info}}
-  </main>
+  </el-main>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      info: 'home page'
+      info: 'analysis page'
     }
   }
 }

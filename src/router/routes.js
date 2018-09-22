@@ -3,7 +3,25 @@ import components from './components'
 export default [
   {
     path: '/',
-    component: components.home
+    // redirect: '/dashboard/analysis'
+    component: components.analysis
+  },
+  {
+    path: '/dashboard',
+    children: [
+      {
+        path: '/analysis',
+        component: components.analysis
+      },
+      {
+        path: '/monitor',
+        component: components.monitor
+      },
+      {
+        path: '/workspace',
+        component: components.workspace
+      }
+    ]
   },
   {
     path: '*',

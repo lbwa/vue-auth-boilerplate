@@ -56,7 +56,7 @@ baseConfig.plugins.push(
     profile: true,
     done (sharedState, ctx) {
       const server = baseConfig.devServer
-      const log = chalk.blue(`http://${server.host}:${server.port}`)
+      const log = chalk.blue(`http://localhost:${server.port}`)
       console.log(`\nServer is running at ${log}\n`)
     }
   })

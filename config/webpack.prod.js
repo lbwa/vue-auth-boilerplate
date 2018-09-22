@@ -63,11 +63,16 @@ baseConfig.optimization = {
   },
   splitChunks: {
     chunks: 'all',
+    // minSize: 30000 // bytes, equal to 30kb
     cacheGroups: {
       vendor: {
-        test: /node_modules/,
+        test: /node_modules[\\/](?!(element-ui))/,
         name: 'vendor',
         enforce: true
+      },
+      'vendor-ui': {
+        test: /node_modules[\\/]element-ui/,
+        name: 'vendor-ui'
       }
     }
   }
