@@ -22,7 +22,8 @@ module.exports = {
     alias: {
       'VIEW': path.resolve(PATH.SOURCE_PATH, './view'),
       'COMPONENTS': path.resolve(PATH.SOURCE_PATH, './components'),
-      'STYLE': path.resolve(PATH.SOURCE_PATH, './style')
+      'STYLE': path.resolve(PATH.SOURCE_PATH, './style'),
+      'STATIC': PATH.STATIC_PATH
     }
   },
   module: {

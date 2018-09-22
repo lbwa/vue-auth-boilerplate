@@ -6,6 +6,7 @@
       isCollapse ? 'collapsed' : 'not-collapsed'
     ]"
   >
+    <aside-logo></aside-logo>
     <el-menu
       :collapse="isCollapse"
       :router="true"
@@ -36,6 +37,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import AsideLogo from './Logo'
 
 export default {
   data () {
@@ -46,6 +48,10 @@ export default {
     ...mapState([
       'isCollapse'
     ])
+  },
+
+  components: {
+    AsideLogo
   }
 }
 </script>
@@ -58,4 +64,9 @@ export default {
 
   &__menu
     border-right: 0
+
+/deep/ .el-menu-item.is-active
+  color: #ffffff
+  background-color: blue
+
 </style>

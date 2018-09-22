@@ -5,13 +5,10 @@
       <el-header>
         header
         <el-button class="root__header__button" @click="toggleAside">extend</el-button>
-        <router-link to="/">aaa</router-link>
       </el-header>
       <router-view></router-view>
       <el-footer>
         footer
-        <router-link to="/dashboard/monitor">monitor</router-link>
-        <router-link to="/dashboard/workspace">workspace</router-link>
       </el-footer>
     </el-container>
   </el-container>
