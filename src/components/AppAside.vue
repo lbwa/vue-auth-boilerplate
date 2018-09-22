@@ -37,7 +37,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import AsideLogo from './Logo'
+import AsideLogo from './AsideLogo'
 
 export default {
   data () {

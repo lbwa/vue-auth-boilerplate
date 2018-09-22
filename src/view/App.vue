@@ -2,10 +2,7 @@
   <el-container id="root">
     <app-aside/>
     <el-container>
-      <el-header>
-        header
-        <el-button class="root__header__button" @click="toggleAside">extend</el-button>
-      </el-header>
+      <app-header @toggleAside="toggleAside"></app-header>
       <router-view></router-view>
       <el-footer>
         footer
@@ -16,7 +13,8 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import AppAside from 'COMPONENTS/Aside'
+import AppAside from 'COMPONENTS/AppAside'
+import AppHeader from 'COMPONENTS/AppHeader'
 
 export default {
   data () {
@@ -30,7 +28,8 @@ export default {
   },
 
   components: {
-    AppAside
+    AppAside,
+    AppHeader
   }
 }
 </script>

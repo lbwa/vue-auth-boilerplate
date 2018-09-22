@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+.dashboard
+  min-height: calc(100vh - 60px * 2)
+  background-color: #f0f2f5
 </style>
