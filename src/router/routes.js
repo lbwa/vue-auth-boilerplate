@@ -3,28 +3,28 @@ import components from './components'
 export default [
   {
     path: '/',
-    // redirect: '/dashboard/analysis'
-    component: components.analysis
+    redirect: '/dashboard/analysis'
   },
   {
     path: '/dashboard',
+    component: components.dashboard,
     children: [
       {
-        path: '/analysis',
+        path: 'analysis',
         component: components.analysis
       },
       {
-        path: '/monitor',
+        path: 'monitor',
         component: components.monitor
       },
       {
-        path: '/workspace',
+        path: 'workspace',
         component: components.workspace
       }
     ]
   },
   {
     path: '*',
-    redirect: '/'
+    redirect: '/dashboard/analysis'
   }
 ]
