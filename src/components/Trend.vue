@@ -1,6 +1,6 @@
 <template>
   <div class="trend">
-    <div class="trend__wrapper">
+    <div :class="hasAbsolute ? 'trend__wrapper' : ''">
       <div
         class="trend__item"
         v-for="item of trend"
@@ -31,6 +31,10 @@ export default {
           }
         ]
       }
+    },
+    hasAbsolute: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -50,16 +54,12 @@ export default {
 <style lang="sass" scoped>
 
 .trend
-  height: 46px
-  margin-bottom: 12px
-  position: relative
   width: 100%
 
   &__wrapper
     position: absolute
     left: 0
     bottom: 0
-    width: 100%
 
   &__item
     display: inline-block

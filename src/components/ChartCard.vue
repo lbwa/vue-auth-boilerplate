@@ -1,14 +1,17 @@
 <template>
-  <el-card class="chart-card">
+  <el-card class="chart__card">
     <header class="card__header">
       <h1 class="card__title">{{cardHeader}}</h1>
       <p class="card__total">{{cardTotal}}</p>
     </header>
+
     <slot></slot>
-    <card-footer>
+
+    <card-footer v-if="footerDetail !== ''">
       <span class="footer__title" slot="title">{{footerTitle}}</span>
       <span class="footer__detail" slot="detail">{{footerDetail}}</span>
     </card-footer>
+    <slot name="footer"></slot>
   </el-card>
 </template>
 
@@ -27,12 +30,12 @@ export default {
     },
     footerTitle: {
       type: String,
-      default: 'footer title'
+      default: ''
     },
 
     footerDetail: {
       type: String | Number,
-      default: 'footer details'
+      default: ''
     }
   },
 
@@ -44,6 +47,9 @@ export default {
 
 <style lang="sass" scoped>
 @import 'STYLE/mixin.sass'
+
+/deep/ .el-card__body
+  padding: 20px 24px 8px
 
 .card
   &__title

@@ -8,7 +8,7 @@
           :footerTitle="'日均销售额'"
           :footerDetail="formatPrice(sales.daily)"
         >
-          <main>
+          <main class="placeholder__layout">
             <trend
               :trend="sales.trend"
             ></trend>
@@ -23,7 +23,7 @@
           :footerTitle="'日访问量'"
           :footerDetail="decimalNumber(visitors.daily)"
         >
-          <main>chart area</main>
+          <main class="placeholder__layout">chart area</main>
         </chart-card>
       </el-col>
 
@@ -34,7 +34,7 @@
           :footerTitle="'转化率'"
           :footerDetail="percentValue(payments.rate)"
         >
-          <main>card body</main>
+          <main class="placeholder__layout">card body</main>
         </chart-card>
       </el-col>
 
@@ -42,10 +42,14 @@
         <chart-card
           cardHeader="运营活动效果"
           :cardTotal="percentValue(operations.influence)"
-          :footerTitle="'转化率'"
-          :footerDetail="percentValue(operations.conversion)"
         >
-          <main>chart area</main>
+          <main class="placeholder__layout">chart area</main>
+          <Trend
+            class="trend__ops__layout card__footer__no-wrap"
+            :trend="operations.trend"
+            :hasAbsolute="false"
+            slot="footer"
+          ></Trend>
         </chart-card>
       </el-col>
     </el-row>
@@ -104,4 +108,24 @@ export default {
 
 <style lang="sass" scoped>
 
+.placeholder
+  &__layout
+    height: 46px
+    margin-bottom: 12px
+    position: relative
+    width: 100%
+
+.trend
+  &__ops__layout
+    position: relative
+    width: 100%
+    margin-top: 8px
+    padding-top: 9px
+    font-size: 14px
+    line-height: 22px
+    border-top: 1px solid #e8e8e8
+
+.card__footer__no-wrap
+  white-space: nowrap
+  overflow: hidden
 </style>

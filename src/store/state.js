@@ -1,4 +1,5 @@
 export default {
+  isCollapse: false,
   sales: {
     trend: [
       {
@@ -20,11 +21,21 @@ export default {
   },
   payments: {
     total: 6560,
+    trend: [], // chart
     rate: 0.6
   },
   operations: {
-    influence: 0.78,
-    trend: '', // chart
+    influence: 0.78, // chart
+    trend: [
+      {
+        key: '同周比',
+        value: 0.12
+      },
+      {
+        key: '日环比',
+        value: -0.11
+      }
+    ],
     conversion: 0.6
   }
 }
