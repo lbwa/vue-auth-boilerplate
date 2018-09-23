@@ -23,7 +23,8 @@ module.exports = {
       'VIEW': path.resolve(PATH.SOURCE_PATH, './view'),
       'COMPONENTS': path.resolve(PATH.SOURCE_PATH, './components'),
       'STYLE': path.resolve(PATH.SOURCE_PATH, './style'),
-      'STATIC': PATH.STATIC_PATH
+      'STATIC': PATH.STATIC_PATH,
+      'MOCK': path.resolve(PATH.ROOT_PATH, './mock')
     }
   },
   module: {

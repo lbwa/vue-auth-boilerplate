@@ -60,11 +60,14 @@
 import ChartCard from 'COMPONENTS/ChartCard'
 // import ChartLine from 'COMPONENTS/ChartLine'
 import Trend from 'COMPONENTS/Trend'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import {
   formatPrice,
   decimalNumber
 } from 'COMPONENTS/utils'
+
+// work with dev mode
+import { sales, visitors, payments, operations } from 'MOCK/state'
 
 export default {
   computed: {
@@ -78,7 +81,16 @@ export default {
 
   created () {
     // ! Request all analysis data at the created hook
-    // this.getAnalysisData()
+    // this.getAnalysisData() // production mode
+
+    // dev mode
+    this.setSales(sales)
+
+    this.setVisitors(visitors)
+
+    this.setPayments(payments)
+
+    this.setOperations(operations)
   },
 
   methods: {
@@ -93,6 +105,13 @@ export default {
     percentValue (value) {
       return `${value * 100}`.replace(/^-/, '') + '%'
     },
+
+    ...mapMutations({
+      setSales: 'SET_SALES',
+      setVisitors: 'SET_VISITORS',
+      setPayments: 'SET_PAYMENTS',
+      setOperations: 'SET_OPERATIONS'
+    }),
 
     ...mapActions([
       'getAnalysisData'

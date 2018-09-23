@@ -11,21 +11,24 @@ export default {
         value: -0.11
       }
     ],
-    daily: 10000,
-    total: 126566
+    daily: 0,
+    total: 0
   },
+
   visitors: {
-    daily: 1234,
-    trend: '', // chart
-    total: 8846
+    daily: 0,
+    chart: [],
+    total: 0
   },
+
   payments: {
-    total: 6560,
-    trend: [], // chart
+    total: 0,
+    chart: [],
     rate: 0.6
   },
+
   operations: {
-    influence: 0.78, // chart
+    influence: 0.0, // chart
     trend: [
       {
         key: '同周比',
@@ -36,6 +39,6 @@ export default {
         value: -0.11
       }
     ],
-    conversion: 0.6
+    conversion: 0.1
   }
 }
