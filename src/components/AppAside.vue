@@ -11,11 +11,10 @@
       :collapse="isCollapse"
       :router="true"
       class="root__aside__menu"
-      default-active="analysis"
-      background-color="#001529"
+      default-active="/dashboard/analysis"
       text-color="#ffffff"
     >
-      <el-submenu index="dashboard">
+      <el-submenu index="/dashboard">
         <template slot="title">
           <i class="el-icon-service"></i>
           <span slot="title">Dashboard</span>
@@ -25,7 +24,7 @@
         <el-menu-item index="/dashboard/workspace">工作台</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="form">
+      <el-submenu index="/form">
         <template slot="title">
           <i class="el-icon-document"></i>
           <span slot="title">表单页</span>
@@ -58,16 +57,30 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+$background-dark: #001529
+$background-hover: #1890ff
+
 .root__aside
   &__face
-    background-color: #001529
+    background-color: $background-dark
     transition: width .3s
 
   &__menu
+    background-color: $background-dark
     border-right: 0
 
-/deep/ .el-menu-item.is-active
-  color: #ffffff
-  background-color: blue
+/deep/ .el-submenu__title
+  &:hover, &:focus
+  background-color: $background-dark
+
+/deep/ .el-menu-item
+  background-color: $background-dark
+
+  &:focus, &:hover
+    background-color: $background-dark
+
+  &.is-active
+    color: #ffffff
+    background-color: $background-hover
 
 </style>
