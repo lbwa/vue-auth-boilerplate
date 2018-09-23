@@ -15,13 +15,13 @@ export const sales = {
 
 export const visitors = {
   daily: 1234,
-  trend: '', // chart
+  chart: '',
   total: 8846
 }
 
 export const payments = {
   total: 6560,
-  trend: [], // chart
+  chart: [],
   rate: 0.6
 }
 
