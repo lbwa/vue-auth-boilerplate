@@ -67,7 +67,7 @@ import {
 } from 'COMPONENTS/utils'
 
 // work with dev mode
-import { sales, visitors, payments, operations } from 'MOCK/state'
+import { sales, visitors, payments, operations } from 'MOCK/analysis'
 
 export default {
   computed: {
