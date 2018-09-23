@@ -3,44 +3,47 @@
     <el-row type="flex" :gutter="24">
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <chart-card
-          cardHeader="总销售额"
-          :cardTotal="formatPrice(12566)"
-          :footerTitle="'日销售量'"
-          :footerDetail="formatPrice(10000)"
+          cardHeader="销售总额"
+          :cardTotal="formatPrice(sales.total)"
+          :footerTitle="'日均销售额'"
+          :footerDetail="formatPrice(sales.daily)"
         >
           <main>
             <trend
-              :trend="sellingTrend"
+              :trend="sales.trend"
             ></trend>
           </main>
         </chart-card>
       </el-col>
+
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <chart-card
           cardHeader="访问量"
-          :cardTotal="8846"
+          :cardTotal="visitors.total"
           :footerTitle="'日访问量'"
-          :footerDetail="1234"
+          :footerDetail="decimalNumber(visitors.daily)"
         >
           <main>chart area</main>
         </chart-card>
       </el-col>
+
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <chart-card
           cardHeader="支付笔数"
-          :cardTotal="6560"
+          :cardTotal="payments.total"
           :footerTitle="'转化率'"
-          :footerDetail="'60%'"
+          :footerDetail="percentValue(payments.rate)"
         >
           <main>card body</main>
         </chart-card>
       </el-col>
+
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <chart-card
           cardHeader="运营活动效果"
-          :cardTotal="'78%'"
+          :cardTotal="percentValue(operations.influence)"
           :footerTitle="'转化率'"
-          :footerDetail="'60%'"
+          :footerDetail="percentValue(operations.conversion)"
         >
           <main>chart area</main>
         </chart-card>
@@ -51,29 +54,45 @@
 
 <script>
 import ChartCard from 'COMPONENTS/ChartCard'
+// import ChartLine from 'COMPONENTS/ChartLine'
 import Trend from 'COMPONENTS/Trend'
-import { formatPrice } from 'COMPONENTS/utils'
+import { mapState, mapActions } from 'vuex'
+import {
+  formatPrice,
+  decimalNumber
+} from 'COMPONENTS/utils'
 
 export default {
-  data () {
-    return {
-      sellingTrend: [
-        {
-          key: '同周比',
-          value: 0.12
-        },
-        {
-          key: '日环比',
-          value: -0.11
-        }
-      ]
-    }
+  computed: {
+    ...mapState([
+      'sales',
+      'visitors',
+      'payments',
+      'operations'
+    ])
+  },
+
+  created () {
+    // ! Request all analysis data at the created hook
+    // this.getAnalysisData()
   },
 
   methods: {
     formatPrice (price) {
       return formatPrice(price)
-    }
+    },
+
+    decimalNumber (num) {
+      return decimalNumber(num)
+    },
+
+    percentValue (value) {
+      return `${value * 100}`.replace(/^-/, '') + '%'
+    },
+
+    ...mapActions([
+      'getAnalysisData'
+    ])
   },
 
   components: {

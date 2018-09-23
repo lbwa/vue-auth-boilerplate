@@ -6,8 +6,8 @@
     </header>
     <slot></slot>
     <card-footer>
-      <span slot="title">{{footerTitle}}</span>
-      <span slot="detail">{{footerDetail}}</span>
+      <span class="footer__title" slot="title">{{footerTitle}}</span>
+      <span class="footer__detail" slot="detail">{{footerDetail}}</span>
     </card-footer>
   </el-card>
 </template>
@@ -62,4 +62,8 @@ export default {
     font-size: 30px
     word-break: break-all
     +text-dot
+
+.footer
+  &__title, &__detail
+    margin-left: 8px
 </style>

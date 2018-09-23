@@ -1,13 +1,15 @@
 <template>
   <div class="trend">
-    <div
-      class="trend__item"
-      v-for="item of trend"
-      :key="item.key"
-    >
-      <span class="item__title">{{item.key}}</span>
-      <span class="item__value">{{formatTrendValue(item.value)}}</span>
-      <i v-if="item.value !==0" :class="trendIcon(item.value)"></i>
+    <div class="trend__wrapper">
+      <div
+        class="trend__item"
+        v-for="item of trend"
+        :key="item.key"
+      >
+        <span class="item__title">{{item.key}}</span>
+        <span class="item__value">{{formatTrendValue(item.value)}}</span>
+        <i v-if="item.value !==0" :class="trendIcon(item.value)"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -48,14 +50,25 @@ export default {
 <style lang="sass" scoped>
 
 .trend
-  display: flex
-  flex-wrap: wrap
+  height: 46px
+  margin-bottom: 12px
+  position: relative
+  width: 100%
+
+  &__wrapper
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
 
   &__item
-    flex: 1
+    display: inline-block
     font-size: 14px
     line-height: 22px
 
     &:not(:last-child)
       margin-right: 16px
+
+.item__value
+  margin-left: 8px
 </style>

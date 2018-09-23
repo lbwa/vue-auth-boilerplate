@@ -1,7 +1,7 @@
 <template>
   <footer class="card__footer">
-    <slot class="footer__title" name="title"></slot>
-    <slot class="footer__detail" name="detail"></slot>
+    <slot name="title"></slot>
+    <slot name="detail"></slot>
   </footer>
 </template>
 
