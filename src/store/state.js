@@ -1,12 +1,4 @@
 export default {
-  isCollapse: false,
-  dailyVisitor: 1234,
-  totalVisitor: 8846,
-  dailySelling: 10000,
-  totalSelling: 126566,
-  totalPayment: 6560,
-  influenceRate: 0.78,
-  conversionRate: 0.6,
   sales: {
     trend: [
       {

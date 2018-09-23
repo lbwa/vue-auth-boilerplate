@@ -1,8 +1,11 @@
 import types from './mutations/types'
 
 export default {
-  getAnalysisData ({ commit, state }, {
-    sales
+  getAnalysisData ({ commit }, {
+    sales,
+    visitors,
+    payments,
+    operations
   }) {
     commit(types.SET_SALES, sales)
     commit(types.SET_VISITORS, visitors)

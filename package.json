@@ -15,9 +15,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
+    "dayjs": "^1.7.5",
     "element-ui": "^2.4.7",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.17",
+    "vue-chartjs": "^3.4.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -59,7 +63,7 @@
     "webpackbar": "^2.6.3"
   },
   "lint-staged": {
-    "*.js": [
+    "**/*.js": [
       "eslint --fix",
       "git add"
     ]
