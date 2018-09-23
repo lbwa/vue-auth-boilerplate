@@ -13,5 +13,6 @@ export default {
 <style lang="sass" scoped>
 .main__wrapper
   min-height: calc(100vh - 60px * 2)
+  padding: 24px 24px 0 24px
   background-color: #f0f2f5
 </style>
