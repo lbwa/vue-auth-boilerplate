@@ -45,7 +45,14 @@
           cardHeader="运营活动效果"
           :cardTotal="percentValue(operations.influence)"
         >
-          <main class="placeholder__layout">chart area</main>
+          <main class="placeholder__layout">
+            <mini-progress
+              :percentage="operations.influence"
+              :stroke-width="8"
+              color="rgb(19, 194, 194)"
+              :show-text="false"
+            ></mini-progress>
+          </main>
           <Trend
             class="trend__ops__layout card__footer__no-wrap"
             :trend="operations.trend"
@@ -61,8 +68,9 @@
 <script>
 import ChartCard from 'COMPONENTS/ChartCard'
 import ChartLine from 'COMPONENTS/ChartLine'
+import MiniProgress from 'COMPONENTS/MiniProgress'
 import Trend from 'COMPONENTS/Trend'
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import {
   formatPrice,
   decimalNumber
@@ -85,14 +93,13 @@ export default {
     // ! Request all analysis data at the created hook
     // this.getAnalysisData() // production mode
 
-    // dev mode
-    this.setSales(sales)
-
-    this.setVisitors(visitors)
-
-    this.setPayments(payments)
-
-    this.setOperations(operations)
+    // ! dev mode
+    this.getAnalysisData({
+      sales,
+      visitors,
+      payments,
+      operations
+    })
   },
 
   methods: {
@@ -108,13 +115,6 @@ export default {
       return `${value * 100}`.replace(/^-/, '') + '%'
     },
 
-    ...mapMutations({
-      setSales: 'SET_SALES',
-      setVisitors: 'SET_VISITORS',
-      setPayments: 'SET_PAYMENTS',
-      setOperations: 'SET_OPERATIONS'
-    }),
-
     ...mapActions([
       'getAnalysisData'
     ])
@@ -123,7 +123,8 @@ export default {
   components: {
     Trend,
     ChartCard,
-    ChartLine
+    ChartLine,
+    MiniProgress
   }
 }
 </script>
@@ -155,4 +156,9 @@ export default {
 .card__footer__no-wrap
   white-space: nowrap
   overflow: hidden
+
+// reset
+/deep/ .el-progress-bar
+  &__inner, &__outer
+    border-radius: 0
 </style>
