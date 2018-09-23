@@ -23,7 +23,9 @@
           :footerTitle="'日访问量'"
           :footerDetail="decimalNumber(visitors.daily)"
         >
-          <main class="placeholder__layout">chart area</main>
+          <main class="placeholder__layout">
+            <!-- <chart-line class="chart__layout"></chart-line> -->
+          </main>
         </chart-card>
       </el-col>
 
@@ -58,7 +60,7 @@
 
 <script>
 import ChartCard from 'COMPONENTS/ChartCard'
-// import ChartLine from 'COMPONENTS/ChartLine'
+import ChartLine from 'COMPONENTS/ChartLine'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions, mapMutations } from 'vuex'
 import {
@@ -119,8 +121,9 @@ export default {
   },
 
   components: {
+    Trend,
     ChartCard,
-    Trend
+    ChartLine
   }
 }
 </script>
@@ -143,6 +146,11 @@ export default {
     font-size: 14px
     line-height: 22px
     border-top: 1px solid #e8e8e8
+
+.chart__layout
+  position: absolute
+  left: 0
+  bottom: 0
 
 .card__footer__no-wrap
   white-space: nowrap

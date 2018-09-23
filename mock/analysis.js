@@ -1,3 +1,5 @@
+import { visitorData } from './chart'
+
 export const sales = {
   trend: [
     {
@@ -15,7 +17,7 @@ export const sales = {
 
 export const visitors = {
   daily: 1234,
-  chart: '',
+  chart: visitorData,
   total: 8846
 }
 
