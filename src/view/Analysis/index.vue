@@ -1,7 +1,7 @@
 <template>
   <el-main>
-    <el-row class="analysis__header__gutter" type="flex" :gutter="24">
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+    <el-row :gutter="24">
+      <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
           cardHeader="销售总额"
           :cardTotal="formatPrice(sales.total)"
@@ -16,7 +16,7 @@
         </chart-card>
       </el-col>
 
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+      <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
           cardHeader="访问量"
           :cardTotal="visitors.total"
@@ -37,7 +37,7 @@
         </chart-card>
       </el-col>
 
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+      <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
           cardHeader="支付笔数"
           :cardTotal="payments.total"
@@ -58,7 +58,7 @@
         </chart-card>
       </el-col>
 
-      <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
+      <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
           cardHeader="运营活动效果"
           :cardTotal="percentValue(operations.influence)"
@@ -209,12 +209,13 @@ export default {
   bottom: 0
   right: 0
 
-.card__footer__no-wrap
-  white-space: nowrap
-  overflow: hidden
+.card
+  &__footer__no-wrap
+    white-space: nowrap
+    overflow: hidden
 
-.analysis__header__gutter
-  margin-bottom: 24px
+  &__gutter__bottom
+    margin-bottom: 24px
 
 // reset
 /deep/ .el-progress-bar

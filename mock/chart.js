@@ -15,7 +15,7 @@ const randomData = []
 for (let i = 0; i < 12; i++) {
   randomData.push({
     month: `${i + 1}月`,
-    totalSales: Math.floor(Math.random() * 1000) + 200
+    total: Math.floor(Math.random() * 1000) + 200
   })
 }
 
