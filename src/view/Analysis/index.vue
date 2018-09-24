@@ -27,13 +27,11 @@
             <chart-line
               class="chart__layout"
               :options="{
-                responsive: false,
+                responsive: true,
                 maintainAspectRatio: false // 保持长宽比
               }"
               :labels="visitorData.labels"
               :datasets="visitorData.datasets"
-              :width="195"
-              :height="50"
             ></chart-line>
           </main>
         </chart-card>
@@ -172,8 +170,10 @@ export default {
 
 .chart__layout
   position: absolute
+  top: 0
   left: 0
   bottom: 0
+  right: 0
 
 .card__footer__no-wrap
   white-space: nowrap
