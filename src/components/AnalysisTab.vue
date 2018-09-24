@@ -19,6 +19,7 @@
           class="tab__rank"
         >
           <h4 class="rank__title">门店销售额排名</h4>
+          <Rank></Rank>
         </el-col>
       </el-row>
     </el-tab-pane>
@@ -50,6 +51,7 @@
 
 <script>
 import ChartBar from 'COMPONENTS/ChartBar'
+import Rank from 'COMPONENTS/Rank'
 export default {
   props: {
     chartData: {
@@ -83,7 +85,8 @@ export default {
   },
 
   components: {
-    ChartBar
+    ChartBar,
+    Rank
   }
 }
 </script>
