@@ -24,7 +24,17 @@
           :footerDetail="decimalNumber(visitors.daily)"
         >
           <main class="placeholder__layout">
-            <!-- <chart-line class="chart__layout"></chart-line> -->
+            <chart-line
+              class="chart__layout"
+              :options="{
+                responsive: false,
+                maintainAspectRatio: false // 保持长宽比
+              }"
+              :labels="visitorData.labels"
+              :datasets="visitorData.datasets"
+              :width="195"
+              :height="50"
+            ></chart-line>
           </main>
         </chart-card>
       </el-col>
@@ -72,6 +82,7 @@ import ChartLine from 'COMPONENTS/ChartLine'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
+import { formatVisitorData } from './utils'
 import {
   formatPrice,
   decimalNumber
@@ -82,6 +93,9 @@ import { sales, visitors, payments, operations } from 'MOCK/analysis'
 
 export default {
   computed: {
+    visitorData () {
+      return formatVisitorData(this.visitors.chart)
+    },
     ...mapState([
       'sales',
       'visitors',
