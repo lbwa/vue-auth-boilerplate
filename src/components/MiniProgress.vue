@@ -1,5 +1,19 @@
 <template>
   <div class="progress-bar">
+    <div
+      class="progress__pointer__layout"
+      :style="`left: ${formatPercentage + 2}%`"
+    >
+      <span
+        class="pointer__top"
+        :style="`background-color: ${color}`"
+      ></span>
+      <span
+        class="pointer__bottom"
+        :style="`background-color: ${color}`"
+      ></span>
+    </div>
+
     <el-progress
       :percentage="formatPercentage"
       :stroke-width="strokeWidth"
@@ -40,5 +54,26 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.progress
+  &__inner__layout
+    position: relative
+    width: 100%
 
+  &__pointer__layout
+    position: absolute
+    top: 0
+    bottom: 0
+
+.pointer
+  &__top, &__bottom
+    position: absolute
+    left: 0
+    width: 2px
+    height: 4px
+
+  &__top
+    top: 0
+
+  &__bottom
+    bottom: 0
 </style>

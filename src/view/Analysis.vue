@@ -47,6 +47,7 @@
         >
           <main class="placeholder__layout">
             <mini-progress
+              class="progress__layout"
               :percentage="operations.influence"
               :stroke-width="8"
               color="rgb(19, 194, 194)"
@@ -147,6 +148,13 @@ export default {
     font-size: 14px
     line-height: 22px
     border-top: 1px solid #e8e8e8
+
+.progress__layout
+  position: absolute
+  left: 0
+  bottom: 0
+  padding: 5px 0
+  width: 100%
 
 .chart__layout
   position: absolute
