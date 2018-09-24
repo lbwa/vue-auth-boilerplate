@@ -3,7 +3,7 @@
     <el-tab-pane label="销售量" name="totalSales">
       <el-row>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="18" :xl="18"
+          :xs="24" :sm="24" :md="12" :lg="16" :xl="16"
           class="tab__chart"
         >
           <h4 class="chart__title">销售趋势</h4>
@@ -15,7 +15,7 @@
           ></chart-bar>
         </el-col>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="6" :xl="6"
+          :xs="24" :sm="24" :md="12" :lg="8" :xl="8"
           class="tab__rank"
         >
           <h4 class="rank__title">门店销售额排名</h4>
@@ -27,7 +27,7 @@
     <el-tab-pane label="访问量" name="totalVisitors">
       <el-row>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="18" :xl="18"
+          :xs="24" :sm="24" :md="12" :lg="16" :xl="16"
           class="tab__chart"
         >
           <h4 class="chart__title">访问量趋势</h4>
@@ -39,10 +39,11 @@
           ></chart-bar>
         </el-col>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="6" :xl="6"
+          :xs="24" :sm="24" :md="12" :lg="8" :xl="8"
           class="tab__rank"
         >
           <h4 class="rank__title">门店访问量排名</h4>
+          <Rank></Rank>
         </el-col>
       </el-row>
     </el-tab-pane>
@@ -106,7 +107,10 @@ export default {
 
 .chart
   &__body
-    height: 290px
+    height: 260px
+
+.rank__title
+  padding: 0 32px 0 72px
 
 /deep/ .el-tabs__header
   margin-bottom: 24px

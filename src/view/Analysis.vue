@@ -104,7 +104,7 @@ import {
 // import { getAnalysisData } from 'SERVICES'
 
 // ! work with dev mode
-import { sales, visitors, payments, operations } from 'MOCK/analysis'
+import { sales, visitors, payments, operations, rankList } from 'MOCK/analysis'
 
 export default {
   computed: {
@@ -134,7 +134,8 @@ export default {
       sales,
       visitors,
       payments,
-      operations
+      operations,
+      rankList
     })
   },
 

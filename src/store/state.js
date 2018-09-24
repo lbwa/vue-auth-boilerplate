@@ -40,5 +40,12 @@ export default {
       }
     ],
     conversion: 0.1
-  }
+  },
+
+  rankList: [
+    {
+      name: 'sample name',
+      value: 10000
+    }
+  ]
 }

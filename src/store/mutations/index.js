@@ -19,5 +19,9 @@ export default {
 
   [types.SET_OPERATIONS] (state, operations) {
     state.operations = operations
+  },
+
+  [types.SET_RANK_LIST] (state, rankList) {
+    state.rankList = rankList
   }
 }

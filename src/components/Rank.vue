@@ -1,13 +1,14 @@
 <template>
-  <ul class="tab__rank">
+  <ul class="tab__rank" v-if="rankList && rankList.length > 6">
     <li
+      class="tab__rank-item"
       v-for="(item, index) of rankList"
       :key="item.name"
     >
       <span
         :class="[
           'rank__icon',
-          index < 2 /* start from zero */ ? 'icon__dark' : 'icon__light']"
+          index < 3 /* start from zero */ ? 'icon__dark' : 'icon__light']"
       >{{index + 1}}</span>
       <span class="rank__name">{{item.name}}</span>
       <span class="rank__value">{{decimalNumber(item.value)}}</span>
@@ -17,26 +18,19 @@
 
 <script>
 import { decimalNumber } from './utils'
+import { mapState } from 'vuex'
 
 export default {
-  props: {
-    rankList: {
-      type: Array,
-      default () {
-        return [
-          {
-            name: 'sample name',
-            value: 100000
-          }
-        ]
-      }
-    }
-  },
-
   methods: {
     decimalNumber (value) {
       return decimalNumber(value)
     }
+  },
+
+  computed: {
+    ...mapState([
+      'rankList'
+    ])
   }
 }
 </script>
@@ -45,8 +39,12 @@ export default {
 .tab
   &__rank
     list-style-type: none
+    padding: 0 32px 32px 72px
     margin-top: 25px
-    padding: 0
+    color: rgba(0,0,0,.65)
+
+  &__rank-item
+    margin-top: 16px
 
 .rank
   &__icon

@@ -44,6 +44,7 @@ export default {
     display: flex
     justify-content: center
     align-items: center
+    background-color: #f0f2f5
 
     .octicon-mark
       margin-right: 10px

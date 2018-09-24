@@ -42,3 +42,13 @@ export const operations = {
   ],
   conversion: 0.6
 }
+
+const rank = []
+for (let i = 0; i < 7; i++) {
+  rank.push({
+    name: `工专 ${i} 号店`,
+    value: 323234
+  })
+}
+
+export const rankList = rank
