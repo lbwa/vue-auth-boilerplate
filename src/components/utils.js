@@ -3,7 +3,7 @@ function isNumber (value) {
 }
 
 function formatPrice (price) {
-  if (!isNumber(price)) throw TypeError('[formatPrice]: parameter price should be a number')
+  if (!isNumber(price)) throw TypeError('[formatPrice]: parameter should be a number')
 
   return price.toLocaleString('zh', {
     style: 'currency',

@@ -1,6 +1,6 @@
 <template>
   <el-main>
-    <el-row type="flex" :gutter="24">
+    <el-row class="analysis__header__gutter" type="flex" :gutter="24">
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <chart-card
           cardHeader="销售总额"
@@ -81,6 +81,7 @@
         </chart-card>
       </el-col>
     </el-row>
+    <analysis-tab :chart-data="sales.totalDetails"></analysis-tab>
   </el-main>
 </template>
 
@@ -89,9 +90,9 @@ import ChartCard from 'COMPONENTS/ChartCard'
 import ChartLine from 'COMPONENTS/ChartLine'
 import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
+import AnalysisTab from 'COMPONENTS/AnalysisTab'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
-import { formatData } from './utils'
 import {
   formatPrice,
   decimalNumber
@@ -106,10 +107,10 @@ import { sales, visitors, payments, operations } from 'MOCK/analysis'
 export default {
   computed: {
     visitorsData () {
-      return formatData(this.visitors.chart)
+      return this.formatData(this.visitors.chart)
     },
     paymentsData () {
-      return formatData(this.payments.chart)
+      return this.formatData(this.payments.chart)
     },
     ...mapState([
       'sales',
@@ -145,6 +146,20 @@ export default {
       return `${value * 100}`.replace(/^-/, '') + '%'
     },
 
+    formatData (set) {
+      const labels = []
+      const datasets = []
+      for (const daily of set) {
+        labels.push(daily.date)
+        datasets.push(daily.visitors)
+      }
+
+      return {
+        labels,
+        datasets
+      }
+    },
+
     ...mapActions([
       'getAnalysisData'
     ])
@@ -155,7 +170,8 @@ export default {
     ChartCard,
     ChartLine,
     ChartBar,
-    MiniProgress
+    MiniProgress,
+    AnalysisTab
   }
 }
 </script>
@@ -196,6 +212,9 @@ export default {
 .card__footer__no-wrap
   white-space: nowrap
   overflow: hidden
+
+.analysis__header__gutter
+  margin-bottom: 24px
 
 // reset
 /deep/ .el-progress-bar

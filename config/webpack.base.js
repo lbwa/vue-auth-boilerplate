@@ -20,6 +20,7 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
+      'SOURCE': PATH.SOURCE_PATH,
       'VIEW': path.resolve(PATH.SOURCE_PATH, './view'),
       'COMPONENTS': path.resolve(PATH.SOURCE_PATH, './components'),
       'STYLE': path.resolve(PATH.SOURCE_PATH, './style'),

@@ -1,4 +1,4 @@
-import { fakeData } from './chart'
+import { fakeData, randomData } from './chart'
 
 export const sales = {
   trend: [
@@ -11,8 +11,9 @@ export const sales = {
       value: -0.11
     }
   ],
-  daily: 10000,
-  total: 126566
+  daily: 12423,
+  total: 126566,
+  totalDetails: randomData // chart
 }
 
 export const visitors = {
