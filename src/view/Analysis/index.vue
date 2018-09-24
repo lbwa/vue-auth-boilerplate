@@ -97,6 +97,9 @@ import {
   decimalNumber
 } from 'COMPONENTS/utils'
 
+// work with prod mode
+// import { getAnalysisData } from 'SERVICES'
+
 // work with dev mode
 import { sales, visitors, payments, operations } from 'MOCK/analysis'
 
@@ -117,8 +120,8 @@ export default {
   },
 
   created () {
-    // ! Request all analysis data at the created hook
-    // this.getAnalysisData() // production mode
+    // production mode
+    // getAnalysisData().then(this.getAnalysisData)
 
     // ! dev mode
     this.getAnalysisData({
