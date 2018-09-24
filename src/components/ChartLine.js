@@ -58,7 +58,7 @@ export default {
       // 需要在极其精确的 hover 状态下才能触发 dot 样式
       elements: {
         point: {
-          radius: 0,
+          radius: 1,
           hoverRadius: 4
         }
       },

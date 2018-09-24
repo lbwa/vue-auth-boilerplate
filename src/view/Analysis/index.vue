@@ -30,8 +30,8 @@
                 responsive: true,
                 maintainAspectRatio: false // 保持长宽比
               }"
-              :labels="visitorData.labels"
-              :datasets="visitorData.datasets"
+              :labels="visitorsData.labels"
+              :datasets="visitorsData.datasets"
             ></chart-line>
           </main>
         </chart-card>
@@ -44,7 +44,17 @@
           :footerTitle="'转化率'"
           :footerDetail="percentValue(payments.rate)"
         >
-          <main class="placeholder__layout">card body</main>
+          <main class="placeholder__layout">
+            <chart-bar
+              class="chart__layout"
+              :options="{
+                responsive: true,
+                maintainAspectRatio: false
+              }"
+              :labels="paymentsData.labels"
+              :datasets="paymentsData.datasets"
+            ></chart-bar>
+          </main>
         </chart-card>
       </el-col>
 
@@ -77,10 +87,11 @@
 <script>
 import ChartCard from 'COMPONENTS/ChartCard'
 import ChartLine from 'COMPONENTS/ChartLine'
+import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
-import { formatVisitorData } from './utils'
+import { formatData } from './utils'
 import {
   formatPrice,
   decimalNumber
@@ -91,8 +102,11 @@ import { sales, visitors, payments, operations } from 'MOCK/analysis'
 
 export default {
   computed: {
-    visitorData () {
-      return formatVisitorData(this.visitors.chart)
+    visitorsData () {
+      return formatData(this.visitors.chart)
+    },
+    paymentsData () {
+      return formatData(this.payments.chart)
     },
     ...mapState([
       'sales',
@@ -137,6 +151,7 @@ export default {
     Trend,
     ChartCard,
     ChartLine,
+    ChartBar,
     MiniProgress
   }
 }

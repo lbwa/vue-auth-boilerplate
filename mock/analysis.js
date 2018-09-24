@@ -23,7 +23,7 @@ export const visitors = {
 
 export const payments = {
   total: 6560,
-  chart: [],
+  chart: visitorData, // simulate fake datasets
   rate: 0.6
 }
 
