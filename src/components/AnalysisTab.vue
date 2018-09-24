@@ -9,8 +9,8 @@
           <h4 class="chart__title">销售趋势</h4>
           <chart-bar
             class="chart__body"
-            :labels="formatData.labels"
-            :datasets="formatData.datasets"
+            :labels="chartData.labels"
+            :datasets="chartData.datasets"
             :options="chartOptions"
           ></chart-bar>
         </el-col>
@@ -32,8 +32,8 @@
           <h4 class="chart__title">访问量趋势</h4>
           <chart-bar
             class="chart__body"
-            :labels="formatData.labels"
-            :datasets="formatData.datasets"
+            :labels="chartData.labels"
+            :datasets="chartData.datasets"
             :options="chartOptions"
           ></chart-bar>
         </el-col>
@@ -53,9 +53,12 @@ import ChartBar from 'COMPONENTS/ChartBar'
 export default {
   props: {
     chartData: {
-      type: Array,
+      type: Object,
       default () {
-        return []
+        return {
+          labels: ['sample'],
+          datasets: [1]
+        }
       }
     }
   },
@@ -64,7 +67,7 @@ export default {
     return {
       activeTab: 'totalSales',
       chartOptions: {
-        responsive: true,
+        responsive: true, // 设置 true 以适应容器宽高
         maintainAspectRatio: false,
         scales: {
           xAxes: [{
@@ -75,22 +78,6 @@ export default {
           }]
         }
         // scaleShowLabels: false
-      }
-    }
-  },
-
-  computed: {
-    formatData () {
-      const labels = []
-      const datasets = []
-      const chartData = [...this.chartData]
-      for (const point of chartData) {
-        labels.push(point.month)
-        datasets.push(point.total)
-      }
-      return {
-        labels,
-        datasets
       }
     }
   },

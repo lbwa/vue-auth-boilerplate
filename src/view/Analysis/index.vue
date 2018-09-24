@@ -81,7 +81,9 @@
         </chart-card>
       </el-col>
     </el-row>
-    <analysis-tab :chart-data="sales.totalDetails"></analysis-tab>
+    <analysis-tab
+      :chart-data="totalSalesData"
+    ></analysis-tab>
   </el-main>
 </template>
 
@@ -107,10 +109,13 @@ import { sales, visitors, payments, operations } from 'MOCK/analysis'
 export default {
   computed: {
     visitorsData () {
-      return this.formatData(this.visitors.chart)
+      return this.formatData(this.visitors.chart, ['date', 'value'])
     },
     paymentsData () {
-      return this.formatData(this.payments.chart)
+      return this.formatData(this.payments.chart, ['date', 'value'])
+    },
+    totalSalesData () {
+      return this.formatData(this.sales.totalDetails, ['month', 'total'])
     },
     ...mapState([
       'sales',
@@ -146,12 +151,15 @@ export default {
       return `${value * 100}`.replace(/^-/, '') + '%'
     },
 
-    formatData (set) {
+    /**
+     * @description 分离数组中各项的特定键名 filter[i] 的键值，用于绘制 line-chart
+     */
+    formatData (set, filter) {
       const labels = []
       const datasets = []
       for (const daily of set) {
-        labels.push(daily.date)
-        datasets.push(daily.visitors)
+        labels.push(daily[filter[0]])
+        datasets.push(daily[filter[1]])
       }
 
       return {
