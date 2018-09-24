@@ -103,7 +103,7 @@ import {
 // work with prod mode
 // import { getAnalysisData } from 'SERVICES'
 
-// work with dev mode
+// ! work with dev mode
 import { sales, visitors, payments, operations } from 'MOCK/analysis'
 
 export default {
