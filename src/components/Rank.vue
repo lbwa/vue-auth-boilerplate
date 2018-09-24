@@ -7,7 +7,7 @@
       <span
         :class="[
           'rank__icon',
-          index < 2 ? 'icon__dark' : 'icon__light']"
+          index < 2 /* start from zero */ ? 'icon__dark' : 'icon__light']"
       >{{index + 1}}</span>
       <span class="rank__name">{{item.name}}</span>
       <span class="rank__value">{{decimalNumber(item.value)}}</span>
