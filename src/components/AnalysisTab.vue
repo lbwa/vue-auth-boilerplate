@@ -26,7 +26,7 @@
     <el-tab-pane label="访问量" name="totalVisitors">
       <el-row>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="16" :xl="16"
+          :xs="24" :sm="24" :md="12" :lg="18" :xl="18"
           class="tab__chart"
         >
           <h4 class="chart__title">访问量趋势</h4>
@@ -38,7 +38,7 @@
           ></chart-bar>
         </el-col>
         <el-col
-          :xs="24" :sm="24" :md="12" :lg="8" :xl="8"
+          :xs="24" :sm="24" :md="12" :lg="6" :xl="6"
           class="tab__rank"
         >
           <h4 class="rank__title">门店访问量排名</h4>
