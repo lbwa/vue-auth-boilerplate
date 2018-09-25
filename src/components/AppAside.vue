@@ -71,7 +71,7 @@ $background-hover: #1890ff
 
 /deep/ .el-submenu__title
   &:hover, &:focus
-  background-color: $background-dark
+    background-color: $background-dark
 
 /deep/ .el-menu-item
   background-color: $background-dark
