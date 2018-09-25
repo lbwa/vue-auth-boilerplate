@@ -38,6 +38,10 @@ jobs:
               yarn build
             fi
 
+      - add_ssh_keys:
+          fingerprints:
+            - "b7:b8:83:f2:ef:77:5d:08:96:14:4e:c0:20:ac:cb:36"
+
       - deploy:
           name: Deploy site
           command: |
