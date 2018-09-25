@@ -1,7 +1,7 @@
 <template>
   <div class="logo" :style="`color: ${textColor}`">
     <img
-      src="STATIC/logo.png"
+      src="~STATIC/logo.png"
       alt="logo"
       class="logo__img__size"
       :width="`${sideLength}px`"
