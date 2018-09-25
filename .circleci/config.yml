@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+
+    docker:
+      - image: circleci/node:10
+
+    working_directory: ~/repo
+
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: yarn
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Test generating process
+          command: |
+            if [ $CIRCLE_BRANCH != $SOURCE_BRANCH ]; then
+              yarn build
+            fi
+
+      - deploy:
+          name: Deploy site
+          command: |
+            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
+              git config --global user.email $USEREMAIL
+              git config --global user.name $USERNAME
+
+              yarn build
+              mkdir -p dist/.circleci
+              cp -a .circleci/. dist/.circleci/.
+              cd dist
+
+              git init
+              git add .
+              git commit -m "docs: Deployed by CircleCI - ${CIRCLE_SHA1}" --allow-empty
+
+              git push -f git@github.com:lbwa/vue-design-pro.git master:gh-pages
+            fi
