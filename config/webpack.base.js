@@ -15,11 +15,15 @@ module.exports = {
   },
   output: {
     path: PATH.BUILD_PATH,
+    publicPath: devMode ? '/' : './',
     filename: OUTPUT_CONFIG
   },
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
+      // https://github.com/chartjs/Chart.js/issues/5235
+      // 排除 chart.js 中的 moment.js 依赖
+      'chart.js': 'chart.js/dist/Chart.js',
       'SOURCE': PATH.SOURCE_PATH,
       'VIEW': path.resolve(PATH.SOURCE_PATH, './view'),
       'COMPONENTS': path.resolve(PATH.SOURCE_PATH, './components'),
