@@ -88,6 +88,14 @@
     <analysis-tab
       :chart-data="totalSalesData"
     ></analysis-tab>
+    <el-row class="analysis__search-sales" :gutter="24">
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+        <analysis-middle></analysis-middle>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+        <analysis-middle></analysis-middle>
+      </el-col>
+    </el-row>
   </el-main>
 </template>
 
@@ -97,6 +105,7 @@ import ChartLine from 'COMPONENTS/ChartLine'
 import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import AnalysisTab from 'COMPONENTS/AnalysisTab'
+import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
 import {
@@ -208,7 +217,8 @@ export default {
     ChartLine,
     ChartBar,
     MiniProgress,
-    AnalysisTab
+    AnalysisTab,
+    AnalysisMiddle
   }
 }
 </script>
