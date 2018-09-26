@@ -70,8 +70,8 @@ export default {
     trendIcon () {
       if (this.trend === 0) return ''
       return this.trend > 0
-        ? ['el-icon-caret-top red-icon']
-        : ['el-icon-caret-bottom green-icon']
+        ? 'el-icon-caret-top red-icon'
+        : 'el-icon-caret-bottom green-icon'
     },
     normalizePercentage (value) {
       value = Math.abs(value)

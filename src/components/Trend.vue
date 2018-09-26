@@ -41,7 +41,9 @@ export default {
   methods: {
     trendIcon (value) {
       if (value === 0) return
-      return value > 0 ? 'el-icon-caret-top' : 'el-icon-caret-bottom'
+      return value > 0
+        ? 'el-icon-caret-top red-icon'
+        : 'el-icon-caret-bottom green-icon'
     },
 
     formatTrendValue (value) {
@@ -71,4 +73,10 @@ export default {
 
 .item__value
   margin-left: 8px
+
+.red-icon
+  color: red
+
+.green-icon
+  color: green
 </style>
