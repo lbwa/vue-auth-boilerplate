@@ -2,6 +2,10 @@ function isNumber (value) {
   return typeof value === 'number'
 }
 
+function isString (value) {
+  return typeof value === 'string'
+}
+
 function formatPrice (price) {
   if (!isNumber(price)) throw TypeError('[formatPrice]: parameter should be a number')
 
@@ -17,8 +21,18 @@ function decimalNumber (num) {
   return num.toLocaleString('zh', { style: 'decimal' })
 }
 
+/**
+ * Convert camel-case to kebab-case
+ * @param {String} str
+ */
+function toKebabCase (str) {
+  if (!isString(str)) throw TypeError('[toKebabCase]: Parameter should be a string')
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+}
+
 export {
   isNumber,
   formatPrice,
-  decimalNumber
+  decimalNumber,
+  toKebabCase
 }

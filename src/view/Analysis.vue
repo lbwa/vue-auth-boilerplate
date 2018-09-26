@@ -92,8 +92,32 @@
 
     <el-row class="analysis__search-sales" :gutter="24">
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-        <analysis-middle></analysis-middle>
+        <analysis-middle>
+          <el-row :gutter="68">
+            <el-col :xs="24" :sm="12">
+              <middle-chart-card
+                title="搜索用户数"
+                :highlight="searchData.total.value"
+                :trend="searchData.total.trend"
+                shadow="never"
+                tooltip="这是搜索用户数"
+                :bodyStyle="bodyStyle"
+              ></middle-chart-card>
+            </el-col>
+            <el-col :xs="24" :sm="12">
+              <middle-chart-card
+                title="人均搜索次数"
+                :highlight="searchData.average.value"
+                :trend="searchData.average.trend"
+                shadow="never"
+                tooltip="这是人均搜索次数"
+                :bodyStyle="bodyStyle"
+              ></middle-chart-card>
+            </el-col>
+          </el-row>
+        </analysis-middle>
       </el-col>
+
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <analysis-middle></analysis-middle>
       </el-col>
@@ -109,6 +133,7 @@ import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import AnalysisTab from 'COMPONENTS/AnalysisTab'
 import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
+import MiddleChartCard from 'COMPONENTS/MiddleChartCard'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
 import {
@@ -150,6 +175,11 @@ export default {
           payments: '这是支付笔数',
           operations: '这是运营效果'
         }
+      },
+
+      bodyStyle: {
+        padding: '0',
+        marginBottom: '24px'
       }
     }
   },
@@ -168,7 +198,8 @@ export default {
       'sales',
       'visitors',
       'payments',
-      'operations'
+      'operations',
+      'searchData'
     ])
   },
 
@@ -229,7 +260,8 @@ export default {
     ChartBar,
     MiniProgress,
     AnalysisTab,
-    AnalysisMiddle
+    AnalysisMiddle,
+    MiddleChartCard
   }
 }
 </script>
