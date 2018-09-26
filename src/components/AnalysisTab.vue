@@ -97,6 +97,8 @@ export default {
     padding: 16px
     background-color: white
     font-size: 14px
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1)
+    border-radius: 4px
 
 .chart__title, .rank__title
   margin-top: 0

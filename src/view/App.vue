@@ -78,6 +78,7 @@ export default {
 
 .author
   color: rgba(0,0,0,.45)
+  font-weight: bold
 
   &:hover
     color: #3273dc
