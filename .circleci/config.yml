@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build:    
     branches:
       ignore:
         - gh-pages
@@ -40,7 +40,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "b7:b8:83:f2:ef:77:5d:08:96:14:4e:c0:20:ac:cb:36"
+            - "80:8c:9a:7c:80:2e:1b:14:51:56:54:a9:17:93:da:02"
 
       - deploy:
           name: Deploy site
