@@ -86,7 +86,8 @@ baseConfig.plugins.push(
       removeComments: true,
       collapseWhitespace: true,
       removeAttributeQuotes: true
-    }
+    },
+    favicon: 'static/favicon.ico'
   }),
   new webpack.HashedModuleIdsPlugin(),
   new BundleAnalyzerPlugin({
