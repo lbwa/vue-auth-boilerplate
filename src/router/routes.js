@@ -6,31 +6,19 @@ export default [
     redirect: '/dashboard/analysis'
   },
   {
-    path: '/dashboard',
-    component: components.wrapper,
-    children: [
-      {
-        path: 'analysis',
-        component: components.analysis
-      },
-      {
-        path: 'monitor',
-        component: components.monitor
-      },
-      {
-        path: 'workspace',
-        component: components.workspace
-      }
-    ]
+    path: '/dashboard/analysis',
+    component: components.analysis
   },
   {
-    path: '/form',
-    component: components.wrapper,
-    children: [
-      {
-        path: 'basic-form',
-        component: components.basicForm
-      }
-    ]
+    path: '/dashboard/monitor',
+    component: components.monitor
+  },
+  {
+    path: '/dashboard/workspace',
+    component: components.workspace
+  },
+  {
+    path: '/form/basic-form',
+    component: components.basicForm
   }
 ]
