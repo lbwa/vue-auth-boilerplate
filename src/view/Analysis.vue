@@ -85,9 +85,11 @@
         </chart-card>
       </el-col>
     </el-row>
+
     <analysis-tab
       :chart-data="totalSalesData"
     ></analysis-tab>
+
     <el-row class="analysis__search-sales" :gutter="24">
       <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
         <analysis-middle></analysis-middle>
@@ -96,6 +98,7 @@
         <analysis-middle></analysis-middle>
       </el-col>
     </el-row>
+
   </el-main>
 </template>
 
@@ -117,7 +120,14 @@ import {
 // import { getAnalysisData } from 'SERVICES'
 
 // ! work with dev mode
-import { sales, visitors, payments, operations, rankList } from 'MOCK/analysis'
+import {
+  sales,
+  visitors,
+  payments,
+  operations,
+  rankList,
+  searchData
+} from 'MOCK/analysis'
 
 export default {
   data () {
@@ -172,7 +182,8 @@ export default {
       visitors,
       payments,
       operations,
-      rankList
+      rankList,
+      searchData
     })
   },
 

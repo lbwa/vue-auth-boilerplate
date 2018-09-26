@@ -19,5 +19,9 @@ export default {
 
   [types.SET_RANK_LIST] (state, rankList) {
     state.rankList = rankList
+  },
+
+  [types.SET_SEARCH_DATA] (state, searchData) {
+    state.searchData = searchData
   }
 }

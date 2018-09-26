@@ -1,3 +1,5 @@
+// store.state basic schema
+
 export default {
   sales: {
     trend: [
@@ -46,5 +48,16 @@ export default {
       name: 'sample name',
       value: 10000
     }
-  ]
+  ],
+
+  searchData: {
+    total: {
+      value: 12321,
+      trend: 0.1
+    },
+    average: {
+      value: 2.7,
+      trend: -0.2
+    }
+  }
 }

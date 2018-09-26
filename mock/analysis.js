@@ -52,3 +52,14 @@ for (let i = 0; i < 7; i++) {
 }
 
 export const rankList = rank
+
+export const searchData = {
+  total: {
+    value: 12321,
+    trend: 0.171
+  },
+  average: {
+    value: 2.7,
+    trend: -0.262
+  }
+}
