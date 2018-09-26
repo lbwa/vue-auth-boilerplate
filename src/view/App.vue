@@ -3,7 +3,11 @@
     <app-aside/>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
-      <router-view class="main__wrapper"></router-view>
+
+      <keep-alive>
+        <router-view class="main__wrapper"></router-view>
+      </keep-alive>
+
       <el-footer class="footer__layout footer__font" height="100">
         <div class="footer__icon">
           <a

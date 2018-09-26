@@ -14,8 +14,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules,
-  globalState,
-  globalMutations,
+  state: globalState,
+  mutations: globalMutations,
   strict: debug,
   plugins: debug ? [createLogger()] : []
 })

@@ -154,7 +154,7 @@ export default {
     totalSalesData () {
       return this.formatData(this.sales.totalDetails, ['month', 'total'])
     },
-    ...mapState([
+    ...mapState('analysis', [
       'sales',
       'visitors',
       'payments',
@@ -206,7 +206,7 @@ export default {
       }
     },
 
-    ...mapActions([
+    ...mapActions('analysis', [
       'getAnalysisData'
     ])
   },
