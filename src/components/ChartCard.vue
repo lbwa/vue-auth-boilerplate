@@ -1,7 +1,16 @@
 <template>
   <el-card class="chart__card">
     <header class="card__header">
-      <h1 class="card__title">{{cardHeader}}</h1>
+      <div class="card__title__wrapper">
+        <h3 class="card__title">{{cardHeader}}</h3>
+        <el-tooltip
+          class="card__tooltip"
+          :content="tooltip"
+          placement="top"
+        >
+          <i class="el-icon-info"></i>
+        </el-tooltip>
+      </div>
       <p class="card__total">{{cardTotal}}</p>
     </header>
 
@@ -32,10 +41,13 @@ export default {
       type: String,
       default: ''
     },
-
     footerDetail: {
       type: String | Number,
       default: ''
+    },
+    tooltip: {
+      type: String,
+      default: '默认文字'
     }
   },
 
@@ -46,7 +58,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import 'STYLE/mixin.sass'
+@import '~STYLE/mixin.sass'
 
 /deep/ .el-card__body
   padding: 20px 24px 8px
@@ -58,6 +70,13 @@ export default {
     font-size: 14px
     height: 22px
     line-height: 22px
+
+    &__wrapper
+      display: flex
+      align-items: center
+
+  &__tooltip
+    margin-left: auto
 
   &__total
     margin-top: 4px

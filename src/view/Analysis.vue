@@ -3,10 +3,11 @@
     <el-row :gutter="24">
       <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
-          cardHeader="销售总额"
+          :cardHeader="text.total.sales"
           :cardTotal="formatPrice(sales.total)"
-          :footerTitle="'日均销售额'"
+          :footerTitle="text.daily.sales"
           :footerDetail="formatPrice(sales.daily)"
+          :tooltip="text.tooltip.sales"
         >
           <main class="placeholder__layout">
             <trend
@@ -18,10 +19,11 @@
 
       <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
-          cardHeader="访问量"
-          :cardTotal="visitors.total"
-          :footerTitle="'日访问量'"
+          :cardHeader="text.total.visitors"
+          :cardTotal="decimalNumber(visitors.total)"
+          :footerTitle="text.daily.visitors"
           :footerDetail="decimalNumber(visitors.daily)"
+          :tooltip="text.tooltip.visitors"
         >
           <main class="placeholder__layout">
             <chart-line
@@ -39,10 +41,11 @@
 
       <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
-          cardHeader="支付笔数"
-          :cardTotal="payments.total"
-          :footerTitle="'转化率'"
+          :cardHeader="text.total.payments"
+          :cardTotal="decimalNumber(payments.total)"
+          :footerTitle="text.daily.payments"
           :footerDetail="percentValue(payments.rate)"
+          :tooltip="text.tooltip.payments"
         >
           <main class="placeholder__layout">
             <chart-bar
@@ -60,8 +63,9 @@
 
       <el-col class="card__gutter__bottom" :xs="24" :sm="12" :md="12" :lg="6" :xl="6">
         <chart-card
-          cardHeader="运营活动效果"
+          :cardHeader="text.total.operations"
           :cardTotal="percentValue(operations.influence)"
+          :tooltip="text.tooltip.operations"
         >
           <main class="placeholder__layout">
             <mini-progress
@@ -107,6 +111,30 @@ import {
 import { sales, visitors, payments, operations, rankList } from 'MOCK/analysis'
 
 export default {
+  data () {
+    return {
+      text: {
+        total: {
+          sales: '销售总额',
+          visitors: '访问量',
+          payments: '支付笔数',
+          operations: '运营活动效果'
+        },
+        daily: {
+          sales: '日均销售额',
+          visitors: '日均访问量',
+          payments: '转化率'
+        },
+        tooltip: {
+          sales: '这是销售总额',
+          visitors: '这是访客量',
+          payments: '这是支付笔数',
+          operations: '这是运营效果'
+        }
+      }
+    }
+  },
+
   computed: {
     visitorsData () {
       return this.formatData(this.visitors.chart, ['date', 'value'])

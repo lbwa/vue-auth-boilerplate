@@ -80,7 +80,6 @@ export default {
             display: true
           }]
         }
-        // scaleShowLabels: false
       }
     }
   },
