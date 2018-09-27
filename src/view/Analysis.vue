@@ -94,6 +94,9 @@
       <analysis-hot-search
         :chartData="visitorsData"
       ></analysis-hot-search>
+      <analysis-hot-search
+        :chartData="visitorsData"
+      ></analysis-hot-search>
     </el-row>
 
   </el-main>
