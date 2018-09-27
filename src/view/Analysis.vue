@@ -102,7 +102,20 @@
                 shadow="never"
                 tooltip="这是搜索用户数"
                 :bodyStyle="bodyStyle"
-              ></middle-chart-card>
+              >
+                <chart-line
+                  slot="chart"
+                  class="middle__chart__layout"
+                  :options="{
+                    responsive: true,
+                    maintainAspectRatio: false
+                  }"
+                  :labels="visitorsData.labels"
+                  :datasets="visitorsData.datasets"
+                  backgroundColor="#d0e9ff"
+                  borderColor="#1089ff"
+                ></chart-line>
+              </middle-chart-card>
             </el-col>
             <el-col :xs="24" :sm="12">
               <middle-chart-card
@@ -112,7 +125,20 @@
                 shadow="never"
                 tooltip="这是人均搜索次数"
                 :bodyStyle="bodyStyle"
-              ></middle-chart-card>
+              >
+                <chart-line
+                  slot="chart"
+                  class="middle__chart__layout"
+                  :options="{
+                    responsive: true,
+                    maintainAspectRatio: false
+                  }"
+                  :labels="visitorsData.labels"
+                  :datasets="visitorsData.datasets"
+                  backgroundColor="#d0e9ff"
+                  borderColor="#1089ff"
+                ></chart-line>
+              </middle-chart-card>
             </el-col>
           </el-row>
         </analysis-middle>
@@ -306,6 +332,10 @@ export default {
 
   &__gutter__bottom
     margin-bottom: 24px
+
+.middle__chart__layout
+  position: relative
+  height: 45px
 
 // reset
 /deep/ .el-progress-bar

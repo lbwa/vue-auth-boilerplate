@@ -25,6 +25,16 @@ export default {
           maintainAspectRatio: false // 保持长宽比
         }
       }
+    },
+
+    backgroundColor: {
+      type: String,
+      default: `#975fe4`
+    },
+
+    borderColor: {
+      type: String,
+      default: ''
     }
   },
 
@@ -33,7 +43,8 @@ export default {
       labels: this.labels,
       datasets: [
         {
-          backgroundColor: `#975fe4`,
+          backgroundColor: this.backgroundColor,
+          borderColor: this.borderColor === '' ? '' : this.borderColor,
           data: this.datasets
         }
       ]
