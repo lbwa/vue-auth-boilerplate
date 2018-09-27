@@ -91,62 +91,9 @@
     ></analysis-tab>
 
     <el-row class="analysis__search-sales" :gutter="24">
-      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-        <analysis-middle>
-          <el-row :gutter="68">
-            <el-col :xs="24" :sm="12">
-              <middle-chart-card
-                title="搜索用户数"
-                :highlight="searchData.total.value"
-                :trend="searchData.total.trend"
-                shadow="never"
-                tooltip="这是搜索用户数"
-                :bodyStyle="bodyStyle"
-              >
-                <chart-line
-                  slot="chart"
-                  class="middle__chart__layout"
-                  :options="{
-                    responsive: true,
-                    maintainAspectRatio: false
-                  }"
-                  :labels="visitorsData.labels"
-                  :datasets="visitorsData.datasets"
-                  backgroundColor="#d0e9ff"
-                  borderColor="#1089ff"
-                ></chart-line>
-              </middle-chart-card>
-            </el-col>
-            <el-col :xs="24" :sm="12">
-              <middle-chart-card
-                title="人均搜索次数"
-                :highlight="searchData.average.value"
-                :trend="searchData.average.trend"
-                shadow="never"
-                tooltip="这是人均搜索次数"
-                :bodyStyle="bodyStyle"
-              >
-                <chart-line
-                  slot="chart"
-                  class="middle__chart__layout"
-                  :options="{
-                    responsive: true,
-                    maintainAspectRatio: false
-                  }"
-                  :labels="visitorsData.labels"
-                  :datasets="visitorsData.datasets"
-                  backgroundColor="#d0e9ff"
-                  borderColor="#1089ff"
-                ></chart-line>
-              </middle-chart-card>
-            </el-col>
-          </el-row>
-        </analysis-middle>
-      </el-col>
-
-      <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-        <analysis-middle></analysis-middle>
-      </el-col>
+      <analysis-hot-search
+        :chartData="visitorsData"
+      ></analysis-hot-search>
     </el-row>
 
   </el-main>
@@ -158,8 +105,7 @@ import ChartLine from 'COMPONENTS/ChartLine'
 import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import AnalysisTab from 'COMPONENTS/AnalysisTab'
-import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
-import MiddleChartCard from 'COMPONENTS/MiddleChartCard'
+import AnalysisHotSearch from 'COMPONENTS/AnalysisHotSearch'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
 import {
@@ -201,11 +147,6 @@ export default {
           payments: '这是支付笔数',
           operations: '这是运营效果'
         }
-      },
-
-      bodyStyle: {
-        padding: '0',
-        marginBottom: '24px'
       }
     }
   },
@@ -286,8 +227,7 @@ export default {
     ChartBar,
     MiniProgress,
     AnalysisTab,
-    AnalysisMiddle,
-    MiddleChartCard
+    AnalysisHotSearch
   }
 }
 </script>
@@ -332,10 +272,6 @@ export default {
 
   &__gutter__bottom
     margin-bottom: 24px
-
-.middle__chart__layout
-  position: relative
-  height: 45px
 
 // reset
 /deep/ .el-progress-bar
