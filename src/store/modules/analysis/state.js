@@ -58,6 +58,12 @@ export default {
     average: {
       value: 2.7,
       trend: -0.2
-    }
+    },
+    chart: [
+      {
+        name: 'default title',
+        data: 1234
+      }
+    ]
   }
 }

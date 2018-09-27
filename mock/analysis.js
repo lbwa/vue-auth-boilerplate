@@ -1,4 +1,4 @@
-import { fakeData, randomData } from './chart'
+import { fakeData, randomData, randomData50 } from './chart'
 
 export const sales = {
   trend: [
@@ -61,5 +61,6 @@ export const searchData = {
   average: {
     value: 2.7,
     trend: -0.262
-  }
+  },
+  chart: randomData50
 }

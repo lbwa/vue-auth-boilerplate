@@ -49,6 +49,11 @@
           </middle-chart-card>
         </el-col>
       </el-row>
+
+      <el-row slot="table">
+        <hot-search-table :data="searchData.chart"></hot-search-table>
+      </el-row>
+
     </analysis-middle>
   </el-col>
 </template>
@@ -57,6 +62,7 @@
 import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
 import MiddleChartCard from 'COMPONENTS/MiddleChartCard'
 import ChartLine from 'COMPONENTS/ChartLine'
+import HotSearchTable from 'COMPONENTS/HotSearchTable'
 import { mapState } from 'vuex'
 
 export default {
@@ -102,7 +108,8 @@ export default {
   components: {
     AnalysisMiddle,
     MiddleChartCard,
-    ChartLine
+    ChartLine,
+    HotSearchTable
   }
 }
 </script>

@@ -19,7 +19,16 @@ for (let i = 0; i < 12; i++) {
   })
 }
 
+const randomData50 = []
+for (let i = 0; i < 50; i++) {
+  randomData50.push({
+    name: `关键词-${i}`,
+    data: Math.floor(Math.random() * 1000) + 200
+  })
+}
+
 export {
   fakeData,
-  randomData
+  randomData,
+  randomData50
 }

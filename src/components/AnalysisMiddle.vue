@@ -10,7 +10,14 @@
         </el-dropdown-menu>
       </el-dropdown>
     </header>
-    <main class="analysis__middle__main"><slot></slot></main>
+
+    <main class="analysis__middle__main">
+      <slot></slot>
+    </main>
+
+    <div class="analysis__middle__table">
+      <slot name="table"></slot>
+    </div>
   </el-card>
 </template>
 
