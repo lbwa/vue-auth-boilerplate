@@ -1,6 +1,6 @@
 <template>
   <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-    <analysis-middle>
+    <analysis-middle title="线上热门搜索">
       <el-row :gutter="68">
         <el-col :xs="24" :sm="12">
           <middle-chart-card

@@ -94,9 +94,7 @@
       <analysis-hot-search
         :chartData="visitorsData"
       ></analysis-hot-search>
-      <analysis-hot-search
-        :chartData="visitorsData"
-      ></analysis-hot-search>
+      <analysis-sales-class></analysis-sales-class>
     </el-row>
 
   </el-main>
@@ -109,6 +107,7 @@ import ChartBar from 'COMPONENTS/ChartBar'
 import MiniProgress from 'COMPONENTS/MiniProgress'
 import AnalysisTab from 'COMPONENTS/AnalysisTab'
 import AnalysisHotSearch from 'COMPONENTS/AnalysisHotSearch'
+import AnalysisSalesClass from 'COMPONENTS/AnalysisSalesClass'
 import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
 import {
@@ -230,7 +229,8 @@ export default {
     ChartBar,
     MiniProgress,
     AnalysisTab,
-    AnalysisHotSearch
+    AnalysisHotSearch,
+    AnalysisSalesClass
   }
 }
 </script>

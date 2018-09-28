@@ -1,7 +1,7 @@
 <template>
   <el-card class="analysis__middle">
     <header class="middle__header" slot="header">
-      <span class="middle__header__title">线上热门搜索</span>
+      <span class="middle__header__title">{{title}}</span>
       <el-dropdown class="middle__header__icon">
         <el-button style="padding: 3px 0" type="text">...</el-button>
         <el-dropdown-menu slot="dropdown">
@@ -23,7 +23,12 @@
 
 <script>
 export default {
-
+  props: {
+    title: {
+      type: String,
+      default: 'default title'
+    }
+  }
 }
 </script>
 
