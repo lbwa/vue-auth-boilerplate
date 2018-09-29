@@ -1,7 +1,7 @@
 <template>
   <el-table
     :data="data"
-    style="width: 100%; border: 1px solid #e8e8e8; border-radius: 5px;"
+    :style="tableStyle"
     :default-sort="{prop: 'data', order: 'descending'}"
     :stripe="true"
     size="medium"
@@ -9,6 +9,7 @@
     <el-table-column
       :label="label.col1"
       type="index"
+      width="90"
     ></el-table-column>
     <el-table-column
       prop="name"
@@ -45,6 +46,15 @@ export default {
           col3: '数据'
         }
       }
+    }
+  },
+
+  computed: {
+    tableStyle () {
+      return `padding: 0 8px;
+        width: 100%;
+        border: 1px solid #e8e8e8;
+        border-radius: 5px;`
     }
   },
 
