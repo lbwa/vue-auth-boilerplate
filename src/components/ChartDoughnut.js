@@ -46,24 +46,39 @@ export default {
   },
 
   mounted () {
-    this.renderChart({
-      labels: this.labels,
-      datasets: [
-        {
-          backgroundColor: this.colorSets,
-          data: this.datasets
-        }
-      ]
-    }, {
-      legend: {
-        display: false,
-        position: 'right',
-        labels: {
-          usePointStyle: true
-        }
-      },
-      cutoutPercentage: 80, // inner round radius
-      ...this.options
-    })
+    this.renderer()
+  },
+
+  methods: {
+    handleUpdate (newValue, oldValue) {
+      this.$data._chart.destroy()
+      this.renderer()
+    },
+
+    renderer () {
+      this.renderChart({
+        labels: this.labels,
+        datasets: [
+          {
+            backgroundColor: this.colorSets,
+            data: this.datasets
+          }
+        ]
+      }, {
+        legend: {
+          display: false,
+          position: 'right',
+          labels: {
+            usePointStyle: true
+          }
+        },
+        cutoutPercentage: 80, // inner round radius
+        ...this.options
+      })
+    }
+  },
+
+  watch: {
+    datasets: 'handleUpdate'
   }
 }
