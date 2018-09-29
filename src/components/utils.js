@@ -35,7 +35,7 @@ function percentValue (value) {
   if (typeof value !== 'number') {
     value = parseInt(value)
   }
-  return `${value * 100}`.replace(/^-/, '') + '%' // NaN * 100 --> NaN
+  return `${(value * 100).toFixed(2)}`.replace(/^-/, '') + '%' // NaN * 100 --> NaN
 }
 
 export {

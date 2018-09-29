@@ -15,13 +15,15 @@
 
       <el-row class="analysis__sales__doughnut" slot="table">
         <h4 class="doughnut__title">销售额</h4>
-        <!-- TODO: total value hover style in this area -->
         <chart-doughnut
           class="doughnut__main"
-          :labels="chartData.labels"
-          :datasets="chartData.datasets"
+          :labels="chartData.sales.labels"
+          :datasets="chartData.sales.datasets"
         ></chart-doughnut>
-        <analysis-sales-list class="doughnut__legend"></analysis-sales-list>
+        <analysis-sales-list
+          class="doughnut__legend"
+          :salesList="chartData.details"
+        ></analysis-sales-list>
       </el-row>
     </analysis-middle>
   </el-col>
@@ -42,15 +44,31 @@ export default {
 
   computed: {
     chartData () {
-      if (this.radioSelected === '线上') return this.onlineSales
-      if (this.radioSelected === '门店') return this.offlineSales
-      return this.allSales
+      if (this.radioSelected === '线上') {
+        return {
+          sales: this.onlineSales,
+          details: this.onlineDetails
+        }
+      }
+      if (this.radioSelected === '门店') {
+        return {
+          sales: this.offlineSales,
+          details: this.offlineDetails
+        }
+      }
+      return {
+        sales: this.allSales,
+        details: this.allDetails
+      }
     },
 
     ...mapGetters('analysis', {
       allSales: 'getAllSalesType',
+      allDetails: 'getAllDetails',
       onlineSales: 'getOnlineSalesType',
-      offlineSales: 'getOfflineSalesType'
+      onlineDetails: 'getOnlineDetails',
+      offlineSales: 'getOfflineSalesType',
+      offlineDetails: 'getOfflineDetails'
     })
   },
 
@@ -81,7 +99,7 @@ export default {
   &__legend
     position: absolute
     right: 0
-    top: 50%
+    top: calc(50% + (32px + 8px + 16px) / 2)
     transform: translateY(-50%)
     margin: 0 20px
     min-width: 200px

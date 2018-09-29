@@ -9,10 +9,10 @@
         class="item__dot"
         :style="colorDot(index)"
       ></span>
-      <h4 class="item__title">{{goods.goods}}</h4>
+      <h4 class="item__title">{{goods.x}}</h4>
       <span class="item__divider"></span>
       <span class="item__percent">{{percentValue(goods.percent)}}</span>
-      <span class="item__sales">{{formatPrice(goods.sales)}}</span>
+      <span class="item__sales">{{formatPrice(goods.y)}}</span>
     </li>
   </ul>
 </template>
@@ -35,9 +35,9 @@ export default {
       default () {
         return [
           {
-            goods: 'default',
-            percent: 0.1,
-            sales: 10000
+            x: 'default',
+            y: 10000,
+            percent: 0.1
           }
         ]
       }
@@ -68,9 +68,10 @@ export default {
   methods: {
     colorDot (index) {
       const colorSets = this.colorSets
+      const len = colorSets.length
       return index < colorSets.length
         ? `background-color: ${colorSets[index]}`
-        : `background-color: ${colorSets[colorSets.length % index]}`
+        : `background-color: ${colorSets[index % (len === 0 ? 1 : len)]}`
     }
   }
 }
@@ -85,6 +86,10 @@ export default {
 
   &__list-item
     font-size: 0
+    color: rgba(0,0,0,.65)
+
+    &:not(:last-child)
+      margin-bottom: 16px
 
 .item
   &__dot
@@ -97,7 +102,6 @@ export default {
   &__title
     display: inline-block
     margin: 0
-    color: rgba(0,0,0,.65)
     font-size: 14px
     font-weight: normal
 
