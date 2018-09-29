@@ -11,9 +11,9 @@
       </el-dropdown>
     </header>
 
-    <main class="analysis__middle__main">
+    <div class="analysis__middle__main">
       <slot></slot>
-    </main>
+    </div>
 
     <div class="analysis__middle__table">
       <slot name="table"></slot>
@@ -37,6 +37,7 @@ export default {
 .analysis
   &__middle
     margin-top: 24px
+    min-height: 509px
 
 .middle
   &__header

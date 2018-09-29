@@ -13,8 +13,11 @@
         </el-radio-group>
       </el-row>
 
-      <el-row slot="table">
-        {{chartData}}
+      <el-row class="analysis__sales__doughnut" slot="table">
+        <h4 class="doughnut__title">销售额</h4>
+        <!-- TODO: total value hover style in this area -->
+        <chart-doughnut class="doughnut__main"></chart-doughnut>
+        <analysis-sales-list class="doughnut__legend"></analysis-sales-list>
       </el-row>
     </analysis-middle>
   </el-col>
@@ -22,6 +25,8 @@
 
 <script>
 import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
+import ChartDoughnut from 'COMPONENTS/ChartDoughnut'
+import AnalysisSalesList from 'COMPONENTS/AnalysisSalesList'
 
 export default {
   data () {
@@ -39,11 +44,34 @@ export default {
   },
 
   components: {
-    AnalysisMiddle
+    AnalysisMiddle,
+    ChartDoughnut,
+    AnalysisSalesList
   }
 }
 </script>
 
 <style lang="sass" scoped>
 
+.analysis
+  &__sales__doughnut
+    position: relative
+
+.doughnut
+  &__title
+    margin-top: 8px
+    margin-bottom: 32px
+    font-size: 14px
+
+  &__main
+    position: relative
+    width: calc(100% - 240px)
+
+  &__legend
+    position: absolute
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+    margin: 0 20px
+    min-width: 200px
 </style>

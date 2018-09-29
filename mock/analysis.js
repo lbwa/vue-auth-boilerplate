@@ -1,4 +1,4 @@
-import { fakeData, randomData, randomData50 } from './chart'
+import mockData from './chart'
 
 export const sales = {
   trend: [
@@ -13,18 +13,18 @@ export const sales = {
   ],
   daily: 12423,
   total: 126566,
-  totalDetails: randomData // chart
+  totalDetails: mockData.randomData // chart
 }
 
 export const visitors = {
   daily: 1234,
-  chart: fakeData,
+  chart: mockData.fakeData,
   total: 8846
 }
 
 export const payments = {
   total: 6560,
-  chart: fakeData, // simulate fake datasets
+  chart: mockData.fakeData, // simulate fake datasets
   rate: 0.6
 }
 
@@ -62,5 +62,5 @@ export const searchData = {
     value: 2.7,
     trend: -0.262
   },
-  chart: randomData50
+  chart: mockData.randomData50
 }
