@@ -32,9 +32,10 @@ function toKebabCase (str) {
 }
 
 function percentValue (value) {
-  return typeof value === 'string'
-    ? value
-    : `${value * 100}`.replace(/^-/, '') + '%'
+  if (typeof value !== 'number') {
+    value = parseInt(value)
+  }
+  return `${value * 100}`.replace(/^-/, '') + '%' // NaN * 100 --> NaN
 }
 
 export {

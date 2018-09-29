@@ -83,6 +83,9 @@ export default {
     padding: 0
     list-style: none
 
+  &__list-item
+    font-size: 0
+
 .item
   &__dot
     display: inline-block
@@ -95,6 +98,7 @@ export default {
     display: inline-block
     margin: 0
     color: rgba(0,0,0,.65)
+    font-size: 14px
     font-weight: normal
 
   &__divider
@@ -102,6 +106,15 @@ export default {
     margin: 0 8px
     height: 0.9em
     width: 1px
-    vertical-align: middle
+    vertical-align: baseline
     background-color: #e8e8e8
+    font-size: 14px
+
+  &__percent
+    color: rgba(0,0,0,.45)
+    font-size: 14px
+
+  &__sales
+    float: right
+    font-size: 14px
 </style>
