@@ -5,27 +5,39 @@
       @click="toggleAside"
     ></i>
     <div class="header__info header__info__align">
-      <div class="info__icon__align info__icon__gutter">
+      <a
+        href="https://github.com/lbwa/vue-design-pro"
+        class="info__icon__align info__icon__gutter"
+        target="_blank"
+      >
         <i class="el-icon-question"></i>
-      </div>
+      </a>
       <div class="info__icon__align info__icon__gutter">
-        <el-badge
-          class="info__dot__face"
-          :value="12"
-        >
-          <i class="el-icon-bell"></i>
-        </el-badge>
+        <header-popover>
+          <el-badge
+            class="info__dot__face"
+            slot="reference"
+            :value="12"
+          >
+            <i class="el-icon-bell"></i>
+          </el-badge>
+        </header-popover>
       </div>
     </div>
   </el-header>
 </template>
 
 <script>
+import HeaderPopover from 'COMPONENTS/HeaderPopover'
 export default {
   methods: {
     toggleAside () {
       this.$emit('toggleAside')
     }
+  },
+
+  components: {
+    HeaderPopover
   }
 }
 </script>
@@ -60,6 +72,10 @@ export default {
     align-items: center
     height: 100%
     cursor: pointer
+    text-decoration: none
+
+    .el-icon-question
+      color: rgba(0,0,0,.65)
 
     &:hover
       background-color: #e6f7ff
