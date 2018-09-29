@@ -95,6 +95,7 @@ export default {
   &__main
     position: relative
     width: calc(100% - 240px)
+    height: 248px
 
   &__legend
     position: absolute
