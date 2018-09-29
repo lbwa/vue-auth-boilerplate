@@ -65,5 +65,30 @@ export default {
         data: 1234
       }
     ]
+  },
+
+  salesType: {
+    all: [
+      {
+        name: 'sample 1',
+        value: 123
+      },
+      {
+        name: 'sample 2',
+        value: 234
+      }
+    ],
+    online: [
+      {
+        name: 'sample 1',
+        value: 123
+      }
+    ],
+    offline: [
+      {
+        name: 'sample 2',
+        value: 234
+      }
+    ]
   }
 }

@@ -16,7 +16,11 @@
       <el-row class="analysis__sales__doughnut" slot="table">
         <h4 class="doughnut__title">销售额</h4>
         <!-- TODO: total value hover style in this area -->
-        <chart-doughnut class="doughnut__main"></chart-doughnut>
+        <chart-doughnut
+          class="doughnut__main"
+          :labels="chartData.labels"
+          :datasets="chartData.datasets"
+        ></chart-doughnut>
         <analysis-sales-list class="doughnut__legend"></analysis-sales-list>
       </el-row>
     </analysis-middle>
@@ -27,6 +31,7 @@
 import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
 import ChartDoughnut from 'COMPONENTS/ChartDoughnut'
 import AnalysisSalesList from 'COMPONENTS/AnalysisSalesList'
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -37,10 +42,16 @@ export default {
 
   computed: {
     chartData () {
-      if (this.radioSelected === '线上') return 'online'
-      if (this.radioSelected === '门店') return 'store'
-      return 'all'
-    }
+      if (this.radioSelected === '线上') return this.onlineSales
+      if (this.radioSelected === '门店') return this.offlineSales
+      return this.allSales
+    },
+
+    ...mapGetters('analysis', {
+      allSales: 'getAllSalesType',
+      onlineSales: 'getOnlineSalesType',
+      offlineSales: 'getOfflineSalesType'
+    })
   },
 
   components: {

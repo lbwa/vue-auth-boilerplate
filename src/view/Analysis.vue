@@ -125,7 +125,8 @@ import {
   payments,
   operations,
   rankList,
-  searchData
+  searchData,
+  salesType
 } from 'MOCK/analysis'
 
 export default {
@@ -183,7 +184,8 @@ export default {
       payments,
       operations,
       rankList,
-      searchData
+      searchData,
+      salesType
     })
   },
 

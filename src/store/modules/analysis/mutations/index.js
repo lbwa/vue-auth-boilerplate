@@ -23,5 +23,9 @@ export default {
 
   [types.SET_SEARCH_DATA] (state, searchData) {
     state.searchData = searchData
+  },
+
+  [types.SET_SALES_TYPE] (state, salesType) {
+    state.salesType = salesType
   }
 }

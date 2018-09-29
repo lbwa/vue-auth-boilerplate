@@ -62,7 +62,7 @@ export default {
           usePointStyle: true
         }
       },
-      cutoutPercentage: 85, // inner round radius
+      cutoutPercentage: 80, // inner round radius
       ...this.options
     })
   }

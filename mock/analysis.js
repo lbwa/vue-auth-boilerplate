@@ -64,3 +64,5 @@ export const searchData = {
   },
   chart: mockData.randomData50
 }
+
+export const salesType = mockData.salesType
