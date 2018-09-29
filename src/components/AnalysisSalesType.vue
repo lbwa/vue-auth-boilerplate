@@ -15,11 +15,17 @@
 
       <el-row class="analysis__sales__doughnut" slot="table">
         <h4 class="doughnut__title">销售额</h4>
-        <chart-doughnut
-          class="doughnut__main"
-          :labels="chartData.sales.labels"
-          :datasets="chartData.sales.datasets"
-        ></chart-doughnut>
+        <div class="doughnut__main__wrapper">
+          <chart-doughnut
+            class="doughnut__main"
+            :labels="chartData.sales.labels"
+            :datasets="chartData.sales.datasets"
+          ></chart-doughnut>
+          <div class="doughnut__total-tips">
+            <h3 class="doughnut__tips-title">{{radioSelected}}</h3>
+            <span class="doughnut__sum">{{formatPrice(sumData)}}</span>
+          </div>
+        </div>
         <analysis-sales-list
           class="doughnut__legend"
           :salesList="chartData.details"
@@ -34,8 +40,15 @@ import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
 import ChartDoughnut from 'COMPONENTS/ChartDoughnut'
 import AnalysisSalesList from 'COMPONENTS/AnalysisSalesList'
 import { mapGetters } from 'vuex'
+import { formatPrice } from './utils'
 
 export default {
+  mixins: [{
+    methods: {
+      formatPrice
+    }
+  }],
+
   data () {
     return {
       radioSelected: '全部渠道'
@@ -62,12 +75,25 @@ export default {
       }
     },
 
+    sumData () {
+      if (this.radioSelected === '线上') {
+        return this.onlineSum
+      }
+      if (this.radioSelected === '门店') {
+        return this.offlineSum
+      }
+      return this.allSum
+    },
+
     ...mapGetters('analysis', {
       allSales: 'getAllSalesType',
+      allSum: 'getAllSum',
       allDetails: 'getAllDetails',
       onlineSales: 'getOnlineSalesType',
+      onlineSum: 'getOnlineSum',
       onlineDetails: 'getOnlineDetails',
       offlineSales: 'getOfflineSalesType',
+      offlineSum: 'getOfflineSum',
       offlineDetails: 'getOfflineDetails'
     })
   },
@@ -93,9 +119,12 @@ export default {
     font-size: 14px
 
   &__main
-    position: relative
-    width: calc(100% - 240px)
-    height: 248px
+    height: 100%
+
+    &__wrapper
+      position: relative
+      width: calc(100% - 240px)
+      height: 248px
 
   &__legend
     position: absolute
@@ -104,4 +133,19 @@ export default {
     transform: translateY(-50%)
     margin: 0 20px
     min-width: 200px
+
+  &__total-tips
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    text-align: center
+
+  &__tips-title
+    font-size: 14px
+    color: rgba(0,0,0,.45)
+
+  &__sum
+    font-size: 25px
+    color: rgba(0,0,0,.65)
 </style>
