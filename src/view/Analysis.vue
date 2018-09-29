@@ -112,7 +112,8 @@ import Trend from 'COMPONENTS/Trend'
 import { mapState, mapActions } from 'vuex'
 import {
   formatPrice,
-  decimalNumber
+  decimalNumber,
+  percentValue
 } from 'COMPONENTS/utils'
 
 // work with prod mode
@@ -130,6 +131,13 @@ import {
 } from 'MOCK/analysis'
 
 export default {
+  mixins: [{
+    methods: {
+      formatPrice,
+      decimalNumber,
+      percentValue
+    }
+  }],
   data () {
     return {
       text: {
@@ -190,18 +198,6 @@ export default {
   },
 
   methods: {
-    formatPrice (price) {
-      return formatPrice(price)
-    },
-
-    decimalNumber (num) {
-      return decimalNumber(num)
-    },
-
-    percentValue (value) {
-      return `${value * 100}`.replace(/^-/, '') + '%'
-    },
-
     /**
      * @description 分离数组中各项的特定键名 filter[i] 的键值，用于绘制 line-chart
      */

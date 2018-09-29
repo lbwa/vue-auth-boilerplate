@@ -34,6 +34,11 @@ import { toKebabCase, decimalNumber } from './utils'
 import Trend from 'COMPONENTS/Trend'
 
 export default {
+  mixins: [{
+    methods: {
+      decimalNumber
+    }
+  }],
   props: {
     shadow: {
       type: String,
@@ -64,9 +69,6 @@ export default {
   },
 
   methods: {
-    decimalNumber (value) {
-      return decimalNumber(value)
-    },
     trendIcon () {
       if (this.trend === 0) return ''
       return this.trend > 0

@@ -16,6 +16,7 @@ function formatPrice (price) {
   })
 }
 
+// 12345 --> 12,345
 function decimalNumber (num) {
   if (!isNumber(num)) throw TypeError('[decimalNumber]: parameter should be a number')
   return num.toLocaleString('zh', { style: 'decimal' })
@@ -30,9 +31,16 @@ function toKebabCase (str) {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
+function percentValue (value) {
+  return typeof value === 'string'
+    ? value
+    : `${value * 100}`.replace(/^-/, '') + '%'
+}
+
 export {
   isNumber,
   formatPrice,
   decimalNumber,
-  toKebabCase
+  toKebabCase,
+  percentValue
 }

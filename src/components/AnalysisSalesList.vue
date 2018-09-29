@@ -11,21 +11,31 @@
       ></span>
       <h4 class="item__title">{{goods.goods}}</h4>
       <span class="item__divider"></span>
-      <span class="item__percent">{{goods.percent}}</span>
-      <span class="item__sales">{{goods.sales}}</span>
+      <span class="item__percent">{{percentValue(goods.percent)}}</span>
+      <span class="item__sales">{{formatPrice(goods.sales)}}</span>
     </li>
   </ul>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { formatPrice, percentValue } from './utils'
+
 export default {
+  mixins: [{
+    methods: {
+      formatPrice,
+      percentValue
+    }
+  }],
+
   props: {
     salesList: {
       type: Array,
       default () {
         return [
           {
-            goods: 'default goods',
+            goods: 'default',
             percent: 0.1,
             sales: 10000
           }
@@ -47,12 +57,20 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters('analysis', {
+      allSales: 'getAllSalesType',
+      onlineSales: 'getOnlineSalesType',
+      offlineSales: 'getOfflineSalesType'
+    })
+  },
+
   methods: {
     colorDot (index) {
       const colorSets = this.colorSets
       return index < colorSets.length
         ? `background-color: ${colorSets[index]}`
-        : `background-color: ${colorSets[index - colorSets.length]}`
+        : `background-color: ${colorSets[colorSets.length % index]}`
     }
   }
 }
@@ -64,4 +82,26 @@ export default {
     margin: 0
     padding: 0
     list-style: none
+
+.item
+  &__dot
+    display: inline-block
+    margin-right: 8px
+    border-radius: 8px
+    height: 8px
+    width: 8px
+
+  &__title
+    display: inline-block
+    margin: 0
+    color: rgba(0,0,0,.65)
+    font-weight: normal
+
+  &__divider
+    display: inline-block
+    margin: 0 8px
+    height: 0.9em
+    width: 1px
+    vertical-align: middle
+    background-color: #e8e8e8
 </style>

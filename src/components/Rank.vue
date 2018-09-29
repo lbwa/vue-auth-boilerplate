@@ -21,11 +21,11 @@ import { decimalNumber } from './utils'
 import { mapState } from 'vuex'
 
 export default {
-  methods: {
-    decimalNumber (value) {
-      return decimalNumber(value)
+  mixins: [{
+    methods: {
+      decimalNumber
     }
-  },
+  }],
 
   computed: {
     ...mapState('analysis', [
