@@ -12,14 +12,23 @@
 export default {
   data () {
     return {
-      defaultLayout: 'admin'
+      layout: 'admin'
     }
+  },
+
+  methods: {
+    handleRouteUpdate (to, from) {
+      this.layout = to.path === '/' ? 'login' : 'admin'
+    }
+  },
+
+  watch: {
+    '$route': 'handleRouteUpdate'
   },
 
   computed: {
     currentLayout () {
-      const layout = this.$route.meta.layout || this.defaultLayout
-      const formatLayoutKey = layout.replace(/^[a-z]/, key => {
+      const formatLayoutKey = this.layout.replace(/^[a-z]/, key => {
         return key.toUpperCase()
       })
       return () => import(/* webpackChunkName: 'layout-[request]' */ `LAYOUT/${formatLayoutKey}.vue`)

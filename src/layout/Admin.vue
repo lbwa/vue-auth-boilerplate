@@ -3,9 +3,7 @@
     <app-aside/>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
-      <!-- 此处的 keep-alive 缓存无效，因每次路由的变化都将导致动态组件重新渲染 -->
-      <!-- 见 layout/Admin -->
-      <!-- https://markus.oberlehner.net/blog/dynamic-vue-layout-components/ -->
+
       <keep-alive>
         <router-view class="main__wrapper"></router-view>
       </keep-alive>
@@ -65,7 +63,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-#root
+.admin
   min-height: 100vh
 
 .footer
