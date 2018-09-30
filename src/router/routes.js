@@ -3,30 +3,18 @@ import components from './components'
 export default [
   {
     path: '/',
-    component: components.login,
-    meta: {
-      layout: 'login'
-    }
+    component: components.login
   },
   {
     path: '/dashboard/analysis',
-    component: components.analysis,
-    meta: {
-      layout: 'admin'
-    }
+    component: components.analysis
   },
   {
     path: '/dashboard/workspace',
-    component: components.workspace,
-    meta: {
-      layout: 'admin'
-    }
+    component: components.workspace
   },
   {
     path: '/form/basic-form',
-    component: components.basicForm,
-    meta: {
-      layout: 'admin'
-    }
+    component: components.basicForm
   }
 ]

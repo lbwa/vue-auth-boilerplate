@@ -2,6 +2,7 @@
   <div id="root">
     <keep-alive>
       <component :is="currentLayout">
+        <!-- 在动态组件中必须使用 route-view 以保证路由出口 -->
         <route-view></route-view>
       </component>
     </keep-alive>
@@ -18,6 +19,7 @@ export default {
 
   methods: {
     handleRouteUpdate (to, from) {
+      // 重复设定相同值将不会触发 computed 求值，即不会触发动态组件切换
       this.layout = to.path === '/' ? 'login' : 'admin'
     }
   },
@@ -38,6 +40,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-#root
-  min-height: 100vh
+
 </style>
