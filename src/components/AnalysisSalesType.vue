@@ -146,6 +146,6 @@ export default {
     color: rgba(0,0,0,.45)
 
   &__sum
-    font-size: 25px
+    font-size: 22px
     color: rgba(0,0,0,.65)
 </style>
