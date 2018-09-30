@@ -3,8 +3,12 @@
     <app-aside/>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
-
-      <router-view class="main__wrapper"></router-view>
+      <!-- 此处的 keep-alive 缓存无效，因每次路由的变化都将导致动态组件重新渲染 -->
+      <!-- 见 layout/Admin -->
+      <!-- https://markus.oberlehner.net/blog/dynamic-vue-layout-components/ -->
+      <keep-alive>
+        <router-view class="main__wrapper"></router-view>
+      </keep-alive>
 
       <el-footer class="footer__layout footer__font" height="100">
         <div class="footer__icon">

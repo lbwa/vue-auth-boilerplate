@@ -1,7 +1,9 @@
 <template>
   <div id="root">
     <keep-alive>
-      <component :is="currentLayout"></component>
+      <component :is="currentLayout">
+        <route-view></route-view>
+      </component>
     </keep-alive>
   </div>
 </template>
