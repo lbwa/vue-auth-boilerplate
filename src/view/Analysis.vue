@@ -138,6 +138,7 @@ export default {
       percentValue
     }
   }],
+
   data () {
     return {
       text: {

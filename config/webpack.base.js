@@ -27,6 +27,7 @@ module.exports = {
       'SOURCE': PATH.SOURCE_PATH,
       'VIEW': path.resolve(PATH.SOURCE_PATH, './view'),
       'COMPONENTS': path.resolve(PATH.SOURCE_PATH, './components'),
+      'LAYOUT': path.resolve(PATH.SOURCE_PATH, './layout'),
       'STYLE': path.resolve(PATH.SOURCE_PATH, './style'),
       'STATIC': PATH.STATIC_PATH,
       'MOCK': path.resolve(PATH.ROOT_PATH, './mock'),
