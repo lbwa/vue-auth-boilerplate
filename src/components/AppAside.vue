@@ -20,7 +20,6 @@
           <span slot="title">Dashboard</span>
         </template>
         <el-menu-item index="/dashboard/analysis">分析页</el-menu-item>
-        <el-menu-item index="/dashboard/monitor">监控页</el-menu-item>
         <el-menu-item index="/dashboard/workspace">工作台</el-menu-item>
       </el-submenu>
 

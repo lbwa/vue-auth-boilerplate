@@ -10,10 +10,6 @@ export default [
     component: components.analysis
   },
   {
-    path: '/dashboard/monitor',
-    component: components.monitor
-  },
-  {
     path: '/dashboard/workspace',
     component: components.workspace
   },
