@@ -8,11 +8,13 @@
   >
     <aside-logo></aside-logo>
     <el-menu
-      :collapse="isCollapse"
-      :router="true"
       class="root__aside__menu"
-      default-active="/dashboard/analysis"
+      :collapse="isCollapse"
+      :collapse-transition="true"
+      :router="true"
+      :default-active="defaultActive"
       text-color="#ffffff"
+      backgroundColor="#001529"
     >
       <el-submenu index="/dashboard">
         <template slot="title">
@@ -44,6 +46,9 @@ export default {
   },
 
   computed: {
+    defaultActive () {
+      return this.$route.path
+    },
     ...mapState([
       'isCollapse'
     ])
@@ -80,6 +85,6 @@ $background-hover: #1890ff
 
   &.is-active
     color: #ffffff
-    background-color: $background-hover
-
+    // 源 UI 样式为内联样式，故使用 important 提升权重
+    background-color: $background-hover !important
 </style>
