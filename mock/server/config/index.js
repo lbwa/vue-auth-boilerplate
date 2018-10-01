@@ -1,6 +1,10 @@
 const assets = require('assert')
 const config = require('./routes')
 
+module.exports = {
+  initConfig
+}
+
 function parseRouteConfig (key) {
   let method = 'get'
   let path = key
@@ -15,24 +19,28 @@ function parseRouteConfig (key) {
   }
 }
 
+function createHandler (cb) {
+  return function (req, res, ...args) {
+    res.header('Access-Control-Allow-Origin', '*')
+    typeof cb === 'function' ? cb(req, res, ...args) : res.json(cb)
+  }
+}
+
 function initConfig (server) {
   Object.keys(config).forEach(route => {
     const formatConfig = parseRouteConfig(route)
 
     assets(!!server[formatConfig.method], `Method ${formatConfig.method} is invalid !`)
     const configType = typeof config[route]
-    assets(configType === 'object', `${config[route]} should be a object !`)
+    assets(
+      configType === 'object' || configType === 'function',
+      `${config[route]} should be a object or function !`
+    )
 
     server[formatConfig.method](
       formatConfig.path,
-      function handler (req, res) {
-        res.header('Access-Control-Allow-Origin', '*')
-        res.json(config[route])
-      }
+      createHandler(config[route])
     )
   })
 }
 
-module.exports = {
-  initConfig
-}
