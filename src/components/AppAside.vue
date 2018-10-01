@@ -65,6 +65,7 @@ export default {
 
 .root__aside
   &__face
+    min-height: 100vh
     background-color: $background-dark
     transition: width .3s
 
