@@ -11,6 +11,7 @@
       ref="login"
       :rules="rules"
       status-icon
+      v-loading.fullscreen.lock="loading"
       @keyup.enter.native="onSubmit"
     >
       <el-form-item prop="username">
@@ -48,13 +49,14 @@ export default {
         username: '',
         password: ''
       },
+      loading: false,
       rules: {
         username: [
           {
             // Set `this` value into vueComponent
             validator: validateUsername.bind(this),
             message: '请输入用户名',
-            trigger: 'change'
+            trigger: 'blur'
           }
         ],
         password: [
@@ -91,12 +93,20 @@ export default {
 
         // ! Only work with dev mode
         new Promise((resolve, reject) => {
+          this.loading = true
           const username = this.loginForm.username
           const password = this.loginForm.password
 
+          const runner = (fn, ...args) => {
+            setTimeout(() => {
+              this.loading = false
+              fn.apply(this, args)
+            }, 1000)
+          }
+
           username === 'admin' && password === 'pro'
-            ? resolve()
-            : reject(new Error('[403]: 验证失败'))
+            ? runner(resolve)
+            : runner(reject, new Error('[403]: 验证失败'))
         })
           .then(() => this.$router.push('/dashboard/analysis'))
           .catch(err => console.error(err))

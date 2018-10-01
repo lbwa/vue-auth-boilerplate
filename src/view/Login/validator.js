@@ -1,7 +1,7 @@
 function validateUsername (rule, value, cb) {
   const login = this.$refs.login
   if (!value) {
-    cb(new TypeError('Please input your password !'))
+    cb(new TypeError(rule.message))
     return
   }
   // Invoke vueComponent inner methods
@@ -13,7 +13,7 @@ function validateUsername (rule, value, cb) {
 
 function validatePassword (rule, value, cb) {
   if (!value) {
-    cb(new TypeError('Please input your password !'))
+    cb(new TypeError(rule.message))
     return
   }
   cb()
