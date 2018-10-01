@@ -34,6 +34,7 @@ export default {
 
 <style lang="sass" scoped>
 @import '~STYLE/color/background.sass'
+@import '~STYLE/color/hover.sass'
 
 .footer
   &__layout
@@ -55,4 +56,5 @@ export default {
   font-weight: bold
 
   &:hover
-    color: $blue-400
+    color: $hover-link
+</style>
