@@ -11,16 +11,18 @@ module.exports = {
   'GET /api/analysis': analysis,
 
   'POST /api/login': (req, res) => {
-    console.log(`req.body`, req)
-    const { username, password } = req.body
+    const { username, password, token } = req.body
     if (username === 'admin' && password === 'pro') {
       res.send({
+        errno: 0,
         status: 'ok',
+        token: token ? token : Math.random().toString(16).slice(2),
         currentAuthority: 'admin'
       })
       return
     }
     res.send({
+      errno: 1,
       status: 'error',
       currentAuthority: 'guest'
     })
