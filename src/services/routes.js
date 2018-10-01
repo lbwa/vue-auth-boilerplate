@@ -8,6 +8,4 @@ export const USER_TOKEN = '/user'
 
 export const ANALYSIS = '/analysis'
 
-export const MONITOR = '/monitor'
-
 export const WORKSPACE = '/workspace'
