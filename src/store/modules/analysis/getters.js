@@ -34,7 +34,7 @@ export default {
  * @param {String} labelsKey. Target labels key
  * @param {String} datasetsKey. Target datasets key
  */
-function iterator (origin, labelsKey = 'x', datasetsKey = 'y') {
+function iterator (origin, labelsKey = 'name', datasetsKey = 'value') {
   const labels = []
   const datasets = []
   for (const item of origin) {
@@ -52,7 +52,7 @@ function iterator (origin, labelsKey = 'x', datasetsKey = 'y') {
  * @param {Array} origin. Original array
  * @param {percentKey} percentKey. Convert origin array according to percentKey
  */
-function calcPercent (origin, sum, percentKey = 'y') {
+function calcPercent (origin, sum, percentKey = 'value') {
   const details = []
   for (const item of origin) {
     details.push({
@@ -68,7 +68,7 @@ function calcPercent (origin, sum, percentKey = 'y') {
  * @param {Array} origin. Original array
  * @param {String} sumKey. Key, used to sum from original array
  */
-function sum (origin, sumKey = 'y') {
+function sum (origin, sumKey = 'value') {
   return origin.reduce((prev, cur) => {
     return { [sumKey]: prev[sumKey] + cur[sumKey] }
   }, { [sumKey]: 0 })[sumKey]

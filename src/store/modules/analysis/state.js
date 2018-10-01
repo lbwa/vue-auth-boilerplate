@@ -13,7 +13,8 @@ export default {
       }
     ],
     daily: 0,
-    total: 0
+    total: 0,
+    totalDetails: []
   },
 
   visitors: {
