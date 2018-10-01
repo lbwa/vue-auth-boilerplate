@@ -13,10 +13,10 @@
       status-icon
       @keyup.enter.native="onSubmit"
     >
-      <el-form-item prop="user">
+      <el-form-item prop="username">
         <el-input
           placeholder="Username: admin"
-          v-model="loginForm.user"
+          v-model="loginForm.username"
           clearable>
           <i slot="prefix" class="el-input__icon el-icon-mobile-phone"></i>
         </el-input>
@@ -45,23 +45,23 @@ export default {
       title: 'vue design pro',
       loginText: 'Log in',
       loginForm: {
-        user: '',
+        username: '',
         password: ''
       },
       rules: {
-        user: [
+        username: [
           {
             // Set `this` value into vueComponent
             validator: validateUsername.bind(this),
             message: '请输入用户名',
-            trigger: 'blur'
+            trigger: 'change'
           }
         ],
         password: [
           {
             validator: validatePassword.bind(this),
             message: '请输入密码',
-            trigger: 'blur'
+            trigger: 'change'
           }
         ]
       }
@@ -71,8 +71,35 @@ export default {
   methods: {
     onSubmit () {
       this.$refs.login.validate((valid) => {
-        // `POST` to server
-        return valid ? this.$router.push('/dashboard/analysis') : false
+        if (!valid) return false
+        // `POST` to server, and activate loading animation
+        // check `errno` from response data, 0 to route, 1 to return false
+
+        // ! Work with production mode
+        // checkToken({
+        //   username: this.loginForm.username,
+        //   password: this.loginForm.password
+        // }).then(res => {
+        //   const data = res.data
+        //   if (data.errno !== 0) {
+        //     console.error(`[${res.status}]: 验证失败`)
+        //     return
+        //   }
+        //   if (!window.localStorage) return
+        //   window.localStorage.setItem('__vue_design_pro__', res.data.token)
+        // })
+
+        // ! Only work with dev mode
+        new Promise((resolve, reject) => {
+          const username = this.loginForm.username
+          const password = this.loginForm.password
+
+          username === 'admin' && password === 'pro'
+            ? resolve()
+            : reject(new Error('[403]: 验证失败'))
+        })
+          .then(() => this.$router.push('/dashboard/analysis'))
+          .catch(err => console.error(err))
       })
     }
   }
