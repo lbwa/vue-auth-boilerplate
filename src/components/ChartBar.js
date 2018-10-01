@@ -28,32 +28,47 @@ export default {
     }
   },
 
-  mounted () {
-    this.renderChart({
-      labels: this.labels,
-      datasets: [
-        {
-          backgroundColor: `#2693f8`,
-          data: this.datasets
-        }
-      ]
-    }, {
-      // hide data label
-      legend: {
-        display: false
-      },
+  methods: {
+    handleUpdate () {
+      this.$data._chart.destroy()
+      this.rendering()
+    },
 
-      // hide axis and its labels
-      scales: {
-        xAxes: [{
+    rendering () {
+      this.renderChart({
+        labels: this.labels,
+        datasets: [
+          {
+            backgroundColor: `#2693f8`,
+            data: this.datasets
+          }
+        ]
+      }, {
+        // hide data label
+        legend: {
           display: false
-        }],
-        yAxes: [{
-          display: false
-        }]
-      },
-      scaleShowLabels: false,
-      ...this.options
-    })
+        },
+
+        // hide axis and its labels
+        scales: {
+          xAxes: [{
+            display: false
+          }],
+          yAxes: [{
+            display: false
+          }]
+        },
+        scaleShowLabels: false,
+        ...this.options
+      })
+    }
+  },
+
+  mounted () {
+    this.rendering()
+  },
+
+  watch: {
+    datasets: 'handleUpdate'
   }
 }

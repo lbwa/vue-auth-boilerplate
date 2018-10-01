@@ -3,16 +3,16 @@
     <li
       class="analysis__sales__list-item"
       v-for="(goods, index) of salesList"
-      :key="goods.goods"
+      :key="goods.name"
     >
       <span
         class="item__dot"
         :style="colorDot(index)"
       ></span>
-      <h4 class="item__title">{{goods.x}}</h4>
+      <h4 class="item__title">{{goods.name}}</h4>
       <span class="item__divider"></span>
       <span class="item__percent">{{percentValue(goods.percent)}}</span>
-      <span class="item__sales">{{formatPrice(goods.y)}}</span>
+      <span class="item__sales">{{formatPrice(goods.value)}}</span>
     </li>
   </ul>
 </template>
@@ -35,8 +35,8 @@ export default {
       default () {
         return [
           {
-            x: 'default',
-            y: 10000,
+            name: 'default',
+            value: 10000,
             percent: 0.1
           }
         ]
