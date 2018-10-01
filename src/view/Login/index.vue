@@ -39,6 +39,7 @@
 
 <script>
 import { validateUsername, validatePassword } from './validator'
+import { userLogin } from 'SERVICES'
 
 export default {
   data () {
@@ -77,40 +78,19 @@ export default {
         // `POST` to server, and activate loading animation
         // check `errno` from response data, 0 to route, 1 to return false
 
-        // ! Work with production mode
-        // checkToken({
-        //   username: this.loginForm.username,
-        //   password: this.loginForm.password
-        // }).then(res => {
-        //   const data = res.data
-        //   if (data.errno !== 0) {
-        //     console.error(`[${res.status}]: 验证失败`)
-        //     return
-        //   }
-        //   if (!window.localStorage) return
-        //   window.localStorage.setItem('__vue_design_pro__', res.data.token)
-        //   this.$router.replace('/dashboard/analysis')
-        // })
-
-        // ! Only work with dev mode
-        new Promise((resolve, reject) => {
-          this.loading = true
-          const username = this.loginForm.username
-          const password = this.loginForm.password
-
-          const runner = (fn, ...args) => {
-            setTimeout(() => {
-              this.loading = false
-              fn.apply(this, args)
-            }, 1000)
+        userLogin({
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }).then(res => {
+          const data = res.data
+          if (data.errno !== 0) {
+            console.error(`[${res.status}]: 验证失败`)
+            return
           }
-
-          username === 'admin' && password === 'pro'
-            ? runner(resolve)
-            : runner(reject, new Error('[403]: 验证失败'))
+          if (!window.localStorage) return
+          window.localStorage.setItem('__vue_design_pro__', res.data.token)
+          this.$router.replace('/dashboard/analysis')
         })
-          .then(() => this.$router.replace('/dashboard/analysis'))
-          .catch(err => console.error(err))
       })
     }
   }

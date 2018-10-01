@@ -1,7 +1,7 @@
 import baseRequest from './base'
 import * as routes from './routes'
 
-export function checkToken (token) {
+export function userLogin (token) {
   return baseRequest.post(routes.USER_TOKEN, token)
 }
 
