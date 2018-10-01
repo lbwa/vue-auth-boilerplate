@@ -31,10 +31,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
 
 .logo
   padding-left: 24px
-  background-color: #002140
+  background-color: $background-blue-dark
   height: 64px
   line-height: 64px
   overflow: hidden

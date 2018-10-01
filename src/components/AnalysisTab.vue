@@ -92,10 +92,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
+
 .analysis
   &__tab
     padding: 16px
-    background-color: white
+    background-color: $background-lightest
     font-size: 14px
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1)
     border-radius: 4px

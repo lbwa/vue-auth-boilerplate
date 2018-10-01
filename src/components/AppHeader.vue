@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/hover.sass'
 
 .header
   padding: 0 24px 0 0
@@ -78,7 +79,7 @@ export default {
       color: rgba(0,0,0,.65)
 
     &:hover
-      background-color: #e6f7ff
+      background-color: $hover-light
 
   &__gutter
     padding: 0 12px

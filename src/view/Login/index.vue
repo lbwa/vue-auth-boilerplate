@@ -70,6 +70,7 @@ export default {
   methods: {
     onSubmit () {
       this.$refs.login.validate((valid) => {
+        // `POST` to server
         return valid ? this.$router.push('/dashboard/analysis') : false
       })
     }

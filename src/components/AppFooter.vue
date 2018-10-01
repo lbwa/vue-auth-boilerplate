@@ -33,11 +33,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
+
 .footer
   &__layout
     padding: 20px 0
     width: 100%
-    background-color: #f0f2f5
+    background-color: $background-light
     text-align: center
 
   &__font
@@ -53,5 +55,4 @@ export default {
   font-weight: bold
 
   &:hover
-    color: #3273dc
-</style>
+    color: $blue-400

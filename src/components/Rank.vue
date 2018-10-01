@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
+
 .tab
   &__rank
     list-style-type: none
@@ -64,8 +66,8 @@ export default {
   &__dark
     color: white
     font-weight: 600
-    background-color: #314659
+    background-color: $background-blue-middle
 
   &__light
-    background-color: #f5f5f5
+    background-color: $background-lighter
 </style>

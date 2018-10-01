@@ -61,8 +61,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-$background-dark: #001529
-$background-hover: #1890ff
+@import '~STYLE/color/background.sass'
 
 .root__aside
   &__face

@@ -17,9 +17,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
+
 .login
   &__layout
     min-height: 100vh
+    background-color: $background-light
 
   &__align
     display: flex
