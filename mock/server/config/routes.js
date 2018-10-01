@@ -1,14 +1,28 @@
 const analysis = require('../../analysis')
 
-const token = Math.random.toString(16).slice(2)
-
 module.exports = {
   'GET /api/user': {
     name: 'jack ma',
     avatar: '',
-    userId: token,
+    token: Math.random().toString(16).slice(2),
     notify: 12
   },
 
-  'GET /api/analysis': analysis
+  'GET /api/analysis': analysis,
+
+  'POST /api/login': (req, res) => {
+    console.log(`req.body`, req)
+    const { username, password } = req.body
+    if (username === 'admin' && password === 'pro') {
+      res.send({
+        status: 'ok',
+        currentAuthority: 'admin'
+      })
+      return
+    }
+    res.send({
+      status: 'error',
+      currentAuthority: 'guest'
+    })
+  }
 }
