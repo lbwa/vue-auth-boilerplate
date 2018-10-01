@@ -116,19 +116,7 @@ import {
   percentValue
 } from 'COMPONENTS/utils'
 
-// work with prod mode
-// import { getAnalysisData } from 'SERVICES'
-
-// ! work with dev mode
-import {
-  sales,
-  visitors,
-  payments,
-  operations,
-  rankList,
-  searchData,
-  salesType
-} from 'MOCK/analysis'
+import { getAnalysisData } from 'SERVICES'
 
 export default {
   mixins: [{
@@ -183,19 +171,7 @@ export default {
   },
 
   created () {
-    // production mode
-    // getAnalysisData().then(this.getAnalysisData)
-
-    // ! dev mode
-    this.getAnalysisData({
-      sales,
-      visitors,
-      payments,
-      operations,
-      rankList,
-      searchData,
-      salesType
-    })
+    getAnalysisData().then(res => this.getAnalysisData(res.data))
   },
 
   methods: {
