@@ -1,5 +1,5 @@
 <template>
-  <el-container class="admin">
+  <el-container class="admin__layout">
     <app-aside/>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
@@ -64,7 +64,8 @@ export default {
 
 <style lang="sass" scoped>
 .admin
-  min-height: 100vh
+  &__layout
+    min-height: 100vh
 
 .footer
   &__layout
