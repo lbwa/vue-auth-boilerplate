@@ -1,4 +1,5 @@
-import dayjs from 'dayjs'
+// import dayjs from 'dayjs'
+const dayjs  = require('dayjs')
 
 const fakeData = []
 const beginDay = new Date().getTime()
@@ -29,82 +30,82 @@ for (let i = 0; i < 5; i++) {
 
 const salesTypeData = [
   {
-    x: '家用电器',
-    y: 4544,
+    name: '家用电器',
+    value: 4544,
   },
   {
-    x: '食用酒水',
-    y: 3321,
+    name: '食用酒水',
+    value: 3321,
   },
   {
-    x: '个护健康',
-    y: 3113,
+    name: '个护健康',
+    value: 3113,
   },
   {
-    x: '服饰箱包',
-    y: 2341,
+    name: '服饰箱包',
+    value: 2341,
   },
   {
-    x: '母婴产品',
-    y: 1231,
+    name: '母婴产品',
+    value: 1231,
   },
   {
-    x: '其他',
-    y: 1231,
+    name: '其他',
+    value: 1231,
   },
 ]
 
 const salesTypeDataOnline = [
   {
-    x: '家用电器',
-    y: 244,
+    name: '家用电器',
+    value: 244,
   },
   {
-    x: '食用酒水',
-    y: 321,
+    name: '食用酒水',
+    value: 321,
   },
   {
-    x: '个护健康',
-    y: 311,
+    name: '个护健康',
+    value: 311,
   },
   {
-    x: '服饰箱包',
-    y: 41,
+    name: '服饰箱包',
+    value: 41,
   },
   {
-    x: '母婴产品',
-    y: 121,
+    name: '母婴产品',
+    value: 121,
   },
   {
-    x: '其他',
-    y: 111,
+    name: '其他',
+    value: 111,
   },
 ]
 
 const salesTypeDataOffline = [
   {
-    x: '家用电器',
-    y: 99,
+    name: '家用电器',
+    value: 99,
   },
   {
-    x: '食用酒水',
-    y: 188,
+    name: '食用酒水',
+    value: 188,
   },
   {
-    x: '个护健康',
-    y: 344,
+    name: '个护健康',
+    value: 344,
   },
   {
-    x: '服饰箱包',
-    y: 255,
+    name: '服饰箱包',
+    value: 255,
   },
   {
-    x: '其他',
-    y: 65,
+    name: '其他',
+    value: 65,
   },
 ]
 
-export default {
+module.exports = {
   fakeData,
   randomData,
   randomData50,

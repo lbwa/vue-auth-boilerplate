@@ -1,6 +1,7 @@
-import mockData from './chart'
+// import mockData from './chart'
+const mockData = require('./chart')
 
-export const sales = {
+const sales = {
   trend: [
     {
       key: '同周比',
@@ -16,19 +17,19 @@ export const sales = {
   totalDetails: mockData.randomData // chart
 }
 
-export const visitors = {
+const visitors = {
   daily: 1234,
   chart: mockData.fakeData,
   total: 8846
 }
 
-export const payments = {
+const payments = {
   total: 6560,
   chart: mockData.fakeData, // simulate fake datasets
   rate: 0.6
 }
 
-export const operations = {
+const operations = {
   influence: 0.78, // chart
   trend: [
     {
@@ -51,9 +52,9 @@ for (let i = 0; i < 7; i++) {
   })
 }
 
-export const rankList = rank
+const rankList = rank
 
-export const searchData = {
+const searchData = {
   total: {
     value: 12321,
     trend: 0.171
@@ -65,4 +66,14 @@ export const searchData = {
   chart: mockData.randomData50
 }
 
-export const salesType = mockData.salesType
+const salesType = mockData.salesType
+
+module.exports = {
+  sales,
+  visitors,
+  payments,
+  operations,
+  rankList,
+  searchData,
+  salesType
+}
