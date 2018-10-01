@@ -11,6 +11,7 @@
       ref="login"
       :rules="rules"
       status-icon
+      @keyup.enter.native="onSubmit"
     >
       <el-form-item prop="user">
         <el-input
