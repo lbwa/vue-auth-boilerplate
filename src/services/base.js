@@ -1,4 +1,5 @@
 import { baseURL } from './routes'
+import axios from 'axios'
 
 const baseRequest = axios.create({
   baseURL,
