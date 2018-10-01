@@ -89,6 +89,7 @@ export default {
         //   }
         //   if (!window.localStorage) return
         //   window.localStorage.setItem('__vue_design_pro__', res.data.token)
+        //   this.$router.replace('/dashboard/analysis')
         // })
 
         // ! Only work with dev mode
@@ -108,7 +109,7 @@ export default {
             ? runner(resolve)
             : runner(reject, new Error('[403]: 验证失败'))
         })
-          .then(() => this.$router.push('/dashboard/analysis'))
+          .then(() => this.$router.replace('/dashboard/analysis'))
           .catch(err => console.error(err))
       })
     }
