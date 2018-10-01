@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "json-server": "^0.14.0",
+    "dayjs": "^1.7.5"
+  }
+}
