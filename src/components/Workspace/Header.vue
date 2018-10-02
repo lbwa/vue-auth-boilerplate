@@ -1,7 +1,7 @@
 <template>
   <div class="workspace__header">
     <el-row class="workspace__breadcrumb">
-      <breadcrumb></breadcrumb>
+      <breadcrumb :links="breadcrumb"></breadcrumb>
     </el-row>
     <el-row>
       <el-col
@@ -84,6 +84,23 @@ export default {
           visitors: 2333
         }
       }
+    }
+  },
+
+  data () {
+    return {
+      breadcrumb: [
+        {
+          name: '首页',
+          path: '/dashboard/analysis'
+        },
+        {
+          name: 'Dashboard'
+        },
+        {
+          name: '工作台'
+        }
+      ]
     }
   },
 
