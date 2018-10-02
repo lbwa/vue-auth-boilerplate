@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LoginFooter from 'COMPONENTS/AppFooter'
+import LoginFooter from 'COMPONENTS/App/Footer'
 export default {
   components: {
     LoginFooter

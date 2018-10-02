@@ -35,8 +35,8 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import AppAside from 'COMPONENTS/AppAside'
-import AppHeader from 'COMPONENTS/AppHeader'
+import AppAside from 'COMPONENTS/App/Aside'
+import AppHeader from 'COMPONENTS/App/Header'
 
 export default {
   data () {
