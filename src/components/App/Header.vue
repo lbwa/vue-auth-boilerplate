@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import HeaderPopover from 'COMPONENTS/HeaderPopover'
+import HeaderPopover from 'COMPONENTS/App/HeaderPopover'
 export default {
   methods: {
     toggleAside () {
