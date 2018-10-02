@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb :separator="separator">
+  <el-breadcrumb v-if="links.length" :separator="separator">
     <el-breadcrumb-item
       v-for="item of links"
       :key="item.name"
