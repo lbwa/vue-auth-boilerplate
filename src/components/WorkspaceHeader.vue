@@ -21,10 +21,25 @@
           <p class="content__main">{{createDescription}}</p>
         </div>
       </el-col>
+      <!-- user abstract start -->
       <el-col
         class="workspace__user-abstract"
         :xs="24" :sm="6" :md="6" :lg="6" :xl="6"
-      >11</el-col>
+      >
+        <div class="abstract__sum">
+          <h3 class="abstract__sum__title">{{title.sum}}</h3>
+          <span class="abstract__sum__value">56</span>
+        </div>
+        <div class="abstract__rank">
+          <h3 class="abstract__rank__title">{{title.rank}}</h3>
+          <span class="abstract__rank__value">8</span>
+          <span class="abstract__rank__total">/24</span>
+        </div>
+        <div class="abstract__visitors">
+          <h3 class="abstract__visitors__title">{{title.visitors}}</h3>
+          <span class="abstract__visitors__value">2,333</span>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -41,6 +56,16 @@ export default {
           name: 'username',
           position: 'default',
           department: 'user\'s department'
+        }
+      }
+    },
+    title: {
+      type: Object,
+      default () {
+        return {
+          sum: '项目总数',
+          rank: '团队内排名',
+          visitors: '项目访问'
         }
       }
     }
@@ -90,7 +115,7 @@ export default {
   &__breadcrumb, &__user-detail
     margin-bottom: 16px
 
-  &__user-detail
+  &__user-detail, &__user-abstract
     display: flex
 
   &__avatar__placeholder
@@ -110,10 +135,36 @@ export default {
     flex: 1 1 auto
     margin-left: 24px
 
-    .content__title
-      margin: 0 0 12px 0
-      font-size: 20px
-      font-weight: 500
-      line-height: 28px
-      color: rgba(0,0,0,.85)
+    .content
+      &__title
+        margin: 0 0 12px 0
+        font-size: 20px
+        font-weight: 500
+        line-height: 28px
+        color: rgba(0,0,0,.85)
+
+      &__main
+        color: rgba(0,0,0,.45)
+
+.abstract
+  &__sum, &__rank, &__visitors
+    flex: 1
+    text-align: center
+    font-size: 0
+
+    &__title
+      margin: 0 0 8px
+      font-size: 14px
+      color: rgba(0, 0, 0, .45)
+
+    &__value
+      margin: 0
+      color: rgba(0, 0, 0, .85)
+      font-size: 30px
+      line-height: 38px
+
+  &__rank__total
+    font-size: 20px
+    color: rgba(0, 0, 0, .45)
+
 </style>
