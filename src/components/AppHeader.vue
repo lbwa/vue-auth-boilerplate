@@ -5,13 +5,19 @@
       @click="toggleAside"
     ></i>
     <div class="header__info header__info__align">
-      <a
-        href="https://github.com/lbwa/vue-design-pro"
-        class="info__icon__align info__icon__gutter"
-        target="_blank"
+      <el-tooltip
+        effect="dark"
+        content="Source code"
+        placement="bottom"
       >
-        <i class="el-icon-question"></i>
-      </a>
+        <a
+          href="https://github.com/lbwa/vue-design-pro"
+          class="info__icon__align info__icon__gutter"
+          target="_blank"
+        >
+          <i class="el-icon-question"></i>
+        </a>
+      </el-tooltip>
       <div class="info__icon__align info__icon__gutter">
         <header-popover>
           <el-badge
