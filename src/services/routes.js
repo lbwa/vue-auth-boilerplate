@@ -9,3 +9,5 @@ export const USER_TOKEN = '/login'
 export const ANALYSIS = '/analysis'
 
 export const WORKSPACE = '/workspace'
+
+export const CURRENT_USER = '/user'

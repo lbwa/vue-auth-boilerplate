@@ -2,10 +2,12 @@ const analysis = require('../../analysis')
 
 module.exports = {
   'GET /api/user': {
-    name: 'jack ma',
+    name: 'Bowen Liu',
     avatar: '',
     token: Math.random().toString(16).slice(2),
-    notify: 12
+    notify: 12,
+    position: '前端开发',
+    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED'
   },
 
   'GET /api/analysis': analysis,

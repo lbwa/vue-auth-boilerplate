@@ -1,15 +1,15 @@
 <template>
   <el-main class="workspace">
-    {{info}}
+    <workspace-header></workspace-header>
   </el-main>
 </template>
 
 <script>
+import WorkspaceHeader from 'COMPONENTS/WorkspaceHeader'
+
 export default {
-  data () {
-    return {
-      info: 'workspace'
-    }
+  components: {
+    WorkspaceHeader
   }
 }
 </script>

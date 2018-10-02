@@ -8,3 +8,7 @@ export function userLogin (token) {
 export function getAnalysisData () {
   return baseRequest.get(routes.ANALYSIS)
 }
+
+export function fetchUser () {
+  return baseRequest.get(routes.CURRENT_USER)
+}
