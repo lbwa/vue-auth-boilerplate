@@ -31,15 +31,17 @@
 
 <script>
 import Breadcrumb from 'COMPONENTS/Breadcrumb'
-import { fetchUser } from 'SERVICES'
 
 export default {
-  data () {
-    return {
-      currentUser: {
-        name: 'bowen',
-        position: 'default',
-        department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED'
+  props: {
+    currentUser: {
+      type: Object,
+      default () {
+        return {
+          name: 'username',
+          position: 'default',
+          department: 'user\'s department'
+        }
       }
     }
   },
@@ -49,7 +51,7 @@ export default {
       const now = new Date().getHours()
       const user = this.currentUser
       let greeting = '上午好'
-      switch (now) {
+      switch (true) {
         case now >= 11 && now < 13:
           greeting = '中午好'
           break
@@ -68,12 +70,6 @@ export default {
       const user = this.currentUser
       return `${user.position} | ${user.department}`
     }
-  },
-
-  created () {
-    fetchUser().then(res => {
-      this.currentUser = res.data
-    })
   },
 
   components: {
