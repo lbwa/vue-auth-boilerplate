@@ -28,16 +28,18 @@
       >
         <div class="abstract__sum">
           <h3 class="abstract__sum__title">{{title.sum}}</h3>
-          <span class="abstract__sum__value">56</span>
+          <span class="abstract__sum__value">{{abstract.sum}}</span>
         </div>
         <div class="abstract__rank">
           <h3 class="abstract__rank__title">{{title.rank}}</h3>
-          <span class="abstract__rank__value">8</span>
-          <span class="abstract__rank__total">/24</span>
+          <span class="abstract__rank__value">{{abstract.rank.rank}}</span>
+          <span class="abstract__rank__total">/{{abstract.rank.total}}</span>
         </div>
         <div class="abstract__visitors">
           <h3 class="abstract__visitors__title">{{title.visitors}}</h3>
-          <span class="abstract__visitors__value">2,333</span>
+          <span
+            class="abstract__visitors__value"
+          >{{decimalNumber(abstract.visitors)}}</span>
         </div>
       </el-col>
     </el-row>
@@ -46,6 +48,7 @@
 
 <script>
 import Breadcrumb from 'COMPONENTS/Breadcrumb'
+import { decimalNumber } from './utils'
 
 export default {
   props: {
@@ -66,6 +69,19 @@ export default {
           sum: '项目总数',
           rank: '团队内排名',
           visitors: '项目访问'
+        }
+      }
+    },
+    abstract: {
+      type: Object,
+      default () {
+        return {
+          sum: 56,
+          rank: {
+            rank: 8,
+            total: 24
+          },
+          visitors: 2333
         }
       }
     }
@@ -96,6 +112,12 @@ export default {
       return `${user.position} | ${user.department}`
     }
   },
+
+  mixins: [{
+    methods: {
+      decimalNumber
+    }
+  }],
 
   components: {
     Breadcrumb
