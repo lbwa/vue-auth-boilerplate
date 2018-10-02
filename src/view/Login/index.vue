@@ -78,19 +78,31 @@ export default {
         // `POST` to server, and activate loading animation
         // check `errno` from response data, 0 to route, 1 to return false
 
+        this.loading = true
         userLogin({
           username: this.loginForm.username,
           password: this.loginForm.password
-        }).then(res => {
-          const data = res.data
-          if (data.errno !== 0) {
-            console.error(`[${res.status}]: 验证失败`)
-            return
-          }
-          if (!window.localStorage) return
-          window.localStorage.setItem('__vue_design_pro__', res.data.token)
-          this.$router.replace('/dashboard/analysis')
         })
+          .then(res => {
+            const data = res.data
+            if (data.errno !== 0) {
+              console.error(`[${res.status}]: 验证失败`)
+              this.$message({
+                showClose: true,
+                message: '用户名或密码错误',
+                type: 'error'
+              })
+              this.loading = false
+
+              return
+            }
+            if (!window.localStorage) return
+            window.localStorage.setItem('__vue_design_pro__', res.data.token)
+
+            this.loading = false
+
+            this.$router.replace('/dashboard/analysis')
+          })
       })
     }
   }

@@ -11,7 +11,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --hotOnly",
     "build": "yarn clean && cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress",
     "clean": "rm -vrf dist/* docs/*",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "mock": "node mock/server"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
