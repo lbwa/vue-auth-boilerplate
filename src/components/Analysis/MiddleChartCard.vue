@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { toKebabCase, decimalNumber } from './utils'
+import { toKebabCase, decimalNumber } from 'COMPONENTS//utils'
 import Trend from 'COMPONENTS/Trend'
 
 export default {

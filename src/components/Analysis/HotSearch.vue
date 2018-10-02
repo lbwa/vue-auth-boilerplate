@@ -60,9 +60,9 @@
 
 <script>
 import AnalysisMiddle from 'COMPONENTS/Analysis/Middle'
-import MiddleChartCard from 'COMPONENTS/MiddleChartCard'
-import ChartLine from 'COMPONENTS/ChartLine'
-import HotSearchTable from 'COMPONENTS/HotSearchTable'
+import MiddleChartCard from 'COMPONENTS/Analysis/MiddleChartCard'
+import ChartLine from 'COMPONENTS/Chart/Line'
+import HotSearchTable from 'COMPONENTS/Analysis/HotSearchTable'
 import { mapState } from 'vuex'
 
 export default {

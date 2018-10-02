@@ -37,7 +37,7 @@
 
 <script>
 import AnalysisMiddle from 'COMPONENTS/Analysis/Middle'
-import ChartDoughnut from 'COMPONENTS/ChartDoughnut'
+import ChartDoughnut from 'COMPONENTS/Chart/Doughnut'
 import AnalysisSalesList from 'COMPONENTS/Analysis/SalesList'
 import { mapGetters } from 'vuex'
 import { formatPrice } from 'COMPONENTS/utils'

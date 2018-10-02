@@ -101,10 +101,10 @@
 </template>
 
 <script>
-import ChartCard from 'COMPONENTS/ChartCard'
-import ChartLine from 'COMPONENTS/ChartLine'
-import ChartBar from 'COMPONENTS/ChartBar'
-import MiniProgress from 'COMPONENTS/MiniProgress'
+import ChartCard from 'COMPONENTS/Analysis/ChartCard'
+import ChartLine from 'COMPONENTS/Chart/Line'
+import ChartBar from 'COMPONENTS/Chart/Bar'
+import MiniProgress from 'COMPONENTS/Analysis/MiniProgress'
 import AnalysisTab from 'COMPONENTS/Analysis/Tab'
 import AnalysisHotSearch from 'COMPONENTS/Analysis/HotSearch'
 import AnalysisSalesType from 'COMPONENTS/Analysis/SalesType'

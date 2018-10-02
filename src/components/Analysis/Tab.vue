@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import ChartBar from 'COMPONENTS/ChartBar'
+import ChartBar from 'COMPONENTS/Chart/Bar'
 import Rank from 'COMPONENTS/Rank'
 export default {
   props: {
