@@ -48,7 +48,7 @@
 
 <script>
 import Breadcrumb from 'COMPONENTS/Breadcrumb'
-import { decimalNumber } from './utils'
+import { decimalNumber } from 'COMPONENTS/utils'
 
 export default {
   props: {
