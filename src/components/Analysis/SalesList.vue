@@ -19,7 +19,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { formatPrice, percentValue } from './utils'
+import { formatPrice, percentValue } from 'COMPONENTS/utils'
 
 export default {
   mixins: [{

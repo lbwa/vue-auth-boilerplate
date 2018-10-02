@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
+import AnalysisMiddle from 'COMPONENTS/Analysis/Middle'
 import MiddleChartCard from 'COMPONENTS/MiddleChartCard'
 import ChartLine from 'COMPONENTS/ChartLine'
 import HotSearchTable from 'COMPONENTS/HotSearchTable'

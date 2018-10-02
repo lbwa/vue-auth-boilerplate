@@ -36,11 +36,11 @@
 </template>
 
 <script>
-import AnalysisMiddle from 'COMPONENTS/AnalysisMiddle'
+import AnalysisMiddle from 'COMPONENTS/Analysis/Middle'
 import ChartDoughnut from 'COMPONENTS/ChartDoughnut'
-import AnalysisSalesList from 'COMPONENTS/AnalysisSalesList'
+import AnalysisSalesList from 'COMPONENTS/Analysis/SalesList'
 import { mapGetters } from 'vuex'
-import { formatPrice } from './utils'
+import { formatPrice } from 'COMPONENTS/utils'
 
 export default {
   mixins: [{
