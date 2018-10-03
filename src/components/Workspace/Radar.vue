@@ -5,6 +5,8 @@
       :labels="labels"
       :datasetsArray="getFormatRadar"
       :options="chartOptions"
+      :height="270"
+      :styles="chartStyle"
     ></chart-radar>
     <div class="workspace__radar__abstract">
       <div class="abstract__person">
@@ -44,6 +46,8 @@ export default {
     return {
       labels: ['引用', '口碑', '产量', '贡献', '热度'],
       chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
         scale: {
           ticks: {
             stepSize: 4,
@@ -55,6 +59,10 @@ export default {
         person: '个人',
         team: '团队',
         department: '部门'
+      },
+      chartStyle: {
+        position: 'relative',
+        height: '270px'
       }
     }
   },
