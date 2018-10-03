@@ -14,4 +14,6 @@ export const WORKSPACE_PROJECTS = '/workspace/projects'
 
 export const WORKSPACE_ACTIVITIES = '/workspace/activities'
 
+export const WORKSPACE_RADAR = '/workspace/radar'
+
 export const CURRENT_USER = '/user'

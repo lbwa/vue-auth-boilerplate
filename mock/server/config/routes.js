@@ -1,4 +1,5 @@
 const analysis = require('../../analysis')
+const workspace = require('../../workspace')
 const api = require('../../api')
 
 module.exports = {
@@ -16,6 +17,8 @@ module.exports = {
   'GET /api/workspace/projects': api.fetchProjects,
 
   'GET /api/workspace/activities': api.fetchActivities,
+
+  'GET /api/workspace/radar': workspace.radar,
 
   'POST /api/login': (req, res) => {
     const { username, password, token } = req.body

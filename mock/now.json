@@ -10,7 +10,8 @@
     "server",
     "chart",
     "api.js",
-    "analysis.js"
+    "analysis.js",
+    "workspace.js"
   ],
   "env": {
     "NODE_ENV": "production"

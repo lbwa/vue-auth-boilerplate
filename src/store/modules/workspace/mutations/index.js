@@ -12,5 +12,8 @@ export default {
   },
   [types.SET_ACTIVITIES] (state, activities) {
     state.activities = activities
+  },
+  [types.SET_RADAR] (state, radar) {
+    state.radar = radar
   }
 }

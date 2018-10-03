@@ -7,7 +7,6 @@ export default {
     position: 'front end developer',
     department: 'github'
   },
-
   projects: [
     {
       id: 'xxx1',
@@ -37,5 +36,6 @@ export default {
       },
       template: '在 @{group} 新建项目 @{project}'
     }
-  ]
+  ],
+  radar: []
 }

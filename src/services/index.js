@@ -20,3 +20,7 @@ export function fetchProjects () {
 export function fetchActivities () {
   return baseRequest.get(routes.WORKSPACE_ACTIVITIES)
 }
+
+export function fetchRadar () {
+  return baseRequest.get(routes.WORKSPACE_RADAR)
+}
