@@ -17,9 +17,8 @@
           :tags="tags"
           :navigators="navigators"
         ></workspace-navigator>
-        <!-- xx指数模块 -->
         <workspace-radar></workspace-radar>
-        <!-- 团队模块 -->
+        <workspace-team :teams="teams"></workspace-team>
       </el-col>
     </el-row>
   </el-main>
@@ -31,6 +30,7 @@ import WorkspaceProjects from 'COMPONENTS/Workspace/Projects'
 import WorkspaceNavigator from 'COMPONENTS/Workspace/Navigator'
 import WorkspaceActivities from 'COMPONENTS/Workspace/Activities'
 import WorkspaceRadar from 'COMPONENTS/Workspace/Radar'
+import WorkspaceTeam from 'COMPONENTS/Workspace/Team'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -69,6 +69,12 @@ export default {
           name: '操作六',
           link: '/dashboard/analysis'
         }
+      ],
+      teams: [
+        {
+          name: '科学搬砖组',
+          link: '/dashboard/analysis'
+        }
       ]
     }
   },
@@ -96,7 +102,8 @@ export default {
     WorkspaceProjects,
     WorkspaceNavigator,
     WorkspaceActivities,
-    WorkspaceRadar
+    WorkspaceRadar,
+    WorkspaceTeam
   }
 }
 </script>
