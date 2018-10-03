@@ -63,7 +63,6 @@ import AnalysisMiddle from 'COMPONENTS/Analysis/Middle'
 import MiddleChartCard from 'COMPONENTS/Analysis/MiddleChartCard'
 import ChartLine from 'COMPONENTS/Chart/Line'
 import HotSearchTable from 'COMPONENTS/Analysis/HotSearchTable'
-import { mapState } from 'vuex'
 
 export default {
   props: {
@@ -74,6 +73,12 @@ export default {
           labels: ['a', 'b', 'c'],
           datasets: [1, 2, 3]
         }
+      }
+    },
+    searchData: {
+      type: Object,
+      default () {
+        return {}
       }
     },
     bodyStyle: {
@@ -97,12 +102,6 @@ export default {
       type: String,
       default: '#1089ff'
     }
-  },
-
-  computed: {
-    ...mapState('analysis', [
-      'searchData'
-    ])
   },
 
   components: {

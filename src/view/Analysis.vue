@@ -93,7 +93,8 @@
 
     <el-row class="analysis__search-sales" :gutter="24">
       <analysis-hot-search
-        :chartData="visitorsData"
+        :chart-data="visitorsData"
+        :search-data="searchData"
       ></analysis-hot-search>
       <analysis-sales-type></analysis-sales-type>
     </el-row>
