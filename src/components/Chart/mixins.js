@@ -23,6 +23,13 @@ const props = {
   backgroundColor: {
     type: String,
     default: `#2693f8`
+  },
+  // 用于绘制多条路径，如雷达图不同组数据之间的对比
+  datasetsArray: {
+    type: Array,
+    default () {
+      return []
+    }
   }
 }
 
@@ -34,12 +41,7 @@ const methods = {
   renderer () {
     this.renderChart({
       labels: this.labels,
-      datasets: [
-        {
-          backgroundColor: this.backgroundColor,
-          data: this.datasets
-        }
-      ]
+      datasets: this.normalizeDatasets
     }, {
       // hide data label
       legend: {
@@ -64,6 +66,16 @@ const methods = {
 export default {
   props,
   methods,
+  computed: {
+    normalizeDatasets () {
+      return this.datasetsArray.length
+        ? this.datasetsArray
+        : [{
+          backgroundColor: this.backgroundColor,
+          data: this.datasets
+        }]
+    }
+  },
   mounted () {
     this.renderer()
   },
