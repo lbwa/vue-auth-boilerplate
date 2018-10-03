@@ -26,8 +26,7 @@
 import WorkspaceHeader from 'COMPONENTS/Workspace/Header'
 import WorkspaceProjects from 'COMPONENTS/Workspace/Projects'
 import WorkspaceNavigator from 'COMPONENTS/Workspace/Navigator'
-import { fetchUser } from 'SERVICES'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -70,19 +69,20 @@ export default {
   },
 
   created () {
-    fetchUser().then(res => this.setCurrentUser(res.data))
+    this.fetchWorkspace()
   },
 
   computed: {
     ...mapState('workspace', [
-      'currentUser'
+      'currentUser',
+      'projects'
     ])
   },
 
   methods: {
-    ...mapMutations('workspace', {
-      setCurrentUser: 'SET_CURRENT_USER'
-    })
+    ...mapActions('workspace', [
+      'fetchWorkspace'
+    ])
   },
 
   components: {

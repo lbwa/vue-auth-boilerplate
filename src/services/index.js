@@ -12,3 +12,7 @@ export function getAnalysisData () {
 export function fetchUser () {
   return baseRequest.get(routes.CURRENT_USER)
 }
+
+export function fetchProjects () {
+  return baseRequest.get(routes.WORKSPACE_PROJECTS)
+}
