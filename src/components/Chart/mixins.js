@@ -80,6 +80,7 @@ export default {
     this.renderer()
   },
   watch: {
-    datasets: 'handleUpdate'
+    datasets: 'handleUpdate',
+    datasetsArray: 'handleUpdate'
   }
 }

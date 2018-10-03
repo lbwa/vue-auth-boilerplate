@@ -18,6 +18,7 @@
           :navigators="navigators"
         ></workspace-navigator>
         <!-- xx指数模块 -->
+        <workspace-radar></workspace-radar>
         <!-- 团队模块 -->
       </el-col>
     </el-row>
@@ -29,6 +30,7 @@ import WorkspaceHeader from 'COMPONENTS/Workspace/Header'
 import WorkspaceProjects from 'COMPONENTS/Workspace/Projects'
 import WorkspaceNavigator from 'COMPONENTS/Workspace/Navigator'
 import WorkspaceActivities from 'COMPONENTS/Workspace/Activities'
+import WorkspaceRadar from 'COMPONENTS/Workspace/Radar'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -93,7 +95,8 @@ export default {
     WorkspaceHeader,
     WorkspaceProjects,
     WorkspaceNavigator,
-    WorkspaceActivities
+    WorkspaceActivities,
+    WorkspaceRadar
   }
 }
 </script>
