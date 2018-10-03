@@ -1,35 +1,10 @@
 import { Doughnut } from 'vue-chartjs'
+import chartConfig from './mixins'
 
 export default {
   extends: Doughnut,
-
+  mixins: [chartConfig],
   props: {
-    labels: {
-      type: Array,
-      default () {
-        return [
-          'default title 1',
-          'default title 2',
-          'default title 3',
-          'default title 4'
-        ]
-      }
-    },
-    datasets: {
-      type: Array,
-      default () {
-        return [1, 2, 3, 4]
-      }
-    },
-    options: {
-      type: Object,
-      default () {
-        return {
-          responsive: true,
-          maintainAspectRatio: false
-        }
-      }
-    },
     colorSets: {
       type: Array,
       default () {
@@ -45,16 +20,7 @@ export default {
     }
   },
 
-  mounted () {
-    this.renderer()
-  },
-
   methods: {
-    handleUpdate (newValue, oldValue) {
-      this.$data._chart.destroy()
-      this.renderer()
-    },
-
     renderer () {
       this.renderChart({
         labels: this.labels,
@@ -76,9 +42,5 @@ export default {
         ...this.options
       })
     }
-  },
-
-  watch: {
-    datasets: 'handleUpdate'
   }
 }

@@ -1,37 +1,10 @@
 import { Line } from 'vue-chartjs'
+import chartConfig from './mixins'
 
 export default {
   extends: Line,
+  mixins: [chartConfig],
   props: {
-    labels: {
-      type: Array | String,
-      default () {
-        return []
-      }
-    },
-
-    datasets: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
-
-    options: {
-      type: Object,
-      default () {
-        return {
-          responsive: true,
-          maintainAspectRatio: false // 保持长宽比
-        }
-      }
-    },
-
-    backgroundColor: {
-      type: String,
-      default: `#975fe4`
-    },
-
     borderColor: {
       type: String,
       default: ''
@@ -39,11 +12,7 @@ export default {
   },
 
   methods: {
-    handleUpdate () {
-      this.$data._chart.destroy()
-      this.rendering()
-    },
-    rendering () {
+    renderer () {
       this.renderChart({
         labels: this.labels,
         datasets: [
@@ -81,13 +50,5 @@ export default {
         ...this.options
       })
     }
-  },
-
-  watch: {
-    datasets: 'handleUpdate'
-  },
-
-  mounted () {
-    this.rendering()
   }
 }

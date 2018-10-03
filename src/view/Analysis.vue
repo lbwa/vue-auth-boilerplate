@@ -34,6 +34,7 @@
               }"
               :labels="visitorsData.labels"
               :datasets="visitorsData.datasets"
+              backgroundColor="#975fe4"
             ></chart-line>
           </main>
         </chart-card>

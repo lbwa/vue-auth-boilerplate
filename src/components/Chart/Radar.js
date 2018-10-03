@@ -1,7 +1,7 @@
-import { Bar } from 'vue-chartjs'
+import { Radar } from 'vue-chartjs'
 import chartConfig from './mixins'
 
 export default {
-  extends: Bar,
+  extends: Radar,
   mixins: [chartConfig]
 }
