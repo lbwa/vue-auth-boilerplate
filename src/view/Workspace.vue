@@ -7,6 +7,7 @@
         :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
       >
         <workspace-projects :projects="projects"></workspace-projects>
+        <workspace-activities></workspace-activities>
       </el-col>
       <el-col
         class="workspace__navigator__wrapper"
@@ -16,6 +17,8 @@
           :tags="tags"
           :navigators="navigators"
         ></workspace-navigator>
+        <!-- xx指数模块 -->
+        <!-- 团队模块 -->
       </el-col>
     </el-row>
   </el-main>
@@ -25,6 +28,7 @@
 import WorkspaceHeader from 'COMPONENTS/Workspace/Header'
 import WorkspaceProjects from 'COMPONENTS/Workspace/Projects'
 import WorkspaceNavigator from 'COMPONENTS/Workspace/Navigator'
+import WorkspaceActivities from 'COMPONENTS/Workspace/Activities'
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -87,7 +91,8 @@ export default {
   components: {
     WorkspaceHeader,
     WorkspaceProjects,
-    WorkspaceNavigator
+    WorkspaceNavigator,
+    WorkspaceActivities
   }
 }
 </script>
