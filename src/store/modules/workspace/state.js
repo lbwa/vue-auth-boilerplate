@@ -19,5 +19,23 @@ export default {
       href: '',
       memberLink: ''
     }
+  ],
+  activities: [
+    {
+      user: {
+        name: 'Bowen',
+        avatar: ''
+      },
+      updateAt: +new Date(),
+      group: {
+        name: 'Github',
+        link: 'https://github.com/lbwa'
+      },
+      project: {
+        name: 'Vue Design Pro',
+        link: 'https://github.com/lbwa/vue-design-pro'
+      },
+      template: '在 @{group} 新建项目 @{project}'
+    }
   ]
 }

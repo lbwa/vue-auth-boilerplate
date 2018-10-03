@@ -15,6 +15,8 @@ module.exports = {
 
   'GET /api/workspace/projects': api.fetchProjects,
 
+  'GET /api/workspace/activities': api.fetchActivities,
+
   'POST /api/login': (req, res) => {
     const { username, password, token } = req.body
     if (username === 'admin' && password === 'pro') {

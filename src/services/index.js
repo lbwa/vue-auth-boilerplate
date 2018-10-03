@@ -16,3 +16,7 @@ export function fetchUser () {
 export function fetchProjects () {
   return baseRequest.get(routes.WORKSPACE_PROJECTS)
 }
+
+export function fetchActivities () {
+  return baseRequest.get(routes.WORKSPACE_ACTIVITIES)
+}

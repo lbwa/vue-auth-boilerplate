@@ -4,7 +4,15 @@
       class="workspace__activities__header"
       slot="header"
     >{{title}}</header>
-    <activities-item></activities-item>
+    <activities-item
+      v-for="item of activities"
+      :key="item.updateAt"
+      :user="item.user"
+      :updateAt="item.updateAt"
+      :group="item.group"
+      :project="item.project"
+      :template="item.template"
+    ></activities-item>
   </el-card>
 </template>
 
@@ -18,7 +26,20 @@ export default {
       default () {
         return [
           {
-            name: 'Bowen'
+            user: {
+              name: 'Bowen',
+              avatar: ''
+            },
+            updateAt: +new Date(),
+            group: {
+              name: 'Github',
+              link: 'https://github.com/lbwa'
+            },
+            project: {
+              name: 'Vue Design Pro',
+              link: 'https://github.com/lbwa/vue-design-pro'
+            },
+            template: '在 @{group} 新建项目 @{project}'
           }
         ]
       }

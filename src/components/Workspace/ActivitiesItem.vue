@@ -86,9 +86,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/border.sass'
+
 .activity
   &__item
     padding: 16px 0
+
+    &:not(:last-child)
+      border-bottom: 1px solid $border-light
 
     &__avatar-wrapper
       display: inline-block

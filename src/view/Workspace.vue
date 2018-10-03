@@ -7,7 +7,7 @@
         :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
       >
         <workspace-projects :projects="projects"></workspace-projects>
-        <workspace-activities></workspace-activities>
+        <workspace-activities :activities="activities"></workspace-activities>
       </el-col>
       <el-col
         class="workspace__navigator__wrapper"
@@ -78,7 +78,8 @@ export default {
   computed: {
     ...mapState('workspace', [
       'currentUser',
-      'projects'
+      'projects',
+      'activities'
     ])
   },
 
