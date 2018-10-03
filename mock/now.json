@@ -8,9 +8,9 @@
   },
   "files": [
     "server",
+    "chart",
     "api.js",
-    "analysis.js",
-    "chart.js"
+    "analysis.js"
   ],
   "env": {
     "NODE_ENV": "production"

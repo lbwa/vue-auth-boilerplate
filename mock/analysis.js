@@ -1,4 +1,3 @@
-// import mockData from './chart'
 const mockData = require('./chart')
 
 const sales = {

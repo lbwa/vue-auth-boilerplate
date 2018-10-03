@@ -7,10 +7,12 @@ export default {
       fetchUser(),
       fetchProjects(),
       fetchActivities()
-    ]).then(res => {
-      commit(types.SET_CURRENT_USER, res[0].data)
-      commit(types.SET_PROJECTS, res[1].data)
-      commit(types.SET_ACTIVITIES, res[2].data)
-    })
+    ])
+      .then(res => {
+        commit(types.SET_CURRENT_USER, res[0].data)
+        commit(types.SET_PROJECTS, res[1].data)
+        commit(types.SET_ACTIVITIES, res[2].data)
+      })
+      .catch(err => console.error(err))
   }
 }
