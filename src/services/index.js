@@ -5,7 +5,7 @@ export function userLogin (token) {
   return baseRequest.post(routes.USER_TOKEN, token)
 }
 
-export function getAnalysisData () {
+export function fetchAllAnalysis () {
   return baseRequest.get(routes.ANALYSIS)
 }
 

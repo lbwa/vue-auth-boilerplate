@@ -116,8 +116,6 @@ import {
   percentValue
 } from 'COMPONENTS/utils'
 
-import { getAnalysisData } from 'SERVICES'
-
 export default {
   mixins: [{
     methods: {
@@ -171,7 +169,7 @@ export default {
   },
 
   created () {
-    getAnalysisData().then(res => this.getAnalysisData(res.data))
+    this.fetchAnalysis()
   },
 
   methods: {
@@ -193,7 +191,7 @@ export default {
     },
 
     ...mapActions('analysis', [
-      'getAnalysisData'
+      'fetchAnalysis'
     ])
   },
 
