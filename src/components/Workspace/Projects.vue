@@ -11,10 +11,13 @@
         v-for="item of projects"
         :key="item.title"
         :title="item.title"
-        :avatar-src="item.avatar"
-        :link="item.link"
+        :avatar-src="item.logo"
+        :link="item.href"
         :description="item.description"
-        :author="item.author"
+        :author="{
+          name: item.member,
+          link: item.memberLink
+        }"
       ></workspace-pro-item>
     </div>
   </el-card>
@@ -67,6 +70,10 @@ export default {
       margin: 0
       font-size: 16px
       font-weight: normal
+
+    &__wrapper
+      display: flex
+      flex-wrap: wrap
 
 .projects
   &__title

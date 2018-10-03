@@ -13,14 +13,14 @@
       >
       <router-link
         class="projects__item__title projects__item__inner-link"
-        :to="link"
+        :to="link ? link : '/dashboard/analysis'"
       >{{title}}</router-link>
     </header>
     <div class="projects__item__description">{{description}}</div>
     <footer class="projects__item__author">
       <router-link
         class="projects__author__link projects__item__inner-link"
-        :to="author.link"
+        :to="author.link ? author.link : '/dashboard/analysis'"
       >{{author.name}}</router-link>
       <time class="projects__item__time">{{createTime}}</time>
     </footer>
@@ -91,7 +91,7 @@ export default {
 
 .projects
   &__item
-    width: 33.33%
+    flex-basis: 33%
     color: rgba(0, 0, 0, .45)
 
     &__inner-link

@@ -59,7 +59,7 @@ const fetchProjects = [
     id: 'xxx5',
     title: titles[4],
     logo: avatars[4],
-    description: '凛冬将至',
+    description: '专注于前端发展',
     updatedAt: new Date('2018-07-23'),
     member: '高逼格设计天团',
     href: '',

@@ -6,8 +6,7 @@
         class="workspace__projects__gutter"
         :xs="24" :sm="24" :md="24" :lg="16" :xl="16"
       >
-        <!-- v-for area -->
-        <workspace-projects></workspace-projects>
+        <workspace-projects :projects="projects"></workspace-projects>
       </el-col>
       <el-col
         class="workspace__navigator__wrapper"
