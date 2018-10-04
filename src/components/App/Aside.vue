@@ -10,9 +10,11 @@
     <el-menu
       class="root__aside__menu"
       :collapse="isCollapse"
-      :collapse-transition="true"
+      :collapse-transition="false"
       :router="true"
+      :unique-opened="true"
       :default-active="defaultActive"
+      active-text-color="#ffffff"
       text-color="#ffffff"
       backgroundColor="#001529"
     >
@@ -86,7 +88,6 @@ export default {
     background-color: $background-dark
 
   &.is-active
-    color: #ffffff
     // 源 UI 样式为内联样式，故使用 important 提升权重
     background-color: $background-hover !important
 </style>
