@@ -14,7 +14,7 @@
         >
         <router-link
           class="workspace__team__item-title"
-          :to="item.avatar"
+          to="/dashboard/analysis"
         >{{item.name}}</router-link>
       </li>
     </ul>
