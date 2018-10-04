@@ -69,12 +69,6 @@ export default {
           name: '操作六',
           link: '/dashboard/analysis'
         }
-      ],
-      teams: [
-        {
-          name: '科学搬砖组',
-          link: '/dashboard/analysis'
-        }
       ]
     }
   },
@@ -87,7 +81,8 @@ export default {
     ...mapState('workspace', [
       'currentUser',
       'projects',
-      'activities'
+      'activities',
+      'teams'
     ])
   },
 

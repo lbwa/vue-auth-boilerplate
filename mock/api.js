@@ -198,7 +198,7 @@ let i = 0
 fetchProjects.forEach(project => {
   fetchTeam.push({
     name: project.member,
-    avatar: avatars2[i++]
+    avatar: avatars[i++]
   })
 })
 

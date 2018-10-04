@@ -7,10 +7,14 @@
         v-for="item of teams"
         :key="item.link"
       >
-        <img :src="item.avatar" alt="team-avatar">
+        <img
+          :src="item.avatar"
+          alt="team-avatar"
+          class="workspace__team__avatar"
+        >
         <router-link
           class="workspace__team__item-title"
-          :to="item.link"
+          :to="item.avatar"
         >{{item.name}}</router-link>
       </li>
     </ul>
@@ -46,4 +50,27 @@ export default {
       margin: 0
       font-size: 16px
       font-weight: normal
+
+    &__item-title
+      +normalize-link
+      margin-left: 12px
+      line-height: 24px
+      vertical-align: top
+
+    &__wrapper
+      display: flex
+      flex-wrap: wrap
+      padding: 0
+      margin: 0
+      list-style: none
+
+    &__item
+      flex-basis: 50%
+      margin: 12px 0
+      font-size: 0
+
+    &__avatar
+      width: 24px
+      height: 24px
+      border-radius: 50%
 </style>
