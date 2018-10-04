@@ -14,7 +14,7 @@ export default [
     component: components.dashboardWorkspace
   },
   {
-    path: '/form/basic-form',
+    path: '/form/basic',
     component: components.formBasic
   }
 ]

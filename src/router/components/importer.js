@@ -5,36 +5,25 @@
  * @returns A object including every component import()
  * eg. ['a/b'] --> { aB: () => import('view/a/b') }
  */
-function createImporter (components) {
+export default function createImporter (components) {
   const importer = {}
   components.forEach(component => {
     const chunkName = createChunkName(component)
-    const convertChunkName = convertor(chunkName)
-    if (!importer[convertChunkName]) {
-      importer[convertChunkName] = () => import(/* webpackChunkName: 'async-[request]-[index]' */ `VIEW/${component}`)
+    if (!importer[chunkName]) {
+      importer[chunkName] = () => import(/* webpackChunkName: 'async-[request][index]' */ `VIEW/${component}`)
     }
   })
   return importer
 }
 
 function createChunkName (path) {
-  return path.split('/').map(key => key.toLowerCase()).join('-')
-}
-
-function convertor (str) {
-  str.replace(/^-/, '')
-  const strArr = str.split('-')
-  const newStrArr = []
-
-  for (let i = 1, len = strArr.length; i < len; i++) {
-    const newStr = strArr[i].replace(/^[a-z]/, function (initialKey) {
-      return initialKey.toUpperCase()
+  const formatPath = path.split('/')
+  const normalizePath = [formatPath[0].toLowerCase()]
+  for (let i = 1; i < formatPath.length; i++) {
+    const str = formatPath[i].replace(/^[a-z]/, (initial) => {
+      return initial.toUpperCase()
     })
-    newStrArr.push(newStr)
+    normalizePath.push(str)
   }
-  newStrArr.unshift(strArr[0])
-
-  return newStrArr.join('')
+  return normalizePath.join('')
 }
-
-export default createImporter
