@@ -18,5 +18,13 @@ export default [
   {
     path: '/form/basic',
     component: components.formBasic
+  },
+  {
+    path: '/form/step',
+    component: components.formStep
+  },
+  {
+    path: '/form/advanced',
+    component: components.formAdvanced
   }
 ]

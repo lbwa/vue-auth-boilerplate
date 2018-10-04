@@ -31,6 +31,8 @@
           <span slot="title">表单页</span>
         </template>
         <el-menu-item index="/form/basic">基础表单</el-menu-item>
+        <el-menu-item index="/form/step">分步表单</el-menu-item>
+        <el-menu-item index="/form/advanced">高级表单</el-menu-item>
       </el-submenu>
     </el-menu>
   </el-aside>
