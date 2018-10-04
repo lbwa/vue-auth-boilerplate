@@ -1,11 +1,13 @@
 <template>
   <div id="root">
-    <keep-alive>
-      <component :is="currentLayout">
-        <!-- 在动态组件中必须使用 route-view 以保证路由出口 -->
-        <route-view></route-view>
-      </component>
-    </keep-alive>
+    <transition name="layout" mode="out-in">
+      <keep-alive>
+        <component :is="currentLayout">
+          <!-- 在动态组件中必须使用 route-view 以保证路由出口 -->
+          <route-view></route-view>
+        </component>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -40,5 +42,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.layout
+  &-enter, &-leave-to
+    opacity: 0
 
+  &-enter-active, &-leave-active
+    transition: opacity .5s
 </style>

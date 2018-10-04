@@ -4,9 +4,11 @@
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
 
-      <keep-alive>
-        <router-view class="main__wrapper"></router-view>
-      </keep-alive>
+      <transition name="fade" mode="out-in">
+        <keep-alive>
+          <router-view class="main__wrapper"></router-view>
+        </keep-alive>
+      </transition>
 
       <el-footer class="footer__layout footer__font" height="100">
         <div class="footer__icon">
@@ -92,4 +94,12 @@ export default {
   min-height: calc(100vh - 60px - 100px)
   padding: 24px 24px 0 24px
   background-color: #f0f2f5
+
+.fade
+  &-enter, &-leave-to
+    opacity: 0
+    transform: translateY(-10%)
+
+  &-enter-active, &-leave-active
+    transition: opacity .3s, transform .3s
 </style>
