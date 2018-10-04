@@ -96,6 +96,11 @@ export default {
 
               return
             }
+            this.$message({
+              showClose: true,
+              message: '登陆成功',
+              type: 'success'
+            })
             if (!window.localStorage) return
             window.localStorage.setItem('__vue_design_pro__', res.data.token)
 
