@@ -1,6 +1,7 @@
 <template>
   <el-breadcrumb v-if="links.length" :separator="separator">
     <el-breadcrumb-item
+      class="breadcrumb__item"
       v-for="item of links"
       :key="item.name"
       :to="createRouteTo(item.path)"
@@ -22,7 +23,6 @@ export default {
         ]
       }
     },
-
     separator: {
       type: String,
       default: '/'
@@ -38,5 +38,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+.breadcrumb
+  &__item
+    line-height: 1.5
 </style>

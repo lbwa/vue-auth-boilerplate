@@ -1,8 +1,5 @@
 <template>
-  <div class="workspace__header">
-    <el-row class="workspace__breadcrumb">
-      <breadcrumb :links="breadcrumb"></breadcrumb>
-    </el-row>
+  <page-header :links="breadcrumb">
     <el-row>
       <el-col
         class="workspace__user-detail"
@@ -43,11 +40,11 @@
         </div>
       </el-col>
     </el-row>
-  </div>
+  </page-header>
 </template>
 
 <script>
-import Breadcrumb from 'COMPONENTS/Breadcrumb'
+import PageHeader from 'COMPONENTS/PageHeader'
 import { decimalNumber } from 'COMPONENTS/utils'
 
 export default {
@@ -137,7 +134,7 @@ export default {
   }],
 
   components: {
-    Breadcrumb
+    PageHeader
   }
 }
 </script>
@@ -146,12 +143,7 @@ export default {
 @import '~STYLE/color/background.sass'
 
 .workspace
-  &__header
-    margin: -24px -24px 0
-    padding: 16px 32px 0
-    background-color: $background-lightest
-
-  &__breadcrumb, &__user-detail
+  &__user-detail
     margin-bottom: 16px
 
   &__user-detail, &__user-abstract
