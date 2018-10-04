@@ -1,14 +1,16 @@
 <template>
   <el-main class="basic-form">
-    <page-header :links="links">
-      <div class="basic-form__header__content">{{info}}</div>
-    </page-header>
+    <form-header
+      :links="links"
+      :title="title"
+      :description="description"
+    />
     <!-- page content area -->
   </el-main>
 </template>
 
 <script>
-import PageHeader from 'COMPONENTS/PageHeader'
+import FormHeader from 'COMPONENTS/Form/Header'
 export default {
   data () {
     return {
@@ -26,12 +28,14 @@ export default {
           name: '基础表单',
           path: ''
         }
-      ]
+      ],
+      title: '基础表单',
+      description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'
     }
   },
 
   components: {
-    PageHeader
+    FormHeader
   }
 }
 </script>
