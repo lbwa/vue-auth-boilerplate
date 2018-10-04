@@ -1,5 +1,5 @@
 <template>
-  <el-header class="header">
+  <el-header class="header" :height="height">
     <i
       class="el-icon-menu header__icon"
       @click="toggleAside"
@@ -36,6 +36,13 @@
 <script>
 import HeaderPopover from 'COMPONENTS/App/HeaderPopover'
 export default {
+  props: {
+    height: {
+      type: String,
+      default: '64px'
+    }
+  },
+
   methods: {
     toggleAside () {
       this.$emit('toggleAside')
@@ -49,11 +56,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
 @import '~STYLE/color/hover.sass'
 
 .header
   padding: 0 24px 0 0
-  overflow: hidden
+  position: relative // for box-shadow
+  background-color: $background-lightest
+  box-shadow: 0 1px 4px rgba(0,21,41,.08)
 
   &__icon
     padding: 0 24px

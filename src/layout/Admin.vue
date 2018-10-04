@@ -65,14 +65,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~STYLE/color/background.sass'
+@import '~STYLE/color/hover.sass'
+
 .admin
   &__layout
     min-height: 100vh
+    background-color: $background-light
 
 .footer
   &__layout
     padding: 20px 0
-    background-color: #f0f2f5
+    background-color: $background-light
     text-align: center
 
   &__font
@@ -88,12 +92,12 @@ export default {
   font-weight: bold
 
   &:hover
-    color: #3273dc
+    color: $hover-link
 
-.main__wrapper
-  min-height: calc(100vh - 60px - 100px)
-  padding: 24px 24px 0 24px
-  background-color: #f0f2f5
+.main
+  &__wrapper
+    min-height: calc(100vh - 64px - 100px)
+    padding: 24px 24px 0 24px
 
 .fade
   &-enter, &-leave-to
