@@ -1,12 +1,23 @@
 <template>
   <div class="step-form__container">
-    success
-    <router-link to="info">info</router-link>
+    <!-- success information here -->
+    <router-link-btn
+      :text="btnText"
+      to="info"
+    ></router-link-btn>
   </div>
 </template>
 
 <script>
+import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
+
 export default {
+  data () {
+    return {
+      btnText: '再转一笔'
+    }
+  },
+
   methods: {
     updateBreadcrumb () {
       this.$emit('updateBreadcrumb', 'success')
@@ -15,6 +26,10 @@ export default {
 
   created () {
     this.updateBreadcrumb()
+  },
+
+  components: {
+    RouterLinkBtn
   }
 }
 </script>
