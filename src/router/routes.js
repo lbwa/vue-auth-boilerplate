@@ -21,7 +21,22 @@ export default [
   },
   {
     path: '/form/step',
-    component: components.formStep
+    component: components.formStepIndex,
+    redirect: '/form/step/info',
+    children: [
+      {
+        path: 'info',
+        component: components.formStepInfo
+      },
+      {
+        path: 'confirm',
+        component: components.formStepConfirm
+      },
+      {
+        path: 'success',
+        component: components.formStepSuccess
+      }
+    ]
   },
   {
     path: '/form/advanced',

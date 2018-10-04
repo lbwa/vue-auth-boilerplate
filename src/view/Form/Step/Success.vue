@@ -1,12 +1,7 @@
 <template>
-  <el-main class="basic-form">
-    <form-header
-      :links="links"
-      :title="title"
-      :description="description"
-    />
-    <!-- page content area -->
-  </el-main>
+  <div class="step-form__container">
+    <router-link to="info">info</router-link>
+  </div>
 </template>
 
 <script>
@@ -25,12 +20,12 @@ export default {
           path: ''
         },
         {
-          name: '分步表单',
+          name: '基础表单',
           path: ''
         }
       ],
-      title: '分步表单',
-      description: '将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。'
+      title: '基础表单',
+      description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'
     }
   },
 
