@@ -5,7 +5,6 @@
       :title="title"
       :description="description"
     />
-    <!-- nested routes -->
     <el-card class="form__item__wrapper">
       <el-steps class="form__item__progress" :active="activeSteps" align-center>
         <el-step
@@ -14,6 +13,7 @@
           :title="item"
         ></el-step>
       </el-steps>
+      <!-- nested routes -->
       <transition name="form-fade" mode="out-in">
         <router-view @updateBreadcrumb="updateBreadcrumb"></router-view>
       </transition>
