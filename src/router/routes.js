@@ -7,14 +7,14 @@ export default [
   },
   {
     path: '/dashboard/analysis',
-    component: components.analysis
+    component: components.dashboardAnalysis
   },
   {
     path: '/dashboard/workspace',
-    component: components.workspace
+    component: components.dashboardWorkspace
   },
   {
     path: '/form/basic-form',
-    component: components.basicForm
+    component: components.formBasic
   }
 ]
