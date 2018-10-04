@@ -1,3 +1,5 @@
+import { createChunkName } from '../utils'
+
 /**
  * Pass a paths array to create a import() function for each item.
  *
@@ -14,16 +16,4 @@ export default function createImporter (components) {
     }
   })
   return importer
-}
-
-function createChunkName (path) {
-  const formatPath = path.split('/')
-  const normalizePath = [formatPath[0].toLowerCase()]
-  for (let i = 1; i < formatPath.length; i++) {
-    const str = formatPath[i].replace(/^[a-z]/, (initial) => {
-      return initial.toUpperCase()
-    })
-    normalizePath.push(str)
-  }
-  return normalizePath.join('')
 }

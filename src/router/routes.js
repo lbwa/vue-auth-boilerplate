@@ -1,3 +1,5 @@
+// import { createRoutes } from './utils'
+// import paths from './components/components'
 import components from './components'
 
 export default [
