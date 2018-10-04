@@ -37,14 +37,11 @@ export default {
       template: '在 @{group} 新建项目 @{project}'
     }
   ],
-  radar: [
+  radar: [],
+  teams: [
     {
-      name: '个人',
-      ref: 10,
-      koubei: 8,
-      output: 4,
-      contribute: 5,
-      hot: 7
+      name: '科学搬砖组',
+      avatar: ''
     }
   ]
 }

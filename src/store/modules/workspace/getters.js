@@ -3,11 +3,12 @@ export default {
     return iterator([...state.radar])
   },
   getPersonSum (state, getters) {
-    return reducer(getters.getFormatRadar[0].data)
+    const origin = getters.getFormatRadar
+    return origin[0] ? reducer(origin[0].data) : 0 // ignore initial value
   },
   getTeamSum (state, getters) {
     const origin = getters.getFormatRadar
-    return origin[1] ? reducer(origin[1].data) : 0 // ignore initial value
+    return origin[1] ? reducer(origin[1].data) : 0
   },
   getDepartmentSum (state, getters) {
     const origin = getters.getFormatRadar

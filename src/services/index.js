@@ -9,18 +9,22 @@ export function fetchAllAnalysis () {
   return baseRequest.get(routes.ANALYSIS)
 }
 
-export function fetchUser () {
+export function fetchSpaceUser () {
   return baseRequest.get(routes.CURRENT_USER)
 }
 
-export function fetchProjects () {
+export function fetchSpaceProjects () {
   return baseRequest.get(routes.WORKSPACE_PROJECTS)
 }
 
-export function fetchActivities () {
+export function fetchSpaceActivities () {
   return baseRequest.get(routes.WORKSPACE_ACTIVITIES)
 }
 
-export function fetchRadar () {
+export function fetchSpaceRadar () {
   return baseRequest.get(routes.WORKSPACE_RADAR)
+}
+
+export function fetchSpaceTeams () {
+  return baseRequest.get(routes.WORKSPACE_TEAMS)
 }

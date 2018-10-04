@@ -193,7 +193,17 @@ const fetchActivities = [
   },
 ]
 
+const fetchTeam = []
+let i = 0
+fetchProjects.forEach(project => {
+  fetchTeam.push({
+    name: project.member,
+    avatar: avatars2[i++]
+  })
+})
+
 module.exports = {
   fetchProjects,
-  fetchActivities
+  fetchActivities,
+  fetchTeam
 }

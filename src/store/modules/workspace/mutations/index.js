@@ -15,5 +15,8 @@ export default {
   },
   [types.SET_RADAR] (state, radar) {
     state.radar = radar
+  },
+  [types.SET_TEAMS] (state, teams) {
+    state.teams = teams
   }
 }

@@ -20,6 +20,8 @@ module.exports = {
 
   'GET /api/workspace/radar': workspace.radar,
 
+  'GET /api/workspace/teams': api.fetchTeam,
+
   'POST /api/login': (req, res) => {
     const { username, password, token } = req.body
     if (username === 'admin' && password === 'pro') {
