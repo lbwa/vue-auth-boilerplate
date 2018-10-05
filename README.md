@@ -5,3 +5,32 @@
 [ant design pro]:https://github.com/ant-design/ant-design-pro
 
 ***Notice***: This project is developing !
+
+- Preview: https://lbwa.github.io/vue-design-pro
+
+## Features
+
+- **Neat Design**: Follow [Ant Design specification]
+
+- **Mock development**: Easy to use mock development solution
+
+[Ant Design specification]:https://ant.design
+
+## Templates
+
+(Implemented)
+
+- Dashboard
+    - Analysis
+    - Workspace
+- Form
+    - Basic form
+    - Step form
+
+## Usage
+
+```bash
+yarn mock
+yarn dev
+# visit http://localhost:5000 (or http://<your device ip>:5000`)
+```
