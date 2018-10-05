@@ -6,11 +6,14 @@
       :description="description"
     />
     <!-- page content area -->
+    <main-form></main-form>
   </el-main>
 </template>
 
 <script>
 import FormHeader from 'COMPONENTS/Form/Header'
+import MainForm from 'COMPONENTS/Form/Basic/MainForm'
+
 export default {
   data () {
     return {
@@ -35,7 +38,8 @@ export default {
   },
 
   components: {
-    FormHeader
+    FormHeader,
+    MainForm
   }
 }
 </script>

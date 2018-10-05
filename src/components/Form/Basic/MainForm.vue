@@ -1,138 +1,184 @@
 <template>
-  <el-form
-    class="info__form"
-    ref="mainForm"
-    :model="form"
-    :rules="rules"
-    label-width="20%"
-    :size="size"
-  >
-    <el-form-item label="付款账户">
-      <el-select
-        v-model="payAccount"
-        :style="{ width: '100%' }"
-      >
-        <el-option
-          label="vue-design-pro@github.com"
-          value="vue-design-pro@github.com"
-        ></el-option>
-      </el-select>
-    </el-form-item>
+  <el-card class="basic-form__main">
+    <h2 class="basic-form__header"></h2>
+    <el-form
+      class="basic-form__wrapper"
+      ref="mainForm"
+      :model="form"
+      :rules="rules"
+      label-width="30%"
+      :size="size"
+    >
+      <el-form-item :label="text.title">
+        <el-input
+          :value="form.title"
+          @change.native="setTitle"
+          :placeholder="text.titlePlaceholder"
+        ></el-input>
+      </el-form-item>
 
-    <el-form-item label="收款账户" prop="receiverAccount">
-      <el-input
-        :value="form.receiverAccount"
-        @change.native="setReceiverAccount"
-        placeholder="yourname@example.com"
-      >
-        <el-select
-          slot="prepend"
-          v-model="receiverType"
-          :style="{ width: '110px' }"
-        >
-          <el-option label="支付宝" value="alipay"></el-option>
-          <el-option label="银行账号" value="bank"></el-option>
-        </el-select>
-      </el-input>
-    </el-form-item>
+      <el-form-item :label="text.period">
+        <el-date-picker
+          v-model="form.timePicker"
+          type="daterange"
+          :style="{ width: '100%' }"
+          :range-separator="text.to"
+          :start-placeholder="text.startDay"
+          :end-placeholder="text.endDay">
+        </el-date-picker>
+      </el-form-item>
 
-    <el-form-item label="收款人姓名" prop="receiverName">
-      <el-input
-        :value="form.receiverName"
-        @change.native="setReceiverName"
-        placeholder="请输入收款人姓名"
-      ></el-input>
-    </el-form-item>
+      <el-form-item :label="text.target">
+        <el-input
+          type="textarea"
+          :placeholder="text.targetPlaceholder"
+          :autosize="{ minRows: 4 }"
+          v-model="form.target"
+        ></el-input>
+      </el-form-item>
 
-    <el-form-item label="转账金额" prop="amount">
-      <el-input
-        :value="form.amount"
-        @change.native="setAmount"
-        placeholder="请输入金额"
-      ><span slot="prefix">￥</span></el-input>
-    </el-form-item>
+      <el-form-item :label="text.measure">
+        <el-input
+          type="textarea"
+          :placeholder="text.measurePlaceholder"
+          :autosize="{ minRows: 4 }"
+          v-model="form.measure"
+        ></el-input>
+      </el-form-item>
 
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit">{{btnText}}</el-button>
-    </el-form-item>
-  </el-form>
+      <el-form-item>
+        <span class="basic-form__public__label" slot="label">
+          <span class="label__main">{{text.client}}</span>
+          <span class="label__optional">{{text.optional}}</span>
+          <el-tooltip placement="top" :content="text.clientDescription">
+            <i class="el-icon-info"></i>
+          </el-tooltip>
+        </span>
+        <el-input
+          v-model="form.client"
+          :placeholder="text.clientPlaceholder"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <span class="basic-form__public__label" slot="label">
+          <span class="label__main">{{text.inviter}}</span>
+          <span class="label__optional">{{text.optional}}</span>
+        </span>
+        <el-input
+          v-model="form.inviter"
+          :placeholder="text.inviterPlaceholder"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <span class="basic-form__public__label" slot="label">
+          <span class="label__main">{{text.weight}}</span>
+          <span class="label__optional">{{text.optional}}</span>
+        </span>
+        <el-input-number
+          v-model="form.weight"
+          controls-position="right"
+          :min="0" :max="100"
+        ></el-input-number>
+        <span>%</span>
+      </el-form-item>
+
+      <el-form-item :label="text.public">
+        <el-radio-group v-model="form.public" :min="0" :max="1">
+          <el-radio label="公开"></el-radio>
+          <el-radio label="部分公开"></el-radio>
+          <el-radio label="不公开"></el-radio>
+        </el-radio-group>
+        <div class="basic-form__public__optional-input">
+          <el-input
+            v-if="form.public === '部分公开'"
+            v-model="form.inviters"
+            :placeholder="text.publicPlaceholder"
+          ></el-input>
+        </div>
+        <span class="basic-form__public__tip">{{text.publicTip}}</span>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">{{text.submit}}</el-button>
+        <el-button type="plain" @click="onSave">{{text.save}}</el-button>
+      </el-form-item>
+    </el-form>
+  </el-card>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-
 export default {
-  props: {
-    btnText: {
-      type: String,
-      default: '下一步'
-    },
-    size: {
-      type: String,
-      default: ''
-    }
-  },
-
   data () {
     return {
-      rules: {
-        receiverAccount: [
-          { required: true, message: '请输入收款账户', trigger: 'blur' }
-        ],
-        receiverName: [
-          { required: true, message: '请输入收款人姓名', trigger: 'blur' }
-        ],
-        amount: [
-          { required: true, message: '请输入转账金额', trigger: 'blur' }
-        ]
-      }
+      form: {
+        title: '',
+        timePicker: [],
+        target: '',
+        measure: '',
+        client: '',
+        inviter: '',
+        inviters: '',
+        weight: 0,
+        public: ''
+      },
+      size: 'small',
+      text: {
+        title: '标题',
+        titlePlaceholder: '给目标起个名字',
+        period: '起止日期',
+        startDay: '开始日期',
+        endDay: '结束日期',
+        to: '至',
+        target: '目标描述',
+        targetPlaceholder: '请输入内容',
+        measure: '衡量标准',
+        measurePlaceholder: '请输入内容',
+        optional: '（选填）',
+        client: '客户',
+        clientPlaceholder: '请描述你服务的客户，内部客户直接 @姓名/工号',
+        clientDescription: '目标服务对象',
+        inviter: '邀评人',
+        inviterPlaceholder: '请直接 @姓名/工号，最多可邀请 5 人',
+        weight: '权重',
+        public: '目标公开',
+        publicTip: '客户、邀评人默认被分享',
+        publicPlaceholder: '分享给',
+        submit: '提交',
+        save: '保存'
+      },
+      rules: {}
     }
   },
 
   methods: {
-    onSubmit () {
-      this.$refs.mainForm.validate(valid => {
-        if (valid) this.$router.push('confirm')
-      })
-    },
-    ...mapMutations('formStep', {
-      setPayAccount: 'SET_PAY_ACCOUNT',
-      setReceiverAccount: 'SET_RECEIVER_ACCOUNT',
-      setReceiverType: 'SET_RECEIVER_TYPE',
-      setReceiverName: 'SET_RECEIVER_NAME',
-      setAmount: 'SET_AMOUNT'
-    })
-  },
-
-  computed: {
-    // el-input doesn't support `.lazy`, so we use `:value=` and
-    // `@change.native` for other form item.
-    payAccount: {
-      get () {
-        return this.form.payAccount
-      },
-      set (value) {
-        this.setPayAccount(value)
-      }
-    },
-    receiverType: {
-      get () {
-        return this.form.receiverType
-      },
-      set (value) {
-        this.setReceiverType(value)
-      }
-    },
-    ...mapState('formStep', [
-      'form'
-    ])
+    onSubmit () {},
+    onSave () {}
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.info
-  &__form
-    margin: 40px auto 0
-    max-width: 500px
+@import '~STYLE/color/font.sass'
+
+.basic-form
+  &__main
+    margin-top: 24px
+
+  &__wrapper
+    margin: 24px auto
+
+  &__public
+    &__optional-input
+      margin: 8px 0
+
+    &__tip
+      color: $font-d-45
+
+.label__optional
+  color: $font-d-45
+
+/deep/ .el-form-item__content
+  width: 40% !important
 </style>
