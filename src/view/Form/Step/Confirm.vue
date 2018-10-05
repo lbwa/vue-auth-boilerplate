@@ -7,17 +7,13 @@
       label-width="20%"
     >
       <el-form-item>
-        <router-link-btn
-          :text="btnText"
-          to="success"
-        ></router-link-btn>
+        <el-button type="primary" @click="onSubmit">{{btnText}}</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
 import { mapState } from 'vuex'
 
 export default {
@@ -30,6 +26,9 @@ export default {
   methods: {
     updateBreadcrumb () {
       this.$emit('updateBreadcrumb', 'confirm')
+    },
+    onSubmit () {
+      this.$router.push('success')
     }
   },
 
@@ -41,10 +40,6 @@ export default {
 
   created () {
     this.updateBreadcrumb()
-  },
-
-  components: {
-    RouterLinkBtn
   }
 }
 </script>

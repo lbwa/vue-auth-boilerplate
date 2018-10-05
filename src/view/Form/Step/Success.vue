@@ -5,18 +5,13 @@
       label-width="20%"
     >
       <el-form-item>
-        <router-link-btn
-          :text="btnText"
-          to="info"
-        ></router-link-btn>
+        <el-button type="primary" @click="onSubmit">{{btnText}}</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
-
 export default {
   data () {
     return {
@@ -27,15 +22,14 @@ export default {
   methods: {
     updateBreadcrumb () {
       this.$emit('updateBreadcrumb', 'success')
+    },
+    onSubmit () {
+      this.$router.push('info')
     }
   },
 
   created () {
     this.updateBreadcrumb()
-  },
-
-  components: {
-    RouterLinkBtn
   }
 }
 </script>
