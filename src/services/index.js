@@ -5,6 +5,10 @@ export function userLogin (token) {
   return baseRequest.post(routes.USER_TOKEN, token)
 }
 
+export function pushStepForm (formData) {
+  return baseRequest.post(routes.STEP_FORM, formData)
+}
+
 export function fetchAllAnalysis () {
   return baseRequest.get(routes.ANALYSIS)
 }

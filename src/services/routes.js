@@ -6,6 +6,8 @@ export const baseURL = isDevMode
 
 export const USER_TOKEN = '/login'
 
+export const CURRENT_USER = '/user'
+
 export const ANALYSIS = '/analysis'
 
 export const WORKSPACE = '/workspace'
@@ -18,4 +20,4 @@ export const WORKSPACE_RADAR = '/workspace/radar'
 
 export const WORKSPACE_TEAMS = '/workspace/teams'
 
-export const CURRENT_USER = '/user'
+export const STEP_FORM = '/form/step'

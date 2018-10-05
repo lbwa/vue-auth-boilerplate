@@ -38,5 +38,28 @@ module.exports = {
       status: 'error',
       currentAuthority: 'guest'
     })
+  },
+
+  'POST /api/form/step': (req, res) => {
+    const {
+      payAccount,
+      receiverAccount,
+      receiverType,
+      receiverName,
+      amount,
+      password
+    } = req.body
+    if (password === 'admin') {
+      res.send({
+        errno: 0,
+        status: 'ok'
+      })
+    } else {
+      res.send({
+        errno: 1,
+        status: 'error',
+        message: 'Invalid username or password'
+      })
+    }
   }
 }

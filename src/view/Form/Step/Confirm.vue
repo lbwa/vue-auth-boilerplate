@@ -46,21 +46,19 @@
           type="primary"
           :loading="loading"
           @click="onSubmit"
-        >{{submitText}}</el-button>
-        <el-button type="plain" @click="onCancel">{{cancelText}}</el-button>
+        >{{text.submit}}</el-button>
+        <el-button type="plain" @click="onCancel">{{text.cancel}}</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data () {
     return {
-      submitText: '提交',
-      cancelText: '取消',
       confirmForm: {
         password: 'admin'
       },
@@ -71,6 +69,8 @@ export default {
         ]
       },
       text: {
+        submit: '提交',
+        cancel: '上一步',
         alert: '确认转账后，资金将直接打入对方账户，无法退回。',
         payAccount: '付款账号',
         receiverAccount: '收款人账号',
@@ -85,26 +85,34 @@ export default {
     updateBreadcrumb () {
       this.$emit('updateBreadcrumb', 'confirm')
     },
-    postAllForm () {
+    pushForm () {
       this.loading = true
-      // postFormData(this.confirmForm.password)
-      //   .then(() => {
-      //     this.loading = false
-      //     this.$router.push('success')
-      //   })
-      setTimeout(() => {
-        this.loading = false
-        this.$router.push('success')
-      }, 1000)
+      this.pushStepForm(this.confirmForm.password)
+        .then(() => {
+          this.loading = false
+          this.$router.push('success')
+        })
+        .catch((e) => {
+          this.loading = false
+          this.$message({
+            showClose: true,
+            message: '密码错误',
+            type: 'error'
+          })
+          console.error(e)
+        })
     },
     onSubmit () {
       this.$refs.confirmForm.validate()
-        .then(this.postAllForm)
+        .then(this.pushForm)
         .catch(err => console.error(`[validate]: ${err}`))
     },
     onCancel () {
       this.$router.push('info')
-    }
+    },
+    ...mapActions('formStep', [
+      'pushStepForm'
+    ])
   },
 
   computed: {
