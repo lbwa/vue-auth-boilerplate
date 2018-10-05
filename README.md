@@ -10,11 +10,11 @@
 
 ## Features
 
-- **Neat Design**: Follow [Ant Design specification]
+- **Neat Design**: Follow [Element UI specification]
 
 - **Mock development**: Easy to use mock development solution
 
-[Ant Design specification]:https://ant.design
+[Element UI specification]:element-cn.eleme.io
 
 ## Templates
 
@@ -32,5 +32,5 @@
 ```bash
 yarn mock
 yarn dev
-# visit http://localhost:5000 (or http://<your device ip>:5000`)
+# visit http://localhost:5000 (or http://<your device ip>:5000)
 ```
