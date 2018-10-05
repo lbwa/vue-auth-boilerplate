@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import MainForm from 'COMPONENTS/Form/Basic/MainForm'
+import MainForm from 'COMPONENTS/Form/Step/MainForm'
 
 export default {
   props: {
