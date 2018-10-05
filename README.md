@@ -14,7 +14,7 @@
 
 - **Mock development**: Easy to use mock development solution
 
-[Element UI specification]:element-cn.eleme.io
+[Element UI specification]: https://github.com/ElemeFE/element
 
 ## Templates
 
