@@ -34,6 +34,7 @@
       <el-form-item :label="text.password" prop="password">
         <el-input
           type="password"
+          placeholder='Password: admin'
           v-model="confirmForm.password"
           :style="{ width: '80%' }"
           clearable>
@@ -76,7 +77,9 @@ export default {
         receiverAccount: '收款人账号',
         receiverName: '收款人姓名',
         amount: '转账金额',
-        password: '支付密码'
+        password: '支付密码',
+        tipsTitle: '提示信息',
+        tipsMessage: '密码错误'
       }
     }
   },
@@ -94,10 +97,9 @@ export default {
         })
         .catch((e) => {
           this.loading = false
-          this.$message({
-            showClose: true,
-            message: '密码错误',
-            type: 'error'
+          this.$notify.error({
+            title: this.text.tipsTitle,
+            message: this.text.tipsMessage
           })
           console.error(e)
         })
