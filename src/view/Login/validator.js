@@ -1,25 +1,7 @@
-function validateUsername (rule, value, cb) {
-  const login = this.$refs.login
-  if (!value) {
-    cb(new TypeError(rule.message))
-    return
-  }
-  // Invoke vueComponent inner methods
-  if (login.password !== '') {
-    login.validateField('password')
-  }
-  cb()
-}
-
-function validatePassword (rule, value, cb) {
-  if (!value) {
-    cb(new TypeError(rule.message))
-    return
-  }
-  cb()
+function validator (rule, value, cb) {
+  value ? setTimeout(() => cb(), 0) : cb(new Error(rule.message))
 }
 
 export {
-  validateUsername,
-  validatePassword
+  validator
 }

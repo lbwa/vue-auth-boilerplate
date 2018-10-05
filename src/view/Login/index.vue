@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { validateUsername, validatePassword } from './validator'
+import { validator } from './validator'
 import { userLogin } from 'SERVICES'
 
 export default {
@@ -55,16 +55,16 @@ export default {
         username: [
           {
             // Set `this` value into vueComponent
-            validator: validateUsername.bind(this),
+            validator: validator.bind(this),
             message: '请输入用户名',
             trigger: 'blur'
           }
         ],
         password: [
           {
-            validator: validatePassword.bind(this),
+            validator: validator.bind(this),
             message: '请输入密码',
-            trigger: 'change'
+            trigger: 'blur'
           }
         ]
       }
