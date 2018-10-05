@@ -18,12 +18,11 @@
       </el-select>
     </el-form-item>
 
-    <el-form-item label="收款账户">
+    <el-form-item label="收款账户" prop="receiverAccount">
       <el-input
         :value="form.receiverAccount"
         @change.native="setReceiverAccount"
         placeholder="yourname@example.com"
-        prop="receiverAccount"
       >
         <el-select
           slot="prepend"
@@ -36,7 +35,7 @@
       </el-input>
     </el-form-item>
 
-    <el-form-item label="收款人姓名">
+    <el-form-item label="收款人姓名" prop="receiverName">
       <el-input
         :value="form.receiverName"
         @change.native="setReceiverName"
@@ -44,7 +43,7 @@
       ></el-input>
     </el-form-item>
 
-    <el-form-item label="转账金额">
+    <el-form-item label="转账金额" prop="amount">
       <el-input
         :value="form.amount"
         @change.native="setAmount"
@@ -53,18 +52,12 @@
     </el-form-item>
 
     <el-form-item>
-      <router-link-btn
-        class="info__next__btn"
-        :text="btnText"
-        to="confirm"
-        @click="onSubmit"
-      ></router-link-btn>
+      <el-button type="primary" @click="onSubmit">{{btnText}}</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
-import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
@@ -79,9 +72,13 @@ export default {
     return {
       rules: {
         receiverAccount: [
-          {
-            required: true
-          }
+          { required: true, message: '请输入收款账户', trigger: 'blur' }
+        ],
+        receiverName: [
+          { required: true, message: '请输入收款人姓名', trigger: 'blur' }
+        ],
+        amount: [
+          { required: true, message: '请输入转账金额', trigger: 'blur' }
         ]
       }
     }
@@ -90,7 +87,7 @@ export default {
   methods: {
     onSubmit () {
       this.$refs.mainForm.validate(valid => {
-        console.log(valid)
+        if (valid) this.$router.push('confirm')
       })
     },
     ...mapMutations('formStep', {
@@ -124,10 +121,6 @@ export default {
     ...mapState('formStep', [
       'form'
     ])
-  },
-
-  components: {
-    RouterLinkBtn
   }
 }
 </script>
