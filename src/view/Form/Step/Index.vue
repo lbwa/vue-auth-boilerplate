@@ -23,7 +23,20 @@
 
 <script>
 import FormHeader from 'COMPONENTS/Form/Header'
+
 export default {
+  /**
+   * `name` option for /layout/Admin <keep-alive> exclude
+   * https://cn.vuejs.org/v2/api/#keep-alive
+   * !
+   * BUG: 一级路由组件被缓存时，将导致其内部的 nested route 一并被缓存，那么在一级组
+   * 件再次激活时将保留之前匹配的嵌套路由组件，而非现在路由匹配下的正确嵌套路由组件
+   * !
+   * reproduce: /form/step/非 info 值下，切换其他一级路由再切换回来，nested 匹配组
+   * 件非默认 info 组件（匹配正确的组件），而是被缓存的之前的嵌套路由组件
+   */
+  name: 'form-step-index',
+
   data () {
     return {
       info: 'basic info',

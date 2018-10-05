@@ -5,7 +5,7 @@
       <app-header @toggleAside="toggleAside"></app-header>
 
       <transition name="fade" mode="out-in">
-        <keep-alive>
+        <keep-alive :exclude="['form-step-index']">
           <router-view class="main__wrapper"></router-view>
         </keep-alive>
       </transition>
