@@ -1,13 +1,14 @@
 <template>
   <el-form
     class="info__form"
-    ref="form"
+    ref="mainForm"
     :model="form"
+    :rules="rules"
     label-width="20%"
   >
     <el-form-item label="付款账户">
       <el-select
-        v-model="form.payAccount"
+        v-model="payAccount"
         :style="{ width: '100%' }"
       >
         <el-option
@@ -19,12 +20,14 @@
 
     <el-form-item label="收款账户">
       <el-input
-        v-model="form.receiverAccount"
+        :value="form.receiverAccount"
+        @change.native="setReceiverAccount"
         placeholder="yourname@example.com"
+        prop="receiverAccount"
       >
         <el-select
           slot="prepend"
-          v-model="form.receiverType"
+          v-model="receiverType"
           :style="{ width: '110px' }"
         >
           <el-option label="支付宝" value="alipay"></el-option>
@@ -35,14 +38,16 @@
 
     <el-form-item label="收款人姓名">
       <el-input
-        v-model="form.receiverName"
+        :value="form.receiverName"
+        @change.native="setReceiverName"
         placeholder="请输入收款人姓名"
       ></el-input>
     </el-form-item>
 
     <el-form-item label="转账金额">
       <el-input
-        v-model="form.amount"
+        :value="form.amount"
+        @change.native="setAmount"
         placeholder="请输入金额"
       ><span slot="prefix">￥</span></el-input>
     </el-form-item>
@@ -52,6 +57,7 @@
         class="info__next__btn"
         :text="btnText"
         to="confirm"
+        @click="onSubmit"
       ></router-link-btn>
     </el-form-item>
   </el-form>
@@ -59,6 +65,7 @@
 
 <script>
 import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   props: {
@@ -70,14 +77,53 @@ export default {
 
   data () {
     return {
-      form: {
-        payAccount: 'vue-design-pro@github.com',
-        receiverAccount: '',
-        receiverType: 'alipay',
-        receiverName: '',
-        amount: ''
+      rules: {
+        receiverAccount: [
+          {
+            required: true
+          }
+        ]
       }
     }
+  },
+
+  methods: {
+    onSubmit () {
+      this.$refs.mainForm.validate(valid => {
+        console.log(valid)
+      })
+    },
+    ...mapMutations('formStep', {
+      setPayAccount: 'SET_PAY_ACCOUNT',
+      setReceiverAccount: 'SET_RECEIVER_ACCOUNT',
+      setReceiverType: 'SET_RECEIVER_TYPE',
+      setReceiverName: 'SET_RECEIVER_NAME',
+      setAmount: 'SET_AMOUNT'
+    })
+  },
+
+  computed: {
+    // el-input doesn't support `.lazy`, so we use `:value=` and
+    // `@change.native` for other form item.
+    payAccount: {
+      get () {
+        return this.form.payAccount
+      },
+      set (value) {
+        this.setPayAccount(value)
+      }
+    },
+    receiverType: {
+      get () {
+        return this.form.receiverType
+      },
+      set (value) {
+        this.setReceiverType(value)
+      }
+    },
+    ...mapState('formStep', [
+      'form'
+    ])
   },
 
   components: {

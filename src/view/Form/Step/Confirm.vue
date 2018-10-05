@@ -18,6 +18,7 @@
 
 <script>
 import RouterLinkBtn from 'COMPONENTS/RouterLinkBtn'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -30,6 +31,12 @@ export default {
     updateBreadcrumb () {
       this.$emit('updateBreadcrumb', 'confirm')
     }
+  },
+
+  computed: {
+    ...mapState('formStep', [
+      'form'
+    ])
   },
 
   created () {

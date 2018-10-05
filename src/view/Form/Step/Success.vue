@@ -2,8 +2,6 @@
   <div class="step-form__container">
     <el-form
       class="success__form"
-      ref="form"
-      :model="form"
       label-width="20%"
     >
       <el-form-item>
