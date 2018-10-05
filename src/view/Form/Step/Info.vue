@@ -2,6 +2,7 @@
   <div class="step-form__container">
     <main-form
       :text="btnText"
+      size="small"
     ></main-form>
     <div class="info__form__divider"></div>
     <div class="info__form__description">

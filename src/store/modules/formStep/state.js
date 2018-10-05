@@ -1,9 +1,9 @@
 export default {
   form: {
     payAccount: 'vue-design-pro@github.com',
-    receiverAccount: '',
+    receiverAccount: 'yourname@github.com',
     receiverType: 'alipay',
-    receiverName: '',
-    amount: ''
+    receiverName: 'Bowen',
+    amount: '10000'
   }
 }

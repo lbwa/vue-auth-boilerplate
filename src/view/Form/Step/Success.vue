@@ -3,6 +3,7 @@
     <el-form
       class="success__form"
       label-width="20%"
+      size="small"
     >
       <el-form-item>
         <el-button type="primary" @click="onSubmit">{{btnText}}</el-button>

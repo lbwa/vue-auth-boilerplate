@@ -5,6 +5,7 @@
     :model="form"
     :rules="rules"
     label-width="20%"
+    :size="size"
   >
     <el-form-item label="付款账户">
       <el-select
@@ -65,6 +66,10 @@ export default {
     btnText: {
       type: String,
       default: '下一步'
+    },
+    size: {
+      type: String,
+      default: ''
     }
   },
 
