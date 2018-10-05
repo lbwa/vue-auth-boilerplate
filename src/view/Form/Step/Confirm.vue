@@ -1,10 +1,18 @@
 <template>
   <div class="step-form__container">
-    <el-form>22</el-form>
-    <router-link-btn
-      :text="btnText"
-      to="success"
-    ></router-link-btn>
+    <el-form
+      class="confirm__form"
+      ref="form"
+      :model="form"
+      label-width="20%"
+    >
+      <el-form-item>
+        <router-link-btn
+          :text="btnText"
+          to="success"
+        ></router-link-btn>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
@@ -35,5 +43,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+.confirm
+  &__form
+    margin: 40px auto 0
+    max-width: 500px
 </style>
