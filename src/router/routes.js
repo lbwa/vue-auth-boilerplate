@@ -30,11 +30,17 @@ export default [
       },
       {
         path: 'confirm',
-        component: components.formStepConfirm
+        component: components.formStepConfirm,
+        beforeEnter (to, from, next) {
+          from.path !== '/form/step/info' ? next('/form/step/info') : next()
+        }
       },
       {
         path: 'success',
-        component: components.formStepSuccess
+        component: components.formStepSuccess,
+        beforeEnter (to, from, next) {
+          from.path !== '/form/step/confirm' ? next('/form/step/info') : next()
+        }
       }
     ]
   },
