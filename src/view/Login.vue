@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { validator } from './validator'
 import { userLogin } from 'SERVICES'
 
 export default {
@@ -54,15 +53,14 @@ export default {
       rules: {
         username: [
           {
-            // Set `this` value into vueComponent
-            validator: validator.bind(this),
+            required: true,
             message: '请输入用户名',
             trigger: 'blur'
           }
         ],
         password: [
           {
-            validator: validator.bind(this),
+            required: true,
             message: '请输入密码',
             trigger: 'blur'
           }
