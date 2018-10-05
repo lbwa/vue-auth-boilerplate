@@ -28,6 +28,10 @@ export default {
     this.updateBreadcrumb()
   },
 
+  beforeRouteEnter (to, from, next) {
+    from.path !== '/form/step/info' ? next('/form/step/info') : next()
+  },
+
   components: {
     RouterLinkBtn
   }
