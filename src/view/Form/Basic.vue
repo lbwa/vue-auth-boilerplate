@@ -17,7 +17,6 @@ import MainForm from 'COMPONENTS/Form/Basic/MainForm'
 export default {
   data () {
     return {
-      info: 'basic info',
       links: [
         {
           name: '首页',

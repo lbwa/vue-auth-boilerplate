@@ -9,15 +9,14 @@
       label-width="30%"
       :size="size"
     >
-      <el-form-item :label="text.title">
+      <el-form-item :label="text.title" prop="title">
         <el-input
-          :value="form.title"
-          @change.native="setTitle"
+          v-model="form.title"
           :placeholder="text.titlePlaceholder"
         ></el-input>
       </el-form-item>
 
-      <el-form-item :label="text.period">
+      <el-form-item :label="text.timePicker" prop="timePicker">
         <el-date-picker
           v-model="form.timePicker"
           type="daterange"
@@ -28,7 +27,7 @@
         </el-date-picker>
       </el-form-item>
 
-      <el-form-item :label="text.target">
+      <el-form-item :label="text.target" prop="target">
         <el-input
           type="textarea"
           :placeholder="text.targetPlaceholder"
@@ -37,7 +36,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item :label="text.measure">
+      <el-form-item :label="text.measure" prop="measure">
         <el-input
           type="textarea"
           :placeholder="text.measurePlaceholder"
@@ -109,6 +108,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -127,7 +128,7 @@ export default {
       text: {
         title: '标题',
         titlePlaceholder: '给目标起个名字',
-        period: '起止日期',
+        timePicker: '起止日期',
         startDay: '开始日期',
         endDay: '结束日期',
         to: '至',
@@ -148,13 +149,40 @@ export default {
         submit: '提交',
         save: '保存'
       },
-      rules: {}
+      rules: {
+        title: [
+          { required: true, message: '请输入标题', trigger: 'blur' }
+        ],
+        timePicker: [
+          { type: 'array', required: true, message: '请输入起止日期', trigger: 'blur' }
+        ],
+        target: [
+          { required: true, message: '请输入目标描述', trigger: 'blur' }
+        ],
+        measure: [
+          { required: true, message: '请输入衡量标准', trigger: 'blur' }
+        ]
+      }
     }
   },
 
   methods: {
-    onSubmit () {},
-    onSave () {}
+    onSubmit () {
+      this.$refs.mainForm.validate()
+        .then(valid => this.pushBasicForm(this.form))
+        .then(() => this.$notify.success({
+          title: '提示',
+          message: '已通过校验'
+        }))
+        .catch(invalid => this.$notify.error({
+          title: '错误',
+          message: '输入有误，请修正。'
+        }))
+    },
+    onSave () {},
+    ...mapActions('formBasic', [
+      'pushBasicForm'
+    ])
   }
 }
 </script>

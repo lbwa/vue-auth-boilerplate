@@ -52,7 +52,8 @@ module.exports = {
     if (password === 'admin') {
       res.send({
         errno: 0,
-        status: 'ok'
+        status: 'ok',
+        message: ''
       })
     } else {
       res.send({
@@ -61,5 +62,13 @@ module.exports = {
         message: 'Invalid username or password'
       })
     }
+  },
+
+  'POST /api/form/basic': (req, res) => {
+    res.send({
+      errno: 0,
+      status: 'ok',
+      message: ''
+    })
   }
 }

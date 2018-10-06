@@ -20,4 +20,6 @@ export const WORKSPACE_RADAR = '/workspace/radar'
 
 export const WORKSPACE_TEAMS = '/workspace/teams'
 
-export const STEP_FORM = '/form/step'
+export const FORM_STEP = '/form/step'
+
+export const FORM_BASIC = '/form/basic'
