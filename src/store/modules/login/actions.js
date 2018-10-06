@@ -8,14 +8,7 @@ export default {
     return pushLogin(userInfo)
       .then(res => {
         const data = res.data
-        if (data.errno !== 0) {
-          console.error(`[pushLogin]: ${res.status} 用户名或密码错误`)
-          Notification.error({
-            title: 'Error',
-            message: '用户名或密码错误'
-          })
-          return
-        }
+        if (data.errno !== 0) throw new Error(`用户名或密码错误`)
         Notification.success({
           title: 'Success',
           message: '登陆成功，正在跳转...'
@@ -23,15 +16,15 @@ export default {
         return data
       })
       .then(data => {
-        if (!data.token) throw new Error(`[pushLogin]: token's error`)
+        if (!data.token) throw new Error(`Token's error`)
         commit(types.SET_TOKEN, data.token)
         setTokenToLocal({ token: data.token })
         replace('/dashboard/analysis')
       })
       .catch(e => {
         Notification.error({
-          title: '服务器超时',
-          message: '与服务器连接超时'
+          title: 'Error',
+          message: `${e}`
         })
         console.error(e)
       })
@@ -40,10 +33,12 @@ export default {
     return fetchUserInfo({ commit })
       .then(res => res.data)
       .then(data => {
-        if (data.errno !== 0) throw new Error(`[fetchUserInfo]: Token error`)
+        if (data.errno !== 0) throw new Error(`Token error`)
+        if (!Array.isArray(data.role)) throw new Error(`Role check failed`)
         commit(types.SET_USERNAME, data.name)
         commit(types.SET_ROLE, data.role)
+        return data
       })
-      .catch(e => console.error(e))
+      .catch(console.error)
   }
 }
