@@ -32,7 +32,8 @@ module.exports = {
       'STATIC': PATH.STATIC_PATH,
       'MOCK': path.resolve(PATH.ROOT_PATH, './mock'),
       'SERVICES': path.resolve(PATH.SOURCE_PATH, './services'),
-      'AUTH': path.resolve(PATH.SOURCE_PATH, './auth')
+      'AUTH': path.resolve(PATH.SOURCE_PATH, './auth'),
+      'STORE': path.resolve(PATH.SOURCE_PATH, './store')
     }
   },
   module: {

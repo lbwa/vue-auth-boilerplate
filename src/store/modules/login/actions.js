@@ -1,5 +1,6 @@
 import { pushLogin } from 'SERVICES'
 import { setTokenToLocal } from 'AUTH'
+import types from 'STORE/mutations/types'
 import { Notification } from 'element-ui'
 
 export default {
@@ -23,7 +24,7 @@ export default {
       })
       .then(data => {
         if (!data.token) throw new Error(`[pushLogin]: token's error`)
-        // commit(types.SET_TOKEN, data.token)
+        commit(types.SET_TOKEN, data.token, { root: true })
         setTokenToLocal({ token: data.token })
         replace('/dashboard/analysis')
       })
