@@ -106,6 +106,14 @@ export default {
 
             this.$router.replace('/dashboard/analysis')
           })
+          .catch(e => {
+            this.$notify.error({
+              title: '网络超时',
+              message: '请检查网络链接'
+            })
+            this.loading = false
+            console.error(e)
+          })
       })
     }
   }
