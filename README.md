@@ -30,7 +30,9 @@
 ## Usage
 
 ```bash
+git clone https://github.com/lbwa/vue-design-pro.git --depth=1
+cd vue-design-pro
 yarn mock
 yarn dev
-# visit http://localhost:5000 (or http://<your device ip>:5000)
+# visit http://localhost:5000 (or http://<your host device ip>:5000)
 ```
