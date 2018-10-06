@@ -2,8 +2,8 @@ import baseRequest from './base'
 import * as routes from './routes'
 
 // `POST` methods should be throttled in production mode
-export function userLogin (token) {
-  return baseRequest.post(routes.USER_TOKEN, token)
+export function pushLogin (userInfo) {
+  return baseRequest.post(routes.USER_TOKEN, userInfo)
 }
 
 export function pushStepForm (formData) {

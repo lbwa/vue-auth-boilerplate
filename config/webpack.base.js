@@ -31,7 +31,8 @@ module.exports = {
       'STYLE': path.resolve(PATH.SOURCE_PATH, './style'),
       'STATIC': PATH.STATIC_PATH,
       'MOCK': path.resolve(PATH.ROOT_PATH, './mock'),
-      'SERVICES': path.resolve(PATH.SOURCE_PATH, './services')
+      'SERVICES': path.resolve(PATH.SOURCE_PATH, './services'),
+      'AUTH': path.resolve(PATH.SOURCE_PATH, './auth')
     }
   },
   module: {

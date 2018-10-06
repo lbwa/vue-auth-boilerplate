@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { userLogin } from 'SERVICES'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -73,49 +73,17 @@ export default {
     onSubmit () {
       this.$refs.login.validate((valid) => {
         if (!valid) return false
-        // `POST` to server, and activate loading animation
-        // check `errno` from response data, 0 to route, 1 to return false
-
         this.loading = true
-        userLogin({
-          username: this.loginForm.username,
-          password: this.loginForm.password
+        this.pushLogin({
+          userInfo: this.loginForm,
+          replace: this.$router.replace.bind(this.$router)
         })
-          .then(res => {
-            const data = res.data
-            if (data.errno !== 0) {
-              console.error(`[${res.status}]: 验证失败`)
-              this.$message({
-                showClose: true,
-                message: '用户名或密码错误',
-                type: 'error'
-              })
-              this.loading = false
-
-              return
-            }
-            this.$message({
-              showClose: true,
-              message: '登陆成功',
-              type: 'success'
-            })
-            if (!window.localStorage) return
-            window.localStorage.setItem('__vue_design_pro__', res.data.token)
-
-            this.loading = false
-
-            this.$router.replace('/dashboard/analysis')
-          })
-          .catch(e => {
-            this.$notify.error({
-              title: '网络超时',
-              message: '请检查网络链接'
-            })
-            this.loading = false
-            console.error(e)
-          })
+          .finally(() => { this.loading = false }) // Do not forget close loading
       })
-    }
+    },
+    ...mapActions('login', [
+      'pushLogin'
+    ])
   }
 }
 </script>
