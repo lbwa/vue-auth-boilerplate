@@ -16,7 +16,7 @@ export default {
         return data
       })
       .then(data => {
-        if (!data.token) throw new Error(`Token's error`)
+        if (!data.token) throw new Error(`[Token]: empty token`)
         commit(types.SET_TOKEN, data.token)
         setTokenToLocal({ token: data.token })
         replace('/dashboard/analysis')
@@ -30,15 +30,18 @@ export default {
       })
   },
   fetchUserInfo ({ commit }) {
-    return fetchUserInfo({ commit })
+    return fetchUserInfo()
       .then(res => res.data)
       .then(data => {
-        if (data.errno !== 0) throw new Error(`Token error`)
-        if (!Array.isArray(data.role)) throw new Error(`Role check failed`)
+        if (data.errno !== 0) throw new Error(`[errno]: ${data.errno}`)
+        if (!Array.isArray(data.role)) throw new Error(`[role]: ${data.role}`)
         commit(types.SET_USERNAME, data.name)
         commit(types.SET_ROLE, data.role)
         return data
       })
       .catch(console.error)
+  },
+  createRoutes ({ commit }, role) {
+    console.log(role)
   }
 }

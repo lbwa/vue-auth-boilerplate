@@ -9,7 +9,8 @@ module.exports = {
     avatar: 'https://assets-cdn.github.com/apple-touch-icon-120x120.png',
     notify: 12,
     position: '前端开发',
-    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部'
+    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部',
+    role: ['admin']
   },
 
   'GET /api/analysis': analysis,
