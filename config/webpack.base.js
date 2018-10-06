@@ -63,7 +63,8 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 5000,
-          name: '[name].[ext]'
+          // Do not use [path], unexpected multiple directory will be created.
+          name: 'font/[name].[ext]'
         }
       },
       {

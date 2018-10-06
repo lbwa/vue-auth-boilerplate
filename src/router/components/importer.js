@@ -12,7 +12,8 @@ export default function createImporter (components) {
   components.forEach(component => {
     const chunkName = createChunkName(component)
     if (!importer[chunkName]) {
-      importer[chunkName] = () => import(/* webpackChunkName: 'async-[request][index]' */ `VIEW/${component}`)
+      // `async/*` for same output directory
+      importer[chunkName] = () => import(/* webpackChunkName: 'async/[request][index]' */ `VIEW/${component}`)
     }
   })
   return importer
