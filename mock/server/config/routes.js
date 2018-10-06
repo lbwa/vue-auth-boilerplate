@@ -4,12 +4,12 @@ const api = require('../../api')
 
 module.exports = {
   'GET /api/user': {
+    errno: 0,
     name: 'Bowen Liu',
-    avatar: '',
-    token: Math.random().toString(16).slice(2),
+    avatar: 'https://assets-cdn.github.com/apple-touch-icon-120x120.png',
     notify: 12,
     position: '前端开发',
-    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED'
+    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部'
   },
 
   'GET /api/analysis': analysis,

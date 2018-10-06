@@ -14,12 +14,12 @@ export function pushBasicForm (formData) {
   return baseRequest.post(routes.FORM_BASIC, formData)
 }
 
-export function fetchAllAnalysis () {
-  return baseRequest.get(routes.ANALYSIS)
+export function fetchUserInfo () {
+  return baseRequest.get(routes.CURRENT_USER)
 }
 
-export function fetchSpaceUser () {
-  return baseRequest.get(routes.CURRENT_USER)
+export function fetchAllAnalysis () {
+  return baseRequest.get(routes.ANALYSIS)
 }
 
 export function fetchSpaceProjects () {

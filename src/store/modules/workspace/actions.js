@@ -1,5 +1,5 @@
 import {
-  fetchSpaceUser,
+  fetchUserInfo,
   fetchSpaceProjects,
   fetchSpaceActivities,
   fetchSpaceRadar,
@@ -10,7 +10,7 @@ import types from './mutations/types'
 export default {
   fetchWorkspace ({ commit }) {
     Promise.all([
-      fetchSpaceUser(),
+      fetchUserInfo(),
       fetchSpaceProjects(),
       fetchSpaceActivities(),
       fetchSpaceRadar(),

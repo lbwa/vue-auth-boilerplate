@@ -1,4 +1,3 @@
 export default {
-  isCollapse: false,
-  token: ''
+  isCollapse: false
 }

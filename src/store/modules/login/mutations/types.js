@@ -1,0 +1,5 @@
+export default {
+  SET_USERNAME: 'SET_USERNAME',
+  SET_ROLE: 'SET_ROLE',
+  SET_TOKEN: 'SET_TOKEN'
+}
