@@ -94,7 +94,7 @@ baseConfig.plugins.push(
     analyzerMode: 'static'
   }),
   new MiniCssExtractPlugin({
-    filename: '[name].[contenthash:8].css',
+    filename: 'css/[name].[contenthash:8].css',
     allChunks: true
   }),
   new WebpackBar({
