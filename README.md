@@ -6,15 +6,17 @@
 
 ***Notice***: This project is developing !
 
-- Preview: https://lbwa.github.io/vue-design-pro
+- Preview (including online mock, details in `Network` tab): https://lbwa.github.io/vue-design-pro
 
 ## Features
 
-- **Neat Design**: Follow [Element UI specification]
+- **Neat Design**: UI design is inspired by [ant design specification], implemented by [Element UI]
 
 - **Mock development**: Easy to use mock development solution
 
-[Element UI specification]: https://github.com/ElemeFE/element
+[Element UI]: https://github.com/ElemeFE/element
+
+[ant design specification]: https://ant.design
 
 ## Templates
 
