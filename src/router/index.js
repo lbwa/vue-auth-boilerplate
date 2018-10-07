@@ -20,16 +20,13 @@ router.beforeEach((to, from, next) => {
   if (getTokenFromLocal()) {
     if (!store.getters['login/role'].length && to.path !== '/') {
       store.dispatch('login/fetchUserInfo')
-        .then(({ role }) => {
+        .then((userInfo) => {
           // Preset dynamic routes is used to create new global routes map,
           // filtered by `role` variable.
-          if (!Array.isArray(role)) {
-            throw new TypeError(role, ` should be a array`)
-          }
-          store.dispatch('login/createExtraRoutes', { role })
+          store.dispatch('login/createExtraRoutes', userInfo)
             .then(() => router.addRoutes(store.getters['login/addRoutes']))
-            .catch(console.error)
         })
+        .catch(console.error)
     }
   }
   next()

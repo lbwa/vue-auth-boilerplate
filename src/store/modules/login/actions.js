@@ -51,6 +51,9 @@ export default {
    * @param {String[]} role. Current user access. eg. ['admin'] or ['user']
    */
   createExtraRoutes ({ commit }, { role }) {
+    if (!Array.isArray(role)) {
+      throw new TypeError(role, ` should be a array`)
+    }
     // validate current user access
     // Skip filter extra routes if user role is ADMINISTRATOR
     let globalRoutes = role.includes(ADMINISTRATOR)
