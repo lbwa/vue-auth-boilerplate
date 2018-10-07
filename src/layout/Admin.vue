@@ -1,6 +1,7 @@
 <template>
   <el-container class="admin__layout">
-    <app-aside/>
+    <!-- <app-aside/> -->
+    <recursive-aside></recursive-aside>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>
 
@@ -38,6 +39,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import AppAside from 'COMPONENTS/App/Aside'
+import RecursiveAside from 'COMPONENTS/App/RecursiveAside'
 import AppHeader from 'COMPONENTS/App/Header'
 
 export default {
@@ -59,7 +61,8 @@ export default {
 
   components: {
     AppAside,
-    AppHeader
+    AppHeader,
+    RecursiveAside
   }
 }
 </script>
