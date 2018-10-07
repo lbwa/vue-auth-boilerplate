@@ -5,5 +5,8 @@ export default {
   },
   role (state) {
     return state.role
+  },
+  routes (state) {
+    return state.routes
   }
 }

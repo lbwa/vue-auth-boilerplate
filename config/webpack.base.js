@@ -33,7 +33,8 @@ module.exports = {
       'MOCK': path.resolve(PATH.ROOT_PATH, './mock'),
       'SERVICES': path.resolve(PATH.SOURCE_PATH, './services'),
       'AUTH': path.resolve(PATH.SOURCE_PATH, './auth'),
-      'STORE': path.resolve(PATH.SOURCE_PATH, './store')
+      'STORE': path.resolve(PATH.SOURCE_PATH, './store'),
+      'ROUTER': path.resolve(PATH.SOURCE_PATH, './router')
     }
   },
   module: {

@@ -1,43 +1,41 @@
-// import { createRoutes } from './utils'
-// import paths from './components/components'
-import components from './components'
+import { common } from '../components'
 
 export default [
   {
     path: '/',
-    component: components.login
+    component: common.login
   },
   {
     path: '/dashboard/analysis',
-    component: components.dashboardAnalysis
+    component: common.dashboardAnalysis
   },
   {
     path: '/dashboard/workspace',
-    component: components.dashboardWorkspace
+    component: common.dashboardWorkspace
   },
   {
     path: '/form/basic',
-    component: components.formBasic
+    component: common.formBasic
   },
   {
     path: '/form/step',
-    component: components.formStepIndex,
+    component: common.formStepIndex,
     redirect: '/form/step/info',
     children: [
       {
         path: 'info',
-        component: components.formStepInfo
+        component: common.formStepInfo
       },
       {
         path: 'confirm',
-        component: components.formStepConfirm,
+        component: common.formStepConfirm,
         beforeEnter (to, from, next) {
           from.path !== '/form/step/info' ? next('/form/step/info') : next()
         }
       },
       {
         path: 'success',
-        component: components.formStepSuccess,
+        component: common.formStepSuccess,
         beforeEnter (to, from, next) {
           from.path !== '/form/step/confirm' ? next('/form/step/info') : next()
         }
@@ -46,6 +44,6 @@ export default [
   },
   {
     path: '/form/advanced',
-    component: components.formAdvanced
+    component: common.formAdvanced
   }
 ]

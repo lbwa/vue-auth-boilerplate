@@ -10,13 +10,13 @@ export function createChunkName (path) {
   return normalizePath.join('')
 }
 
-export function createRoutes (paths, components, routes = []) {
-  paths.forEach(path => {
-    const chunkName = createChunkName(path)
-    routes.push({
-      path: path.toLowerCase(),
-      component: components[chunkName]
-    })
-  })
-  return routes
-}
+// export function createRoutes (paths, components, routes = []) {
+//   paths.forEach(path => {
+//     const chunkName = createChunkName(path)
+//     routes.push({
+//       path: path.toLowerCase(),
+//       component: components[chunkName]
+//     })
+//   })
+//   return routes
+// }

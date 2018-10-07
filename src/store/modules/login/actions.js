@@ -1,5 +1,6 @@
 import { pushLogin, fetchUserInfo } from 'SERVICES'
 import { setTokenToLocal } from 'AUTH'
+import { dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
 import { Notification } from 'element-ui'
 
@@ -41,7 +42,32 @@ export default {
       })
       .catch(console.error)
   },
-  createRoutes ({ commit }, role) {
-    console.log(role)
+  createExtraRoutes ({ commit }, { role }) {
+    let globalRoutes = role.includes('admin')
+      ? dynamicRoutes
+      : filterRoutes(dynamicRoutes, role)
+
+    commit(types.SET_ROUTES, globalRoutes)
   }
+}
+
+function filterRoutes (routes, role) {
+  const formatRoutes = []
+  routes.forEach(route => {
+    const routeCopy = { ...route } // Prevent edit original routes map
+    if (hasAccess(route, role)) {
+      if (routeCopy.children) {
+        routeCopy.children = filterRoutes(routeCopy, role)
+      }
+      formatRoutes.push(routeCopy)
+    }
+  })
+
+  return formatRoutes
+}
+
+function hasAccess (route, role) {
+  return route.meta && route.meta.role
+    ? role.some(key => route.meta.role.includes(key))
+    : true // common routes in dynamic routes map
 }

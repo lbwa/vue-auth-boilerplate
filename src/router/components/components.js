@@ -1,5 +1,5 @@
 // Should be a path based on 'VIEW/'
-export default [
+const common = [
   'Login',
   'Dashboard/Analysis',
   'Dashboard/Workspace',
@@ -10,3 +10,12 @@ export default [
   'Form/Step/Success',
   'Form/Advanced'
 ]
+
+const dynamic = [
+  'Permission'
+]
+
+export {
+  common,
+  dynamic
+}

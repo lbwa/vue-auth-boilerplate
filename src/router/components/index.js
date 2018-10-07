@@ -1,4 +1,6 @@
 import createImporter from './importer'
-import components from './components'
+import * as components from './components'
 
-export default createImporter(components)
+export const common = createImporter(components.common)
+
+export const dynamic = createImporter(components.dynamic)
