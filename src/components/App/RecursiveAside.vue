@@ -12,38 +12,71 @@
       :collapse="isCollapse"
       :collapse-transition="false"
       :router="true"
-      :unique-opened="true"
       :default-active="defaultActive"
       active-text-color="#ffffff"
       text-color="#ffffff"
       backgroundColor="#001529"
     >
       <!-- recursive tree area -->
-      <recursive-list :route="{
-        path: '/1',
-        components: 1,
-        meta: {
-          title: '11111'
-        },
-        children: [
-          {
-            path: '2',
-            components: 2,
-            meta: {
-              title: '22222'
-            },
-            children: [
-              {
-                path: '3',
-                components: 3,
-                meta: {
-                  title: '33333'
+      <recursive-list
+        :basic-route="`/1`"
+        :route="{
+          path: '/1',
+          components: 1,
+          meta: {
+            title: '11111',
+            icon: 'el-icon-tickets'
+          },
+          children: [
+            {
+              path: '2-1',
+              components: 2,
+              meta: {
+                title: '22222'
+              },
+              children: [
+                {
+                  path: '3-1',
+                  components: 3,
+                  meta: {
+                    title: '33333'
+                  }
+                },
+                {
+                  path: '4-1',
+                  components: 4,
+                  meta: {
+                    title: '4444'
+                  },
                 }
-              }
-            ]
-          }
-        ]
-      }"></recursive-list>
+              ]
+            },
+            {
+              path: '2-2',
+              components: 2,
+              meta: {
+                title: '22222-222'
+              },
+              children: [
+                {
+                  path: '3-2',
+                  components: 3,
+                  meta: {
+                    title: '33333-222'
+                  }
+                },
+                {
+                  path: '4-2',
+                  components: 4,
+                  meta: {
+                    title: '4444-2222'
+                  },
+                }
+              ]
+            }
+          ]
+        }"
+      ></recursive-list>
     </el-menu>
   </el-aside>
 </template>

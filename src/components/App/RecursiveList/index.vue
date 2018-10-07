@@ -2,7 +2,7 @@
   <div class="menu-list__wrapper">
     <template v-if="!route.children">
       <el-menu-item
-        index="/1/2/3"
+        :index="resolvePath(route.path)"
       >{{route.meta.title}}</el-menu-item>
     </template>
 
@@ -11,7 +11,7 @@
       :index="route.path"
     >
       <template slot="title">
-        <!-- <i :class="route.meta.icon"></i> -->
+        <i v-if="route.meta.icon" :class="route.meta.icon"></i>
         <span slot="title">{{route.meta.title}}</span>
       </template>
       <!-- recursive area -->
@@ -20,14 +20,15 @@
       >
         <recursive-list
           :key="child.path"
-          v-if="route.children"
+          v-if="child.children"
           :route="child"
+          :basic-route="resolvePath(child.path)"
         ></recursive-list>
         <el-menu-item
           v-else
           :key="child.path"
-          :index="resolvePath(route.path)"
-        >{{route.meta.title}}</el-menu-item>
+          :index="resolvePath(child.path)"
+        >{{child.meta.title}}</el-menu-item>
       </template>
     </el-submenu>
   </div>
@@ -44,7 +45,7 @@ export default {
       type: Object,
       required: true
     },
-    basicPath: {
+    basicRoute: {
       type: String,
       default: ''
     }
@@ -52,7 +53,7 @@ export default {
 
   methods: {
     resolvePath (targetPath) {
-      return path.resolve(this.basicPath, targetPath)
+      return path.resolve(this.basicRoute, targetPath)
     }
   }
 }
