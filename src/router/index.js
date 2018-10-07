@@ -27,6 +27,8 @@ router.beforeEach((to, from, next) => {
             throw new TypeError(role, ` should be a array`)
           }
           store.dispatch('login/createExtraRoutes', { role })
+            .then(() => router.addRoutes(store.getters['login/addRoutes']))
+            .catch(console.error)
         })
     }
   }

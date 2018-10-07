@@ -4,14 +4,14 @@ import { dynamic } from '../components'
 export default [
   {
     path: '/access/admin',
-    component: dynamic.permission,
+    component: dynamic.access,
     meta: {
       role: ['admin']
     }
   },
   {
     path: '/access/user',
-    component: dynamic.permission,
+    component: dynamic.access,
     meta: {
       role: ['user']
     }
