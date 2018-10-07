@@ -4,6 +4,9 @@ import { dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
 import { Notification } from 'element-ui'
 
+// for validate user access
+const ADMINISTRATOR = 'admin'
+
 export default {
   pushLogin ({ commit }, { userInfo, replace }) {
     return pushLogin(userInfo)
@@ -42,8 +45,15 @@ export default {
       })
       .catch(console.error)
   },
+
+  /**
+   * @description Using preset dynamic routes map to create extra map
+   * @param {String[]} role. Current user access. eg. ['admin'] or ['user']
+   */
   createExtraRoutes ({ commit }, { role }) {
-    let globalRoutes = role.includes('admin')
+    // validate current user access
+    // Skip filter extra routes if user role is ADMINISTRATOR
+    let globalRoutes = role.includes(ADMINISTRATOR)
       ? dynamicRoutes
       : filterRoutes(dynamicRoutes, role)
 

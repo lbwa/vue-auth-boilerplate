@@ -24,7 +24,7 @@ router.beforeEach((to, from, next) => {
           // Preset dynamic routes is used to create new global routes map,
           // filtered by `role` variable.
           if (!Array.isArray(role)) {
-            throw new TypeError(`${JSON.stringify(role)} should be a array`)
+            throw new TypeError(role, ` should be a array`)
           }
           store.dispatch('login/createExtraRoutes', { role })
         })

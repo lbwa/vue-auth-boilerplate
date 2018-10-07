@@ -5,7 +5,7 @@ export default [
     path: '/access/admin',
     component: dynamic.permission,
     meta: {
-      role: ['admin', 'user']
+      role: ['admin']
     }
   },
   {
