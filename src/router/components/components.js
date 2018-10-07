@@ -12,7 +12,7 @@ const common = [
 ]
 
 const dynamic = [
-  'Permission'
+  'Access'
 ]
 
 export {
