@@ -12,7 +12,9 @@ const common = [
 ]
 
 const dynamic = [
-  'Access'
+  'Access',
+  'Access/Admin',
+  'Access/User'
 ]
 
 export {

@@ -19,63 +19,10 @@
     >
       <!-- recursive tree area -->
       <recursive-list
-        :basic-route="`/1`"
-        :route="{
-          path: '/1',
-          components: 1,
-          meta: {
-            title: '11111',
-            icon: 'el-icon-tickets'
-          },
-          children: [
-            {
-              path: '2-1',
-              components: 2,
-              meta: {
-                title: '22222'
-              },
-              children: [
-                {
-                  path: '3-1',
-                  components: 3,
-                  meta: {
-                    title: '33333'
-                  }
-                },
-                {
-                  path: '4-1',
-                  components: 4,
-                  meta: {
-                    title: '4444'
-                  },
-                }
-              ]
-            },
-            {
-              path: '2-2',
-              components: 2,
-              meta: {
-                title: '22222-222'
-              },
-              children: [
-                {
-                  path: '3-2',
-                  components: 3,
-                  meta: {
-                    title: '33333-222'
-                  }
-                },
-                {
-                  path: '4-2',
-                  components: 4,
-                  meta: {
-                    title: '4444-2222'
-                  },
-                }
-              ]
-            }
-          ]
-        }"
+        v-for="route of routes"
+        :key="route.path"
+        :route="route"
+        :basic-route="route.path"
       ></recursive-list>
     </el-menu>
   </el-aside>

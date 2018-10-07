@@ -1,14 +1,14 @@
 <template>
-  <el-main class="permission">
+  <div class="access__admin">
     {{info}}
-  </el-main>
+  </div>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      info: 'dynamic routes'
+      info: 'access__admin'
     }
   }
 }
