@@ -162,6 +162,7 @@ export default {
       return this.formatData(this.sales.totalDetails, ['month', 'total'])
     },
     ...mapState('analysis', [
+      'init',
       'sales',
       'visitors',
       'payments',
@@ -171,7 +172,7 @@ export default {
   },
 
   created () {
-    this.fetchAnalysis()
+    !this.init && this.fetchAnalysis()
   },
 
   methods: {
