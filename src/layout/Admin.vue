@@ -100,5 +100,5 @@ export default {
 .main
   &__wrapper
     min-height: calc(100vh - 64px - 100px)
-    overflow: hidden
+    overflow: hidden // remove scrollBar-x
 </style>
