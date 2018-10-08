@@ -1,6 +1,5 @@
 <template>
   <el-container class="admin__layout">
-    <!-- <app-aside/> -->
     <recursive-aside></recursive-aside>
     <el-container>
       <app-header @toggleAside="toggleAside"></app-header>

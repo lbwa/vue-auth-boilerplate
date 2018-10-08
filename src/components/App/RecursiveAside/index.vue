@@ -31,7 +31,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import AsideLogo from 'COMPONENTS/App/AsideLogo'
-import RecursiveList from 'COMPONENTS/App/RecursiveList'
+import RecursiveList from 'COMPONENTS/App/RecursiveAside/Item'
 
 export default {
   computed: {
