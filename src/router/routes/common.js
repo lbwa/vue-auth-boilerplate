@@ -5,7 +5,8 @@ export default [
     path: '/',
     component: common.login,
     meta: {
-      title: 'analysis'
+      hidden: true,
+      layout: 'login'
     }
   },
   {
@@ -53,7 +54,12 @@ export default [
         component: common.formStepIndex,
         redirect: 'step/info',
         meta: {
-          title: '分步表单'
+          title: '分步表单',
+          // hide all child routes
+          hideChildren: true,
+          // Only work with `hideChildren`, and set 1st child routes to replace
+          // default routes
+          setIndex: 0
         },
         children: [
           {

@@ -21,8 +21,8 @@ export default {
 
   methods: {
     handleRouteUpdate (to, from) {
-      // 重复设定相同值将不会触发 computed 求值，即不会触发动态组件切换，避免不必要 repaint
-      this.layout = to.path === '/' ? 'login' : 'admin'
+      // 重复设定相同值将不会触发 computed 求值，即不会触发动态组件切换
+      this.layout = to.meta.layout || 'admin'
     }
   },
 
