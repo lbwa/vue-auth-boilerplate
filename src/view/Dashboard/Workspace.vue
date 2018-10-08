@@ -74,11 +74,12 @@ export default {
   },
 
   created () {
-    this.fetchWorkspace()
+    !this.init && this.fetchWorkspace()
   },
 
   computed: {
     ...mapState('workspace', [
+      'init',
       'currentUser',
       'projects',
       'activities',

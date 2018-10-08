@@ -1,6 +1,9 @@
 import types from './types'
 
 export default {
+  [types.SET_INIT] (state) {
+    state.init = true
+  },
   [types.SET_CURRENT_USER] (state, currentUser) {
     state.currentUser = currentUser
   },
