@@ -35,7 +35,6 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import AppAside from 'COMPONENTS/App/Aside'
 import RecursiveAside from 'COMPONENTS/App/RecursiveAside'
 import AppHeader from 'COMPONENTS/App/Header'
 
@@ -57,7 +56,6 @@ export default {
   },
 
   components: {
-    AppAside,
     AppHeader,
     RecursiveAside
   }

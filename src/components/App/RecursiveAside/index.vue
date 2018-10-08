@@ -12,6 +12,7 @@
       :collapse="isCollapse"
       :collapse-transition="false"
       :router="true"
+      :unique-opened="true"
       :default-active="defaultActive"
       active-text-color="#ffffff"
       text-color="#ffffff"
