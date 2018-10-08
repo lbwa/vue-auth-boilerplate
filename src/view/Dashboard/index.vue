@@ -1,9 +1,9 @@
 <template>
-  <el-main class="access">
+  <section class="dashboard">
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
-  </el-main>
+  </section>
 </template>
 
 <script>

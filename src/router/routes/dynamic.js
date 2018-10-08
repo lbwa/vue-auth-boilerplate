@@ -12,7 +12,7 @@ export default [
     children: [
       {
         path: 'admin',
-        component: dynamic.access,
+        component: dynamic.accessAdmin,
         meta: {
           title: 'admin',
           role: ['admin']
@@ -20,7 +20,7 @@ export default [
       },
       {
         path: 'user',
-        component: dynamic.access,
+        component: dynamic.accessUser,
         meta: {
           title: 'user',
           role: ['user']

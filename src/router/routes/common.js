@@ -9,18 +9,29 @@ export default [
     }
   },
   {
-    path: '/dashboard/analysis',
-    component: common.dashboardAnalysis,
+    path: '/dashboard',
+    component: common.dashboard,
+    redirect: '/dashboard/analysis',
     meta: {
-      title: 'dashboard'
-    }
-  },
-  {
-    path: '/dashboard/workspace',
-    component: common.dashboardWorkspace,
-    meta: {
-      title: 'workspace'
-    }
+      title: 'Dashboard',
+      icon: 'el-icon-service'
+    },
+    children: [
+      {
+        path: 'analysis',
+        component: common.dashboardAnalysis,
+        meta: {
+          title: '分析页'
+        }
+      },
+      {
+        path: 'workspace',
+        component: common.dashboardWorkspace,
+        meta: {
+          title: '工作台'
+        }
+      }
+    ]
   },
   {
     path: '/form/basic',

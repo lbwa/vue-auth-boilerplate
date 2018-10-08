@@ -102,14 +102,4 @@ export default {
     min-height: calc(100vh - 64px - 100px)
     padding: 24px 24px 0 24px
 
-.fade
-  &-enter
-    opacity: 0
-    transform: translateX(5%)
-
-  &-leave-to
-    opacity: 0
-
-  &-enter-active, &-leave-active
-    transition: opacity .3s, transform .3s
 </style>

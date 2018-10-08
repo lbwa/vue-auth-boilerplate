@@ -11,7 +11,7 @@
       :index="route.path"
     >
       <template slot="title">
-        <i v-if="route.meta.icon" :class="route.meta.icon"></i>
+        <i v-if="route.meta && route.meta.icon" :class="route.meta.icon"></i>
         <span slot="title">{{route.meta.title}}</span>
       </template>
       <!-- recursive area -->

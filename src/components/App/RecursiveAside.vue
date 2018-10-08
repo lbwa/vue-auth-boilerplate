@@ -32,15 +32,8 @@
 import { mapState, mapGetters } from 'vuex'
 import AsideLogo from 'COMPONENTS/App/AsideLogo'
 import RecursiveList from 'COMPONENTS/App/RecursiveList'
-import path from 'path'
 
 export default {
-  methods: {
-    resolvePath (basicPath, targetPath) {
-      return path.resolve(basicPath, targetPath)
-    }
-  },
-
   computed: {
     defaultActive () {
       return this.$route.path
