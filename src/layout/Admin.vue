@@ -1,7 +1,7 @@
 <template>
   <el-container class="admin__layout">
     <recursive-aside></recursive-aside>
-    <el-container>
+    <el-container class="admin__main__layout">
       <app-header @toggleAside="toggleAside"></app-header>
 
       <transition name="fade" mode="out-in">
@@ -72,6 +72,10 @@ export default {
   &__layout
     min-height: 100vh
     background-color: $background-light
+
+  &__main
+    &__layout
+      overflow: hidden
 
 .footer
   &__layout
