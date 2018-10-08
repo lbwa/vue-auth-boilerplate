@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --hotOnly",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --hot",
     "build": "yarn clean && cross-env NODE_ENV=production webpack --config config/webpack.prod.js --progress",
     "clean": "rm -vrf dist/* docs/*",
     "precommit": "lint-staged",

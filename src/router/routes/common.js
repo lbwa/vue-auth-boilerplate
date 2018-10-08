@@ -34,54 +34,64 @@ export default [
     ]
   },
   {
-    path: '/form/basic',
-    component: common.formBasic,
+    path: '/form',
+    component: common.form,
+    redirect: '/form/basic',
     meta: {
-      title: 'basic'
-    }
-  },
-  {
-    path: '/form/step',
-    component: common.formStepIndex,
-    redirect: '/form/step/info',
-    meta: {
-      title: 'step'
+      title: '表单页'
     },
     children: [
       {
-        path: 'info',
-        component: common.formStepInfo,
+        path: 'basic',
+        component: common.formBasic,
         meta: {
-          title: 'info'
+          title: '基础表单'
         }
       },
       {
-        path: 'confirm',
-        component: common.formStepConfirm,
+        path: 'step',
+        component: common.formStepIndex,
+        redirect: 'step/info',
         meta: {
-          title: 'confirm'
+          title: '分步表单'
         },
-        beforeEnter (to, from, next) {
-          from.path !== '/form/step/info' ? next('/form/step/info') : next()
-        }
+        children: [
+          {
+            path: 'info',
+            component: common.formStepInfo,
+            meta: {
+              title: 'info'
+            }
+          },
+          {
+            path: 'confirm',
+            component: common.formStepConfirm,
+            meta: {
+              title: 'confirm'
+            },
+            beforeEnter (to, from, next) {
+              from.path !== '/form/step/info' ? next('/form/step/info') : next()
+            }
+          },
+          {
+            path: 'success',
+            component: common.formStepSuccess,
+            meta: {
+              title: 'success'
+            },
+            beforeEnter (to, from, next) {
+              from.path !== '/form/step/confirm' ? next('/form/step/info') : next()
+            }
+          }
+        ]
       },
       {
-        path: 'success',
-        component: common.formStepSuccess,
+        path: 'advanced',
+        component: common.formAdvanced,
         meta: {
-          title: 'success'
-        },
-        beforeEnter (to, from, next) {
-          from.path !== '/form/step/confirm' ? next('/form/step/info') : next()
+          title: '高级表单'
         }
       }
     ]
-  },
-  {
-    path: '/form/advanced',
-    component: common.formAdvanced,
-    meta: {
-      title: 'advanced'
-    }
   }
 ]

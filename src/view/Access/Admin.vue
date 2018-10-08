@@ -1,7 +1,7 @@
 <template>
-  <div class="access__admin">
+  <el-main class="access__admin">
     {{info}}
-  </div>
+  </el-main>
 </template>
 
 <script>

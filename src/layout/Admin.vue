@@ -100,6 +100,5 @@ export default {
 .main
   &__wrapper
     min-height: calc(100vh - 64px - 100px)
-    padding: 24px 24px 0 24px
-
+    overflow: hidden
 </style>
