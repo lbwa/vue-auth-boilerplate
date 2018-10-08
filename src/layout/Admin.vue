@@ -5,9 +5,9 @@
       <app-header @toggleAside="toggleAside"></app-header>
 
       <transition name="fade" mode="out-in">
-        <keep-alive :exclude="['form-step-index']">
+        <!-- <keep-alive :exclude="['form-step-index']"> -->
           <router-view class="main__wrapper"></router-view>
-        </keep-alive>
+        <!-- </keep-alive> -->
       </transition>
 
       <el-footer class="footer__layout footer__font" height="100">
