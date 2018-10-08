@@ -1,6 +1,8 @@
 <template>
   <transition name="fade" mode="out-in">
-    <router-view></router-view>
+    <keep-alive :exclude="['form-step-index']">
+      <router-view></router-view>
+    </keep-alive>
   </transition>
 </template>
 

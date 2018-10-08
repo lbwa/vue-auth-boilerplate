@@ -5,7 +5,6 @@ export default {
   fetchAnalysis ({ commit }) {
     fetchAllAnalysis().then(res => {
       const data = res.data
-      commit(types.SET_INIT)
       commit(types.SET_SALES, data.sales)
       commit(types.SET_VISITORS, data.visitors)
       commit(types.SET_PAYMENTS, data.payments)

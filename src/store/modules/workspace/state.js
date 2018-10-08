@@ -1,5 +1,4 @@
 export default {
-  init: false,
   currentUser: {
     name: 'default user',
     avatar: '',

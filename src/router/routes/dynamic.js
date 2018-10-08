@@ -1,10 +1,10 @@
-import { dynamic } from '../components'
+import { dynamic, nestedExport } from '../components'
 
 // Service response routes map can be used to expand or rebuild this preset map
 export default [
   {
     path: '/access',
-    component: dynamic.access,
+    component: nestedExport,
     meta: {
       title: 'Access',
       role: ['admin']

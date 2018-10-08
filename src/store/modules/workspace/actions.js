@@ -17,7 +17,6 @@ export default {
       fetchSpaceTeams()
     ])
       .then(res => {
-        commit(types.SET_INIT)
         commit(types.SET_CURRENT_USER, res[0].data)
         commit(types.SET_PROJECTS, res[1].data)
         commit(types.SET_ACTIVITIES, res[2].data)

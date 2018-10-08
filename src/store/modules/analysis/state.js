@@ -1,7 +1,6 @@
 // store.state basic schema
 
 export default {
-  init: false,
   sales: {
     trend: [
       {

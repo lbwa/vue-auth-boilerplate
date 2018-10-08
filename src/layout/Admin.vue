@@ -5,9 +5,7 @@
       <app-header @toggleAside="toggleAside"></app-header>
 
       <transition name="fade" mode="out-in">
-        <!-- <keep-alive :exclude="['form-step-index']"> -->
-          <router-view class="main__wrapper"></router-view>
-        <!-- </keep-alive> -->
+        <router-view class="main__wrapper"></router-view>
       </transition>
 
       <el-footer class="footer__layout footer__font" height="100">
@@ -99,5 +97,7 @@ export default {
 .main
   &__wrapper
     min-height: calc(100vh - 64px - 100px)
-    overflow: hidden // remove scrollBar-x
+
+/deep/ .el-main
+  padding: 24px 24px 0 !important
 </style>

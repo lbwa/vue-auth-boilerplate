@@ -1,6 +1,8 @@
 export function createChunkName (path) {
   const formatPath = path.split('/')
-  const normalizePath = [formatPath[0].toLowerCase()]
+  const normalizePath = [formatPath[0].replace(/^[A-Z]/, initial => {
+    return initial.toLowerCase()
+  })]
   for (let i = 1; i < formatPath.length; i++) {
     const str = formatPath[i].replace(/^[a-z]/, (initial) => {
       return initial.toUpperCase()

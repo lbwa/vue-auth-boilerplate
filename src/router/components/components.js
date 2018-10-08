@@ -1,10 +1,8 @@
 // Should be a path based on 'VIEW/'
 const common = [
   'Login',
-  'Dashboard',
   'Dashboard/Analysis',
   'Dashboard/Workspace',
-  'Form',
   'Form/Basic',
   'Form/Step/Index',
   'Form/Step/Info',

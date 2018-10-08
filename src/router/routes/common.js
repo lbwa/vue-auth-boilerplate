@@ -1,4 +1,4 @@
-import { common } from '../components'
+import { common, nestedExport } from '../components'
 
 export default [
   {
@@ -11,7 +11,7 @@ export default [
   },
   {
     path: '/dashboard',
-    component: common.dashboard,
+    component: nestedExport,
     redirect: '/dashboard/analysis',
     meta: {
       title: 'Dashboard',
@@ -36,10 +36,11 @@ export default [
   },
   {
     path: '/form',
-    component: common.form,
+    component: nestedExport,
     redirect: '/form/basic',
     meta: {
-      title: '表单页'
+      title: '表单页',
+      icon: 'el-icon-document'
     },
     children: [
       {
