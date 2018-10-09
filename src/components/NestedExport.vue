@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" mode="out-in">
-    <keep-alive :exclude="['form-step-index']">
+    <keep-alive :exclude="noCachedList">
       <router-view></router-view>
     </keep-alive>
   </transition>
@@ -8,7 +8,13 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      noCachedList: [
+        'form-step-index'
+      ]
+    }
+  }
 }
 </script>
 
