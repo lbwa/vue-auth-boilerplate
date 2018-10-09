@@ -24,15 +24,8 @@ router.beforeEach((to, from, next) => {
   // get token from sessionStorage
   if (getTokenFromLocal()) {
     // fetch user info
-    if (!store.getters['login/role'].length && to.path !== '/') {
-      store.dispatch('login/fetchUserInfo')
-        .then((userInfo) => {
-          // Preset dynamic routes is used to create new global routes map,
-          // filtered by `role` variable.
-          store.dispatch('login/createExtraRoutes', userInfo)
-            .then(() => router.addRoutes(store.getters['login/addRoutes']))
-        })
-        .catch(console.error)
+    if (!store.getters['login/userInfo'].name && to.path !== '/') {
+      store.dispatch('login/fetchUserInfo').catch(console.error)
     }
     next()
   } else {

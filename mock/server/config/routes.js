@@ -10,8 +10,7 @@ module.exports = {
       avatar: 'https://assets-cdn.github.com/favicon.ico',
       notify: 12,
       position: '前端开发',
-      department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部',
-      role: [req.query.role || 'admin']
+      department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部'
     })
   },
 
@@ -27,19 +26,19 @@ module.exports = {
 
   'POST /api/login': (req, res) => {
     const { username, password, token } = req.body
-    if (username === 'admin' && password === 'pro') {
+    if ((username === 'admin' || username === 'user') && password === 'pro') {
       res.send({
         errno: 0,
         status: 'ok',
         token: token ? token : Math.random().toString(16).slice(2),
-        currentAuthority: 'admin'
+        role: [username]
       })
       return
     }
     res.send({
       errno: 1,
       status: 'error',
-      currentAuthority: 'guest'
+      role: ['user']
     })
   },
 

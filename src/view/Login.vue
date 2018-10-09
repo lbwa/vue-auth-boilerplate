@@ -16,7 +16,7 @@
     >
       <el-form-item prop="username">
         <el-input
-          placeholder="Username: admin"
+          placeholder="Username: admin/user"
           v-model="loginForm.username"
           clearable>
           <i slot="prefix" class="el-input__icon el-icon-mobile-phone"></i>

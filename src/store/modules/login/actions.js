@@ -1,5 +1,6 @@
 import { pushLogin, fetchUserInfo } from 'SERVICES'
 import { setTokenToLocal, removeToken } from 'AUTH'
+import router from 'ROUTER'
 import { dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
 import { Notification } from 'element-ui'
@@ -8,12 +9,13 @@ import { Notification } from 'element-ui'
 const ADMINISTRATOR = 'admin'
 
 export default {
-  pushLogin ({ commit, dispatch }, { userInfo, replace }) {
+  pushLogin ({ commit, dispatch, getters }, { userInfo, replace }) {
     return pushLogin(userInfo)
       .then(res => {
         const data = res.data
         if (data.errno !== 0) throw new Error(`用户名或密码错误`)
-        if (!data.token) throw new Error(`[Token]: empty token`)
+        if (!data.token) throw new Error(`[Token]: Wrong token response`)
+        if (!Array.isArray(data.role)) throw new Error(`[Role]: Wrong role response`)
         return data
       })
       .then(data => {
@@ -21,7 +23,15 @@ export default {
           title: 'Success',
           message: '登陆成功，正在跳转...'
         })
+        commit(types.SET_ROLE, data.role)
         commit(types.SET_TOKEN, data.token)
+
+        // Preset dynamic routes is used to create new global routes map,
+        // filtered by `role` variable.
+        // action named createExtraRoutes should follow mutation named SET_ROLE
+        dispatch('createExtraRoutes', { role: data.role })
+          .then(() => router.addRoutes(getters.addRoutes))
+
         setTokenToLocal({ token: data.token })
         replace('/dashboard/analysis')
       })
@@ -38,10 +48,7 @@ export default {
       .then(res => res.data)
       .then(data => {
         if (data.errno !== 0) throw new Error(`[errno]: ${data.errno}`)
-        if (!Array.isArray(data.role)) throw new Error(`[role]: ${data.role}`)
         commit(types.SET_USER_INFO, data)
-        commit(types.SET_USERNAME, data.name)
-        commit(types.SET_ROLE, data.role)
         return data
       })
       .catch(console.error)
@@ -65,7 +72,6 @@ export default {
   },
   logout ({ commit }, replace) {
     commit(types.SET_USER_INFO, {})
-    commit(types.SET_USERNAME, '')
     commit(types.SET_ROLE, [])
     commit(types.SET_TOKEN, '')
     removeToken()
