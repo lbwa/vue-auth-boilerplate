@@ -1,5 +1,6 @@
 import baseRequest from './base'
 import * as routes from './routes'
+import qs from 'querystring'
 
 // `POST` methods should be throttled in production mode
 export function pushLogin (userInfo) {
@@ -12,6 +13,12 @@ export function pushStepForm (formData) {
 
 export function pushBasicForm (formData) {
   return baseRequest.post(routes.FORM_BASIC, formData)
+}
+
+export function validateToken (token) {
+  if (!token) throw new Error('Token is required.')
+  if (typeof token !== 'object') token = { token }
+  return baseRequest.get(`${routes.VALIDATE_TOKEN}?${qs.stringify(token)}`)
 }
 
 export function fetchUserInfo () {

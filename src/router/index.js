@@ -27,6 +27,10 @@ router.beforeEach((to, from, next) => {
     if (!store.getters['login/userInfo'].name && to.path !== '/') {
       store.dispatch('login/fetchUserInfo').catch(console.error)
     }
+    // validate user token when there is no user role. eg, refresh page.
+    if (!store.getters['login/role'].length) {
+      store.dispatch('login/validateToken')
+    }
     next()
   } else {
     next({ path: `/?redirect=${to.path}`, replace: true })

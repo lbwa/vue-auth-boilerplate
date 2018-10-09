@@ -1,5 +1,5 @@
-import { pushLogin, fetchUserInfo } from 'SERVICES'
-import { setTokenToLocal, removeToken } from 'AUTH'
+import { pushLogin, validateToken, fetchUserInfo } from 'SERVICES'
+import { setTokenToLocal, getTokenFromLocal, removeToken } from 'AUTH'
 import router from 'ROUTER'
 import { dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
@@ -42,6 +42,17 @@ export default {
         })
         console.error(e)
       })
+  },
+  validateToken ({ commit, dispatch, getters }) {
+    return validateToken(getTokenFromLocal())
+      .then(res => res.data)
+      .then(data => {
+        if (data.errno !== 0) throw new Error(`errno: ${data}`)
+        commit(types.SET_ROLE, data.role)
+        dispatch('createExtraRoutes', { role: data.role })
+          .then(() => router.addRoutes(getters.addRoutes))
+      })
+      .catch(console.error)
   },
   fetchUserInfo ({ commit }) {
     return fetchUserInfo()

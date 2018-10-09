@@ -6,6 +6,8 @@ export const baseURL = isDevMode
 
 export const USER_TOKEN = '/login'
 
+export const VALIDATE_TOKEN = '/token'
+
 export const CURRENT_USER = '/user'
 
 export const ANALYSIS = '/analysis'
