@@ -1,12 +1,10 @@
 <template>
   <div id="root">
     <transition name="layout" mode="out-in">
-      <keep-alive>
-        <component :is="currentLayout">
-          <!-- 在动态组件中必须使用 route-view 以保证路由出口 -->
-          <route-view></route-view>
-        </component>
-      </keep-alive>
+      <component :is="currentLayout">
+        <!-- 在动态组件中必须使用 route-view 以保证路由出口 -->
+        <route-view></route-view>
+      </component>
     </transition>
   </div>
 </template>
