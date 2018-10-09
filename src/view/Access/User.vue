@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      info: 'access__user'
+      info: 'access__user: This page work with role including `user`.'
     }
   }
 }

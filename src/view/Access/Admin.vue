@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      info: 'access__admin'
+      info: 'access__admin: This page only work with `admin` role.'
     }
   }
 }
