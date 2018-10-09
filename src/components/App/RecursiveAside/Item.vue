@@ -71,6 +71,15 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
+.el-menu--collapse
+  & .el-menu-item
+    & .el-submenu__icon-arrow
+      display: none
 
+.el-menu--collapse
+  & .el-submenu
+    & .el-submenu__title
+      & .el-submenu__icon-arrow
+        display: none
 </style>
