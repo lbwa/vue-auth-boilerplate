@@ -70,7 +70,7 @@ function filterRoutes (routes, role) {
     const routeCopy = { ...route } // Prevent edit original routes map
     if (hasAccess(route, role)) {
       if (routeCopy.children) {
-        routeCopy.children = filterRoutes(routeCopy, role)
+        routeCopy.children = filterRoutes(routeCopy.children, role)
       }
       formatRoutes.push(routeCopy)
     }

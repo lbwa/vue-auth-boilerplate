@@ -7,7 +7,8 @@ export default [
     component: nestedExport,
     meta: {
       title: 'Access',
-      role: ['admin']
+      icon: 'el-icon-view'
+      // no meta means this component is common components in dynamic routes
     },
     children: [
       {
