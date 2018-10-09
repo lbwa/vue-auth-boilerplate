@@ -52,7 +52,7 @@ export default {
    */
   createExtraRoutes ({ commit }, { role }) {
     if (!Array.isArray(role)) {
-      throw new TypeError(role, ` should be a array`)
+      throw new TypeError(`[createExtraRoutes]:${role} should be a array`)
     }
     // validate current user access
     // Skip filter extra routes if user role is ADMINISTRATOR
