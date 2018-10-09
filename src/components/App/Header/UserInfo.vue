@@ -8,7 +8,10 @@
         <i class="el-icon-tickets"></i>
         <span slot="title">{{text.userCenter}}</span>
       </el-menu-item>
-      <el-menu-item index="/logout">
+      <el-menu-item
+        index="/logout"
+        @click="logout($router.replace.bind($router))"
+      >
         <i class="el-icon-circle-close-outline"></i>
         <span slot="title">{{text.logout}}</span>
       </el-menu-item>
@@ -28,7 +31,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -47,6 +50,12 @@ export default {
   computed: {
     ...mapState('login', [
       'userInfo'
+    ])
+  },
+
+  methods: {
+    ...mapActions('login', [
+      'logout'
     ])
   }
 }

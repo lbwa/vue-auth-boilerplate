@@ -1,5 +1,5 @@
 import { pushLogin, fetchUserInfo } from 'SERVICES'
-import { setTokenToLocal } from 'AUTH'
+import { setTokenToLocal, removeToken } from 'AUTH'
 import { dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
 import { Notification } from 'element-ui'
@@ -62,6 +62,18 @@ export default {
       : filterRoutes(dynamicRoutes, role)
 
     commit(types.SET_ROUTES, globalRoutes)
+  },
+  logout ({ commit }, replace) {
+    commit(types.SET_USER_INFO, {})
+    commit(types.SET_USERNAME, '')
+    commit(types.SET_ROLE, [])
+    commit(types.SET_TOKEN, '')
+    removeToken()
+    replace('/')
+    Notification.success({
+      title: 'Success',
+      message: '用户已注销'
+    })
   }
 }
 
