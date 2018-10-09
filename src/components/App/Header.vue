@@ -7,6 +7,7 @@
     <div class="header__info header__info__align">
       <el-switch
         style="display: block"
+        class="user-role__toggle"
         v-model="isAdmin"
         :active-color="activeColor"
         :inactive-color="inactiveColor"
@@ -43,7 +44,7 @@
 
 <script>
 import HeaderPopover from 'COMPONENTS/App/HeaderPopover'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: {
@@ -64,15 +65,24 @@ export default {
   computed: {
     currentRole () {
       return this.isAdmin ? 'admin' : 'user'
-    }
+    },
+    ...mapGetters('login', [
+      'addRoutes'
+    ])
   },
 
   methods: {
     toggleAside () {
       this.$emit('toggleAside')
     },
-    toggleUserRole () {
-      this.createExtraRoutes({ role: [this.currentRole] })
+    toggleUserRole (newRole) {
+      this.$message({
+        type: 'success',
+        message: `toggle admin item in aside menu.`
+      })
+      // replace old routes map
+      this.createExtraRoutes({ role: [newRole] })
+        .then(() => this.$router.addRoutes(this.addRoutes))
     },
     ...mapActions('login', [
       'createExtraRoutes'
@@ -133,4 +143,7 @@ export default {
 
   &__gutter
     padding: 0 12px
+
+.user-role__toggle
+  user-select: none
 </style>
