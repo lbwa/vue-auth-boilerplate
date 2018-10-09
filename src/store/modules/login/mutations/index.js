@@ -1,4 +1,5 @@
 import types from './types'
+import { commonRoutes } from 'ROUTER/routes'
 
 export default {
   [types.SET_USERNAME] (state, username) {
@@ -15,6 +16,6 @@ export default {
     state.addRoutes = routes
 
     // store current global routes map, filtered by state.role
-    state.routes = [...state.routes, ...routes]
+    state.routes = [...commonRoutes, ...routes]
   }
 }
