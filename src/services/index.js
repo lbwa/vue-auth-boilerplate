@@ -1,5 +1,6 @@
 import baseRequest from './base'
 import * as routes from './routes'
+import qs from 'querystring'
 
 // `POST` methods should be throttled in production mode
 export function pushLogin (userInfo) {
@@ -14,8 +15,12 @@ export function pushBasicForm (formData) {
   return baseRequest.post(routes.FORM_BASIC, formData)
 }
 
-export function fetchUserInfo () {
-  return baseRequest.get(routes.CURRENT_USER)
+export function fetchUserInfo (query) {
+  const url = query
+    ? `${routes.CURRENT_USER}?${qs.stringify(query)}`
+    : routes.CURRENT_USER
+
+  return baseRequest.get(url)
 }
 
 export function fetchAllAnalysis () {

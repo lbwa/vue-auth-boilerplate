@@ -2,6 +2,9 @@ import types from './types'
 import { commonRoutes } from 'ROUTER/routes'
 
 export default {
+  [types.SET_USER_INFO] (state, userInfo) {
+    state.userInfo = userInfo
+  },
   [types.SET_USERNAME] (state, username) {
     state.username = username
   },

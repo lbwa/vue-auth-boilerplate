@@ -18,6 +18,7 @@ router.beforeEach((to, from, next) => {
 
   // get token from sessionStorage
   if (getTokenFromLocal()) {
+    // fetch user info
     if (!store.getters['login/role'].length && to.path !== '/') {
       store.dispatch('login/fetchUserInfo')
         .then((userInfo) => {
@@ -28,6 +29,8 @@ router.beforeEach((to, from, next) => {
         })
         .catch(console.error)
     }
+  } else {
+    next({ path: '/', replace: true })
   }
   next()
 })

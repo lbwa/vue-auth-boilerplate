@@ -1,6 +1,7 @@
 import { commonRoutes } from 'ROUTER/routes'
 
 export default {
+  userInfo: {},
   username: '',
   role: [],
   token: '',

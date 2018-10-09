@@ -1,6 +1,6 @@
 <template>
   <el-main class="workspace">
-    <workspace-header :current-user="currentUser"></workspace-header>
+    <workspace-header :current-user="userInfo"></workspace-header>
     <el-row :gutter="24">
       <el-col
         class="workspace__projects__gutter"
@@ -79,10 +79,12 @@ export default {
 
   computed: {
     ...mapState('workspace', [
-      'currentUser',
       'projects',
       'activities',
       'teams'
+    ]),
+    ...mapState('login', [
+      'userInfo'
     ])
   },
 

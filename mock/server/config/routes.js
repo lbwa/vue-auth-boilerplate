@@ -3,14 +3,16 @@ const workspace = require('../../workspace')
 const api = require('../../api')
 
 module.exports = {
-  'GET /api/user': {
-    errno: 0,
-    name: 'Bowen Liu',
-    avatar: 'https://assets-cdn.github.com/apple-touch-icon-120x120.png',
-    notify: 12,
-    position: '前端开发',
-    department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部',
-    role: ['admin']
+  'GET /api/user': (req, res) => {
+    res.json({
+      errno: 0,
+      name: 'Bowen Liu',
+      avatar: 'https://assets-cdn.github.com/apple-touch-icon-120x120.png',
+      notify: 12,
+      position: '前端开发',
+      department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部',
+      role: [req.query.role || 'admin']
+    })
   },
 
   'GET /api/analysis': analysis,
