@@ -5,15 +5,6 @@
       @click="toggleAside"
     ></i>
     <div class="header__info header__info__align">
-      <el-switch
-        style="display: block"
-        class="user-role__toggle"
-        v-model="isAdmin"
-        :active-color="activeColor"
-        :inactive-color="inactiveColor"
-        active-text="admin"
-        inactive-text="user">
-      </el-switch>
       <el-tooltip
         effect="dark"
         content="Source code"
@@ -52,7 +43,6 @@
 <script>
 import HeaderNotify from 'COMPONENTS/App/Header/Notify'
 import HeaderUserInfo from 'COMPONENTS/App/Header/UserInfo'
-import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: {
@@ -62,43 +52,10 @@ export default {
     }
   },
 
-  data () {
-    return {
-      isAdmin: true,
-      activeColor: '#13ce66',
-      inactiveColor: '#3273dc'
-    }
-  },
-
-  computed: {
-    currentRole () {
-      return this.isAdmin ? 'admin' : 'user'
-    },
-    ...mapGetters('login', [
-      'addRoutes'
-    ])
-  },
-
   methods: {
     toggleAside () {
       this.$emit('toggleAside')
-    },
-    toggleUserRole (newRole) {
-      this.$message({
-        type: 'success',
-        message: `toggle admin item in aside menu.`
-      })
-      // replace old routes map
-      this.createExtraRoutes({ role: [newRole] })
-        .then(() => this.$router.addRoutes(this.addRoutes))
-    },
-    ...mapActions('login', [
-      'createExtraRoutes'
-    ])
-  },
-
-  watch: {
-    'currentRole': 'toggleUserRole'
+    }
   },
 
   components: {
