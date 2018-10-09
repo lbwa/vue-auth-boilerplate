@@ -23,7 +23,7 @@
     >
       <template slot="title">
         <i v-if="route.meta && route.meta.icon" :class="route.meta.icon"></i>
-        <span slot="title">{{route.meta.title}}</span>
+        <span class="menu__item__title" slot="title">{{route.meta.title}}</span>
       </template>
       <!-- recursive core area: to all route children -->
       <template
@@ -74,12 +74,12 @@ export default {
 <style lang="sass">
 .el-menu--collapse
   & .el-menu-item
-    & .el-submenu__icon-arrow
+    & .el-submenu__icon-arrow, .menu__item__title
       display: none
 
 .el-menu--collapse
   & .el-submenu
     & .el-submenu__title
-      & .el-submenu__icon-arrow
+      & .el-submenu__icon-arrow, .menu__item__title
         display: none
 </style>
