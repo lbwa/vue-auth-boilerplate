@@ -82,15 +82,12 @@ export default {
     commit(types.SET_ROUTES, globalRoutes)
   },
   logout ({ commit }, replace) {
-    commit(types.SET_USER_INFO, {})
-    commit(types.SET_ROLE, [])
-    commit(types.SET_TOKEN, '')
+    // same tab will not delete token from sessionStorage
     removeToken()
     replace('/')
-    Notification.success({
-      title: 'Success',
-      message: '用户已注销'
-    })
+
+    // for reset all global status, especially global routes map
+    location.reload()
   }
 }
 

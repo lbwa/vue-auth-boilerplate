@@ -10,6 +10,8 @@
 
 ## Features
 
+- **Access control**: Global aside dynamic rendered by global routes map which is combine common routes and dynamic routes (filter by user access).
+
 - **Neat Design**: UI design is inspired by [ant design specification], implemented by [Element UI]
 
 - **Mock development**: Easy to use mock development solution
@@ -28,6 +30,11 @@
 - Form
     - Basic form
     - Step form
+- Access
+    - Admin (A ***private*** page, filter by user access.)
+    - User (A ***common*** page, based on dynamic routes.)
+
+**Notice:** `access/admin` only work with user access including `admin`.
 
 ## Usage
 
