@@ -5,6 +5,14 @@
       @click="toggleAside"
     ></i>
     <div class="header__info header__info__align">
+      <el-switch
+        style="display: block"
+        v-model="isAdmin"
+        :active-color="activeColor"
+        :inactive-color="inactiveColor"
+        active-text="admin"
+        inactive-text="user">
+      </el-switch>
       <el-tooltip
         effect="dark"
         content="Source code"
@@ -35,6 +43,8 @@
 
 <script>
 import HeaderPopover from 'COMPONENTS/App/HeaderPopover'
+import { mapActions } from 'vuex'
+
 export default {
   props: {
     height: {
@@ -43,10 +53,34 @@ export default {
     }
   },
 
+  data () {
+    return {
+      isAdmin: true,
+      activeColor: '#13ce66',
+      inactiveColor: '#3273dc'
+    }
+  },
+
+  computed: {
+    currentRole () {
+      return this.isAdmin ? 'admin' : 'user'
+    }
+  },
+
   methods: {
     toggleAside () {
       this.$emit('toggleAside')
-    }
+    },
+    toggleUserRole () {
+      this.createExtraRoutes({ role: [this.currentRole] })
+    },
+    ...mapActions('login', [
+      'createExtraRoutes'
+    ])
+  },
+
+  watch: {
+    'currentRole': 'toggleUserRole'
   },
 
   components: {
