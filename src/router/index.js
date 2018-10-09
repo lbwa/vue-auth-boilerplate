@@ -16,6 +16,11 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   nprogress.start()
 
+  if (to.path === '/') {
+    next()
+    return
+  }
+
   // get token from sessionStorage
   if (getTokenFromLocal()) {
     // fetch user info
@@ -29,10 +34,10 @@ router.beforeEach((to, from, next) => {
         })
         .catch(console.error)
     }
+    next()
   } else {
-    next({ path: '/', replace: true })
+    next({ path: `/?redirect=${to.path}`, replace: true })
   }
-  next()
 })
 
 router.afterEach((to, from) => {
