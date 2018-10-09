@@ -7,7 +7,7 @@ module.exports = {
     res.json({
       errno: 0,
       name: 'Bowen Liu',
-      avatar: 'https://assets-cdn.github.com/apple-touch-icon-120x120.png',
+      avatar: 'https://assets-cdn.github.com/favicon.ico',
       notify: 12,
       position: '前端开发',
       department: '蚂蚁金服－某某某事业群－某某平台部－某某技术部',

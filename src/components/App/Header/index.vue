@@ -27,23 +27,31 @@
           <i class="el-icon-question"></i>
         </a>
       </el-tooltip>
-      <div class="info__icon__align info__icon__gutter">
-        <header-popover>
-          <el-badge
-            class="info__dot__face"
-            slot="reference"
-            :value="12"
-          >
-            <i class="el-icon-bell"></i>
-          </el-badge>
-        </header-popover>
-      </div>
+      <header-notify class="info__icon__align info__icon__gutter">
+        <el-badge
+          class="info__dot__face"
+          slot="reference"
+          :value="12"
+        >
+          <i class="el-icon-bell"></i>
+        </el-badge>
+      </header-notify>
+      <header-user-info class="info__icon__align info__icon__gutter">
+        <el-badge
+          class="info__dot__face"
+          slot="reference"
+          :value="12"
+        >
+          <i class="el-icon-bell"></i>
+        </el-badge>
+      </header-user-info>
     </div>
   </el-header>
 </template>
 
 <script>
-import HeaderPopover from 'COMPONENTS/App/HeaderPopover'
+import HeaderNotify from 'COMPONENTS/App/Header/Notify'
+import HeaderUserInfo from 'COMPONENTS/App/Header/UserInfo'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -94,7 +102,8 @@ export default {
   },
 
   components: {
-    HeaderPopover
+    HeaderNotify,
+    HeaderUserInfo
   }
 }
 </script>
