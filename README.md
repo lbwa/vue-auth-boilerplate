@@ -10,7 +10,7 @@
 
 ## Features
 
-- **Access control**: Global aside dynamic rendered by global routes map which is combine common routes and dynamic routes (filter by user access).
+- **Access control**: Global aside menu is rendered dynamically by global routes map which is made of common routes and dynamic routes, filtered by user access.
 
 - **Neat Design**: UI design is inspired by [ant design specification], implemented by [Element UI]
 

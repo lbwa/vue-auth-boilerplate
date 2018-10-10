@@ -27,14 +27,9 @@
           <i class="el-icon-bell"></i>
         </el-badge>
       </header-notify>
-      <header-user-info class="info__icon__align info__icon__gutter">
-        <el-badge
-          class="info__dot__face"
-          slot="reference"
-          :value="12"
-        >
-          <i class="el-icon-bell"></i>
-        </el-badge>
+      <header-user-info
+        class="info__icon__align info__icon__gutter"
+      >
       </header-user-info>
     </div>
   </el-header>
