@@ -98,7 +98,9 @@ baseConfig.plugins.push(
     allChunks: true
   }),
   new WebpackBar({
-    profile: true
+    profile: true,
+    minimal: false,
+    color: 'dodgerblue'
   })
 )
 

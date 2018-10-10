@@ -4,7 +4,9 @@ const PATH = require('./path')
 const path = require('path')
 
 const devMode = process.env.NODE_ENV === 'development'
-const OUTPUT_CONFIG = devMode ? '[name].[hash].js' : '[name].[contentHash:8].js'
+const OUTPUT_FILENAME = devMode
+  ? 'js/[name].[hash].js'
+  : 'js/[name].[contentHash:8].js'
 
 module.exports = {
   mode: devMode ? 'development' : 'production',
@@ -16,7 +18,7 @@ module.exports = {
   output: {
     path: PATH.BUILD_PATH,
     publicPath: devMode ? '/' : './',
-    filename: OUTPUT_CONFIG
+    filename: OUTPUT_FILENAME
   },
   resolve: {
     extensions: ['.vue', '.js', '.json'],
@@ -75,7 +77,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 8192,
-          name: '[path][name]-[hash:8].[ext]'
+          name: 'img/[name][hash:8].[ext]'
         }
       }
     ]
