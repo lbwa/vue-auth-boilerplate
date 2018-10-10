@@ -11,4 +11,4 @@ export const dynamic = createImporter(components.dynamic)
 // <keep-alive> to prevent cache 2nd level roues (#1)
 // 复用同一个 <router-view> 来实现二级路由缓存，此时一级路由中 <router-view> 仅对应
 // 唯一的 nestedExport, 但此时的一级路由不具有缓存功能，此举是为避免一级路由缓存二级路由(#1)
-export const nestedExport = () => import(/* webpackChunkName: 'async-nested-export' */ 'COMPONENTS/NestedExport')
+export const nestedExport = () => import(/* webpackChunkName: 'async/nested-export' */ 'COMPONENTS/NestedExport')

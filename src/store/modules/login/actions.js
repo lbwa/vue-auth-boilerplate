@@ -9,10 +9,9 @@ import { Notification } from 'element-ui'
 const ADMINISTRATOR = 'admin'
 
 export default {
-  pushLogin ({ commit, dispatch, getters }, { userInfo, replace }) {
+  pushLogin ({ commit, dispatch }, { userInfo, replace }) {
     return pushLogin(userInfo)
-      .then(res => {
-        const data = res.data
+      .then(({ data }) => {
         if (data.errno !== 0) throw new Error(`用户名或密码错误`)
         if (!data.token) throw new Error(`[Token]: Wrong token response`)
         if (!Array.isArray(data.role)) throw new Error(`[Role]: Wrong role response`)
@@ -23,18 +22,12 @@ export default {
           title: 'Success',
           message: '登陆成功，正在跳转...'
         })
-        commit(types.SET_ROLE, data.role)
         commit(types.SET_TOKEN, data.token)
-
-        // Preset dynamic routes is used to create new global routes map,
-        // filtered by `role` variable.
-        // action named createExtraRoutes should follow mutation named SET_ROLE
-        dispatch('createExtraRoutes', { role: data.role })
-          .then(() => router.addRoutes(getters.addRoutes))
-
         setTokenToLocal({ token: data.token })
-        replace('/dashboard/analysis')
+        return data.role
       })
+      .then(role => dispatch('createGlobalRoutes', role))
+      .then(() => replace('/dashboard/analysis'))
       .catch(e => {
         Notification.error({
           title: 'Error',
@@ -43,21 +36,18 @@ export default {
         console.error(e)
       })
   },
-  validateToken ({ commit, dispatch, getters }) {
+  validateToken ({ dispatch }) {
     return validateToken(getTokenFromLocal())
-      .then(res => res.data)
-      .then(data => {
+      .then(({ data }) => {
         if (data.errno !== 0) throw new Error(`errno: ${data}`)
-        commit(types.SET_ROLE, data.role)
-        dispatch('createExtraRoutes', { role: data.role })
-          .then(() => router.addRoutes(getters.addRoutes))
+        return data.role
       })
+      .then(role => dispatch('createGlobalRoutes', role))
       .catch(console.error)
   },
   fetchUserInfo ({ commit }) {
     return fetchUserInfo()
-      .then(res => res.data)
-      .then(data => {
+      .then(({ data }) => {
         if (data.errno !== 0) throw new Error(`[errno]: ${data.errno}`)
         commit(types.SET_USER_INFO, data)
         return data
@@ -80,6 +70,15 @@ export default {
       : filterRoutes(dynamicRoutes, role)
 
     commit(types.SET_ROUTES, globalRoutes)
+  },
+  createGlobalRoutes ({ commit, dispatch, getters }, role) {
+    commit(types.SET_ROLE, role)
+
+    // Preset dynamic routes is used to create new global routes map,
+    // filtered by `role` variable.
+    // action named createExtraRoutes should follow mutation named SET_ROLE
+    return dispatch('createExtraRoutes', { role })
+      .then(() => router.addRoutes(getters.addRoutes))
   },
   logout ({ commit }, replace) {
     // same tab will not delete token from sessionStorage

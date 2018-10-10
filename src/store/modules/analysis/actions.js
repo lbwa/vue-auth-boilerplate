@@ -3,8 +3,7 @@ import types from './mutations/types'
 
 export default {
   fetchAnalysis ({ commit }) {
-    fetchAllAnalysis().then(res => {
-      const data = res.data
+    fetchAllAnalysis().then(({ data }) => {
       commit(types.SET_SALES, data.sales)
       commit(types.SET_VISITORS, data.visitors)
       commit(types.SET_PAYMENTS, data.payments)

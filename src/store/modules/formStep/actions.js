@@ -8,10 +8,9 @@ export default {
       ...state.form,
       password
     })
-      .then(res => res.data)
-      .then(res => {
-        if (res.errno !== 0) throw new Error(`[pushStepForm]: ${res.message}`)
-        return res
+      .then(({ data }) => {
+        if (data.errno !== 0) throw new Error(`[pushStepForm]: ${data.message}`)
+        return data
       })
   }
 }
