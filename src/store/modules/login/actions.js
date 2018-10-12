@@ -65,11 +65,11 @@ export default {
     }
     // validate current user access
     // Skip filter extra routes if user role is ADMINISTRATOR
-    let globalRoutes = role.includes(ADMINISTRATOR)
+    let addRoutes = role.includes(ADMINISTRATOR)
       ? dynamicRoutes
       : filterRoutes(dynamicRoutes, role)
 
-    commit(types.SET_ROUTES, globalRoutes)
+    commit(types.SET_ROUTES, addRoutes)
   },
   createGlobalRoutes ({ commit, dispatch, getters }, role) {
     commit(types.SET_ROLE, role)
