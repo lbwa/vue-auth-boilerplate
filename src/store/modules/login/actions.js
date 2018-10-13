@@ -1,7 +1,7 @@
 import { pushLogin, validateToken, fetchUserInfo } from 'SERVICES'
 import { setTokenToLocal, getTokenFromLocal, removeToken } from 'AUTH'
 import router from 'ROUTER'
-import { dynamicRoutes } from 'ROUTER/routes'
+import { commonRoutes, dynamicRoutes } from 'ROUTER/routes'
 import types from './mutations/types'
 import { Notification } from 'element-ui'
 
@@ -26,7 +26,8 @@ export default {
         setTokenToLocal({ token: data.token })
         return data.role
       })
-      .then(role => dispatch('createGlobalRoutes', role))
+      .then(role => dispatch('createExtraRoutes', { role }))
+      .then(() => dispatch('createGlobalRoutes', { router }))
       .then(() => replace('/dashboard/analysis'))
       .catch(e => {
         Notification.error({
@@ -42,7 +43,8 @@ export default {
         if (data.errno !== 0) throw new Error(`errno: ${data}`)
         return data.role
       })
-      .then(role => dispatch('createGlobalRoutes', role))
+      .then(role => dispatch('createExtraRoutes', { role }))
+      .then(() => dispatch('createGlobalRoutes', { router }))
       .catch(console.error)
   },
   fetchUserInfo ({ commit }) {
@@ -65,20 +67,16 @@ export default {
     }
     // validate current user access
     // Skip filter extra routes if user role is ADMINISTRATOR
-    let addRoutes = role.includes(ADMINISTRATOR)
+    let extraRoutes = role.includes(ADMINISTRATOR)
       ? dynamicRoutes
       : filterRoutes(dynamicRoutes, role)
 
-    commit(types.SET_ROUTES, addRoutes)
-  },
-  createGlobalRoutes ({ commit, dispatch, getters }, role) {
     commit(types.SET_ROLE, role)
-
-    // Preset dynamic routes is used to create new global routes map,
-    // filtered by `role` variable.
-    // action named createExtraRoutes should follow mutation named SET_ROLE
-    return dispatch('createExtraRoutes', { role })
-      .then(() => router.addRoutes(getters.addRoutes))
+    commit(types.SET_EXTRA_ROUTES, extraRoutes)
+  },
+  createGlobalRoutes ({ commit, getters }, { router }) {
+    commit(types.SET_ROUTES, [...commonRoutes, ...getters.extraRoutes])
+    router.addRoutes(getters.extraRoutes)
   },
   logout ({ commit }, replace) {
     // same tab will not delete token from sessionStorage

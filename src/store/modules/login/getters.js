@@ -9,7 +9,7 @@ export default {
   routes (state) {
     return state.routes
   },
-  addRoutes (state) {
-    return state.addRoutes
+  extraRoutes (state) {
+    return state.extraRoutes
   }
 }
