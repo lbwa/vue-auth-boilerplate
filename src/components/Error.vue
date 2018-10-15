@@ -18,7 +18,6 @@ export default {
 .root
   &__error
     display: flex
-    min-height: 100%
 
 .error
   &__main, &__tips
