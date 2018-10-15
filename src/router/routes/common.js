@@ -100,5 +100,18 @@ export default [
         }
       }
     ]
+  },
+  {
+    path: '/error',
+    component: nestedExport,
+    meta: {
+      hidden: true
+    },
+    children: [
+      {
+        path: '404',
+        component: common.error404
+      }
+    ]
   }
 ]

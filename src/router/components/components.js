@@ -8,7 +8,10 @@ const common = [
   'Form/Step/Info',
   'Form/Step/Confirm',
   'Form/Step/Success',
-  'Form/Advanced'
+  'Form/Advanced',
+  'Error/404'
+  // 'Error/405',
+  // 'Error/500'
 ]
 
 const dynamic = [

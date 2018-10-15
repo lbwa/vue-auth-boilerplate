@@ -28,5 +28,14 @@ export default [
         }
       }
     ]
+  },
+  // Last one routes should be a error handle,
+  // it's also will become global error handle
+  {
+    path: '*',
+    redirect: '/error/404',
+    meta: {
+      hidden: true
+    }
   }
 ]
