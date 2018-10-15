@@ -13,6 +13,7 @@
       <el-button
         class="tips__button"
         type="primary"
+        @click="onClick"
       >{{text.tipsButton}}</el-button>
     </div>
   </error-layout>
@@ -42,6 +43,12 @@ export default {
       text: {
         tipsButton: '返回首页'
       }
+    }
+  },
+
+  methods: {
+    onClick () {
+      this.$router.push('/dashboard/analysis')
     }
   },
 
