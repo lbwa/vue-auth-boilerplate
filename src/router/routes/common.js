@@ -110,7 +110,21 @@ export default [
     children: [
       {
         path: '404',
-        component: common.error404
+        component: common.error,
+        props: {
+          status: 404,
+          info: '抱歉，你访问的页面不存在',
+          img: 'https://gw.alipayobjects.com/zos/rmsportal/KpnpchXsobRgLElEozzI.svg'
+        }
+      },
+      {
+        path: '403',
+        component: common.error,
+        props: {
+          status: 403,
+          info: '抱歉，你无权访问该页面',
+          img: 'https://gw.alipayobjects.com/zos/rmsportal/wZcnGqRDyhPOEYFcZDnb.svg'
+        }
       }
     ]
   }
