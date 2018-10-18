@@ -2,7 +2,7 @@
   <main class="login__page">
     <h1 class="login__header">
       <img class="header__logo" src="~STATIC/logo.png" width="40" alt="logo">
-      <span class="header__content">{{title}}</span>
+      <span class="header__content">{{ $t('login.title') }}</span>
     </h1>
     <!-- body -->
     <el-form
@@ -16,7 +16,7 @@
     >
       <el-form-item prop="username">
         <el-input
-          placeholder="Username: admin/user"
+          :placeholder="$t('login.placeholder.username')"
           v-model="loginForm.username"
           clearable>
           <i slot="prefix" class="el-input__icon el-icon-mobile-phone"></i>
@@ -24,7 +24,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-input
-          placeholder="Password: pro"
+          :placeholder="$t('login.placeholder.password')"
           type="password"
           v-model="loginForm.password"
           clearable>
@@ -43,7 +43,6 @@ import { mapActions } from 'vuex'
 export default {
   data () {
     return {
-      title: 'vue design pro',
       loginText: 'Log in',
       loginForm: {
         username: '',

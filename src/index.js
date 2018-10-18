@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import store from './store'
 import elementUI from 'element-ui'
+import i18n from './lang'
 
 import 'normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -16,6 +17,7 @@ new Vue({
   el: '#root',
   router,
   store,
+  i18n,
   render (h) {
     return h(App)
   }
