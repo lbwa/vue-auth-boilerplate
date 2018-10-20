@@ -1,14 +1,14 @@
 <template>
   <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-    <analysis-middle title="线上热门搜索">
+    <analysis-middle :title="$t('analysis.topSearch.middleTitle')">
       <el-row :gutter="68">
         <el-col :xs="24" :sm="12">
           <middle-chart-card
-            title="搜索用户数"
+            :title="$t('analysis.topSearch.searchUsers')"
             :highlight="searchData.total.value"
             :trend="searchData.total.trend"
             :shadow="shadow"
-            tooltip="这是搜索用户数"
+            :tooltip="$t('analysis.topSearch.searchUsersDesc')"
             :bodyStyle="bodyStyle"
           >
             <chart-line
@@ -27,11 +27,11 @@
         </el-col>
         <el-col :xs="24" :sm="12">
           <middle-chart-card
-            title="人均搜索次数"
+            :title="$t('analysis.topSearch.perCapitaSearch')"
             :highlight="searchData.average.value"
             :trend="searchData.average.trend"
             :shadow="shadow"
-            tooltip="这是人均搜索次数"
+            :tooltip="$t('analysis.topSearch.perCapitaSearchDesc')"
             :bodyStyle="bodyStyle"
           >
             <chart-line

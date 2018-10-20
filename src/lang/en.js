@@ -31,6 +31,13 @@ export default {
       salesRanking: 'Sales Ranking',
       visitsTrend: 'Visits Trend',
       visitsRanking: 'Visits Ranking'
+    },
+    topSearch: {
+      middleTitle: 'Online Top Search',
+      searchUsers: 'Search Users',
+      searchUsersDesc: 'This is search users',
+      perCapitaSearch: 'Per Capita Search',
+      perCapitaSearchDesc: 'This is per capita search'
     }
   },
   workspace: {
