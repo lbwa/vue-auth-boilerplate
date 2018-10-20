@@ -1,12 +1,12 @@
 <template>
   <el-tabs class="analysis__tab" v-model="activeTab">
-    <el-tab-pane label="销售量" name="totalSales">
+    <el-tab-pane :label="$t('analysis.tabs.salesTitle')" name="totalSales">
       <el-row>
         <el-col
           :xs="24" :sm="24" :md="12" :lg="16" :xl="16"
           class="tab__chart"
         >
-          <h4 class="chart__title">销售趋势</h4>
+          <h4 class="chart__title">{{$t('analysis.tabs.salesTrend')}}</h4>
           <chart-bar
             class="chart__body"
             :labels="chartData.labels"
@@ -18,19 +18,19 @@
           :xs="24" :sm="24" :md="12" :lg="8" :xl="8"
           class="tab__rank"
         >
-          <h4 class="rank__title">门店销售额排名</h4>
+          <h4 class="rank__title">{{$t('analysis.tabs.salesRanking')}}</h4>
           <Rank></Rank>
         </el-col>
       </el-row>
     </el-tab-pane>
 
-    <el-tab-pane label="访问量" name="totalVisitors">
+    <el-tab-pane :label="$t('analysis.tabs.visitsTitle')" name="totalVisitors">
       <el-row>
         <el-col
           :xs="24" :sm="24" :md="12" :lg="16" :xl="16"
           class="tab__chart"
         >
-          <h4 class="chart__title">访问量趋势</h4>
+          <h4 class="chart__title">{{$t('analysis.tabs.visitsTrend')}}</h4>
           <chart-bar
             class="chart__body"
             :labels="chartData.labels"
@@ -42,7 +42,7 @@
           :xs="24" :sm="24" :md="12" :lg="8" :xl="8"
           class="tab__rank"
         >
-          <h4 class="rank__title">门店访问量排名</h4>
+          <h4 class="rank__title">{{$t('analysis.tabs.visitsRanking')}}</h4>
           <Rank></Rank>
         </el-col>
       </el-row>

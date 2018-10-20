@@ -38,10 +38,10 @@ export default {
     return {
       tags: [
         {
-          name: '快速开始'
+          name: this.$t('workspace.tags.quickStart')
         },
         {
-          name: '便捷导航'
+          name: this.$t('workspace.tags.convenientNavigation')
         }
       ],
       navigators: [

@@ -23,6 +23,20 @@ export default {
       visitors: 'This is visits',
       payments: 'This is payments',
       operations: 'This is operational effect'
+    },
+    tabs: {
+      salesTitle: 'Sales',
+      visitsTitle: 'Visits',
+      salesTrend: 'Store Sales Trend',
+      salesRanking: 'Sales Ranking',
+      visitsTrend: 'Visits Trend',
+      visitsRanking: 'Visits Ranking'
+    }
+  },
+  workspace: {
+    tags: {
+      quickStart: 'Quick start',
+      convenientNavigation: 'Convenient navigation'
     }
   }
 }
