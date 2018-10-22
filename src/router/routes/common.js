@@ -22,14 +22,14 @@ export default [
         path: 'analysis',
         component: common.dashboardAnalysis,
         meta: {
-          title: '分析页'
+          title: 'Analysis'
         }
       },
       {
         path: 'workspace',
         component: common.dashboardWorkspace,
         meta: {
-          title: '工作台'
+          title: 'Workspace'
         }
       }
     ]
@@ -39,7 +39,7 @@ export default [
     component: nestedExport,
     redirect: '/form/basic',
     meta: {
-      title: '表单页',
+      title: 'Form',
       icon: 'el-icon-document'
     },
     children: [
@@ -47,7 +47,7 @@ export default [
         path: 'basic',
         component: common.formBasic,
         meta: {
-          title: '基础表单'
+          title: 'Basic form'
         }
       },
       {
@@ -55,7 +55,7 @@ export default [
         component: common.formStepIndex,
         redirect: 'step/info',
         meta: {
-          title: '分步表单',
+          title: 'Step form',
           // hide all child routes
           hideChildren: true,
           // Only work with `hideChildren`, and set 1st child routes to replace
@@ -91,12 +91,30 @@ export default [
             }
           }
         ]
-      },
+      }
+      // {
+      //   path: 'advanced',
+      //   component: common.formAdvanced,
+      //   meta: {
+      //     title: '高级表单'
+      //   }
+      // }
+    ]
+  },
+  {
+    path: '/table',
+    component: nestedExport,
+    redirect: '/table/pagination',
+    meta: {
+      title: 'Table',
+      icon: 'el-icon-tickets'
+    },
+    children: [
       {
-        path: 'advanced',
-        component: common.formAdvanced,
+        path: 'pagination',
+        component: common.tablePagination,
         meta: {
-          title: '高级表单'
+          title: 'Paging table'
         }
       }
     ]
