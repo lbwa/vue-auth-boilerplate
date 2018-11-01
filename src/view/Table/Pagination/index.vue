@@ -1,7 +1,7 @@
 <template>
   <el-table
     class="table"
-    :data="tableList"
+    :data="normalizeTable"
   >
     <el-table-column
       v-for="row of tableHeaders"
@@ -15,12 +15,20 @@
 
 <script>
 import DefaultTableHeaders from './DefaultHeaders'
+import mixinSort from './MixinSort'
 import { fetchPagingTableList } from 'SERVICES'
 
 export default {
+  mixins: [
+    mixinSort
+  ],
   data () {
     return {
-      tableList: []
+      tableData: [],
+      currentIndex: 1,
+      currentStart: 0,
+      currentEnd: 0,
+      pageSize: 10
     }
   },
 
@@ -38,7 +46,7 @@ export default {
       .then(({ data }) => data)
       .then(({ code, list }) => {
         if (code === 200) {
-          this.tableList = list
+          this.tableData = list
           return
         }
         throw new Error(`[Fetch table]: ${code}`)

@@ -5,7 +5,8 @@ export default [
   },
   {
     label: 'ID',
-    benchmark: 'id'
+    benchmark: 'id',
+    width: 150
   },
   {
     label: 'MID',
@@ -15,7 +16,7 @@ export default [
   {
     label: 'Package Name',
     benchmark: 'package_name',
-    width: 200
+    width: 380
   },
   {
     label: 'Total counts',
