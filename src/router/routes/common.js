@@ -114,7 +114,7 @@ export default [
         path: 'pagination',
         component: common.tablePagination,
         meta: {
-          title: 'Paging table'
+          title: 'Pagination table'
         }
       }
     ]

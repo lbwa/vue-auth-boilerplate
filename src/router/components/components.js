@@ -8,7 +8,7 @@ const common = [
   'Form/Step/Info',
   'Form/Step/Confirm',
   'Form/Step/Success',
-  'Form/Advanced',
+  // 'Form/Advanced',
   'Table/Pagination',
   'Error'
 ]

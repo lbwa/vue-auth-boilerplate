@@ -25,3 +25,5 @@ export const WORKSPACE_TEAMS = '/workspace/teams'
 export const FORM_STEP = '/form/step'
 
 export const FORM_BASIC = '/form/basic'
+
+export const PAGINATION_TABLE = '/table/pagination'

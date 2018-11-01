@@ -44,3 +44,7 @@ export function fetchSpaceRadar () {
 export function fetchSpaceTeams () {
   return baseRequest.get(routes.WORKSPACE_TEAMS)
 }
+
+export function fetchPagingTableList () {
+  return baseRequest.get(routes.PAGINATION_TABLE)
+}

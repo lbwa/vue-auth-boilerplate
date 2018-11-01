@@ -1,6 +1,7 @@
 const analysis = require('../../analysis')
 const workspace = require('../../workspace')
 const api = require('../../api')
+const pagination = require('../../table/pagination.json')
 
 module.exports = {
   'GET /api/user': {
@@ -34,6 +35,8 @@ module.exports = {
       res.sendStatus(403)
     }
   },
+
+  'GET /api/table/pagination': pagination,
 
   'POST /api/login': (req, res) => {
     const { username, password } = req.body
