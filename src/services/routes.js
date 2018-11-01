@@ -26,4 +26,4 @@ export const FORM_STEP = '/form/step'
 
 export const FORM_BASIC = '/form/basic'
 
-export const PAGINATION_TABLE = '/table/pagination'
+export const PAGINATION_TABLE = '/table/Paging'

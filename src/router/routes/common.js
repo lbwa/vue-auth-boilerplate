@@ -104,17 +104,17 @@ export default [
   {
     path: '/table',
     component: nestedExport,
-    redirect: '/table/pagination',
+    redirect: '/table/paging',
     meta: {
       title: 'Table',
       icon: 'el-icon-tickets'
     },
     children: [
       {
-        path: 'pagination',
-        component: common.tablePagination,
+        path: 'paging',
+        component: common.tablePaging,
         meta: {
-          title: 'Pagination table'
+          title: 'Paging table'
         }
       }
     ]

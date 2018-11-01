@@ -4,11 +4,11 @@
     :data="normalizeTable"
   >
     <el-table-column
-      v-for="row of tableHeaders"
-      :key="row.label"
-      :label="row.label"
-      :prop="row.benchmark"
-      :width="row.width || 'auto'"
+      v-for="col of tableHeaders"
+      :key="col.label"
+      :label="col.label"
+      :prop="col.benchmark"
+      :width="col.width || 'auto'"
     ></el-table-column>
   </el-table>
 </template>

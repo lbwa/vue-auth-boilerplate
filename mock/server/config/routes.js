@@ -1,7 +1,7 @@
 const analysis = require('../../analysis')
 const workspace = require('../../workspace')
 const api = require('../../api')
-const pagination = require('../../table/pagination.json')
+const paging = require('../../table/paging.json')
 
 module.exports = {
   'GET /api/user': {
@@ -36,7 +36,7 @@ module.exports = {
     }
   },
 
-  'GET /api/table/pagination': pagination,
+  'GET /api/table/paging': paging,
 
   'POST /api/login': (req, res) => {
     const { username, password } = req.body
