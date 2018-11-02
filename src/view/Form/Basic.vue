@@ -19,20 +19,20 @@ export default {
     return {
       links: [
         {
-          name: '首页',
+          name: this.$t('form.basic.links.home'),
           path: '/'
         },
         {
-          name: '表单页',
+          name: this.$t('form.basic.links.form'),
           path: ''
         },
         {
-          name: '基础表单',
+          name: this.$t('form.basic.links.basic'),
           path: ''
         }
       ],
-      title: '基础表单',
-      description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'
+      title: this.$t('form.basic.title'),
+      description: this.$t('form.basic.description')
     }
   },
 

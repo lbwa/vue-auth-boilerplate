@@ -45,5 +45,42 @@ export default {
       quickStart: 'Quick start',
       convenientNavigation: 'Convenient navigation'
     }
+  },
+  form: {
+    basic: {
+      title: 'Basic form',
+      description: 'Form is used to collect information which is provided by users.',
+      links: {
+        home: 'Home',
+        form: 'Form',
+        basic: 'Basic form'
+      },
+      mainForm: {
+        title: 'Title',
+        titlePlaceholder: 'Give your project a awesome name',
+        timePicker: 'Period',
+        startDay: 'Start time',
+        endDay: 'End time',
+        to: 'to',
+        target: 'Target description',
+        targetPlaceholder: 'Please input your target description',
+        measure: 'Measurement',
+        measurePlaceholder: 'Please input your measurement',
+        optional: '(Optional)',
+        client: 'Client',
+        clientPlaceholder: 'Please describe your client, Using @name/WordID if your client is internal client.',
+        clientDescription: 'Target client',
+        inviter: 'Inviter',
+        inviterPlaceholder: 'Please use @name/WorkID, less then 5 people.',
+        weight: 'Order',
+        public: 'Public',
+        partiallyPublic: 'Part',
+        private: 'Private',
+        publicTip: 'Client and inviter will be shared by default setting',
+        publicPlaceholder: 'To',
+        submit: 'Submit',
+        save: 'Save'
+      }
+    }
   }
 }

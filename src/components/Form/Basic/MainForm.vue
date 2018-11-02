@@ -85,13 +85,15 @@
 
       <el-form-item :label="text.public">
         <el-radio-group v-model="form.public" :min="0" :max="1">
-          <el-radio label="公开"></el-radio>
-          <el-radio label="部分公开"></el-radio>
-          <el-radio label="不公开"></el-radio>
+          <el-radio :label="$t('form.basic.mainForm.public')"></el-radio>
+          <el-radio :label="$t('form.basic.mainForm.partiallyPublic')"></el-radio>
+          <el-radio :label="$t('form.basic.mainForm.private')"></el-radio>
         </el-radio-group>
         <div class="basic-form__public__optional-input">
           <el-input
-            v-if="form.public === '部分公开'"
+            v-if="form.public === `${
+              this.$t('form.basic.mainForm.partiallyPublic')
+            }`"
             v-model="form.inviters"
             :placeholder="text.publicPlaceholder"
           ></el-input>
@@ -126,28 +128,28 @@ export default {
       },
       size: 'small',
       text: {
-        title: '标题',
-        titlePlaceholder: '给目标起个名字',
-        timePicker: '起止日期',
-        startDay: '开始日期',
-        endDay: '结束日期',
-        to: '至',
-        target: '目标描述',
-        targetPlaceholder: '请输入内容',
-        measure: '衡量标准',
-        measurePlaceholder: '请输入内容',
-        optional: '（选填）',
-        client: '客户',
-        clientPlaceholder: '请描述你服务的客户，内部客户直接 @姓名/工号',
-        clientDescription: '目标服务对象',
-        inviter: '邀评人',
-        inviterPlaceholder: '请直接 @姓名/工号，最多可邀请 5 人',
-        weight: '权重',
-        public: '目标公开',
-        publicTip: '客户、邀评人默认被分享',
-        publicPlaceholder: '分享给',
-        submit: '提交',
-        save: '保存'
+        title: this.$t('form.basic.mainForm.title'),
+        titlePlaceholder: this.$t('form.basic.mainForm.titlePlaceholder'),
+        timePicker: this.$t('form.basic.mainForm.timePicker'),
+        startDay: this.$t('form.basic.mainForm.startDay'),
+        endDay: this.$t('form.basic.mainForm.endDay'),
+        to: this.$t('form.basic.mainForm.to'),
+        target: this.$t('form.basic.mainForm.target'),
+        targetPlaceholder: this.$t('form.basic.mainForm.targetPlaceholder'),
+        measure: this.$t('form.basic.mainForm.measure'),
+        measurePlaceholder: this.$t('form.basic.mainForm.measurePlaceholder'),
+        optional: this.$t('form.basic.mainForm.optional'),
+        client: this.$t('form.basic.mainForm.client'),
+        clientPlaceholder: this.$t('form.basic.mainForm.clientPlaceholder'),
+        clientDescription: this.$t('form.basic.mainForm.clientDescription'),
+        inviter: this.$t('form.basic.mainForm.inviter'),
+        inviterPlaceholder: this.$t('form.basic.mainForm.inviterPlaceholder'),
+        weight: this.$t('form.basic.mainForm.weight'),
+        public: this.$t('form.basic.mainForm.public'),
+        publicTip: this.$t('form.basic.mainForm.publicTip'),
+        publicPlaceholder: this.$t('form.basic.mainForm.publicPlaceholder'),
+        submit: this.$t('form.basic.mainForm.submit'),
+        save: this.$t('form.basic.mainForm.save')
       },
       rules: {
         title: [
