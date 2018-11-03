@@ -3,6 +3,7 @@
     <el-table
       class="paging-table"
       :data="normalizeTable"
+      :cell-class-name="createCellClassName"
     >
       <el-table-column
         v-for="col of tableHeaders"
@@ -23,7 +24,6 @@
         <template slot-scope="scope">
           <el-input
             v-show="scope.row.__isEditing"
-            size="mini"
             @blur="handleClickSave(scope)"
             v-model="scope.row.mid"
           ></el-input>
@@ -33,7 +33,7 @@
 
       <el-table-column
         label="actions"
-        width="80"
+        width="100"
       >
         <template slot-scope="scope">
           <el-button
@@ -49,7 +49,7 @@
             key="save"
             type="text"
             icon="el-icon-download"
-            class="paging-table__footer__save"
+            class="paging-table__actions__save"
             v-show="scope.row.__isEditing"
             @click="handleClickSave(scope)"
           ></el-button>
@@ -149,6 +149,10 @@ export default {
 
       return cellValue
     },
+    createCellClassName ({ row, column, rowIndex, columnIndex }) {
+      if (column.label === 'actions') return 'paging-table__actions__button'
+      return ''
+    },
     fetchList () {
       return fetchPagingTableList()
         .then(({ data }) => data)
@@ -186,7 +190,11 @@ export default {
 <style lang="sass" scoped>
 .paging-table
   position: relative
-  &__footer
+
+  &__actions
     &__save
       margin-left: 0
+    &__button
+      .el-button
+        font-size: 20px
 </style>
