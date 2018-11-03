@@ -141,6 +141,16 @@ export default {
         password: 'Password',
         tipsTitle: 'Message',
         tipsMessage: 'Wrong password'
+      },
+      success: {
+        success: 'Success',
+        description: 'Expected to arrive within two hours',
+        payAccount: 'Payment Account',
+        receiverAccount: 'Receiver Account',
+        receiverName: 'Receiver Name',
+        amount: 'Amount',
+        morePayment: 'Transfer again',
+        checkBill: 'Check transfer records'
       }
     }
   }

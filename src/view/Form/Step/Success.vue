@@ -45,14 +45,14 @@ export default {
   data () {
     return {
       text: {
-        success: '操作成功',
-        description: '预计两小时内到账',
-        payAccount: '付款账户',
-        receiverAccount: '收款账户',
-        receiverName: '收款人姓名',
-        amount: '转账金额',
-        morePayment: '再转一笔',
-        checkBill: '检查账单'
+        success: this.$t('form.step.success.success'),
+        description: this.$t('form.step.success.description'),
+        payAccount: this.$t('form.step.success.payAccount'),
+        receiverAccount: this.$t('form.step.success.receiverAccount'),
+        receiverName: this.$t('form.step.success.receiverName'),
+        amount: this.$t('form.step.success.amount'),
+        morePayment: this.$t('form.step.success.morePayment'),
+        checkBill: this.$t('form.step.success.checkBill')
       }
     }
   },
