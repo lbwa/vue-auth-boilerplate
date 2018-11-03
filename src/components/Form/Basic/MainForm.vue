@@ -153,16 +153,33 @@ export default {
       },
       rules: {
         title: [
-          { required: true, message: '请输入标题', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.basic.rulesTitle'),
+            trigger: 'blur'
+          }
         ],
         timePicker: [
-          { type: 'array', required: true, message: '请输入起止日期', trigger: 'blur' }
+          {
+            type: 'array',
+            required: true,
+            message: this.$t('form.basic.rulesTimePicker'),
+            trigger: 'blur'
+          }
         ],
         target: [
-          { required: true, message: '请输入目标描述', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.basic.rulesTarget'),
+            trigger: 'blur'
+          }
         ],
         measure: [
-          { required: true, message: '请输入衡量标准', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.basic.rulesMeasure'),
+            trigger: 'blur'
+          }
         ]
       }
     }
@@ -173,12 +190,12 @@ export default {
       this.$refs.mainForm.validate()
         .then(valid => this.pushBasicForm(this.form))
         .then(() => this.$notify.success({
-          title: '提示',
-          message: '已通过校验'
+          title: this.$t('form.basic.successMessage.title'),
+          message: this.$t('form.basic.successMessage.content')
         }))
         .catch(invalid => this.$notify.error({
-          title: '错误',
-          message: '输入有误，请修正。'
+          title: this.$t('form.basic.failedMessage.title'),
+          message: this.$t('form.basic.failedMessage.content')
         }))
     },
     onSave () {},

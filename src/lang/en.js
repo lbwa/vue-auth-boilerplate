@@ -80,6 +80,18 @@ export default {
         publicPlaceholder: 'To',
         submit: 'Submit',
         save: 'Save'
+      },
+      rulesTitle: 'Please input title',
+      rulesTimePicker: 'Please input period',
+      rulesTarget: 'Please input target',
+      rulesMeasure: 'Please input measurement',
+      successMessage: {
+        title: 'Tips',
+        content: 'Successful validation'
+      },
+      failedMessage: {
+        title: 'Error',
+        content: 'Failed validation'
       }
     }
   }
