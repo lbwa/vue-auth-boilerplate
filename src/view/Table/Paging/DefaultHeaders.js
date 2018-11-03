@@ -1,6 +1,6 @@
 export default [
   {
-    label: 'name',
+    label: 'Name',
     benchmark: 'name'
   },
   {
@@ -19,18 +19,14 @@ export default [
     width: 380
   },
   {
-    label: 'Total counts',
+    label: 'Total',
     benchmark: 'total_counts',
     width: 120
   },
   {
-    label: 'Used counts',
+    label: 'Used',
     benchmark: 'used_counts',
     width: 120
-  },
-  {
-    label: 'State',
-    benchmark: 'state'
   },
   {
     label: 'Start time',

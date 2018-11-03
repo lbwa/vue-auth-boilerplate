@@ -10,6 +10,7 @@
         :label="col.label"
         :prop="col.benchmark"
         :width="col.width || 'auto'"
+        :formatter="formatTableCell"
       ></el-table-column>
     </el-table>
     <table-footer
@@ -26,6 +27,7 @@ import TableFooter from './Footer'
 import mixinSort from './MixinSort'
 import { fetchPagingTableList } from 'SERVICES'
 import DefaultTableHeaders from './DefaultHeaders'
+import dayjs from 'dayjs'
 
 export default {
   mixins: [
@@ -57,6 +59,21 @@ export default {
     },
     handleCurrentChange (currentIndex) {
       this.currentIndex = currentIndex
+    },
+    /**
+     * @description Convert new value into specific table cell
+     * @param {Object} row Cell Object
+     * @param {Object} cel Table cell layout object
+     * @param {Any} cellValue Cell value
+     * @param {Number} index Cell index in current table component
+     */
+    formatTableCell (row, col, cellValue, index) {
+      if (col.property === this.tableHeaders[6].benchmark ||
+        col.property === this.tableHeaders[7].benchmark) {
+        return dayjs(parseFloat(cellValue)).format('YYYY-MM-DD')
+      }
+
+      return cellValue
     }
   },
 
