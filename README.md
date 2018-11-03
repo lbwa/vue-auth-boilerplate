@@ -30,6 +30,8 @@
 - Form
     - Basic form
     - Step form
+- Table
+    - Paging table
 - Access
     - Admin (A ***private*** page, filter by user access.)
     - User (A ***common*** page, based on dynamic routes.)
