@@ -8,6 +8,7 @@
   },
   "files": [
     "server",
+    "table",
     "chart",
     "api.js",
     "analysis.js",
