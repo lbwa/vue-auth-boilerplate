@@ -1,22 +1,31 @@
 <template>
-  <el-table
-    class="table"
-    :data="normalizeTable"
-  >
-    <el-table-column
-      v-for="col of tableHeaders"
-      :key="col.label"
-      :label="col.label"
-      :prop="col.benchmark"
-      :width="col.width || 'auto'"
-    ></el-table-column>
-  </el-table>
+  <el-main>
+    <el-table
+      class="table"
+      :data="normalizeTable"
+    >
+      <el-table-column
+        v-for="col of tableHeaders"
+        :key="col.label"
+        :label="col.label"
+        :prop="col.benchmark"
+        :width="col.width || 'auto'"
+      ></el-table-column>
+    </el-table>
+    <table-footer
+      :currentIndex="currentIndex"
+      :totalItem="totalItem"
+      @sizeChange="handleSizeChange"
+      @currentChange="handleCurrentChange"
+    ></table-footer>
+  </el-main>
 </template>
 
 <script>
-import DefaultTableHeaders from './DefaultHeaders'
+import TableFooter from './Footer'
 import mixinSort from './MixinSort'
 import { fetchPagingTableList } from 'SERVICES'
+import DefaultTableHeaders from './DefaultHeaders'
 
 export default {
   mixins: [
@@ -28,6 +37,7 @@ export default {
       currentIndex: 1,
       currentStart: 0,
       currentEnd: 0,
+      sortBenchmark: 'name',
       pageSize: 10
     }
   },
@@ -38,6 +48,21 @@ export default {
       default () {
         return DefaultTableHeaders
       }
+    }
+  },
+
+  methods: {
+    handleSizeChange (size) {
+      this.pageSize = size
+    },
+    handleCurrentChange (currentIndex) {
+      this.currentIndex = currentIndex
+    }
+  },
+
+  computed: {
+    totalItem () {
+      return this.tableData.length
     }
   },
 
@@ -52,6 +77,10 @@ export default {
         throw new Error(`[Fetch table]: ${code}`)
       })
       .catch(console.error)
+  },
+
+  components: {
+    TableFooter
   }
 }
 </script>

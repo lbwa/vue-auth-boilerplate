@@ -20,11 +20,13 @@ export default [
   },
   {
     label: 'Total counts',
-    benchmark: 'total_counts'
+    benchmark: 'total_counts',
+    width: 120
   },
   {
     label: 'Used counts',
-    benchmark: 'used_counts'
+    benchmark: 'used_counts',
+    width: 120
   },
   {
     label: 'State',

@@ -1,9 +1,9 @@
 export default {
   methods: {
     sortFunction (prev, next) {
-      let modifier = this.ascending ? -1 : 1
-      if (prev > next) return -1 * modifier
-      if (prev < next) return 1 * modifier
+      let modifier = this.ascending ? 1 : -1
+      if (prev[this.sortBenchmark] > next[this.sortBenchmark]) return -1 * modifier
+      if (prev[this.sortBenchmark] < next[this.sortBenchmark]) return 1 * modifier
       return 0
     }
   },
