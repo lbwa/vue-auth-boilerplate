@@ -16,17 +16,15 @@ export default [
   {
     label: 'Package Name',
     benchmark: 'package_name',
-    width: 380
+    width: 350
   },
   {
     label: 'Total',
-    benchmark: 'total_counts',
-    width: 120
+    benchmark: 'total_counts'
   },
   {
     label: 'Used',
-    benchmark: 'used_counts',
-    width: 120
+    benchmark: 'used_counts'
   },
   {
     label: 'Start time',
