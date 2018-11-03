@@ -26,8 +26,8 @@ export default {
   data () {
     return {
       description: {
-        title: '说明',
-        main: '如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。'
+        title: this.$t('form.step.footer.title'),
+        main: this.$t('form.step.footer.content')
       }
     }
   },

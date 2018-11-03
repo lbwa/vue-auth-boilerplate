@@ -4,7 +4,7 @@
       class="confirm__form"
       ref="confirmForm"
       :model="confirmForm"
-      label-width="20%"
+      label-width="30%"
       size="small"
       :rules="rules"
       status-icon
@@ -66,20 +66,24 @@ export default {
       loading: false,
       rules: {
         password: [
-          { required: true, message: '需要支付密码才能进行支付', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.step.rulesPassword'),
+            trigger: 'blur'
+          }
         ]
       },
       text: {
-        submit: '提交',
-        cancel: '上一步',
-        alert: '确认转账后，资金将直接打入对方账户，无法退回。',
-        payAccount: '付款账号',
-        receiverAccount: '收款人账号',
-        receiverName: '收款人姓名',
-        amount: '转账金额',
-        password: '支付密码',
-        tipsTitle: '提示信息',
-        tipsMessage: '密码错误'
+        submit: this.$t('form.step.confirm.submit'),
+        cancel: this.$t('form.step.confirm.cancel'),
+        alert: this.$t('form.step.confirm.alert'),
+        payAccount: this.$t('form.step.confirm.payAccount'),
+        receiverAccount: this.$t('form.step.confirm.receiverAccount'),
+        receiverName: this.$t('form.step.confirm.receiverName'),
+        amount: this.$t('form.step.confirm.amount'),
+        password: this.$t('form.step.confirm.password'),
+        tipsTitle: this.$t('form.step.confirm.tipsTitle'),
+        tipsMessage: this.$t('form.step.confirm.tipsMessage')
       }
     }
   },

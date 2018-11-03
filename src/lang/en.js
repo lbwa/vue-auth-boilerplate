@@ -113,6 +113,7 @@ export default {
       rulesReceiverAccount: 'Please input receiver account',
       rulesReceiverName: 'Please input receiver name',
       rulesAmount: 'Please input amount',
+      rulesPassword: 'Please input your password',
       buttonNext: 'Next step',
       description: 'Divide a lengthy or unfamiliar form task into multiple steps to guide the user through the process.',
       stepTitle: {
@@ -124,6 +125,22 @@ export default {
         write: 'Step Form(Write transfer information)',
         confirm: 'Step Form(Confirm transfer information)',
         complete: 'Step Form(Complete)'
+      },
+      footer: {
+        title: 'Pro tips',
+        content: 'This is a description here.'
+      },
+      confirm: {
+        submit: 'Submit',
+        cancel: 'Cancel',
+        alert: 'This is a one-way operation. Once you confirm transfer, you can\'t go back!',
+        payAccount: 'Payment account',
+        receiverAccount: 'Receiver Account',
+        receiverName: 'Receiver Name',
+        amount: 'Amount',
+        password: 'Password',
+        tipsTitle: 'Message',
+        tipsMessage: 'Wrong password'
       }
     }
   }
