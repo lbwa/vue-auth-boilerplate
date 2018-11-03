@@ -42,24 +42,24 @@ export default {
       info: 'basic info',
       links: [
         {
-          name: '首页',
+          name: this.$t('form.step.label.linksHome'),
           path: '/'
         },
         {
-          name: '表单页',
+          name: this.$t('form.step.label.linksForm'),
           path: ''
         },
         {
-          name: '分步表单',
+          name: this.$t('form.step.label.linksStep'),
           path: ''
         }
       ],
-      title: '分步表单',
-      description: '将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。',
+      title: this.$t('form.step.label.linksStep'),
+      description: this.$t('form.step.description'),
       stepTitles: [
-        '填写转账信息',
-        '确认转账信息',
-        '完成'
+        this.$t('form.step.stepTitle.write'),
+        this.$t('form.step.stepTitle.confirm'),
+        this.$t('form.step.stepTitle.complete')
       ],
       activeSteps: 1 // min value should be 1, means it has activated first step
     }
@@ -70,7 +70,7 @@ export default {
       switch (newTab) {
         case 'info':
           this.updateLinks({
-            name: '分步表单（填写转账信息）',
+            name: this.$t('form.step.combineStepTitle.write'),
             path: ''
           })
           this.activeSteps = 1
@@ -78,7 +78,7 @@ export default {
 
         case 'confirm':
           this.updateLinks({
-            name: '分步表单（确认转账信息）',
+            name: this.$t('form.step.combineStepTitle.confirm'),
             path: ''
           })
           this.activeSteps = 2
@@ -86,7 +86,7 @@ export default {
 
         case 'success':
           this.updateLinks({
-            name: '分步表单（完成）',
+            name: this.$t('form.step.combineStepTitle.complete'),
             path: ''
           })
           this.activeSteps = 3

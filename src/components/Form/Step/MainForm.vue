@@ -4,10 +4,10 @@
     ref="mainForm"
     :model="form"
     :rules="rules"
-    label-width="20%"
+    label-width="30%"
     :size="size"
   >
-    <el-form-item label="付款账户">
+    <el-form-item :label="$t('form.step.label.payment')">
       <el-select
         v-model="payAccount"
         :style="{ width: '100%' }"
@@ -19,7 +19,7 @@
       </el-select>
     </el-form-item>
 
-    <el-form-item label="收款账户" prop="receiverAccount">
+    <el-form-item :label="$t('form.step.label.receiver')" prop="receiverAccount">
       <el-input
         :value="form.receiverAccount"
         @change.native="setReceiverAccount"
@@ -30,25 +30,35 @@
           v-model="receiverType"
           :style="{ width: '110px' }"
         >
-          <el-option label="支付宝" value="alipay"></el-option>
-          <el-option label="银行账号" value="bank"></el-option>
+          <el-option
+            :label="$t('form.step.label.alipay')"
+            value="alipay"
+          ></el-option>
+          <el-option
+            :label="$t('form.step.label.bank')"
+            value="bank"
+          ></el-option>
         </el-select>
       </el-input>
     </el-form-item>
 
-    <el-form-item label="收款人姓名" prop="receiverName">
+    <el-form-item
+      :label="$t('form.step.label.receiverName')"
+      prop="receiverName">
       <el-input
         :value="form.receiverName"
         @change.native="setReceiverName"
-        placeholder="请输入收款人姓名"
+        :placeholder="$t('form.step.placeholder.receiverName')"
       ></el-input>
     </el-form-item>
 
-    <el-form-item label="转账金额" prop="amount">
+    <el-form-item
+      :label="$t('form.step.label.amount')"
+      prop="amount">
       <el-input
         :value="form.amount"
         @change.native="setAmount"
-        placeholder="请输入金额"
+        :placeholder="$t('form.step.placeholder.amount')"
       ><span slot="prefix">￥</span></el-input>
     </el-form-item>
 
@@ -65,7 +75,7 @@ export default {
   props: {
     btnText: {
       type: String,
-      default: '下一步'
+      default: 'Next'
     },
     size: {
       type: String,
@@ -77,13 +87,25 @@ export default {
     return {
       rules: {
         receiverAccount: [
-          { required: true, message: '请输入收款账户', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.step.rulesReceiverAccount'),
+            trigger: 'blur'
+          }
         ],
         receiverName: [
-          { required: true, message: '请输入收款人姓名', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.step.rulesReceiverName'),
+            trigger: 'blur'
+          }
         ],
         amount: [
-          { required: true, message: '请输入转账金额', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('form.step.rulesAmount'),
+            trigger: 'blur'
+          }
         ]
       }
     }

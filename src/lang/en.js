@@ -93,6 +93,38 @@ export default {
         title: 'Error',
         content: 'Failed validation'
       }
+    },
+    step: {
+      label: {
+        linksHome: 'Home',
+        linksForm: 'Form',
+        linksStep: 'Step',
+        payment: 'Payment Account',
+        receiver: 'Receiver Account',
+        alipay: 'Alipay',
+        bank: 'Bank',
+        receiverName: 'Receiver Name',
+        amount: 'Amount'
+      },
+      placeholder: {
+        receiverName: 'Please input receiver name',
+        amount: 'Please input amount'
+      },
+      rulesReceiverAccount: 'Please input receiver account',
+      rulesReceiverName: 'Please input receiver name',
+      rulesAmount: 'Please input amount',
+      buttonNext: 'Next step',
+      description: 'Divide a lengthy or unfamiliar form task into multiple steps to guide the user through the process.',
+      stepTitle: {
+        write: 'Write transfer information',
+        confirm: 'Confirm transfer information',
+        complete: 'Complete'
+      },
+      combineStepTitle: {
+        write: 'Step Form(Write transfer information)',
+        confirm: 'Step Form(Confirm transfer information)',
+        complete: 'Step Form(Complete)'
+      }
     }
   }
 }
