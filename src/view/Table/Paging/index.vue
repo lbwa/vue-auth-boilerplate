@@ -66,6 +66,8 @@
     <table-footer
       :currentIndex="currentIndex"
       :totalItem="totalItem"
+      :page-size="pageSize"
+      :page-sizes="[ 10, 20, 30, 40 ]"
       @sizeChange="handleSizeChange"
       @currentChange="handleCurrentChange"
     ></table-footer>
@@ -85,12 +87,12 @@ export default {
   ],
   data () {
     return {
-      tableData: [],
-      currentIndex: 1,
-      currentStart: 0,
-      currentEnd: 0,
-      sortBenchmark: 'name',
-      pageSize: 10
+      tableData: [], // all table data container
+      currentIndex: 1, // current page index
+      currentStart: 0, // current start index for table data
+      currentEnd: 0, // current end index for table data
+      sortBenchmark: 'name', // current sort benchmark
+      pageSize: 10 // maximum number in the current page
     }
   },
 

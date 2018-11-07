@@ -5,6 +5,11 @@ export default {
       if (prev[this.sortBenchmark] > next[this.sortBenchmark]) return -1 * modifier
       if (prev[this.sortBenchmark] < next[this.sortBenchmark]) return 1 * modifier
       return 0
+    },
+    handleEmptyTable (newTableState, oldTableState) {
+      while (this.isEmptyTable && this.currentIndex > 1) {
+        this.currentIndex--
+      }
     }
   },
   computed: {
@@ -16,6 +21,12 @@ export default {
           this.currentEnd = this.currentIndex * this.pageSize
           return index >= this.currentStart && index < this.currentEnd
         })
+    },
+    isEmptyTable () {
+      return !this.normalizeTable.length
     }
+  },
+  watch: {
+    isEmptyTable: 'handleEmptyTable'
   }
 }
