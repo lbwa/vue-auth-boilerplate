@@ -1,0 +1,5 @@
+@import './mixins.scss';
+
+.page-unauthorized {
+  @include page-center
+}

@@ -1,0 +1,17 @@
+@mixin text-dot {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+  
+
+@mixin normalize-link($s: 14px, $w: 500, $c: rgba(0, 0, 0, .85), $h: #1890ff) {
+  font-size: $s;
+  font-weight: $w;
+  color: $c;
+  text-decoration: none;
+
+  &:hover {
+    color: $h;
+  }
+}

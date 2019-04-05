@@ -1,0 +1,9 @@
+$aside-transition-time: 0.3s;
+
+.horizontal-collapse-transition {
+  transition: all $aside-transition-time;
+}
+
+.v-leave-active, .v-enter-active {
+  transition: all $aside-transition-time;
+}

@@ -1,9 +1,10 @@
-import { commonRoutes } from 'ROUTER/routes'
-
 export default {
-  userInfo: {},
-  role: [],
-  token: '',
-  routes: commonRoutes, // store current global routes map
-  extraRoutes: [] // for router.addRoutes() function
+  userInfo: {
+    userId: '',
+    username: ''
+  },
+  accessToken: '',
+  accesses: [],
+  dynamicRoutes: [],
+  allRoutes: []
 }

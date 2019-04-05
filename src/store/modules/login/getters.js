@@ -1,15 +1,24 @@
-// We do not use `state` directly for strong scalability.
+import { createAccessMap } from 'PERMISSION/filter-routes'
+
 export default {
-  userInfo (state) {
-    return state.userInfo
+  username (state) {
+    return (state.userInfo && state.userInfo.username) || '无用户名'
   },
-  role (state) {
-    return state.role
+  accessToken (state) {
+    return state.accessToken
   },
-  routes (state) {
-    return state.routes
+  accesses (state) {
+    return state.accesses
   },
-  extraRoutes (state) {
-    return state.extraRoutes
+  accessMap (state) {
+    return createAccessMap(state.accesses)
+  },
+  // used to add user private routes (router.addRoutes) to global routes map.
+  dynamicRoutes (state) {
+    return state.dynamicRoutes
+  },
+  // used to create recursive aside.
+  allRoutes (state) {
+    return state.allRoutes
   }
 }

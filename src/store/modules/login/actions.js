@@ -1,110 +1,53 @@
-import { pushLogin, validateToken, fetchUserInfo } from 'SERVICES'
-import { setTokenToLocal, getTokenFromLocal, removeToken } from 'AUTH'
-import router from 'ROUTER'
-import { commonRoutes, dynamicRoutes } from 'ROUTER/routes'
+import { userLogin, fetchUserAccess } from 'API'
 import types from './mutations/types'
-import { Notification } from 'element-ui'
-
-// for validate user access
-const ADMINISTRATOR = 'admin'
+import router from 'ROUTER'
 
 export default {
-  pushLogin ({ commit, dispatch }, { userInfo, replace }) {
-    return pushLogin(userInfo)
-      .then(({ data }) => {
-        if (data.errno !== 0) throw new Error(`用户名或密码错误`)
-        if (!data.token) throw new Error(`[Token]: Wrong token response`)
-        if (!Array.isArray(data.role)) throw new Error(`[Role]: Wrong role response`)
-        return data
+  userLogin ({ commit }, { username, password, vm }) {
+    return (
+      userLogin({
+        username,
+        password
       })
-      .then(data => {
-        Notification.success({
-          title: 'Success',
-          message: '登陆成功，正在跳转...'
+        // eslint-disable-next-line
+        .then(({ user_id, access_token }) => {
+          commit(types.SET_USER_INFO, {
+            username /* 手机或者是邮箱 */,
+            userId: user_id
+          })
+          commit(types.SET_ACCESS_TOKEN, access_token)
+          router.replace('/')
         })
-        commit(types.SET_TOKEN, data.token)
-        setTokenToLocal({ token: data.token })
-        return data.role
-      })
-      .then(role => dispatch('createExtraRoutes', { role }))
-      .then(() => dispatch('createGlobalRoutes', { router }))
-      .then(() => replace('/dashboard/analysis'))
-      .catch(e => {
-        Notification.error({
-          title: 'Error',
-          message: `${e}`
+        .catch(e => {
+          if (e.code === 5000) {
+            vm.$_plugins_messageBox.alert('Wrong username or password', {
+              type: 'error',
+              title: 'Error'
+            })
+          }
+          // 仅用于触发 afterEach 后置导航守卫，使得顶部进度条 done()
+          // For invoking `router.afterEach` navigation guards including `NProgress.done()`
+          vm.$router.replace('/login')
+          console.error(`[Login error]: ${JSON.stringify(e)}`)
         })
-        console.error(e)
-      })
+    )
   },
-  validateToken ({ dispatch }) {
-    return validateToken(getTokenFromLocal())
-      .then(({ data }) => {
-        if (data.errno !== 0) throw new Error(`errno: ${data}`)
-        return data.role
-      })
-      .then(role => dispatch('createExtraRoutes', { role }))
-      .then(() => dispatch('createGlobalRoutes', { router }))
-      .catch(console.error)
-  },
-  fetchUserInfo ({ commit }) {
-    return fetchUserInfo()
-      .then(({ data }) => {
-        if (data.errno !== 0) throw new Error(`[errno]: ${data.errno}`)
-        commit(types.SET_USER_INFO, data)
-        return data
-      })
-      .catch(console.error)
-  },
-
-  /**
-   * @description Using preset dynamic routes map to create extra map
-   * @param {String[]} role. Current user access. eg. ['admin'] or ['user']
-   */
-  createExtraRoutes ({ commit }, { role }) {
-    if (!Array.isArray(role)) {
-      throw new TypeError(`[createExtraRoutes]:${role} should be a array`)
-    }
-    // validate current user access
-    // Skip filter extra routes if user role is ADMINISTRATOR
-    let extraRoutes = role.includes(ADMINISTRATOR)
-      ? dynamicRoutes
-      : filterRoutes(dynamicRoutes, role)
-
-    commit(types.SET_ROLE, role)
-    commit(types.SET_EXTRA_ROUTES, extraRoutes)
-  },
-  createGlobalRoutes ({ commit, getters }, { router }) {
-    commit(types.SET_ROUTES, [...commonRoutes, ...getters.extraRoutes])
-    router.addRoutes(getters.extraRoutes)
-  },
-  logout ({ commit }, replace) {
-    // same tab will not delete token from sessionStorage
-    removeToken()
-    replace('/')
-
-    // for reset all global status, especially global routes map
+  userLogout ({ commit }) {
+    commit(types.SET_USER_INFO, {})
+    commit(types.SET_USER_ACCESSES, [])
+    commit(types.SET_ACCESS_TOKEN, '')
+    commit(types.SET_DYNAMIC_ROUTES, [])
+    commit(types.SET_ALL_ROUTES, [])
+    // https://github.com/PanJiaChen/vue-element-admin/issues/416
+    // location.reload() is used to reset all dynamic routes.
+    // All routes records should be synced with vuex-persistedstate.
     location.reload()
+  },
+  fetchUserAccess ({ commit }, token) {
+    // ! 预留接口：请求用户的权限集合 roles，用于过滤用户的私有路由
+    return fetchUserAccess(token).then(({ accesses }) => {
+      commit(types.SET_USER_ACCESSES, accesses)
+      return accesses
+    })
   }
-}
-
-function filterRoutes (routes, role) {
-  const formatRoutes = []
-  routes.forEach(route => {
-    const routeCopy = { ...route } // Prevent edit original routes map
-    if (hasAccess(route, role)) {
-      if (routeCopy.children) {
-        routeCopy.children = filterRoutes(routeCopy.children, role)
-      }
-      formatRoutes.push(routeCopy)
-    }
-  })
-
-  return formatRoutes
-}
-
-function hasAccess (route, role) {
-  return route.meta && route.meta.role
-    ? role.some(key => route.meta.role.includes(key))
-    : true // common routes in dynamic routes map
 }
