@@ -1,17 +1,17 @@
 <template>
   <div class="common__user">
-    Current route is <strong>{{$route.path}}</strong>.
+    Current route is <strong>{{ $route.path }}</strong
+    >.
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       info: 'this is /pages/common/user'
     }
   }
 }
 </script>
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

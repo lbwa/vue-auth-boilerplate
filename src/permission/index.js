@@ -5,7 +5,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { tokenFromStorage, userInfoFromStorage } from 'UTILS/storage'
 import { MessageBox } from 'element-ui'
-import createDynamicRoutes, { validateAccess } from './filter-routes'
+import createDynamicRoutes, { validateAccess } from './controller/routes'
 import constantRoutes from 'ROUTER/routes/constant'
 
 NProgress.configure({ showSpinner: false })
@@ -15,21 +15,21 @@ const WHITELIST = ['/login']
 // Used to determine whether private routes has been added
 let HAS_ROUTES_ADDED = false
 
-function setDynamicRoutesToStorage () {
+function setDynamicRoutesToStorage() {
   store.commit(
     `login/${loginTypes.SET_DYNAMIC_ROUTES}`,
     createDynamicRoutes(store.getters['login/accessMap'])
   )
 }
 
-function setGlobalRoutesToStorage () {
+function setGlobalRoutesToStorage() {
   store.commit(`login/${loginTypes.SET_ALL_ROUTES}`, [
     ...constantRoutes,
     ...store.getters['login/dynamicRoutes']
   ])
 }
 
-function errorHandler (e, next, redirectPath) {
+function errorHandler(e, next, redirectPath) {
   MessageBox({
     title: 'Error',
     message: 'We got a error when fetching user access.',
@@ -47,7 +47,7 @@ function errorHandler (e, next, redirectPath) {
   console.error(e)
 }
 
-function addRoutesToRouter () {
+function addRoutesToRouter() {
   router.addRoutes(store.getters['login/dynamicRoutes'])
   console.log(
     '%c[Routes creation]: routes has been added!',
@@ -56,7 +56,7 @@ function addRoutesToRouter () {
   )
 }
 
-function createRoutesMap (to, next) {
+function createRoutesMap(to, next) {
   setDynamicRoutesToStorage()
   setGlobalRoutesToStorage()
   addRoutesToRouter()
@@ -146,7 +146,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
   NProgress.done()
 })
 

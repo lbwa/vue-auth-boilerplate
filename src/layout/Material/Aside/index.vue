@@ -12,8 +12,9 @@
         src="./logo.png"
         width="32"
         height="32"
-        alt="App logo">
-      <h1 class="aside__title">{{$t('aside.header')}}</h1>
+        alt="App logo"
+      />
+      <h1 class="aside__title">{{ $t('aside.header') }}</h1>
     </header>
     <el-menu
       class="aside__menu"
@@ -42,7 +43,7 @@ import { mapState, mapGetters } from 'vuex'
 import RecursiveItem from './Item'
 
 export default {
-  data () {
+  data() {
     return {
       activeTextColor: '#ffffff',
       textColor: '#ffffff',
@@ -50,9 +51,7 @@ export default {
     }
   },
   computed: {
-    ...mapState([
-      'isAsideCollapse'
-    ]),
+    ...mapState(['isAsideCollapse']),
     ...mapGetters('login', {
       routes: 'allRoutes'
     })
@@ -63,14 +62,14 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import '~STYLE/color/background.scss';
 @import '~STYLE/color/font.scss';
 @import '~STYLE/layout/aside.scss';
 
 .layout__material__aside {
   min-height: 100vh;
-  transition: width .3s;
+  transition: width 0.3s;
   color: white;
   overflow-x: hidden !important; // 隐藏横向滚动条
 
@@ -83,7 +82,6 @@ export default {
   }
 
   .aside {
-
     &__header {
       padding-left: 24px;
       background-color: #002140;
@@ -118,7 +116,8 @@ export default {
 }
 
 /deep/ .el-submenu__title {
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $background-dark;
   }
 }
@@ -126,7 +125,8 @@ export default {
 /deep/ .el-menu-item {
   background-color: $background-dark;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     background-color: $background-dark;
   }
 

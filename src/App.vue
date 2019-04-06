@@ -2,7 +2,7 @@
   <div id="app">
     <transition name="layout" mode="out-in">
       <component :is="currentLayout">
-        <router-view/>
+        <router-view />
       </component>
     </transition>
   </div>
@@ -10,40 +10,40 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       layout: ''
     }
   },
 
   methods: {
-    onRouteUpdate (to, from) {
+    onRouteUpdate(to) {
       this.setCurrentLayout(to.meta.layout)
     },
-    setCurrentLayout (layout = 'material') {
+    setCurrentLayout(layout = 'material') {
       this.layout = layout
     }
   },
 
   watch: {
-    '$route': 'onRouteUpdate'
+    $route: 'onRouteUpdate'
   },
 
   computed: {
-    currentLayout () {
+    currentLayout() {
       // ! 必须将 formatLayoutKey 从字符串模板中抽离出来，否则 this.layout 变化时,
       // 将不会触发 computed 的计算
-      const formatLayoutKey = this.layout
-        .replace(/^[a-z]/, key => key.toUpperCase())
-
-      return () => import(
-        /* webpackChunkName: 'layout-[request]' */
-        `LAYOUT/${formatLayoutKey}`
+      const formatLayoutKey = this.layout.replace(/^[a-z]/, key =>
+        key.toUpperCase()
       )
+
+      return () =>
+        import(/* webpackChunkName: 'layout-[request]' */
+        `LAYOUT/${formatLayoutKey}`)
     }
   },
 
-  created () {
+  created() {
     this.setCurrentLayout(this.$route.meta.layout)
   }
 }
@@ -68,12 +68,13 @@ export default {
 }
 
 .layout {
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
   }
-  &-enter-active, &-leave-active {
-    transition: opacity .3s;
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.3s;
   }
 }
-
 </style>

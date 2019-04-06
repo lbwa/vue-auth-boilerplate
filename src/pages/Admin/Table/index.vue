@@ -1,17 +1,17 @@
 <template>
   <div class="admin__table">
-    Current route is <strong>{{$route.path}}</strong>.
+    Current route is <strong>{{ $route.path }}</strong
+    >.
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       info: 'this is /pages/admin/table'
     }
   }
 }
 </script>
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -1,10 +1,10 @@
 export default {
   name: 'LayoutPlain',
 
-  render (h) {
+  render(h) {
     return (
       <section class="layout__plain">
-        <router-view/>
+        <router-view />
       </section>
     )
   }

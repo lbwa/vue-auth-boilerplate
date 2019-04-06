@@ -3,29 +3,24 @@
   and no hidden setting. -->
   <div
     class="recursive__list__item"
-    v-if="(route.meta && !route.meta.hidden) && route.meta.title"
+    v-if="route.meta && !route.meta.hidden && route.meta.title"
   >
-
     <!-- route rendering without child route -->
     <template v-if="!route.children">
-      <el-menu-item
-        :index="resolvePath(route.path)"
-      >
+      <el-menu-item :index="resolvePath(route.path)">
         <!-- 仅仅在根路由的情况下存在默认图标 `el-icon-news` -->
         <!-- Only root routes has a default icon. -->
         <item-title
-          :icon="route.meta.icon
-            || (isRootPath(route.path) ? 'el-icon-news' : '')"
+          :icon="
+            route.meta.icon || (isRootPath(route.path) ? 'el-icon-news' : '')
+          "
           :title="route.meta.title"
         />
       </el-menu-item>
     </template>
 
     <!-- route rendering with child route: recursive area -->
-    <el-submenu
-      v-else
-      :index="route.path"
-    >
+    <el-submenu v-else :index="route.path">
       <template slot="title">
         <item-title
           v-if="route.meta"
@@ -35,12 +30,8 @@
       </template>
 
       <!-- child route recursive rendering -->
-      <template
-        v-for="child of route.children"
-      >
-        <template
-          v-if="child.meta && !child.meta.hidden"
-        >
+      <template v-for="child of route.children">
+        <template v-if="child.meta && !child.meta.hidden">
           <recursive-item
             v-if="child.children && child.children.length"
             :route="child"
@@ -52,11 +43,11 @@
             v-else
             :key="child.path"
             :index="resolvePath(child.path)"
-          >{{child.meta.title}}</el-menu-item>
+            >{{ child.meta.title }}</el-menu-item
+          >
         </template>
       </template>
     </el-submenu>
-
   </div>
 </template>
 
@@ -79,10 +70,10 @@ export default {
   },
 
   methods: {
-    resolvePath (targetPath) {
+    resolvePath(targetPath) {
       return path.resolve(this.basicRoute, targetPath)
     },
-    isRootPath (path) {
+    isRootPath(path) {
       return /^\//.test(path)
     }
   },
@@ -93,13 +84,14 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 /* MUST be global style setting */
 .el-menu--collapse {
   & .el-submenu {
     & .el-submenu__title {
-      & .el-submenu__icon-arrow, .menu__item__title {
-        display: none
+      & .el-submenu__icon-arrow,
+      .menu__item__title {
+        display: none;
       }
     }
   }

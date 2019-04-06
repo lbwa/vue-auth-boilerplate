@@ -14,18 +14,18 @@ export default {
     }
   },
 
-  render (h, context) {
+  render(h, context) {
     const { icon, title } = context.props
     const vnodes = []
     if (icon) {
-      vnodes.push(
-        <i class={icon}></i>
-      )
+      vnodes.push(<i class={icon} />)
     }
 
     if (title) {
       vnodes.push(
-        <span class="menu__item__title" slot="title">{title}</span>
+        <span class="menu__item__title" slot="title">
+          {title}
+        </span>
       )
     }
 

@@ -1,11 +1,9 @@
 <template functional>
   <p class="author__info">
-    Copyright &copy; {{new Date().getFullYear()}}
-    <a
-      class="author__name"
-      href="https://github.com/lbwa"
-      target="_blank"
-    >lbwa</a>&nbsp;Released under the MIT License
+    Copyright &copy; {{ new Date().getFullYear() }}
+    <a class="author__name" href="https://github.com/lbwa" target="_blank"
+      >lbwa</a
+    >&nbsp;Released under the MIT License
   </p>
 </template>
 
@@ -13,8 +11,8 @@
 export default {}
 </script>
 
-<style lang='scss' scoped>
-@import "~STYLE/color/font.scss";
+<style lang="scss" scoped>
+@import '~STYLE/color/font.scss';
 
 $gap: 60px;
 

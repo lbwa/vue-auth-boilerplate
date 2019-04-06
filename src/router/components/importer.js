@@ -2,14 +2,13 @@
  * @description create a object including all async components.
  * @param {Array} components Components path based on `/src`
  */
-export default function createImporters (components) {
+export default function createImporters(components) {
   return components.reduce((accumulator, currentPath) => {
     const chunkName = createChunkName(currentPath)
     if (!accumulator[chunkName]) {
-      accumulator[chunkName] = () => import(
-        /* webpackChunkName: 'async-[request][index]' */
-        `SOURCE/${createCamelPath(currentPath.replace(/^\//, ''), 1)}`
-      )
+      accumulator[chunkName] = () =>
+        import(/* webpackChunkName: 'async-[request][index]' */
+        `SOURCE/${createCamelPath(currentPath.replace(/^\//, ''), 1)}`)
     }
     return accumulator
   }, {})
@@ -21,8 +20,10 @@ export default function createImporters (components) {
  * @param {String} path vue component path, based on `/src`
  * @return {String} A name used to import vue component
  */
-export function createChunkName (path) {
-  return path.replace(/^\//, '').split('/')
+export function createChunkName(path) {
+  return path
+    .replace(/^\//, '')
+    .split('/')
     .map((pathSection, index) => {
       return index === 0
         ? pathSection.replace(/^[A-Z]/, matchKey => matchKey.toLowerCase())
@@ -39,8 +40,9 @@ export function createChunkName (path) {
  * eg. createCamelPath('aaa/bbb/ccc', 1) ==> "/aaa/Bbb/Ccc"
  * eg. createCamelPath('/aaa/bbb/ccc', 2) ==> "/aaa/Bbb/Ccc"
  */
-export function createCamelPath (path, startIndex) {
-  return path.split('/')
+export function createCamelPath(path, startIndex) {
+  return path
+    .split('/')
     .reduce((result, cur, currentIndex) => {
       if (!cur) return result.concat('')
       if (cur && currentIndex >= startIndex) {

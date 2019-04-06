@@ -1,7 +1,7 @@
 // For correct `this` value, using function value to replace object value under
 // ES6 import syntax
 // Usage: createRules.call(this), `this` should be a vue component instance.
-export default function createRules () {
+export default function createRules() {
   return {
     username: [
       {

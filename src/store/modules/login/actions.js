@@ -3,7 +3,7 @@ import types from './mutations/types'
 import router from 'ROUTER'
 
 export default {
-  userLogin ({ commit }, { username, password, vm }) {
+  userLogin({ commit }, { username, password, vm }) {
     return (
       userLogin({
         username,
@@ -32,7 +32,7 @@ export default {
         })
     )
   },
-  userLogout ({ commit }) {
+  userLogout({ commit }) {
     commit(types.SET_USER_INFO, {})
     commit(types.SET_USER_ACCESSES, [])
     commit(types.SET_ACCESS_TOKEN, '')
@@ -43,7 +43,7 @@ export default {
     // All routes records should be synced with vuex-persistedstate.
     location.reload()
   },
-  fetchUserAccess ({ commit }, token) {
+  fetchUserAccess({ commit }, token) {
     // ! 预留接口：请求用户的权限集合 roles，用于过滤用户的私有路由
     return fetchUserAccess(token).then(({ accesses }) => {
       commit(types.SET_USER_ACCESSES, accesses)

@@ -1,27 +1,29 @@
 <template>
-  <el-container :class="[
-    'layout__material',
-    isAsideCollapse ? 'collapse-aside' : 'expand-aside'
-  ]">
+  <el-container
+    :class="[
+      'layout__material',
+      isAsideCollapse ? 'collapse-aside' : 'expand-aside'
+    ]"
+  >
     <!-- Dynamic aside rendering area -->
     <el-scrollbar
       wrap-class="scrollbar-wrapper"
       class="layout__material__aside-placeholder"
     >
-      <material-aside/>
+      <material-aside />
     </el-scrollbar>
 
     <el-container class="layout__material__placeholder">
-      <material-header/>
+      <material-header />
 
       <el-main class="layout__material__placeholder-main">
         <transition name="fade" mode="out-in">
-          <router-view/>
+          <router-view />
         </transition>
       </el-main>
 
       <el-footer class="layout__material__footer">
-        <page-footer/>
+        <page-footer />
       </el-footer>
     </el-container>
   </el-container>
@@ -37,9 +39,7 @@ export default {
   name: 'LayoutMaterial',
 
   computed: {
-    ...mapState([
-      'isAsideCollapse'
-    ])
+    ...mapState(['isAsideCollapse'])
   },
 
   components: {
@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import '~STYLE/color/background.scss';
 @import '~STYLE/layout/aside.scss';
 @import '~STYLE/transition/aside.scss';

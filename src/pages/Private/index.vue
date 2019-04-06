@@ -1,7 +1,7 @@
 <template>
   <section class="access__static">
     Current route is
-    <strong>{{$route.path}}</strong>
+    <strong>{{ $route.path }}</strong>
   </section>
 </template>
 
@@ -9,5 +9,4 @@
 export default {}
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

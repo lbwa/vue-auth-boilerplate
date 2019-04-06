@@ -1,14 +1,12 @@
 <template>
   <div class="page-nested">
-    {{$route.path}}
-    <router-view/>
+    {{ $route.path }}
+    <router-view />
   </div>
 </template>
 
 <script>
-export default {
-}
+export default {}
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>
