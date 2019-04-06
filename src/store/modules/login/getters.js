@@ -2,23 +2,27 @@ import { createAccessMap } from 'PERMISSION/controller/routes'
 
 export default {
   username(state) {
-    return (state.userInfo && state.userInfo.username) || '无用户名'
+    return (state.userInfo && state.userInfo.username) || ''
   },
-  accessToken(state) {
-    return state.accessToken
+  accessToken({ accessToken }) {
+    return accessToken
   },
-  accesses(state) {
-    return state.accesses
+  accesses({ accesses }) {
+    return accesses
   },
-  accessMap(state) {
-    return createAccessMap(state.accesses)
+  accessMap({ accesses }) {
+    return createAccessMap(accesses)
   },
   // used to add user private routes (router.addRoutes) to global routes map.
-  dynamicRoutes(state) {
-    return state.dynamicRoutes
+  dynamicRoutes({ dynamicRoutes }) {
+    return dynamicRoutes
   },
   // used to create recursive aside.
-  allRoutes(state) {
-    return state.allRoutes
+  allRoutes({ allRoutes }) {
+    return allRoutes
+  },
+  randomPhoto({ randomPhoto }) {
+    return dataKey =>
+      dataKey.split('.').reduce((target, key) => target[key], randomPhoto)
   }
 }

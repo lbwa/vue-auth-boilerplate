@@ -10,7 +10,7 @@ const h = eventBus.$createElement.bind(eventBus)
  * @description 创建一个 axios 基础请求实例，提示，环境变量可在 .env.[mode] files 中定义
  * @param {String} baseURL 基础请求路径
  */
-export default function createBaseRequest(baseURL) {
+export default function createBaseRequest(baseURL, customHeaders) {
   if (!baseURL) throw new Error('[createRequestBase]: Wrong baseURL type !')
 
   const request = axios.create({
@@ -26,6 +26,11 @@ export default function createBaseRequest(baseURL) {
 
       const token = tokenFromStorage.getItem()
       if (token) req.headers['access_token'] = token
+
+      customHeaders &&
+        Object.keys(customHeaders).reduce((headers, headerKey) => {
+          headers[headerKey] = customHeaders[headerKey]
+        }, req.headers)
 
       return req
     },

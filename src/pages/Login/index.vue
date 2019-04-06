@@ -1,5 +1,10 @@
 <template>
-  <section class="login">
+  <section
+    class="login"
+    :style="{
+      backgroundImage: `url(${randomPhotoUrl})`
+    }"
+  >
     <el-form
       class="login__form"
       label-position="right"
@@ -49,8 +54,11 @@
 <script>
 import PageFooter from 'COMPONENTS/PageFooter'
 import createRules from './rules'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  name: 'LoginPage',
+
   data() {
     return {
       userInfo: {
@@ -62,24 +70,36 @@ export default {
     }
   },
 
+  computed: {
+    randomPhotoUrl() {
+      return this.randomPhoto('urls.custom') || ''
+    },
+    ...mapGetters('login', ['randomPhoto'])
+  },
+
   methods: {
     onSubmit() {
       this.switchLoading(true)
       this.$refs.login
         .validate()
-        .then(valid => ({
+        .then(() => ({
           ...this.userInfo,
           vm: this
         }))
         // This action has included routes replacement
         // dispatch() will return a Promise instance
         .then(payload => this.$store.dispatch('login/userLogin', payload))
-        .catch(e => console.error('[Login form]: validate failed !'))
+        .catch(() => console.error('[Login form]: validate failed !'))
         .finally(() => this.switchLoading(false))
     },
     switchLoading(state) {
       this.isLoading = state
-    }
+    },
+    ...mapActions('login', ['fetchRandomPhoto'])
+  },
+
+  created() {
+    !this.randomPhotoUrl && this.fetchRandomPhoto()
   },
 
   components: {
@@ -94,7 +114,6 @@ export default {
 }
 
 .login {
-  background-image: url('~./img/animation.gif');
   background-repeat: no-repeat;
   background-position: center center;
 

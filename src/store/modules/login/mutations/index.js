@@ -22,5 +22,8 @@ export default {
   },
   [types.SET_ALL_ROUTES](state, allRoutes) {
     state.allRoutes = allRoutes
+  },
+  [types.SET_RANDOM_PHOTO](state, randomPhoto) {
+    state.randomPhoto = randomPhoto
   }
 }

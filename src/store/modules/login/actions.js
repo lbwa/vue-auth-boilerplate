@@ -1,4 +1,5 @@
 import { userLogin, fetchUserAccess } from 'API'
+import fetchRandomPhoto from 'API/unsplash'
 import types from './mutations/types'
 import router from 'ROUTER'
 
@@ -48,6 +49,16 @@ export default {
     return fetchUserAccess(token).then(({ accesses }) => {
       commit(types.SET_USER_ACCESSES, accesses)
       return accesses
+    })
+  },
+  fetchRandomPhoto({ commit }, config) {
+    return fetchRandomPhoto(config).then(randomPhoto => {
+      if (Array.isArray(randomPhoto.errors)) {
+        throw new Error('Fetch random photos failed !')
+      }
+
+      commit('SET_RANDOM_PHOTO', randomPhoto)
+      return randomPhoto
     })
   }
 }
