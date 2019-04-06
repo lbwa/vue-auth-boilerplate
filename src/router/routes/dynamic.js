@@ -1,39 +1,62 @@
-import { dynamic, nestedExport } from '../components'
+import components from 'ROUTER/components'
 
-// Service response routes map can be used to expand or rebuild this preset map
 export default [
   {
-    path: '/access',
-    component: nestedExport,
+    path: '/private',
+    name: 'private',
+    component: components.componentsRouterExport,
     meta: {
-      title: 'Access',
-      icon: 'el-icon-view'
-      // no meta means this component is common components in dynamic routes
+      title: 'Private Device',
+      icon: 'el-icon-picture-outline'
     },
     children: [
       {
         path: 'admin',
-        component: dynamic.accessAdmin,
+        component: components.pagesPrivate,
         meta: {
-          title: 'admin',
-          role: ['admin']
+          title: 'Admin',
+          access: {
+            device: ['read', 'write', 'import']
+          }
         }
       },
       {
         path: 'user',
-        component: dynamic.accessUser,
+        component: components.pagesPrivate,
         meta: {
-          title: 'user',
-          role: ['user']
+          title: 'User',
+          access: {
+            device: ['read']
+          }
         }
       }
     ]
   },
-  // Last one routes should be a error handle,
-  // it's also will become global error handle
+  // Should be hide all /private/* routes when user access exclude 'admin'
+  // Because the only child route can only be accessed by admin
+  {
+    path: '/app',
+    component: components.componentsRouterExport,
+    meta: {
+      title: 'Private App',
+      icon: 'el-icon-mobile-phone'
+    },
+    children: [
+      {
+        path: 'admin',
+        component: components.pagesPrivate,
+        meta: {
+          title: 'Admin',
+          access: {
+            app: ['read', 'write']
+          }
+        }
+      }
+    ]
+  },
   {
     path: '*',
-    redirect: '/error/404',
+    redirect: '/404',
     meta: {
       hidden: true
     }

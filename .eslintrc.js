@@ -1,20 +1,15 @@
+// Priority is higher than setting from package.json
 module.exports = {
   root: true,
+  env: {
+    node: true
+  },
+  extends: ['plugin:vue/essential', '@vue/prettier'],
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  },
   parserOptions: {
     parser: 'babel-eslint'
-  },
-  env: {
-    browser: true,
-  },
-  extends: [
-    'plugin:vue/essential',
-    'standard'
-  ],
-  plugins: [
-    'vue'
-  ],
-  rules: {
-    'generator-star-spacing': 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
 }

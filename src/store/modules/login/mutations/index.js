@@ -1,21 +1,26 @@
 import types from './types'
+import { tokenFromStorage, userInfoFromStorage } from 'UTILS/storage'
 
 export default {
-  [types.SET_USER_INFO] (state, userInfo) {
+  [types.SET_USER_INFO](state, userInfo) {
+    userInfo
+      ? userInfoFromStorage.setItem(userInfo)
+      : userInfoFromStorage.removeItem()
     state.userInfo = userInfo
   },
-  [types.SET_ROLE] (state, role) {
-    state.role = role
+  [types.SET_ACCESS_TOKEN](state, accessToken) {
+    accessToken
+      ? tokenFromStorage.setItem(accessToken)
+      : tokenFromStorage.removeItem()
+    state.accessToken = accessToken
   },
-  [types.SET_TOKEN] (state, token) {
-    state.token = token
+  [types.SET_USER_ACCESSES](state, accesses) {
+    state.accesses = accesses
   },
-  // store it for passing it into router.addRoutes()
-  [types.SET_EXTRA_ROUTES] (state, extraRoutes) {
-    state.extraRoutes = extraRoutes
+  [types.SET_DYNAMIC_ROUTES](state, dynamicRoutes) {
+    state.dynamicRoutes = dynamicRoutes
   },
-  // store current global routes map, filtered by state.role
-  [types.SET_ROUTES] (state, routes) {
-    state.routes = routes
+  [types.SET_ALL_ROUTES](state, allRoutes) {
+    state.allRoutes = allRoutes
   }
 }

@@ -1,7 +1,7 @@
 import types from './types'
 
 export default {
-  [types.TOGGLE_ASIDE] (state) {
-    state.isCollapse = !state.isCollapse
+  [types.SET_ASIDE_COLLAPSE](state) {
+    state.isAsideCollapse = !state.isAsideCollapse
   }
 }
