@@ -6,8 +6,8 @@ export default {
       password: 'Password'
     },
     tips: {
-      username: 'Please tell us your username !',
-      password: 'You should input your password to log in our system !'
+      username: 'Username is required !',
+      password: 'Password is required !'
     },
     submitButton: 'Log in'
   },
