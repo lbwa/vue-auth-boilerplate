@@ -2,14 +2,14 @@
   <section
     class="login"
     :style="{
-      backgroundImage: `url(${randomPhotoUrl})`
+      backgroundImage: `url(${randomPhoto('urls.custom')})`
     }"
   >
     <el-form
       class="login__form"
       label-position="right"
       :model="userInfo"
-      :rules="rules"
+      :rules="formRules"
       ref="login"
       status-icon
       @keyup.enter.native="onSubmit"
@@ -53,11 +53,13 @@
 
 <script>
 import PageFooter from 'COMPONENTS/PageFooter'
-import createRules from './rules'
+import MixinsFormRules from './rules'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'LoginPage',
+
+  mixins: [MixinsFormRules],
 
   data() {
     return {
@@ -65,15 +67,11 @@ export default {
         username: '',
         password: ''
       },
-      rules: createRules.call(this),
       isLoading: false
     }
   },
 
   computed: {
-    randomPhotoUrl() {
-      return this.randomPhoto('urls.custom') || ''
-    },
     ...mapGetters('login', ['randomPhoto'])
   },
 
@@ -99,7 +97,7 @@ export default {
   },
 
   created() {
-    !this.randomPhotoUrl && this.fetchRandomPhoto()
+    !this.randomPhoto('urls.custom') && this.fetchRandomPhoto()
   },
 
   components: {
