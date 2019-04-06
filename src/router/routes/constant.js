@@ -1,4 +1,4 @@
-import { constantComponents, plainExport } from 'ROUTER/components'
+import components from 'ROUTER/components'
 
 /**
  * meta: {
@@ -16,7 +16,7 @@ export default [
   {
     path: '/home',
     name: 'home',
-    component: constantComponents.pagesHome,
+    component: components.pagesHome,
     meta: {
       title: 'Home'
     }
@@ -24,14 +24,14 @@ export default [
   {
     path: '/login',
     name: 'login',
-    component: constantComponents.pagesLogin,
+    component: components.pagesLogin,
     meta: {
       layout: 'plain'
     }
   },
   {
     path: '/admin',
-    component: plainExport,
+    component: components.componentsRouterExport,
     meta: {
       title: 'Admin',
       icon: 'el-icon-view'
@@ -39,7 +39,7 @@ export default [
     children: [
       {
         path: 'dashboard',
-        component: constantComponents.pagesAdminDashboard,
+        component: components.pagesAdminDashboard,
         meta: {
           title: 'Dashboard',
           access: {
@@ -49,7 +49,7 @@ export default [
       },
       {
         path: 'table',
-        component: constantComponents.pagesAdminTable,
+        component: components.pagesAdminTable,
         meta: {
           title: 'Table',
           icon: 'el-icon-tickets',
@@ -62,7 +62,7 @@ export default [
   },
   {
     path: '/common',
-    component: plainExport,
+    component: components.componentsRouterExport,
     meta: {
       title: 'Common',
       icon: 'el-icon-document'
@@ -70,7 +70,7 @@ export default [
     children: [
       {
         path: 'user',
-        component: constantComponents.pagesCommonUser,
+        component: components.pagesCommonUser,
         meta: {
           title: 'User'
         }
@@ -79,7 +79,7 @@ export default [
   },
   {
     path: '/nested',
-    component: constantComponents.pagesNested,
+    component: components.pagesNested,
     meta: {
       title: 'Nested',
       icon: 'el-icon-document'
@@ -87,14 +87,14 @@ export default [
     children: [
       {
         path: 'nested-1',
-        component: constantComponents.pagesNested,
+        component: components.pagesNested,
         meta: {
           title: 'nested-1'
         },
         children: [
           {
             path: 'nested-2',
-            component: constantComponents.pagesNested,
+            component: components.pagesNested,
             meta: {
               title: 'nested-2'
             }
@@ -105,10 +105,10 @@ export default [
   },
   {
     path: '/403',
-    component: constantComponents.pagesErrorUnauthorized
+    component: components.pagesErrorUnauthorized
   },
   {
     path: '/404',
-    component: constantComponents.pagesErrorNotFound
+    component: components.pagesErrorNotFound
   }
 ]
