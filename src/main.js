@@ -4,7 +4,8 @@ import i18n from 'LANG'
 import App from './App'
 
 // Including Vue prototype functions (eg. this.$_plugins_messageBox())
-import './plugins/element.js'
+import './plugins/element'
+import './plugins/validatorAccess'
 
 // Shouldn't use Router instance directly without 'PERMISSION/index' processing.
 import router from './permission'
