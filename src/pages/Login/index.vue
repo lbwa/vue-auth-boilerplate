@@ -2,7 +2,7 @@
   <section
     class="login"
     :style="{
-      backgroundImage: `url(${randomPhoto('urls.custom')})`
+      backgroundImage: `url(${randomPhotoUrl})`
     }"
   >
     <el-form
@@ -72,6 +72,13 @@ export default {
   },
 
   computed: {
+    randomPhotoUrl() {
+      const allUrls = this.randomPhoto('urls')
+      if (allUrls) {
+        return this.randomPhoto('urls.custom')
+      }
+      return ''
+    },
     ...mapGetters('login', ['randomPhoto'])
   },
 
@@ -97,7 +104,7 @@ export default {
   },
 
   created() {
-    !this.randomPhoto('urls.custom') && this.fetchRandomPhoto()
+    !this.randomPhotoUrl && this.fetchRandomPhoto()
   },
 
   components: {
