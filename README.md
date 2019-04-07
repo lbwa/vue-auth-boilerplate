@@ -1,10 +1,13 @@
-## Adminize [![Build Status](https://travis-ci.org/lbwa/adminize.svg?branch=master)](https://travis-ci.org/lbwa/adminize)
-
-> Vue administrator dashboard, implemented by @vuejs (including vue-router, vuex)
-
+<p align="center">
+  <img width=400 src="./src/pages/Login/img/logo.svg"/>
+</p>
 <p align="center">
   <a href="https://lbwa.github.io/adminize">Preview</a>
 </p>
+
+[![Build Status](https://travis-ci.org/lbwa/adminize.svg?branch=master)](https://travis-ci.org/lbwa/adminize)
+
+> `Vue` administrator dashboard, implemented by `@vuejs` (including `vue-router`, `vuex`)
 
 ### Usage
 
