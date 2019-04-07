@@ -1,53 +1,57 @@
 <template>
-  <section
-    class="login"
-    :style="{
-      backgroundImage: `url(${randomPhotoUrl})`
-    }"
-  >
-    <el-form
-      class="login__form"
-      label-position="right"
-      :model="userInfo"
-      :rules="formRules"
-      ref="login"
-      status-icon
-      @keyup.enter.native="onSubmit"
-    >
-      <h1 class="login__form__title">{{ $t('login.header') }}</h1>
-      <el-form-item prop="username">
-        <el-input
-          v-model="userInfo.username"
-          :placeholder="$t('login.placeholder.username')"
-          clearable
-        >
-          <i slot="prefix" class="el-icon-service"></i>
-        </el-input>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input
-          v-model="userInfo.password"
-          :placeholder="$t('login.placeholder.password')"
-          type="password"
-          clearable
-        >
-          <i slot="prefix" class="el-icon-goods"></i>
-        </el-input>
-      </el-form-item>
+  <section class="login">
+    <div class="login__body">
+      <el-form
+        class="login__form"
+        label-position="right"
+        :model="userInfo"
+        :rules="formRules"
+        ref="login"
+        status-icon
+        @keyup.enter.native="onSubmit"
+      >
+        <h1 class="login__form__title">{{ $t('login.header') }}</h1>
+        <el-form-item prop="username">
+          <el-input
+            v-model="userInfo.username"
+            :placeholder="$t('login.placeholder.username')"
+            clearable
+          >
+            <i slot="prefix" class="el-icon-service"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="userInfo.password"
+            :placeholder="$t('login.placeholder.password')"
+            type="password"
+            clearable
+          >
+            <i slot="prefix" class="el-icon-goods"></i>
+          </el-input>
+        </el-form-item>
 
-      <el-form-item>
-        <el-button
-          type="primary"
-          @click="onSubmit"
-          class="login__controller__submit"
-          :loading="isLoading"
-          >{{ $t('login.submitButton') }}</el-button
-        >
-      </el-form-item>
-    </el-form>
+        <el-form-item>
+          <el-button
+            type="primary"
+            @click="onSubmit"
+            class="login__controller__submit"
+            :loading="isLoading"
+            >{{ $t('login.submitButton') }}</el-button
+          >
+        </el-form-item>
+      </el-form>
+    </div>
     <el-footer class="login__footer">
-      <page-footer />
+      <page-footer :style="{ color: 'white' }" />
     </el-footer>
+
+    <div
+      class="login__background"
+      :style="{
+        backgroundImage: `url(${randomPhotoUrl})`
+      }"
+    ></div>
   </section>
 </template>
 
@@ -119,16 +123,43 @@ export default {
 }
 
 .login {
-  background-repeat: no-repeat;
-  background-position: center center;
+  position: relative;
 
-  &__form {
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: -1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+  }
+
+  &__body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
+    align-items: center;
     height: calc(100vh - 60px);
-    max-width: 400px;
+  }
+
+  &__form {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    width: 400px;
 
     &__title {
       text-align: center;

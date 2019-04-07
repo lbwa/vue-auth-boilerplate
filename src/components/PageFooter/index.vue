@@ -1,9 +1,9 @@
 <template functional>
-  <p class="author__info">
+  <p class="author__info" :style="style">
     Copyright &copy; {{ new Date().getFullYear() }}
     <a class="author__name" href="https://github.com/lbwa" target="_blank"
-      >lbwa</a
-    >&nbsp;Released under the MIT License
+      >Bowen</a
+    >
   </p>
 </template>
 
