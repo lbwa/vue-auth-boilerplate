@@ -43,7 +43,7 @@
       </el-form>
     </div>
     <el-footer class="login__footer">
-      <page-footer :style="{ color: 'white' }" />
+      <page-footer />
     </el-footer>
 
     <div
@@ -162,6 +162,11 @@ export default {
     width: 400px;
 
     &__title {
+      background-image: url('~./img/logo.svg');
+      background-position: center;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      color: transparent;
       text-align: center;
       text-transform: capitalize;
     }
