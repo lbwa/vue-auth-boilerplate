@@ -1,5 +1,6 @@
+// https://cli.vuejs.org/zh/config/#babel
 module.exports = {
-  presets: ['@vue/app'],
+  presets: ['@vue/babel-preset-app'],
   plugins: [
     [
       'component',

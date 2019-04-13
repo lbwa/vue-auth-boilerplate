@@ -11,7 +11,6 @@ module.exports = {
     aliasCreator(chainConfig)
 
     chainConfig.when(!__DEV__, chainConfig => {
-      // chainConfig.module.rule('js').use('babel-loader')
       const TerserPlugin = require('terser-webpack-plugin')
       chainConfig.optimization.minimizer([
         new TerserPlugin(
