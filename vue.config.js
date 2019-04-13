@@ -1,25 +1,32 @@
 const path = require('path')
 const PATH = require('./config/path')
+const terserOptions = require('./config/terserConfig')
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  publicPath: !__DEV__ ? '/adminize/' : '/',
+  publicPath: !__DEV__ ? './' : '/',
   productionSourceMap: false, // turn off source map
-  configureWebpack(config) {
-    if (!__DEV__) {
-      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
-    }
-  },
   chainWebpack(chainConfig) {
     aliasCreator(chainConfig)
 
     chainConfig.when(!__DEV__, chainConfig => {
+      // chainConfig.module.rule('js').use('babel-loader')
+      const TerserPlugin = require('terser-webpack-plugin')
+      chainConfig.optimization.minimizer([
+        new TerserPlugin(
+          terserOptions({
+            productionSourceMap: false,
+            parallel: true
+          })
+        )
+      ])
+
       // Optimize chunks under production mode
       chainConfig.optimization.splitChunks({
         minSize: 30000, // 30kb
         cacheGroups: {
-          // extract ui to create a chunk for long-term caching
+          // split ui into a single chunk for long-term caching
           ui: {
             name: 'element-ui',
             test: /[\\/]node_modules[\\/]element-ui[\\/]/,
@@ -39,6 +46,7 @@ module.exports = {
             chunks: 'initial',
             reuseExistingChunk: true
           },
+          // split all css into s single chunk
           // ref: https://github.com/webpack-contrib/mini-css-extract-plugin#extracting-css-based-on-entry
           styles: {
             name: 'chunk-styles',
@@ -50,7 +58,11 @@ module.exports = {
           }
         }
       })
-      // chainConfig.module.rule('js').use('babel-loader')
+
+      // an alias for:
+      // runtimeChunk: { name: 'runtime' }
+      // https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
+      chainConfig.optimization.runtimeChunk('single')
     })
   }
 }
