@@ -71,7 +71,7 @@ export default function createBaseRequest(baseURL, customHeaders) {
                   'Unauthorized request',
                   h('div', { style: 'work-break: break-all' }, url)
                 ]
-              : 'Update data failed'
+              : 'Data updating error'
           ),
           position: 'bottom-right'
         })
@@ -82,6 +82,22 @@ export default function createBaseRequest(baseURL, customHeaders) {
       return data
     },
     err => {
+      const capture = `${err}`.match(/\d+/)
+      if (capture) {
+        Notification.error({
+          title: '错误',
+          message: h('div', [
+            h(
+              'span',
+              { style: 'color: #ff7977; font-weight: bold;' },
+              `[${capture[0]}]`
+            ),
+            ': Internal server error'
+          ]),
+          position: 'bottom-right'
+        })
+      }
+
       err && console.error(`[Response error]: ${err}`)
       return Promise.reject(err)
     }
