@@ -3,7 +3,7 @@ import './style/not-found.scss'
 export default {
   name: 'NotFound',
 
-  render(h) {
+  render() {
     return (
       <section class="page-not-found">
         <h2>404</h2>

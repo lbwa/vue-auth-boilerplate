@@ -1,5 +1,5 @@
 export default {
-  render(h) {
+  render() {
     return (
       <transition name="fade" mode="out-in">
         <router-view />

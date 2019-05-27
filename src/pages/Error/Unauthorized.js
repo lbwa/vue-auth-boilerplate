@@ -3,7 +3,7 @@ import './style/unauthorized.scss'
 export default {
   name: 'Unauthorized',
 
-  render(h) {
+  render() {
     return (
       <section class="page-unauthorized">
         <h2>403</h2>
