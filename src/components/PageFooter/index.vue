@@ -2,8 +2,8 @@
   <p class="author__info">
     Copyright &copy; {{ new Date().getFullYear() }}
     <a class="author__name" href="https://github.com/lbwa" target="_blank"
-      >lbwa</a
-    >&nbsp;Released under the MIT License
+      >Bowen</a
+    >. All rights reserved.
   </p>
 </template>
 
@@ -11,27 +11,21 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
-@import '~STYLE/color/font.scss';
+<style lang="sass" scoped>
+$gap: 60px
 
-$gap: 60px;
+.author
+  &__info
+    margin: 0
+    text-align: center
+    line-height: $gap
+    font-size: 14px
+    color: #999999
 
-.author {
-  &__info {
-    margin: 0;
-    text-align: center;
-    line-height: $gap;
-    font-size: 14px;
-    color: #999999;
-  }
+  &__name
+    color: $font-link
+    text-decoration: none
 
-  &__name {
-    color: $font-blue-50;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
+    &:hover
+      text-decoration: underline
 </style>

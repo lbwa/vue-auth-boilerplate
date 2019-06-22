@@ -1,0 +1,43 @@
+/**
+ * Import these color variables via sass-loader options
+ * more detail: https://github.com/webpack-contrib/sass-loader#environment-variables
+ */
+
+// main color
+$main-light: #72beff;
+$main-dark: #282c34;
+$main-light-dark: #3b4966;
+$main-selected: #49597a;
+$main-hover: #49597a;
+$main-white: #ffffff;
+$main-bg: #ebf0f1;
+
+// sub color
+$sub-yellow: #ffd75c;
+$sub-green: #5adc9c;
+$sub-red: #ff7977;
+$sub-line: #eeeeee;
+$sub-table-bg: #f9fafc;
+$sub-selected: #eff7fc;
+$sub-border: #cccccc;
+
+// font color
+$font-title: #3b4966;
+$font-link: #409eff;
+$font-selected: #72beff;
+$font-main: #333333;
+$font-sub: #6d6d6d;
+$font-light: #999999;
+$font-tips: #c0c4cc;
+$font-white: #ffffff;
+$font-warn: #ff7977;
+
+// font size
+$fz-title: 22px;
+$fz-subtitle: 18px;
+$fz-label: $fz-subtitle;
+$fz-subtitle-s: 16px;
+$fz-content: 14px;
+
+// shadow
+$box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);

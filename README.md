@@ -1,16 +1,23 @@
-## Adminize [![Build Status](https://travis-ci.org/lbwa/adminize.svg?branch=master)](https://travis-ci.org/lbwa/adminize)
+# Adminize [![CircleCI](https://circleci.com/gh/lbwa/adminize.svg?style=svg)](https://circleci.com/gh/lbwa/adminize)
 
-> Vue administrator dashboard, implemented by @vuejs (including vue-router, vuex)
+> A fully front-end access control solution sample via [adminize-template].
+
+[adminize-template]: https://github.com/lbwa/adminize-template
 
 <p align="center">
-  <a href="https://lbwa.github.io/adminize">Preview</a>
+  <a href="https://lbwa.github.io/adminize">Online site</a>
 </p>
 
-### Usage
+## Commands
 
-```shell
-git clone https://github.com/lbwa/adminize.git --depth=1
-cd adminize
-yarn serve
-# visit http://localhost:8080 (or http://<your host device ip>:8080)
+- Compiles and hot-reloads for development
+
+```bash
+yarn run serve
+```
+
+- Compiles and minifies for production
+
+```bash
+yarn run build
 ```

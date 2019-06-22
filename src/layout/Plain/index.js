@@ -1,7 +1,7 @@
 export default {
   name: 'LayoutPlain',
 
-  render(h) {
+  render() {
     return (
       <section class="layout__plain">
         <router-view />

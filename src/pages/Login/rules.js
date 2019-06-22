@@ -6,14 +6,14 @@ export default function createRules() {
     username: [
       {
         required: true,
-        message: this.$t('login.tips.username'),
+        message: this.$t('tips.username'),
         trigger: 'blur'
       }
     ],
     password: [
       {
         required: true,
-        message: this.$t('login.tips.password'),
+        message: this.$t('tips.password'),
         trigger: 'blur'
       }
     ]

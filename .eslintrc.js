@@ -1,4 +1,3 @@
-// Priority is higher than setting from package.json
 module.exports = {
   root: true,
   env: {

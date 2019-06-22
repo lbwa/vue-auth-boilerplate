@@ -1,20 +1,17 @@
 export default {
-  login: {
-    header: 'Adminize',
-    placeholder: {
-      username: 'Username',
-      password: 'Password'
-    },
-    tips: {
-      username: 'Please tell us your username !',
-      password: 'You should input your password to log in our system !'
-    },
-    submitButton: 'Log in'
-  },
   aside: {
-    header: 'Adminize',
-    bar: {
-      logout: 'Log out'
-    }
+    header: 'Adminize console'
+  },
+  pages: {
+    withoutVerification:
+      'This route is public without any user access verification.',
+    realTimeVerification:
+      'This route has include real-time access verification',
+    currentRoute: 'Current route is'
+  },
+  notFound: '😢Seems nothing could found.',
+  unauthorized: {
+    title: '🚫You are unauthorized !',
+    desc: 'If you have any questions, contact tech support !'
   }
 }

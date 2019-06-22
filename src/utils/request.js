@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { tokenFromStorage } from 'UTILS/storage'
+import { tokenInCookie } from 'UTILS/storage'
 import store from 'STORE'
 import { Notification } from 'element-ui'
 import { eventBus } from 'UTILS'
@@ -24,7 +24,7 @@ export default function createBaseRequest(baseURL) {
       req.headers['app_key'] = process.env.VUE_APP_KEY
       req.headers['app_secret'] = process.env.VUE_APP_SECRET
 
-      const token = tokenFromStorage.getItem()
+      const token = tokenInCookie.getItem()
       if (token) req.headers['access_token'] = token
 
       return req
@@ -48,7 +48,7 @@ export default function createBaseRequest(baseURL) {
       // 2. invalid access_token
       if (data.code === 3000) {
         // 触发 router 的 beforeEach 导航守卫中的 token 检测并重定向至 login 页
-        tokenFromStorage.setItem('')
+        tokenInCookie.removeItem()
         // 以下 action 用于用户登出，并重置 vuex 状态
         return store
           .dispatch('login/userLogout')
@@ -66,7 +66,7 @@ export default function createBaseRequest(baseURL) {
                   'Unauthorized request',
                   h('div', { style: 'work-break: break-all' }, url)
                 ]
-              : 'Update data failed'
+              : '😢Update data failed.'
           ),
           position: 'bottom-right'
         })

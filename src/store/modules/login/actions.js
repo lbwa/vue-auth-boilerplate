@@ -1,50 +1,54 @@
 import { userLogin, fetchUserAccess } from 'API'
 import types from './mutations/types'
-import router from 'ROUTER'
+import router, { resetRouter } from 'ROUTER'
+import { Notification } from 'element-ui'
+import { cleanupCookies } from 'UTILS/storage'
 
 export default {
   userLogin({ commit }, { username, password, vm }) {
-    return (
-      userLogin({
-        username,
-        password
+    return userLogin({
+      username,
+      password
+    })
+      .then(({ user_id: userId, access_token: accessToken }) => {
+        commit(types.SET_USER_INFO, {
+          username,
+          userId
+        })
+        commit(types.SET_ACCESS_TOKEN, accessToken)
+        router.replace('/')
       })
-        // eslint-disable-next-line
-        .then(({ user_id, access_token }) => {
-          commit(types.SET_USER_INFO, {
-            username /* 手机或者是邮箱 */,
-            userId: user_id
+      .catch(e => {
+        if (e.code === 5000) {
+          const h = vm.$createElement.bind(vm)
+          Notification.error({
+            title: 'Error',
+            message: h('div', [
+              h(
+                'div',
+                { style: 'word-break: break-all' },
+                '😢Invalid username or password.'
+              )
+            ]),
+            position: 'bottom-right',
+            duration: 6000
           })
-          commit(types.SET_ACCESS_TOKEN, access_token)
-          router.replace('/')
-        })
-        .catch(e => {
-          if (e.code === 5000) {
-            vm.$_plugins_messageBox.alert('Wrong username or password', {
-              type: 'error',
-              title: 'Error'
-            })
-          }
-          // 仅用于触发 afterEach 后置导航守卫，使得顶部进度条 done()
-          // For invoking `router.afterEach` navigation guards including `NProgress.done()`
-          vm.$router.replace('/login')
-          console.error(`[Login error]: ${JSON.stringify(e)}`)
-        })
-    )
+        }
+        // 仅用于触发 afterEach 后置导航守卫，使得顶部进度条 done()
+        // For invoking `router.afterEach` navigation guards including `NProgress.done()`
+        vm.$router.replace('/login')
+        console.error(`[Login error]: ${JSON.stringify(e)}`)
+      })
   },
-  userLogout({ commit }) {
-    commit(types.SET_USER_INFO, {})
-    commit(types.SET_USER_ACCESSES, [])
-    commit(types.SET_ACCESS_TOKEN, '')
-    commit(types.SET_DYNAMIC_ROUTES, [])
-    commit(types.SET_ALL_ROUTES, [])
-    // https://github.com/PanJiaChen/vue-element-admin/issues/416
-    // location.reload() is used to reset all dynamic routes.
-    // All routes records should be synced with vuex-persistedstate.
-    location.reload()
+  userLogout({ dispatch }) {
+    dispatch('resetStore', null, { root: true })
+    // clean user info
+    cleanupCookies()
+    // https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+    // remove all routes which was added by router.addRoutes()
+    resetRouter()
   },
   fetchUserAccess({ commit }, token) {
-    // ! 预留接口：请求用户的权限集合 roles，用于过滤用户的私有路由
     return fetchUserAccess(token).then(({ accesses }) => {
       commit(types.SET_USER_ACCESSES, accesses)
       return accesses

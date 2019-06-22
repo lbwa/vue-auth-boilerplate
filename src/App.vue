@@ -20,7 +20,7 @@ export default {
     onRouteUpdate(to) {
       this.setCurrentLayout(to.meta.layout)
     },
-    setCurrentLayout(layout = 'material') {
+    setCurrentLayout(layout = 'dashboard') {
       this.layout = layout
     }
   },

@@ -1,4 +1,7 @@
 import createImporters from './importer'
-import component from './path'
+import constant from './constant-config'
+import dynamic from './dynamic-config'
 
-export default createImporters(component)
+export const constantComponents = createImporters(constant)
+export const dynamicComponents = createImporters(dynamic)
+export const plainExport = () => import('COMPONENTS/RouteExport')

@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:    
+  build:
     branches:
       ignore:
         - gh-pages
@@ -18,18 +18,19 @@ jobs:
       - checkout
 
       - restore_cache:
+          name: Restore Yarn Package Cache
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - yarn-packages-{{ checksum "yarn.lock" }}
 
       - run:
-          name: Install dependencies
-          command: yarn
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
 
       - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.cache/yarn
 
       - run:
           name: Test generating process
@@ -40,14 +41,14 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "80:8c:9a:7c:80:2e:1b:14:51:56:54:a9:17:93:da:02"
+            - '91:7b:7d:d6:20:ac:63:64:9e:d7:01:43:09:c8:19:e5'
 
       - deploy:
           name: Deploy site
           command: |
             if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
-              git config --global user.email $USEREMAIL
-              git config --global user.name $USERNAME
+              git config --global user.email $USER_MAIL
+              git config --global user.name $USER_NAME
 
               yarn build
               mkdir -p dist/.circleci
@@ -56,7 +57,7 @@ jobs:
 
               git init
               git add .
-              git commit -m "docs: Deployed by CircleCI - ${CIRCLE_SHA1}" --allow-empty
+              git commit -m "Site: Deployed by CircleCI - ${CIRCLE_SHA1}" --allow-empty
 
-              git push -f git@github.com:lbwa/vue-design-pro.git master:gh-pages
+              git push -f git@github.com:lbwa/adminize.git master:gh-pages
             fi
