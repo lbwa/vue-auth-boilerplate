@@ -6,8 +6,8 @@ import App from './App'
 // Including Vue prototype functions (eg. this.$_plugins_messageBox())
 import './plugins/element.js'
 
-// Shouldn't use Router instance directly without 'PERMISSION/index' processing.
-import router from './permission'
+// Shouldn't use Router instance directly without 'access/index' processing.
+import router from './access'
 import store from './store'
 
 import 'STYLE/transition/index.scss'

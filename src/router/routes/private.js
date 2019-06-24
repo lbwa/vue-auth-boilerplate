@@ -1,4 +1,4 @@
-import { dynamicComponents, plainExport } from 'ROUTER/components'
+import { dynamicComponents as components, plainExport } from 'ROUTER/components'
 
 export default [
   {
@@ -12,7 +12,7 @@ export default [
     children: [
       {
         path: 'admin',
-        component: dynamicComponents.pagesPrivateAdmin,
+        component: components.pagesPrivateAdmin,
         meta: {
           title: 'Admin',
           access: [
@@ -24,7 +24,7 @@ export default [
       },
       {
         path: 'user',
-        component: dynamicComponents.pagesPrivateUser,
+        component: components.pagesPrivateUser,
         meta: {
           title: 'User',
           access: ['user.device.read']
@@ -44,7 +44,7 @@ export default [
     children: [
       {
         path: 'admin',
-        component: dynamicComponents.pagesPrivateOnlyChild,
+        component: components.pagesPrivateOnlyChild,
         meta: {
           title: 'Admin',
           access: ['admin.app.read', 'admin.app.write']
@@ -52,6 +52,15 @@ export default [
       }
     ]
   },
+  {
+    path: '/optional-access',
+    component: components.pagesOptionalAccess,
+    meta: {
+      title: 'OptionalAccess',
+      optionalAccess: ['admin.app.read', 'user.app.read']
+    }
+  },
+  // NOTICE: Ensure 404 page is last route
   {
     path: '*',
     redirect: '/404',

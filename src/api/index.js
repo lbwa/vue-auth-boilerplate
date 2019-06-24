@@ -1,17 +1,25 @@
 import routes from './routes'
-import createBaseRequest from 'UTILS/request'
+import createRequest from 'UTILS/request'
 
-const restBaseRequest = createBaseRequest(process.env.VUE_APP_XHR_REST)
+export * from './github'
+
+const http = createRequest({
+  baseURL: process.env.VUE_APP_XHR_REST,
+  headers: {
+    Client_Id: process.env.VUE_APP_CLIENT_ID
+  },
+  auth: true
+})
 
 export function userLogin({ username, password }) {
-  return restBaseRequest.post(routes.LOGIN, {
+  return http.post(routes.LOGIN, {
     username,
     password
   })
 }
 
 export function fetchUserAccess(token) {
-  return restBaseRequest.post(routes.ACCESS, {
+  return http.post(routes.ACCESS, {
     token
   })
 }

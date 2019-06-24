@@ -38,6 +38,10 @@ export function validateAccess(route, accessMap) {
     return meta.access.every(access => !!accessMap[access])
   }
 
+  if (route.meta && route.meta.optionalAccess) {
+    return meta.optionalAccess.some(access => !!accessMap[access])
+  }
+
   // situation: preset private route has no 'access' field
   return true
 }

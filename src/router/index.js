@@ -25,6 +25,6 @@ export function resetRouter() {
 /**
  * ! NOTICE
  * This router instance should not be added directly without
- * `PERMISSION/index` processing.
+ * `ACCESS/index` processing.
  */
 export default router

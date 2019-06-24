@@ -1,6 +1,6 @@
 {
-  "name": "adminize",
-  "version": "0.1.0",
+  "name": "adminize-template",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dayjs": "^1.8.14",
     "element-ui": "^2.9.1",
     "js-cookie": "^2.2.0",
     "normalize.css": "^8.0.1",
@@ -21,7 +22,7 @@
     "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.1.5",
     "@vue/cli-service": "^3.3.1",
     "@vue/eslint-config-prettier": "^4.0.1",

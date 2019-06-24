@@ -4,7 +4,7 @@ const PATH = require('./config/path')
 const __DEV__ = process.env.NODE_ENV === 'development'
 
 module.exports = {
-  publicPath: __DEV__ ? '/' : './',
+  publicPath: './',
   productionSourceMap: false, // turn off source map
   configureWebpack(config) {
     if (!__DEV__) {
@@ -83,7 +83,7 @@ function aliasCreator(chainConfig) {
     .set('STORE', path.resolve(PATH.SOURCE_PATH, './store'))
     .set('UTILS', path.resolve(PATH.SOURCE_PATH, './utils'))
     .set('API', path.resolve(PATH.SOURCE_PATH, './api'))
-    .set('PERMISSION', path.resolve(PATH.SOURCE_PATH, './permission'))
+    .set('ACCESS', path.resolve(PATH.SOURCE_PATH, './access'))
     .set('ASSETS', path.resolve(PATH.SOURCE_PATH, './assets'))
     .set('LANG', path.resolve(PATH.SOURCE_PATH, './lang'))
 }
