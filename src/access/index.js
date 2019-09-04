@@ -102,12 +102,9 @@ router.beforeEach(async (to, from, next) => {
       return createRoutesMap(to, next)
     }
 
-    // Optional step:  real-time access control for routes
-    // ! 动态权限验证，如在公有路由中的未参与 private routes 过滤的路由需要权限验证时
+    // Optional step:  real-time access control for any routes
     if (
-      // 当前路由不存在权限验证时
       !to.meta.access ||
-      // 当前路由存在权限验证时
       validateAccess(to, store.getters['login/accessMap'])
     ) {
       next()
@@ -126,8 +123,22 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
-router.afterEach(() => {
+router.afterEach(to => {
   NProgress.done()
+  store.dispatch('history/enqueue', cloneRoute(to))
 })
+
+function cloneRoute(to) {
+  const clone = {
+    name: to.name,
+    path: to.path,
+    hash: to.hash,
+    query: to.query,
+    params: to.params,
+    fullPath: to.fullPath,
+    meta: to.meta
+  }
+  return Object.freeze(clone)
+}
 
 export default router

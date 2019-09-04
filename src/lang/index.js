@@ -11,6 +11,11 @@ vueUsing([VueI18n])
 
 const i18n = new VueI18n({
   locale: 'en',
+  /**
+   * @description close warnings for fallback localization
+   * @doc https://kazupon.github.io/vue-i18n/zh/guide/fallback.html
+   */
+  silentFallbackWarn: true,
   messages: {
     zh: {
       ...zhLocale,

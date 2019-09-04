@@ -1,14 +1,16 @@
 <template>
-  <div class="home" v-if="isCompleted">
-    <h3>{{ $t('pages.withoutVerification') }}</h3>
+  <adminize-card v-if="isCompleted">
+    <h4>{{ $t('pages.withoutVerification') }}</h4>
     <p>
       {{ $t('pages.currentRoute') }}
       <strong>{{ $route.path }}</strong>
     </p>
-  </div>
+  </adminize-card>
 </template>
 
 <script>
+import AdminizeCard from 'LAYOUT/Card'
+
 export default {
   name: 'home',
 
@@ -27,12 +29,15 @@ export default {
 
   beforeDestroy() {
     clearTimeout(this.$__timer__)
+  },
+
+  components: {
+    AdminizeCard
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.home
-  +flex-center
-  height: 100%
+/deep/ .adminize-card
+  text-align: center
 </style>

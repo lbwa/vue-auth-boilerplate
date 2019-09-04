@@ -19,7 +19,8 @@ import {
   Tooltip, // menu 折叠时，弹出的小提示
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Tag
 } from 'element-ui'
 
 // Prototype functions
@@ -44,5 +45,6 @@ vueUsing([
   Tooltip,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Tag
 ])

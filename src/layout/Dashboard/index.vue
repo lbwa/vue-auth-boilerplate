@@ -1,28 +1,28 @@
 <template>
   <el-container
     :class="[
-      'layout__dashboard',
+      'adminize__dashboard',
       isAsideCollapse ? 'collapse-aside' : 'expand-aside'
     ]"
   >
     <!-- Dynamic aside rendering area -->
     <el-scrollbar
       wrap-class="scrollbar-wrapper"
-      class="layout__dashboard__aside-placeholder"
+      class="adminize__dashboard__aside-placeholder"
     >
       <dashboard-aside />
     </el-scrollbar>
 
-    <el-container class="layout__dashboard__placeholder">
+    <el-container class="adminize__dashboard__placeholder">
       <dashboard-header />
 
-      <el-main class="layout__dashboard__placeholder-main">
+      <el-main class="adminize__dashboard__placeholder-main">
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>
       </el-main>
 
-      <el-footer class="layout__dashboard__footer">
+      <el-footer class="adminize__dashboard__footer">
         <page-footer />
       </el-footer>
     </el-container>
@@ -36,7 +36,7 @@ import PageFooter from 'COMPONENTS/PageFooter'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'LayoutDashboard',
+  name: 'AdminizeDashboard',
 
   computed: {
     ...mapState(['isAsideCollapse'])
@@ -54,7 +54,7 @@ export default {
 @import '~STYLE/layout/aside.scss'
 @import '~STYLE/transition/aside.scss'
 
-.layout__dashboard
+.adminize__dashboard
   &__aside
     &-placeholder
       position: fixed
@@ -112,11 +112,11 @@ export default {
     transform: translate(-50%, -50%) rotate(720deg)
 
 .collapse-aside
-  .layout__dashboard__placeholder
+  .adminize__dashboard__placeholder
     margin-left: $collapse-width
 
 .expand-aside
-  .layout__dashboard__placeholder
+  .adminize__dashboard__placeholder
     margin-left: $expand-width
 
 /deep/ .scrollbar-wrapper

@@ -56,7 +56,7 @@ import path from 'path'
 import ItemTitle from './ItemTitle'
 
 export default {
-  name: 'recursive-item',
+  name: 'RecursiveItem',
 
   props: {
     route: {

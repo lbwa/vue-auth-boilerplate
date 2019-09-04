@@ -1,13 +1,13 @@
-import { dynamicComponents as components, plainExport } from 'ROUTER/components'
+import { privateComponents as components, pureExport } from 'ROUTER/components'
 
 export default [
   {
     path: '/private',
     name: 'private',
-    component: plainExport,
+    component: pureExport,
     meta: {
       title: 'Private',
-      icon: 'el-icon-picture'
+      icon: 'el-icon-lock'
     },
     children: [
       {
@@ -36,10 +36,10 @@ export default [
   // Because the only child route can only be accessed by admin
   {
     path: '/private-one-child',
-    component: plainExport,
+    component: pureExport,
     meta: {
       title: 'Private Only Child',
-      icon: 'el-icon-s-platform'
+      icon: 'el-icon-lock'
     },
     children: [
       {
@@ -56,7 +56,8 @@ export default [
     path: '/optional-access',
     component: components.pagesOptionalAccess,
     meta: {
-      title: 'OptionalAccess',
+      title: 'Optional Access',
+      icon: 'el-icon-lock',
       optionalAccess: ['admin.app.read', 'user.app.read']
     }
   },

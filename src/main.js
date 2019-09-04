@@ -4,15 +4,16 @@ import i18n from 'LANG'
 import App from './App'
 
 // Including Vue prototype functions (eg. this.$_plugins_messageBox())
-import './plugins/element.js'
+import './plugins/hasAccess'
+import './plugins/element'
 
-// Shouldn't use Router instance directly without 'access/index' processing.
+// Shouldn't use Router instance directly without 'access/index' process.
 import router from './access'
 import store from './store'
 
 import 'STYLE/transition/index.scss'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = process.env.NODE_ENV !== 'production'
 
 new Vue({
   router,

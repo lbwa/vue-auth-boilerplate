@@ -8,10 +8,6 @@ import privateRoutes from 'ROUTER/routes/private'
 export default function createPrivateRoutes(accessMap, routes = privateRoutes) {
   return routes.reduce((filteredRoutes, route) => {
     const routeCopy = { ...route } // shallow copy
-    /**
-     * validate private route access, determine whether private route is added
-     * to global routes map.
-     */
     if (validateAccess(route, accessMap)) {
       if (routeCopy.children) {
         // filter children routes recursively

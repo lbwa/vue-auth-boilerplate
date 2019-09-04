@@ -7,5 +7,6 @@ export default [
   'pages/Login',
   'pages/Error/NotFound',
   'pages/Error/Unauthorized',
-  'pages/Nested'
+  'pages/Nested',
+  'pages/ElementAccess'
 ]

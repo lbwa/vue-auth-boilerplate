@@ -1,5 +1,5 @@
 <template>
-  <el-header class="layout__dashboard__header">
+  <el-header class="adminize__dashboard__header">
     <i class="el-icon-menu header__icon" @click="toggleAside"></i>
 
     <div class="user">
@@ -38,7 +38,7 @@ import { mapMutations } from 'vuex'
 import lang from 'LANG'
 
 export default {
-  name: 'Header',
+  name: 'AdminizeHeader',
 
   data() {
     return {
@@ -96,7 +96,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.layout__dashboard__header
+.adminize__dashboard__header
   padding: 0 24px 0 0
   position: relative // for box-shadow
   background-color: $main-white

@@ -86,6 +86,7 @@ function aliasCreator(chainConfig) {
     .set('ACCESS', path.resolve(PATH.SOURCE_PATH, './access'))
     .set('ASSETS', path.resolve(PATH.SOURCE_PATH, './assets'))
     .set('LANG', path.resolve(PATH.SOURCE_PATH, './lang'))
+    .set('CONFIG', path.resolve(PATH.ROOT_PATH, './config'))
 }
 
 function recursiveIssuer(m) {

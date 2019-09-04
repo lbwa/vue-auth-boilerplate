@@ -4,20 +4,32 @@
   text-overflow: ellipsis;
 }
 
-@mixin normalize-link($s: 14px, $w: 500, $c: rgba(0, 0, 0, 0.85), $h: #1890ff) {
+@mixin normalize-link(
+  $s: 14px,
+  $w: 500,
+  $c: rgba(0, 0, 0, 0.85),
+  $h: #1890ff,
+  $td: none,
+  $td_hover: none
+) {
   font-size: $s;
   font-weight: $w;
   color: $c;
-  text-decoration: none;
+  text-decoration: $td;
 
   &:hover {
     color: $h;
+    text-decoration: $td_hover;
   }
 }
 
-@mixin flex-center {
+@mixin flex($jc: normal, $ai: normal, $fd: row) {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+}
+
+@mixin flex-center {
+  @include flex(center, center, column);
 }

@@ -1,7 +1,7 @@
 <template>
   <el-aside
     :class="[
-      'layout__dashboard__aside',
+      'adminize__dashboard__aside',
       isAsideCollapse ? 'collapse' : 'expand'
     ]"
     :width="``"
@@ -43,6 +43,8 @@ import { mapState, mapGetters } from 'vuex'
 import RecursiveItem from './Item'
 
 export default {
+  name: 'AdminizeAside',
+
   data() {
     return {
       activeTextColor: '#ffffff',
@@ -67,7 +69,7 @@ export default {
 <style lang="sass" scoped>
 @import '~STYLE/layout/aside.scss'
 
-.layout__dashboard__aside
+.adminize__dashboard__aside
   min-height: 100vh
   transition: width 0.3s
   color: white

@@ -60,7 +60,7 @@
           <span v-if="lastCommit.author"
             >{{ $t('latestCommit') }}:&nbsp;<a
               class="git__info"
-              href="https://github.com/lbwa/adminize-template"
+              href="https://github.com/lbwa/adminize"
               target="_blank"
               >{{ lastCommit.author.date | formatDate }}</a
             ></span
@@ -68,7 +68,7 @@
           <span v-if="lastRelease"
             >{{ $t('latestRelease') }}:&nbsp;<a
               class="git__info"
-              href="https://github.com/lbwa/adminize-template/releases"
+              href="https://github.com/lbwa/adminize/releases"
               target="_blank"
               >{{ lastRelease.tag_name }}</a
             ></span
@@ -194,9 +194,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.layout__login
-  min-height: 100vh
-
 .login
   background-color: $main-dark
   background-position: center center

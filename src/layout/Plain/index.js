@@ -1,11 +1,7 @@
 export default {
-  name: 'LayoutPlain',
+  name: 'AdminizePlain',
 
   render() {
-    return (
-      <section class="layout__plain">
-        <router-view />
-      </section>
-    )
+    return <router-view class="adminize__plain" />
   }
 }

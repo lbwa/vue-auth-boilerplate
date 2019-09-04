@@ -33,6 +33,10 @@ jobs:
             - ~/.cache/yarn
 
       - run:
+          name: Unit test
+          command: yarn test
+
+      - run:
           name: Test generating process
           command: |
             if [ $CIRCLE_BRANCH != $SOURCE_BRANCH ]; then
@@ -41,7 +45,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - '91:7b:7d:d6:20:ac:63:64:9e:d7:01:43:09:c8:19:e5'
+            - '34:b5:fb:2b:52:ce:50:d6:71:8f:d3:26:cf:de:9b:70'
 
       - deploy:
           name: Deploy site

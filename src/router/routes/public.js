@@ -1,4 +1,4 @@
-import { constantComponents, plainExport } from 'ROUTER/components'
+import { publicComponents as components, pureExport } from 'ROUTER/components'
 
 /**
  * meta: {
@@ -16,31 +16,39 @@ export default [
   {
     path: '/home',
     name: 'home',
-    component: constantComponents.pagesHome,
+    component: components.pagesHome,
     meta: {
       title: 'Home',
-      icon: 'el-icon-s-home'
+      icon: 'el-icon-house'
     }
   },
   {
     path: '/login',
     name: 'login',
-    component: constantComponents.pagesLogin,
+    component: components.pagesLogin,
     meta: {
       layout: 'plain'
     }
   },
   {
-    path: '/static-private',
-    component: plainExport,
+    path: '/element-access',
+    component: components.pagesElementAccess,
     meta: {
-      title: 'StaticPrivate',
-      icon: 'el-icon-user-solid'
+      title: 'Element Access',
+      icon: 'el-icon-lock'
+    }
+  },
+  {
+    path: '/static-private',
+    component: pureExport,
+    meta: {
+      title: 'Static Private',
+      icon: 'el-icon-lock'
     },
     children: [
       {
         path: 'admin',
-        component: constantComponents.pagesStaticPrivateAdmin,
+        component: components.pagesStaticPrivateAdmin,
         meta: {
           title: 'Admin',
           access: [
@@ -52,7 +60,7 @@ export default [
       },
       {
         path: 'user',
-        component: constantComponents.pagesStaticPrivateUser,
+        component: components.pagesStaticPrivateUser,
         meta: {
           title: 'User',
           icon: 'el-icon-tickets',
@@ -67,15 +75,15 @@ export default [
   },
   {
     path: '/public',
-    component: plainExport,
+    component: pureExport,
     meta: {
       title: 'Public',
-      icon: 'el-icon-s-promotion'
+      icon: 'el-icon-folder-opened'
     },
     children: [
       {
         path: 'anyone',
-        component: constantComponents.pagesPublicAnyone,
+        component: components.pagesPublicAnyone,
         meta: {
           title: 'Anyone'
         }
@@ -84,22 +92,22 @@ export default [
   },
   {
     path: '/nested',
-    component: constantComponents.pagesNested,
+    component: components.pagesNested,
     meta: {
       title: 'Nested',
-      icon: 'el-icon-s-management'
+      icon: 'el-icon-coin'
     },
     children: [
       {
         path: 'nested-1',
-        component: constantComponents.pagesNested,
+        component: components.pagesNested,
         meta: {
           title: 'nested-1'
         },
         children: [
           {
             path: 'nested-2',
-            component: constantComponents.pagesNested,
+            component: components.pagesNested,
             meta: {
               title: 'nested-2'
             }
@@ -111,10 +119,10 @@ export default [
   {
     // https://tools.ietf.org/html/rfc7235#section-3.1
     path: '/401',
-    component: constantComponents.pagesErrorUnauthorized
+    component: components.pagesErrorUnauthorized
   },
   {
     path: '/404',
-    component: constantComponents.pagesErrorNotFound
+    component: components.pagesErrorNotFound
   }
 ]
