@@ -1,8 +1,8 @@
 <h1 align="center">Adminize template</h1>
 
 <p align="center">
-  <a href="https://circleci.com/gh/lbwa/adminize">
-    <img alt="Circle CI" src="https://circleci.com/gh/lbwa/adminize.svg?style=svg">
+  <a href="https://github.com/lbwa/adminize/actions">
+    <img alt="master workflow" src="https://github.com/lbwa/adminize/workflows/Test%20and%20deployment/badge.svg">
   </a>
   <a href="https://github.com/lbwa/adminize/releases">
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/lbwa/adminize.svg?style=flat-square">
