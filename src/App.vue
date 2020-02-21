@@ -8,10 +8,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { DEFAULT_LAYOUT } from './constants'
 
-export default {
+export default Vue.extend({
   name: 'App',
 
   computed: {
@@ -28,7 +29,7 @@ export default {
         )
     }
   }
-}
+})
 </script>
 
 <style lang="sass">
