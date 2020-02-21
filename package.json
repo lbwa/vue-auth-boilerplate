@@ -11,6 +11,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "normalize.css": "^8.0.1",
+    "tiny-invariant": "^1.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
