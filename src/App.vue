@@ -17,7 +17,7 @@ export default Vue.extend({
 
   computed: {
     layoutComponent() {
-      // for trigger framework internal dep collection, make `layoutComponent`
+      // for trigger framework's internal dep collection, make `layoutComponent`
       // reactive
       const layout = this.$route.meta.layout || DEFAULT_LAYOUT
       // A component name should be embedded by template string directly.
@@ -27,6 +27,12 @@ export default Vue.extend({
         import(
           /* webpackChunkName: 'layout-[request]' */ `./layouts/${layout}.vue`
         )
+    }
+  },
+
+  watch: {
+    $route: function(to) {
+      this.$store.commit('history/append', to)
     }
   }
 })
