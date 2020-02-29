@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="adminize">
     <transition name="layout">
       <component :is="layoutComponent">
         <router-view />
@@ -39,7 +39,7 @@ export default Vue.extend({
 </script>
 
 <style lang="sass">
-#app
+#adminize
   font-family: Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
