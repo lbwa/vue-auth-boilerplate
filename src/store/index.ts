@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
+import router from '@/router'
+
 import modules from './modules'
 import { createAbilityPlugin } from '../plugins/ability'
-import router from '@/router'
+import { types } from './modules/user'
+import { FORBIDDEN_ROUTE } from '@/shared/constants'
 
 Vue.use(Vuex)
 
@@ -12,9 +15,9 @@ const __DEV__ = process.env.NODE_ENV === 'development'
 export type RootState = {}
 
 const abilityPlugin = createAbilityPlugin(
-  'user/setUserAbilities',
+  types.setUserAbilities,
   router,
-  '/forbidden',
+  FORBIDDEN_ROUTE,
   [
     {
       path: '/user',

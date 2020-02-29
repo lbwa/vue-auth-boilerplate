@@ -12,7 +12,10 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest"
+      "jest",
+      "vue-router",
+      "vuex",
+      "v-access"
     ],
     "paths": {
       "@/*": [
