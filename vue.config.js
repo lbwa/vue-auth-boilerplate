@@ -2,7 +2,9 @@ const __DEV__ = process.env.NODE_ENV === 'development'
 
 module.exports = {
   publicPath: './',
+
   productionSourceMap: false,
+
   chainWebpack(config) {
     /**
      * Feature flags
@@ -21,5 +23,16 @@ module.exports = {
        */
       config.resolve.symlinks(false)
     })
+  },
+
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import '~@/styles/variables.scss';`
+      },
+      sass: {
+        prependData: `@import '~@/styles/global.sass'`
+      }
+    }
   }
 }
