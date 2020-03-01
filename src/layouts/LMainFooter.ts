@@ -7,14 +7,7 @@ export default Vue.extend({
 
   functional: true,
 
-  props: {
-    sticky: {
-      type: Boolean,
-      default: true
-    }
-  },
-
-  render(h: CreateElement, { props }): VNode | VNode[] {
+  render(h: CreateElement, { parent }): VNode | VNode[] {
     const vNodes = [h('router-view')]
 
     function createAnchorElement(
@@ -38,7 +31,9 @@ export default Vue.extend({
       )
     }
 
-    if (props.sticky) {
+    const layoutPayload: Record<'sticky', boolean> = (parent.$route.meta || {})
+      .layoutPayload
+    if (layoutPayload && layoutPayload.sticky) {
       vNodes.push(
         h(
           'footer',
