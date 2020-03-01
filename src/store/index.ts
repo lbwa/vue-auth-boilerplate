@@ -6,7 +6,7 @@ import router from '@/router'
 import modules from './modules'
 import { createAbilityPlugin } from '../plugins/ability'
 import { types } from './modules/user'
-import { FORBIDDEN_ROUTE } from '@/shared/constants'
+import { FORBIDDEN_ROUTE } from '@/constants'
 
 Vue.use(Vuex)
 
