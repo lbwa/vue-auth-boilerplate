@@ -1,9 +1,7 @@
 <template>
-  <v-app id="adminize">
-    <component :is="layoutComponent">
-      <router-view />
-    </component>
-  </v-app>
+  <component :is="layoutComponent">
+    <router-view />
+  </component>
 </template>
 
 <script lang="ts">

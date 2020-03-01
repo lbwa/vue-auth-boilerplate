@@ -32,7 +32,7 @@ export function userLogin(username: string, password: string) {
 export function fetchUserAbilities() {
   return new Promise<EffectResponse>((resolve, reject) => {
     setTimeout(() => {
-      const simulateFailed = Math.random() <= 0.5
+      const simulateFailed = Math.random() > 0.9
       if (simulateFailed) {
         return reject({
           code: 403,

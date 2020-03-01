@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import { CreateElement, VNode } from 'vue/types/umd'
-import classes from './LMainFooter.module.sass'
+import classes from './RView.module.sass'
 
 export default Vue.extend({
-  name: 'LMainFooter',
+  name: 'RView',
 
   functional: true,
 
