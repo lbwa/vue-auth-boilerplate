@@ -8,8 +8,7 @@ export const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
-    meta: {}
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/login',
@@ -17,7 +16,10 @@ export const routes = [
     component: () =>
       import(/* webpackChunkName: 'login' */ '../views/Login/index.vue'),
     meta: {
-      layout: 'LMainFooter'
+      layout: 'LMainFooter',
+      layoutPayload: {
+        sticky: true
+      }
     }
   },
   {
