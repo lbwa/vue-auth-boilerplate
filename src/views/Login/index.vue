@@ -3,33 +3,44 @@
     <v-container class="fill-height" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="4">
-          <v-card class="elevation-3">
-            <v-toolbar color="primary" dark flat>
+          <v-card class="elevation-1">
+            <v-toolbar dark color="secondary">
               <v-toolbar-title>
                 <span class="login__title">Adminize console</span>
               </v-toolbar-title>
+              <v-spacer />
+              <v-btn text small @click="asPreset('user')">as user</v-btn>
+              <v-btn text small @click="asPreset('admin')">as admin</v-btn>
             </v-toolbar>
 
             <v-card-text>
-              <v-form>
+              <v-form ref="form" v-model="isValidForm" @submit="onLogin">
                 <v-text-field
                   prepend-icon="person"
                   label="Username"
                   name="username"
                   type="text"
                   clearable
+                  required
                   v-model="username"
+                  :rules="usernameRules"
+                  :loading="isLoading"
+                  :disabled="isLoading"
                 />
                 <v-text-field
                   prepend-icon="lock"
                   id="password"
                   label="Password"
                   name="password"
-                  type="password"
                   v-model="password"
+                  required
                   :append-icon="
-                    isShowPassword ? 'md-visibility' : 'md-visibility_off'
+                    isShowPassword ? 'visibility_off' : 'visibility'
                   "
+                  :type="isShowPassword ? 'text' : 'password'"
+                  :rules="passwordRules"
+                  :loading="isLoading"
+                  :disabled="isLoading"
                   @click:append="isShowPassword = !isShowPassword"
                 />
               </v-form>
@@ -37,8 +48,20 @@
 
             <v-card-actions>
               <v-spacer />
-              <v-btn color="primary" @click="onLogin">Login</v-btn>
+              <v-btn
+                :disabled="isLoading"
+                :loading="isLoading"
+                @click="onLogin"
+                color="secondary"
+                class="px-6"
+                >Login</v-btn
+              >
             </v-card-actions>
+
+            <base-toast
+              :message.sync="toastMessage"
+              :visible.sync="toastVisibility"
+            />
           </v-card>
         </v-col>
       </v-row>
@@ -47,6 +70,14 @@
 </template>
 
 <script>
+import { errorLog } from '../../shared/utils'
+import { QUERY_KEY_FOR_LOGIN_TO } from '../../constants'
+import BaseToast from '../../components/BaseToast'
+
+const ERR_CODE = {
+  wrongInfo: 'Oops! Wrong username or password.'
+}
+
 export default {
   name: 'ViewLogin',
 
@@ -54,14 +85,47 @@ export default {
     return {
       username: '',
       password: '',
-      isShowPassword: false
+      usernameRules: [v => !!v || 'Please enter your account username.'],
+      passwordRules: [v => !!v || 'Please enter your account password.'],
+      isShowPassword: false,
+      isValidForm: false,
+      isLoading: false,
+      toastVisibility: false,
+      toastMessage: ''
     }
   },
 
   methods: {
-    onLogin() {
-      console.info(true)
+    async onLogin() {
+      this.toggleLoading(true)
+      if (this.isValidForm || this.$refs.form.validate()) {
+        try {
+          await this.$store.dispatch('user/login', {
+            username: this.username,
+            password: this.password
+          })
+          this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
+        } catch (error) {
+          errorLog(error)
+          if (error.code === 401) {
+            this.toastVisibility = true
+            this.toastMessage = ERR_CODE.wrongInfo
+          }
+        }
+      }
+      this.toggleLoading(false)
+    },
+    toggleLoading(state) {
+      this.isLoading = state
+    },
+    asPreset(tag) {
+      this.username = tag
+      this.password = tag
     }
+  },
+
+  components: {
+    BaseToast
   }
 }
 </script>

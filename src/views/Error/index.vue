@@ -1,5 +1,5 @@
 <template>
-  <div class="error">
+  <div class="view-error">
     <div class="error__notify">
       <h2 class="error__notify__code">{{ code }}</h2>
       <div class="error__notify__message">{{ message }}</div>
@@ -25,10 +25,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.error
+.view-error
   position: relative
   height: calc(100vh - 60px)
 
+.error
   &__notify
     display: flex
     position: absolute
