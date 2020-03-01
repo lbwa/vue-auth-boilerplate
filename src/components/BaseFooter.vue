@@ -7,7 +7,9 @@
       class="b-footer__link"
       >Documentation</a
     >
-    <span class="px-1">- Copyright &copy; {{ new Date().getFullYear() }}</span>
+    <span class="px-1"
+      >- Copyright &copy; 2019 - {{ new Date().getFullYear() }}</span
+    >
     <a
       href="https://set.sh"
       target="_blank"
