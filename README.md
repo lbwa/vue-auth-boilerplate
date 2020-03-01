@@ -25,3 +25,24 @@ Any action internal error should be handled by action consumer, instead of itsel
 ```
 action's error --> throw --as rejected promise--> handled by any action consumer
 ```
+
+## Symbolic constants
+
+> A symbolic constant is a name given to a constant literal value. It's unusually used to prevent [magic numbers][wiki-magic-number] and [hard-coding][wiki-hard-coding].
+
+[wiki-magic-number]: https://en.wikipedia.org/wiki/Magic_number_(programming)
+[wiki-hard-coding]: https://en.wikipedia.org/wiki/Hard_coding
+
+All symbolic constants should be recorded in the [src/constants.ts](src/constants.ts) file.
+
+## Declarations
+
+All global declarations should be recorded in the [src/global.d.ts](src/global.d.ts) file.
+
+## Changelog
+
+All notable changes to this package will be documented in [CHANGELOG](./CHANGELOG.md) file.
+
+## License
+
+MIT © [Bowen Liu](https://github.com/lbwa)

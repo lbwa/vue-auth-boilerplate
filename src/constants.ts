@@ -17,4 +17,7 @@ export const RECORD_MAX_VAL = 20
  */
 export const FORBIDDEN_ROUTE = '/forbidden'
 
+/**
+ * Used to redirect to target path when login successfully
+ */
 export const QUERY_KEY_FOR_LOGIN_TO = '__from'
