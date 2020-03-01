@@ -75,7 +75,9 @@ import { QUERY_KEY_FOR_LOGIN_TO } from '../../constants'
 import BaseToast from '../../components/BaseToast'
 
 const ERR_CODE = {
-  wrongInfo: 'Oops! Wrong username or password.'
+  wrongInfo: 'Oops! Wrong username or password.',
+  emptyAbilities:
+    'Oops! Current user has no permission. Please contact system administrator.'
 }
 
 export default {
@@ -91,7 +93,8 @@ export default {
       isValidForm: false,
       isLoading: false,
       toastVisibility: false,
-      toastMessage: ''
+      toastMessage: '',
+      shouldBlock: true
     }
   },
 
@@ -104,15 +107,35 @@ export default {
             username: this.username,
             password: this.password
           })
-          this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
         } catch (error) {
           errorLog(error)
-          if (error.code === 401) {
+          if (error.code === 403) {
+            this.shouldBlock = true
             this.toastVisibility = true
             this.toastMessage = ERR_CODE.wrongInfo
           }
         }
+
+        /**
+         * Because we should use user info to fetch ability list, the following
+         * request should be called after action named login, instead of
+         * concurrent request.
+         */
+        try {
+          await this.$store.dispatch('user/fetchUserAbilities')
+        } catch (error) {
+          errorLog(error)
+          if (error.code === 403) {
+            this.shouldBlock = true
+            this.toastVisibility = true
+            this.toastMessage = ERR_CODE.emptyAbilities
+          }
+        }
+
+        !this.shouldBlock &&
+          this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
       }
+      this.shouldBlock = false
       this.toggleLoading(false)
     },
     toggleLoading(state) {
