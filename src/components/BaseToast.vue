@@ -6,7 +6,7 @@
     color="error"
   >
     {{ message }}
-    <v-btn dark text @click="$emit('update:message', '')">
+    <v-btn dark text @click="onClose">
       Close
     </v-btn>
   </v-snackbar>
@@ -24,6 +24,13 @@ export default {
     visible: {
       type: Boolean,
       required: true
+    }
+  },
+
+  methods: {
+    onClose() {
+      this.$emit('update:visible', false)
+      this.$emit('update:message', '')
     }
   }
 }

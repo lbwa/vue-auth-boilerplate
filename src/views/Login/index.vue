@@ -3,10 +3,14 @@
     <v-container class="fill-height" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="4">
-          <v-card class="elevation-1">
+          <v-card class="elevation-3">
+            <v-overlay :value="isLoading" absolute>
+              <v-progress-circular indeterminate></v-progress-circular>
+            </v-overlay>
+
             <v-toolbar dark color="secondary">
               <v-toolbar-title>
-                <span class="login__title">Adminize console</span>
+                <span class="login__title">Adminize</span>
               </v-toolbar-title>
               <v-spacer />
               <v-btn text small @click="asPreset('user')">as user</v-btn>
@@ -24,7 +28,6 @@
                   required
                   v-model="username"
                   :rules="usernameRules"
-                  :loading="isLoading"
                   :disabled="isLoading"
                 />
                 <v-text-field
@@ -39,7 +42,6 @@
                   "
                   :type="isShowPassword ? 'text' : 'password'"
                   :rules="passwordRules"
-                  :loading="isLoading"
                   :disabled="isLoading"
                   @click:append="isShowPassword = !isShowPassword"
                 />
@@ -50,7 +52,6 @@
               <v-spacer />
               <v-btn
                 :disabled="isLoading"
-                :loading="isLoading"
                 @click="onLogin"
                 color="secondary"
                 class="px-6"
@@ -93,8 +94,7 @@ export default {
       isValidForm: false,
       isLoading: false,
       toastVisibility: false,
-      toastMessage: '',
-      shouldBlock: true
+      toastMessage: ''
     }
   },
 
@@ -110,10 +110,11 @@ export default {
         } catch (error) {
           errorLog(error)
           if (error.code === 403) {
-            this.shouldBlock = true
-            this.toastVisibility = true
+            this.toggleToastVisibility(true)
             this.toastMessage = ERR_CODE.wrongInfo
           }
+          this.toggleLoading(false)
+          return
         }
 
         /**
@@ -126,20 +127,22 @@ export default {
         } catch (error) {
           errorLog(error)
           if (error.code === 403) {
-            this.shouldBlock = true
-            this.toastVisibility = true
+            this.toggleToastVisibility(true)
             this.toastMessage = ERR_CODE.emptyAbilities
           }
+          this.toggleLoading(false)
+          return
         }
-
-        !this.shouldBlock &&
-          this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
       }
-      this.shouldBlock = false
+
+      this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
       this.toggleLoading(false)
     },
     toggleLoading(state) {
-      this.isLoading = state
+      this.isLoading = state || !this.isLoading
+    },
+    toggleToastVisibility(state) {
+      this.toastVisibility = state || !this.toastVisibility
     },
     asPreset(tag) {
       this.username = tag
