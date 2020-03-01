@@ -1,29 +1,27 @@
-# template
+<h1 align="center">Adminize</h1>
 
-## Project setup
-```
-yarn install
-```
+## [Actions][doc-vuex-actions]
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+[doc-vuex-actions]: https://vuex.vuejs.org/guide/actions.html#actions
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### Request
 
-### Run your unit tests
+> Actions can contain arbitrary asynchronous operations.
+
+All HTTP requests should be called by an action if an HTTP request result needs to be stored in the vuex store, instead of calling HTTP request directly.
+
 ```
-yarn test:unit
+dispatch an action --> http effects --> commit mutation in an action --> store the result of effects
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+### Error handler
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> [store.dispatch][doc-vuex-dispatch] always return a Promise instance.
+
+[doc-vuex-dispatch]: https://vuex.vuejs.org/api/#dispatch
+
+Any action internal error should be handled by action consumer, instead of itself.
+
+```
+action's error --> throw --as rejected promise--> handled by any action consumer
+```
