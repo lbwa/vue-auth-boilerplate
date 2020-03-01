@@ -5,7 +5,7 @@
 /**
  * the root router-view layout
  */
-export const DEFAULT_LAYOUT = 'LMainFooter'
+export const DEFAULT_LAYOUT = 'RAdminize'
 
 /**
  * the max value of history records and should be greater than 1
