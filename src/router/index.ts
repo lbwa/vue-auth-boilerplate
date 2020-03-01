@@ -15,7 +15,10 @@ export const routes = [
     path: '/login',
     name: 'Login',
     component: () =>
-      import(/* webpackChunkName: 'login' */ '../views/Login/index.vue')
+      import(/* webpackChunkName: 'login' */ '../views/Login/index.vue'),
+    meta: {
+      layout: 'LMainFooter'
+    }
   },
   {
     path: '/forbidden',

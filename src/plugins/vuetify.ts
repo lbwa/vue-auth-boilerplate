@@ -7,8 +7,14 @@ Vue.use(Vuetify)
 
 export default new Vuetify({
   theme: {
+    dark: false,
     options: {
-      customProperties: false
+      customProperties: true
+    },
+    themes: {
+      light: {
+        primary: '#f34b7d'
+      }
     }
   },
   icons: {
