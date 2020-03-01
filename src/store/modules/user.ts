@@ -37,7 +37,10 @@ const user: Module<UserState, RootState> = {
   },
 
   actions: {
-    async login({ commit }, { username, password }: Record<string, string>) {
+    async login(
+      { commit },
+      { username, password }: Record<'username' | 'password', string>
+    ) {
       const { token } = await userLogin(username, password)
       token && commit('setToken', token)
     },
