@@ -1,10 +1,8 @@
 <template>
   <v-app id="adminize">
-    <transition name="layout">
-      <component :is="layoutComponent">
-        <router-view />
-      </component>
-    </transition>
+    <component :is="layoutComponent">
+      <router-view />
+    </component>
   </v-app>
 </template>
 
