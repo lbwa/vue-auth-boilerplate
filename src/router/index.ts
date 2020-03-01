@@ -16,10 +16,7 @@ export const routes = [
     component: () =>
       import(/* webpackChunkName: 'login' */ '../views/Login/index.vue'),
     meta: {
-      layout: 'LMainFooter',
-      layoutPayload: {
-        sticky: true
-      }
+      layout: 'RFooter'
     }
   },
   {
@@ -41,10 +38,12 @@ export const routes = [
       import(
         /* webpackChunkName: 'error-not-found' */ '../views/Error/index.vue'
       ),
-
     props: {
       code: 404,
       message: 'Seems nothing could be found.'
+    },
+    meta: {
+      layout: 'RView'
     }
   }
 ]
