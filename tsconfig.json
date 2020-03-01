@@ -15,7 +15,8 @@
       "jest",
       "vue-router",
       "vuex",
-      "v-access"
+      "v-access",
+      "vuetify"
     ],
     "paths": {
       "@/*": [

@@ -1,11 +1,11 @@
 <template>
-  <div id="adminize">
+  <v-app id="adminize">
     <transition name="layout">
       <component :is="layoutComponent">
         <router-view />
       </component>
     </transition>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -24,9 +24,7 @@ export default Vue.extend({
       // Otherwise, `Critical dependency: the request of a dependency is an
       // expression` warning occurred.
       return () =>
-        import(
-          /* webpackChunkName: 'layout-[request]' */ `./layouts/${layout}.vue`
-        )
+        import(/* webpackChunkName: 'layout-[request]' */ `./layouts/${layout}`)
     }
   },
 
@@ -37,11 +35,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style lang="sass">
-#adminize
-  font-family: Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  color: #2c3e50
-</style>

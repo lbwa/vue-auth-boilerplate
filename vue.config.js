@@ -25,14 +25,5 @@ module.exports = {
     })
   },
 
-  css: {
-    loaderOptions: {
-      scss: {
-        prependData: `@import '~@/styles/variables.scss';`
-      },
-      sass: {
-        prependData: `@import '~@/styles/global.sass'`
-      }
-    }
-  }
+  transpileDependencies: ['vuetify']
 }

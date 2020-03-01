@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import './plugins/ability'
 import App from './App.vue'
+import vuetify from './plugins/vuetify'
 
 // https://github.com/vuejs/vetur/issues/159
 declare module 'vue/types/vue' {
@@ -19,5 +20,6 @@ Vue.config.productionTip = __DEV__
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')
