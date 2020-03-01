@@ -16,3 +16,5 @@ export const RECORD_MAX_VAL = 20
  * Used to forbid unauthorized access
  */
 export const FORBIDDEN_ROUTE = '/forbidden'
+
+export const QUERY_KEY_FOR_LOGIN_TO = '__from'
