@@ -8,7 +8,7 @@ interface UserState {
   abilities: Ability[]
 }
 
-export const types = {
+export const userMutationTypes = {
   setToken: 'setToken',
   setUserAbilities: 'setUserAbilities'
 }
@@ -28,10 +28,10 @@ const user: Module<UserState, RootState> = {
   },
 
   mutations: {
-    setToken(state, token) {
+    [userMutationTypes.setToken](state, token) {
       state.token = token
     },
-    setUserAbilities(state, abilities) {
+    [userMutationTypes.setUserAbilities](state, abilities) {
       state.abilities = abilities
     }
   },

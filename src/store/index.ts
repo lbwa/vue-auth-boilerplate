@@ -5,17 +5,15 @@ import router from '@/router'
 
 import modules from './modules'
 import { createAbilityPlugin } from '../plugins/ability'
-import { types } from './modules/user'
+import { userMutationTypes } from './modules/user'
 import { FORBIDDEN_ROUTE } from '@/constants'
 
 Vue.use(Vuex)
 
-const __DEV__ = process.env.NODE_ENV === 'development'
-
 export type RootState = {}
 
 const abilityPlugin = createAbilityPlugin(
-  types.setUserAbilities,
+  userMutationTypes.setUserAbilities,
   router,
   FORBIDDEN_ROUTE,
   [
@@ -24,7 +22,7 @@ const abilityPlugin = createAbilityPlugin(
       component: () =>
         import(/* webpackChunkName: 'private' */ '../views/User/index.vue'),
       meta: {
-        ability: 'github.repo.read'
+        ability: 'system.user.read'
       }
     }
   ]
