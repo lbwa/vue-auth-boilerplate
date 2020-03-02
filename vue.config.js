@@ -1,3 +1,5 @@
+const version = require('./package.json').version
+
 const __DEV__ = process.env.NODE_ENV === 'development'
 
 module.exports = {
@@ -12,6 +14,8 @@ module.exports = {
      */
     config.plugin('define').tap(([args]) => {
       args.__DEV__ = JSON.stringify(__DEV__)
+      args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
+      args.__VERSION__ = JSON.stringify(version)
       return [args]
     })
 
