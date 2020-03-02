@@ -21,3 +21,8 @@ export const FORBIDDEN_ROUTE = '/forbidden'
  * Used to redirect to target path when login successfully
  */
 export const QUERY_KEY_FOR_LOGIN_TO = '__from'
+
+/**
+ * Default icon for navigation item
+ */
+export const DEFAULT_NAV_ICON = 'work_outline'

@@ -1,29 +1,10 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="isOpenDrawer" app clipped>
-      <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <r-adminize-nav v-model="isOpenDrawer" />
 
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="isOpenDrawer = !isOpenDrawer" />
-      <v-toolbar-title>Adminize</v-toolbar-title>
+      <v-toolbar-title>Adminize console</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -39,6 +20,7 @@
 
 <script>
 import BaseFooter from '../components/BaseFooter'
+import RAdminizeNav from '../components/RAdminizeNav'
 
 export default {
   name: 'RAdminize',
@@ -50,7 +32,8 @@ export default {
   },
 
   components: {
-    BaseFooter
+    BaseFooter,
+    RAdminizeNav
   },
 
   created() {
