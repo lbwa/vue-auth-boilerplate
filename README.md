@@ -54,7 +54,7 @@ action's error --> throw --as rejected promise--> handled by any action consumer
 
 ## Changelog
 
-All notable changes to this package will be documented in [CHANGELOG](./CHANGELOG.md) file.
+All notable changes to this repository will be documented in [CHANGELOG](./CHANGELOG.md) file.
 
 ## License
 
