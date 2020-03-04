@@ -38,6 +38,15 @@ const routes: ConsoleRouteConfig[] = [
     meta: {
       hidden: true
     }
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () =>
+      import(/* webpackChunkName: 'user' */ '../views/User/index.vue'),
+    meta: {
+      title: 'User'
+    }
   }
 ]
 

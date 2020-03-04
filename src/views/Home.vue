@@ -1,11 +1,77 @@
 <template>
-  <div class="home">home</div>
+  <v-card class="home pb-7">
+    <h1 class="home__title">Adminize</h1>
+    <p class="home__subtitle">Vue.js console boilerplate with authentication</p>
+    <ul class="home__info my-5 pa-0">
+      <li
+        v-for="key of Object.keys(info)"
+        :key="key"
+        class="home__info__item my-2"
+      >
+        <h4 class="home__info__item-title mx-5">{{ key | formatCamelCase }}</h4>
+        <p class="home__info__item-value ma-0">
+          <template v-if="typeof info[key] === 'string'">
+            {{ info[key] }}
+          </template>
+
+          <template v-else>
+            <a
+              :href="info[key].href"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover-decoration"
+              >{{ info[key].label }}</a
+            >
+          </template>
+        </p>
+      </li>
+    </ul>
+  </v-card>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+
+  methods: {},
+
+  data() {
+    return {
+      info: Object.freeze({
+        version: {
+          label: __VERSION__,
+          href: `https://github.com/lbwa/adminize/releases/v${__VERSION__}`
+        },
+        latestCommit: {
+          label: __COMMIT_HASH__.slice(0, 15),
+          href: `https://github.com/lbwa/adminize/commit/${__COMMIT_HASH__}`
+        },
+        latestBuild: new Date(__BUILD_TIME__).toLocaleString()
+      })
+    }
+  },
+
+  filters: {
+    formatCamelCase(val) {
+      return val.replace(/[A-Z]/g, matched => ` ${matched.toLowerCase()}`)
+    }
+  }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.home
+  width: 100%
+  text-align: center
+
+  &__info
+    list-style: none
+
+    &__item
+      display: flex
+      justify-content: center
+      align-items: center
+
+      &-title
+        text-transform: capitalize
+</style>

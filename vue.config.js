@@ -1,4 +1,7 @@
 const version = require('./package.json').version
+const commitHash = require('child_process')
+  .execSync('git rev-parse HEAD')
+  .toString()
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
@@ -16,6 +19,7 @@ module.exports = {
       args.__DEV__ = JSON.stringify(__DEV__)
       args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
       args.__VERSION__ = JSON.stringify(version)
+      args.__COMMIT_HASH__ = JSON.stringify(commitHash)
       return [args]
     })
 
