@@ -7,13 +7,13 @@
     clipped
   >
     <!-- https://vuetifyjs.com/en/components/lists/ -->
-    <v-list dense rounded expand nav>
+    <v-list dense nav>
       <nav-drawer-item
         v-for="route of routes"
         :key="route.name"
         :route="route"
         :base-path="route.path"
-        :prepend-icon="(route.meta || {}).icon || 'fiber_manual_record'"
+        :prepend-icon="(route.meta || {}).icon"
       />
     </v-list>
   </v-navigation-drawer>
