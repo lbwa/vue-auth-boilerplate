@@ -61,6 +61,11 @@
       "ecmaVersion": 2020
     },
     "rules": {},
+    "globals": {
+      "__BUILD_TIME__": "readonly",
+      "__COMMIT_HASH__": "readonly",
+      "__VERSION__": "readonly"
+    },
     "overrides": [
       {
         "files": [

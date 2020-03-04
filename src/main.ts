@@ -7,6 +7,7 @@ import store from './store'
 import './plugins/ability'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import './styles/global.sass'
 
 // https://github.com/vuejs/vetur/issues/159
 declare module 'vue/types/vue' {
