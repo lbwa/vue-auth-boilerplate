@@ -1,7 +1,12 @@
 <template>
   <nav-root-item
     v-if="!route.children || !route.children.length"
-    :icon="(route.meta || {}).icon || defaultNavIcon"
+    :icon="
+      (route.meta || {}).icon ||
+        ($parent.$options.name === 'RAdminizeNavDrawer'
+          ? 'arrow_drop_down'
+          : defaultNavIcon)
+    "
     :title="(route.meta || {}).title"
     :to="resolvePath(route.path)"
   />
@@ -15,9 +20,8 @@
       <r-adminize-nav-drawer
         v-if="child.children && child.children.length"
         :key="child.path"
-        :prepend-icon="(child.meta || {}).icon || defaultNavIcon"
+        :prepend-icon="(child.meta || {}).icon"
         sub-group
-        no-action
         :route="child"
         :base-path="resolvePath(child.path)"
       />
