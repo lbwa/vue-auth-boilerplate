@@ -1,54 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import routes from './routes'
 import { onLogin } from './guards'
 
 Vue.use(VueRouter)
 
-export const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () =>
-      import(/* webpackChunkName: 'login' */ '../views/Login/index.vue'),
-    meta: {
-      layout: 'RFooter'
-    }
-  },
-  {
-    path: '/forbidden',
-    name: 'ForbiddenError',
-    component: () =>
-      import(
-        /* webpackChunkName: 'error-forbidden' */ '../views/Error/index.vue'
-      ),
-    props: {
-      code: 403,
-      message: 'Forbidden access'
-    }
-  },
-  {
-    path: '*',
-    name: 'NotFoundError',
-    component: () =>
-      import(
-        /* webpackChunkName: 'error-not-found' */ '../views/Error/index.vue'
-      ),
-    props: {
-      code: 404,
-      message: 'Seems nothing could be found.'
-    },
-    meta: {
-      layout: 'RView'
-    }
-  }
-]
-
 const router = new VueRouter({
+  /**
+   * Should add new routes in the ./routes.ts file, instead of this file.
+   */
   routes
 })
 
