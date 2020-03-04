@@ -7,7 +7,7 @@
     clipped
   >
     <!-- https://vuetifyjs.com/en/components/lists/ -->
-    <v-list dense>
+    <v-list dense rounded expand nav>
       <nav-drawer-item
         v-for="route of routes"
         :key="route.name"
@@ -22,6 +22,23 @@
 <script>
 import NavDrawerItem from './RAdminizeNavDrawer'
 
+function createNavRoutes(routes) {
+  return routes.reduce((list, current) => {
+    const shallow = Object.assign({}, current)
+
+    if (shallow.meta && !shallow.meta.hidden && shallow.meta.title) {
+      if (shallow.children) {
+        shallow.children = createNavRoutes(shallow.children)
+      }
+
+      if (!shallow.children || shallow.children.length) {
+        list.push(shallow)
+      }
+    }
+    return list
+  }, [])
+}
+
 export default {
   name: 'RAdminizeNav',
 
@@ -32,11 +49,10 @@ export default {
     }
   },
 
-  computed: {
-    routes() {
-      return this.$router.options.routes.filter(
-        route => !(route.meta || {}).hidden
-      )
+  data() {
+    return {
+      // TODO: include dynamic routes
+      routes: Object.freeze(createNavRoutes(this.$router.options.routes))
     }
   },
 
