@@ -1,29 +1,34 @@
 <template>
-  <v-footer class="b-footer justify-center text-capitalize" v-bind="$attrs">
-    <a
-      href="https://github.com/lbwa/adminize"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="b-footer__link"
-      >Documentation</a
+  <v-footer
+    class="b-footer flex-column justify-center text-capitalize"
+    v-bind="$attrs"
+  >
+    <span
+      >Copyright &copy; 2019 - {{ new Date().getFullYear() }}&nbsp;<a
+        href="https://set.sh"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="b-footer__link"
+        >Bowen Liu</a
+      ></span
     >
-    <span class="px-1"
-      >- Copyright &copy; 2019 - {{ new Date().getFullYear() }}</span
-    >
-    <a
-      href="https://set.sh"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="b-footer__link"
-      >Bowen Liu</a
-    >
-    <span class="px-1">-</span>
-    <a
-      href="https://github.com/lbwa/adminize/blob/master/CHANGELOG.md"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="b-footer__link"
-      >Changelog</a
+
+    <span>
+      <a
+        href="https://github.com/lbwa/adminize"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="b-footer__link"
+        >Documentation</a
+      >
+      -
+      <a
+        href="https://github.com/lbwa/adminize/blob/master/CHANGELOG.md"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="b-footer__link"
+        >Changelog</a
+      ></span
     >
   </v-footer>
 </template>
