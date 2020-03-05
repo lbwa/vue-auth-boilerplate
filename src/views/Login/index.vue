@@ -123,7 +123,7 @@ export default {
          * concurrent request.
          */
         try {
-          await this.$store.dispatch('user/fetchUserAbilities')
+          await this.$store.dispatch('user/fetchUserAbilities', this)
         } catch (error) {
           errorLog(error)
           if (error.code === 403) {

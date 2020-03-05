@@ -25,7 +25,7 @@ export function userLogin(username: string, password: string) {
         code: 403,
         msg: 'account error'
       })
-    }, 2 * 1000)
+    }, 0.1 * 1000)
   })
 }
 
@@ -49,6 +49,6 @@ export function fetchUserAbilities() {
             createAt: Date.now() + index
           }))
       })
-    }, 2 * 1000)
+    }, 0.1 * 1000)
   })
 }
