@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <r-adminize-nav v-model="isOpenDrawer" />
-
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="isOpenDrawer = !isOpenDrawer" />
       <v-toolbar-title>Adminize console</v-toolbar-title>
     </v-app-bar>
 
+    <r-adminize-nav v-model="isOpenDrawer" />
+
     <v-content>
-      <v-container class="fill-height">
+      <v-container fluid class="fill-height justify-center">
         <!-- router view export -->
         <router-view />
       </v-container>
