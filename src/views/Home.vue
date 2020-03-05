@@ -2,7 +2,7 @@
   <v-card class="home d-flex flex-column justify-center align-center">
     <h1 class="home__title">Adminize</h1>
     <p class="home__subtitle">Vue.js console boilerplate with authentication</p>
-    <ul class="home__info my-5 pa-0">
+    <ul class="home__info ma-0 pa-0">
       <li
         v-for="key of Object.keys(info)"
         :key="key"
