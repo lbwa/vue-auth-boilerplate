@@ -1,5 +1,5 @@
 <template>
-  <v-card class="home pb-7">
+  <v-card class="home d-flex flex-column justify-center align-center">
     <h1 class="home__title">Adminize</h1>
     <p class="home__subtitle">Vue.js console boilerplate with authentication</p>
     <ul class="home__info my-5 pa-0">
@@ -42,7 +42,7 @@ export default {
           label: __VERSION__,
           href: `https://github.com/lbwa/adminize/releases/v${__VERSION__}`
         },
-        latestCommit: {
+        commit: {
           label: __COMMIT_HASH__.slice(0, 15),
           href: `https://github.com/lbwa/adminize/commit/${__COMMIT_HASH__}`
         },
@@ -61,6 +61,7 @@ export default {
 
 <style lang="sass" scoped>
 .home
+  height: 100%
   width: 100%
   text-align: center
 
