@@ -1,16 +1,20 @@
 import { Module } from 'vuex'
 import { RootState } from '..'
-import { Ability } from 'v-access'
+import { Ability, init, RouteWithAbility } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
+import VueRouter from 'vue-router'
+import { FORBIDDEN_ROUTE } from '@/constants'
 
 interface UserState {
   token: string
   abilities: Ability[]
+  routes: RouteWithAbility[]
 }
 
 export const userMutationTypes = {
   setToken: 'setToken',
-  setUserAbilities: 'setUserAbilities'
+  setUserAbilities: 'setUserAbilities',
+  setUserRoutes: 'setUserRoutes'
 }
 
 const user: Module<UserState, RootState> = {
@@ -18,7 +22,8 @@ const user: Module<UserState, RootState> = {
 
   state: {
     token: '',
-    abilities: []
+    abilities: [],
+    routes: []
   },
 
   getters: {
@@ -33,6 +38,9 @@ const user: Module<UserState, RootState> = {
     },
     [userMutationTypes.setUserAbilities](state, abilities) {
       state.abilities = abilities
+    },
+    [userMutationTypes.setUserRoutes](state, routes) {
+      state.routes = routes
     }
   },
 
@@ -44,14 +52,38 @@ const user: Module<UserState, RootState> = {
       const { token } = await userLogin(username, password)
       token && commit('setToken', token)
     },
-    async fetchUserAbilities({ commit }) {
+    async fetchUserAbilities({ commit }, instance: Vue | VueRouter) {
       const { abilities } = await fetchUserAbilities()
-      abilities &&
-        abilities.length &&
-        commit(
-          'setUserAbilities',
-          abilities.map((ability: Record<'id', string>) => ability.id)
+
+      if (abilities && abilities.length) {
+        const abilitiesIds = abilities.map(
+          (ability: Record<'id', string>) => ability.id
         )
+        commit('setUserAbilities', abilitiesIds)
+        commit(
+          'setUserRoutes',
+          Object.freeze(
+            init({
+              vm: instance,
+              abilities: abilitiesIds,
+              redirect: FORBIDDEN_ROUTE,
+              routes: [
+                {
+                  path: '/user',
+                  component: () =>
+                    import(
+                      /* webpackChunkName: 'user' */ '@/views/User/index.vue'
+                    ),
+                  meta: {
+                    title: 'User',
+                    ability: 'ability.simulator.1'
+                  }
+                }
+              ]
+            })
+          )
+        )
+      }
     }
   }
 }
