@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { Module } from 'vuex'
 import { RootState } from '..'
 import { Ability, init, RouteWithAbility } from 'v-access'
@@ -52,7 +53,16 @@ const user: Module<UserState, RootState> = {
       const { token } = await userLogin(username, password)
       token && commit('setToken', token)
     },
-    async fetchUserAbilities({ commit }, instance: Vue | VueRouter) {
+    async fetchUserAbilities(
+      { commit },
+      {
+        instance,
+        routes
+      }: {
+        instance: Vue | VueRouter
+        routes: RouteWithAbility[]
+      }
+    ) {
       const { abilities } = await fetchUserAbilities()
 
       if (abilities && abilities.length) {
@@ -60,27 +70,30 @@ const user: Module<UserState, RootState> = {
           (ability: Record<'id', string>) => ability.id
         )
         commit('setUserAbilities', abilitiesIds)
+
         commit(
           'setUserRoutes',
           Object.freeze(
-            init({
-              vm: instance,
-              abilities: abilitiesIds,
-              redirect: FORBIDDEN_ROUTE,
-              routes: [
-                {
-                  path: '/user',
-                  component: () =>
-                    import(
-                      /* webpackChunkName: 'user' */ '@/views/User/index.vue'
-                    ),
-                  meta: {
-                    title: 'User',
-                    ability: 'ability.simulator.1'
+            routes.concat(
+              init({
+                vm: instance,
+                abilities: abilitiesIds,
+                redirect: FORBIDDEN_ROUTE,
+                routes: [
+                  {
+                    path: '/user',
+                    component: () =>
+                      import(
+                        /* webpackChunkName: 'user' */ '@/views/User/index.vue'
+                      ),
+                    meta: {
+                      title: 'User',
+                      ability: 'ability.simulator.1'
+                    }
                   }
-                }
-              ]
-            })
+                ]
+              })
+            )
           )
         )
       }
