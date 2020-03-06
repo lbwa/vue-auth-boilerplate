@@ -51,8 +51,9 @@ export default {
 
   data() {
     return {
-      // TODO: include dynamic routes
-      routes: Object.freeze(createNavRoutes(this.$router.options.routes))
+      // Navigation sidebar should only be initialized once, so we froze object
+      // to avoid redundant reactive observer
+      routes: Object.freeze(createNavRoutes(this.$store.state.user.routes))
     }
   },
 
