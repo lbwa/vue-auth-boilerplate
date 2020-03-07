@@ -1,7 +1,7 @@
 import { Module } from 'vuex'
 import { Route } from 'vue-router'
 import invariant from 'tiny-invariant'
-import { RootState } from '../index'
+import { RootState } from '../global'
 import { RECORD_MAX_VAL } from '../../constants'
 
 export type RecordItem = {
