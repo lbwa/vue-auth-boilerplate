@@ -27,6 +27,11 @@ const globalNamespace: GlobalNamespaces = {
       state.DO_NOT_MUTATE = snapshot
     },
     resetState(state, replacement: RootState) {
+      /**
+       * Why we don't use store.replaceState directly?
+       * https://github.com/lbwa/vue-auth-boilerplate/pull/13
+       */
+
       // should always use a deep clone from snapshot to avoid unexpected snapshot mutation
       Object.assign(state, cloneDeep(replacement))
     }
