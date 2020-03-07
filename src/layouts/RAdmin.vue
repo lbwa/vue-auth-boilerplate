@@ -2,10 +2,10 @@
   <v-app>
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="isOpenDrawer = !isOpenDrawer" />
-      <v-toolbar-title>Adminize console</v-toolbar-title>
+      <v-toolbar-title>Vue auth boilerplate console</v-toolbar-title>
     </v-app-bar>
 
-    <r-adminize-nav v-model="isOpenDrawer" />
+    <r-admin-nav v-model="isOpenDrawer" />
 
     <v-content>
       <v-container fluid class="fill-height justify-center">
@@ -20,10 +20,10 @@
 
 <script>
 import BaseFooter from '../components/BaseFooter'
-import RAdminizeNav from '../components/RAdminizeNav'
+import RAdminNav from '../components/RAdminNav'
 
 export default {
-  name: 'RAdminize',
+  name: 'RAdmin',
 
   data() {
     return {
@@ -33,11 +33,7 @@ export default {
 
   components: {
     BaseFooter,
-    RAdminizeNav
-  },
-
-  created() {
-    this.$vuetify.theme.dark = true
+    RAdminNav
   }
 }
 </script>

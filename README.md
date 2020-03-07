@@ -1,4 +1,4 @@
-<h1 align="center">Adminize</h1>
+<h1 align="center">Vue auth boilerplate</h1>
 
 `Vue.js` console boilerplate with authentication.
 

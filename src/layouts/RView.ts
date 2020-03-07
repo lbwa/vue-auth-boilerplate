@@ -44,14 +44,14 @@ export default Vue.extend({
           },
           [
             createAnchorElement(
-              'https://github.com/lbwa/adminize',
+              'https://github.com/lbwa/vue-auth-boilerplate',
               'Documentation'
             ),
             ` - Copyright © ${new Date().getFullYear()} `,
             createAnchorElement('https://set.sh', 'Bowen Liu'),
             ' - ',
             createAnchorElement(
-              'https://github.com/lbwa/adminize/blob/master/CHANGELOG.md',
+              'https://github.com/lbwa/vue-auth-boilerplate/blob/master/CHANGELOG.md',
               'Changelog'
             )
           ]

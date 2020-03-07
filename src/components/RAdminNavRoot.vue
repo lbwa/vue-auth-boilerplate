@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'RAdminizeNavRoot',
+  name: 'RAdminNavRoot',
 
   props: {
     icon: {

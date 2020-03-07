@@ -1,6 +1,6 @@
 <template>
   <v-card class="home d-flex flex-column justify-center align-center">
-    <h1 class="home__title">Adminize</h1>
+    <h1 class="home__title">Vue auth boilerplate</h1>
     <p class="home__subtitle">Vue.js console boilerplate with authentication</p>
     <ul class="home__info ma-0 pa-0">
       <li
@@ -40,11 +40,11 @@ export default {
       info: Object.freeze({
         version: {
           label: __VERSION__,
-          href: `https://github.com/lbwa/adminize/releases/v${__VERSION__}`
+          href: `https://github.com/lbwa/vue-auth-boilerplate/releases/v${__VERSION__}`
         },
         commit: {
           label: __COMMIT_HASH__.slice(0, 15),
-          href: `https://github.com/lbwa/adminize/commit/${__COMMIT_HASH__}`
+          href: `https://github.com/lbwa/vue-auth-boilerplate/commit/${__COMMIT_HASH__}`
         },
         latestBuild: new Date(__BUILD_TIME__).toLocaleString()
       })

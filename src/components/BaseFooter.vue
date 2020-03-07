@@ -15,7 +15,7 @@
 
     <span>
       <a
-        href="https://github.com/lbwa/adminize"
+        href="https://github.com/lbwa/vue-auth-boilerplate"
         target="_blank"
         rel="noopener noreferrer"
         class="b-footer__link"
@@ -23,7 +23,7 @@
       >
       -
       <a
-        href="https://github.com/lbwa/adminize/blob/master/CHANGELOG.md"
+        href="https://github.com/lbwa/vue-auth-boilerplate/blob/master/CHANGELOG.md"
         target="_blank"
         rel="noopener noreferrer"
         class="b-footer__link"

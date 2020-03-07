@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import NavDrawerItem from './RAdminizeNavDrawer'
+import NavDrawerItem from './RAdminNavDrawer'
 
 function createNavRoutes(routes) {
   return routes.reduce((list, current) => {
@@ -40,7 +40,7 @@ function createNavRoutes(routes) {
 }
 
 export default {
-  name: 'RAdminizeNav',
+  name: 'RAdminNav',
 
   props: {
     value: {

@@ -10,7 +10,7 @@
 
             <v-toolbar dark color="secondary">
               <v-toolbar-title>
-                <span class="login__title">Adminize</span>
+                <span class="login__title">Vue auth boilerplate</span>
               </v-toolbar-title>
               <v-spacer />
               <v-btn text small @click="asPreset('user')">as user</v-btn>

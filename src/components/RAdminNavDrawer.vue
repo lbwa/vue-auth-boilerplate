@@ -3,7 +3,7 @@
     v-if="!route.children || !route.children.length"
     :icon="
       (route.meta || {}).icon ||
-        ($parent.$options.name === 'RAdminizeNavDrawer'
+        ($parent.$options.name === 'RAdminNavDrawer'
           ? 'arrow_drop_down'
           : defaultNavIcon)
     "
@@ -17,7 +17,7 @@
     </template>
 
     <template v-for="child of route.children">
-      <r-adminize-nav-drawer
+      <r-admin-nav-drawer
         v-if="child.children && child.children.length"
         :key="child.path"
         :prepend-icon="(child.meta || {}).icon"
@@ -38,11 +38,11 @@
 
 <script>
 import path from 'path'
-import NavRootItem from './RAdminizeNavRoot'
+import NavRootItem from './RAdminNavRoot'
 import { DEFAULT_NAV_ICON } from '../constants'
 
 export default {
-  name: 'RAdminizeNavDrawer',
+  name: 'RAdminNavDrawer',
 
   props: {
     route: {
