@@ -1,17 +1,40 @@
-export type RootState = {}
+import { GetterTree, MutationTree, ActionTree } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 
-const globalNamespace = {
-  state: {} as RootState,
+export type RootState = {
+  DO_NOT_MUTATE: RootState
+}
+
+interface GlobalNamespaces {
+  state: RootState
+  getters: GetterTree<RootState, RootState>
+  mutations: MutationTree<RootState>
+  actions: ActionTree<RootState, RootState>
+}
+
+const globalNamespace: GlobalNamespaces = {
+  state: {
+    // DO NOT mutate this snapshot property for the entire store.state
+    // This is should be use to reset state
+    DO_NOT_MUTATE: {} as RootState
+  },
 
   getters: {},
 
-  mutations: {},
+  mutations: {
+    // should always pass a store.state deep clone, instead of reference
+    setSnapshot(state, snapshot) {
+      state.DO_NOT_MUTATE = snapshot
+    },
+    resetState(state, replacement: RootState) {
+      // should always use a deep clone from snapshot to avoid unexpected snapshot mutation
+      Object.assign(state, cloneDeep(replacement))
+    }
+  },
 
   actions: {
-    resetStore() {
-      /**
-       * This action will trigger store reset plugin in src/plugins/store.ts
-       */
+    resetState({ commit, rootState }) {
+      commit('resetState', rootState.DO_NOT_MUTATE)
     }
   }
 }

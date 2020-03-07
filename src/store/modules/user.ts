@@ -100,7 +100,7 @@ const user: Module<UserState, RootState> = {
     },
     async logout({ dispatch }, router: VueRouter) {
       reset(router)
-      await dispatch('resetStore', null, { root: true })
+      await dispatch('resetState', null, { root: true })
       router.push({
         name: 'Login'
       })

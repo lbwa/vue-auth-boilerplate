@@ -9,7 +9,7 @@ import { createResetPlugin } from '../plugins/store'
 Vue.use(Vuex)
 
 const plugins = (() => {
-  const plugins = [createResetPlugin('resetStore')]
+  const plugins = [createResetPlugin()]
   if (__DEV__) {
     plugins.push(createLogger())
   }
