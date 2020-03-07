@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Module } from 'vuex'
-import { RootState } from '..'
+import { RootState } from '../global'
 import { Ability, init, RouteWithAbility, reset } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
 import VueRouter from 'vue-router'

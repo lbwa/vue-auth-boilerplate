@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
 import modules from './modules'
-import globalNamespace from './global'
+import globalNamespace, { RootState } from './global'
 import { createResetPlugin } from '../plugins/store'
 
 Vue.use(Vuex)
@@ -15,8 +15,6 @@ const plugins = (() => {
   }
   return plugins
 })()
-
-export type RootState = typeof globalNamespace.state
 
 const store = new Vuex.Store<RootState>(
   Object.assign(globalNamespace, {

@@ -1,5 +1,5 @@
 import { Module } from 'vuex'
-import { RootState } from '..'
+import { RootState } from '../global'
 
 const requireStoreModule = require.context(
   '.',
