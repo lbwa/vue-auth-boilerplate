@@ -1,5 +1,14 @@
 <h1 align="center">Vue auth boilerplate</h1>
 
+<p align="center">
+  <a href="https://github.com/lbwa/vue-auth-boilerplate/actions">
+    <img alt="github actions - tests" src="https://github.com/lbwa/vue-auth-boilerplate/workflows/Tests/badge.svg">
+  </a>
+  <a href="https://lbwa.github.io/vue-auth-boilerplate">
+    <img alt="github actions - deployment" src="https://github.com/lbwa/vue-auth-boilerplate/workflows/Deployment/badge.svg">
+  </a>
+</p>
+
 `Vue.js` console boilerplate with authentication.
 
 ## Symbolic constants
