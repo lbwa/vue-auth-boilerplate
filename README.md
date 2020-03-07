@@ -28,7 +28,7 @@ In practice, we perhaps have two different kinds of layout components. All layou
 
 ### How to use route-based layout
 
-A valid router config should based on the following structure:
+A valid router config should be based on the following structure:
 
 ```ts
 interface ConsoleRouteConfig extends RouteConfig {
@@ -46,6 +46,14 @@ We use `meta.layout` to decide which layout component we need to be rendered.
 ## Components
 
 We also have multiple kinds of components and should be placed in [src/components](src/components) directory.
+
+### Presentational Components
+
+The duty of presentational components are only represent UI view.
+
+### Container Components
+
+hold all business logic
 
 ## Plugins
 
@@ -67,7 +75,7 @@ All HTTP request function should be placed in [src/effects](src/effects) directo
 
 [doc-vuex-actions]: https://vuex.vuejs.org/guide/actions.html#actions
 
-### Automatic register
+### Automatic registration
 
 All store module placed in [src/store/modules/\*.ts](src/store/modules) would be registered automatically. Every module would use their filename as store module namespace.
 

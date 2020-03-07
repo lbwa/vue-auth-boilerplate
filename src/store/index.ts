@@ -3,16 +3,27 @@ import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
 import modules from './modules'
+import globalNamespace from './global'
+import { createResetPlugin } from '../plugins/store'
 
 Vue.use(Vuex)
 
-export type RootState = {}
+const plugins = (() => {
+  const plugins = [createResetPlugin('resetStore')]
+  if (__DEV__) {
+    plugins.push(createLogger())
+  }
+  return plugins
+})()
 
-export default new Vuex.Store<RootState>({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules,
-  strict: __DEV__,
-  plugins: __DEV__ ? [createLogger()] : []
-})
+export type RootState = typeof globalNamespace.state
+
+const store = new Vuex.Store<RootState>(
+  Object.assign(globalNamespace, {
+    modules,
+    strict: __DEV__,
+    plugins
+  })
+)
+
+export default store
