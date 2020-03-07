@@ -1,0 +1,49 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: [10.X]
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node_version }}
+
+      - name: Use Yarn
+        run: |
+          npm i yarn -g
+          yarn -v
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build web site
+        run: yarn build
+
+      - name: Deploy output folder
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BUILD_DIR: dist
+          TARGET_BRANCH: gh-pages
+        run: |
+          REMOTE_ORIGIN=https://${ACCESS_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          cd ${BUILD_DIR}
+          git init
+          git config user.name ${GITHUB_ACTOR}
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add . -f
+          git commit -m "deploy: from Github action - $(date +"%T")"
+          git push --force ${REMOTE_ORIGIN} master:${TARGET_BRANCH}
