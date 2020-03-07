@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { Module } from 'vuex'
 import { RootState } from '..'
-import { Ability, init, RouteWithAbility } from 'v-access'
+import { Ability, init, RouteWithAbility, reset } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
 import VueRouter from 'vue-router'
 import { FORBIDDEN_ROUTE } from '@/constants'
@@ -97,6 +97,13 @@ const user: Module<UserState, RootState> = {
           )
         )
       }
+    },
+    async logout({ dispatch }, router: VueRouter) {
+      reset(router)
+      await dispatch('resetStore', null, { root: true })
+      router.push({
+        name: 'Login'
+      })
     }
   }
 }
