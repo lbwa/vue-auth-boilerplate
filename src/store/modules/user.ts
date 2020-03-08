@@ -12,6 +12,12 @@ interface UserState {
   routes: RouteWithAbility[]
 }
 
+export interface UserAbility {
+  name: string
+  uid: string
+  create_at: string
+}
+
 export const userMutationTypes = {
   setToken: 'setToken',
   setUserAbilities: 'setUserAbilities',
@@ -63,11 +69,11 @@ const user: Module<UserState, RootState> = {
         routes: RouteWithAbility[]
       }
     ) {
-      const { abilities } = await fetchUserAbilities()
+      const abilities = await fetchUserAbilities()
 
       if (abilities && abilities.length) {
         const abilitiesIds = abilities.map(
-          (ability: Record<'id', string>) => ability.id
+          (ability: Record<'name', string>) => ability.name
         )
         commit('setUserAbilities', abilitiesIds)
 
@@ -88,7 +94,7 @@ const user: Module<UserState, RootState> = {
                       ),
                     meta: {
                       title: 'User',
-                      ability: 'ability.simulator.1'
+                      ability: 'github.repo.read'
                     }
                   }
                 ]
