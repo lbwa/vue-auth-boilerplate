@@ -51,10 +51,12 @@ Please make sure you have installed [node.js](https://nodejs.org) version _8.9_ 
 - start development server
 
   ```bash
-  $ npm run serve
+  $ npm run start
   ```
 
-  Development server is running at `http://localhost:8080` and `http://<YOUR_LOCAL_NETWORK_IP>:8080` with `hot module replacement`.
+  Frontend server is running at `http://localhost:8080` and `http://<YOUR_LOCAL_NETWORK_IP>:8080` with `hot module replacement`.
+
+  Mock server is running at `http://localhost:3000`.
 
 - run unit tests
 

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run serve\" \"npm run serve:mock\"",
+    "start": "concurrently -k -r \"npm run serve\" \"npm run serve:mock\"",
+    "start:progress": "concurrently -k -p \"[{name}]\" -n \"Frontend,Node\" -c \"yellow.bold,cyan.bold\" \"npm run serve\" \"npm run serve:mock\"",
     "serve": "vue-cli-service serve",
     "serve:mock": "cd server && npm run start:dev",
     "build": "vue-cli-service build",
