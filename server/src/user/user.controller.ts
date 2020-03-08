@@ -17,6 +17,7 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   getUserProfile(
     // POST request headers must include 'content-type': 'application/json'
+    // otherwise, always get a empty object
     // https://stackoverflow.com/a/50646964
     @Body() { username, password }: GetUserProfileDto
   ) {

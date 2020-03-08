@@ -29,29 +29,25 @@ export class UserService {
 
     if (username === 'user' && password === 'user') {
       return {
-        data: {
-          username,
-          token: Math.random()
-            .toString(16)
-            .slice(2)
-        }
+        username,
+        token: Math.random()
+          .toString(16)
+          .slice(2)
       }
     }
     throw new HttpException('Wrong username or password', HttpStatus.FORBIDDEN)
   }
 
   fineAbilities() {
-    return {
-      data: [
-        'npm.org.read',
-        'npm.org.write',
-        'npm.package.read',
-        'npm.package.write',
-        'github.repo.read',
-        'github.repo.write',
-        'github.action.read',
-        'github.action.write'
-      ].map(name => new AbilityEntity(name))
-    }
+    return [
+      'npm.org.read',
+      'npm.org.write',
+      'npm.package.read',
+      'npm.package.write',
+      'github.repo.read',
+      'github.repo.write',
+      'github.action.read',
+      'github.action.write'
+    ].map(name => new AbilityEntity(name))
   }
 }
