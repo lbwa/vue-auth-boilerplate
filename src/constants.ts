@@ -26,3 +26,7 @@ export const QUERY_KEY_FOR_LOGIN_TO = '__from'
  * Default icon for navigation item
  */
 export const DEFAULT_NAV_ICON = 'work_outline'
+
+export const REQUEST_BASE_URL = 'http://localhost:3000'
+
+export const REQUEST_TIMEOUT_THRESHOLD = 1000 * 15

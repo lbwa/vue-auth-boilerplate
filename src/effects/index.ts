@@ -1,54 +1,27 @@
-type EffectResponse = {
-  code: number
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any
+import { createInitiator } from './initiator'
+import { REQUEST_BASE_URL, REQUEST_TIMEOUT_THRESHOLD } from '../constants'
+import { UserAbility } from '@/store/modules/user'
+
+const { http } = createInitiator({
+  baseURL: REQUEST_BASE_URL,
+  timeout: REQUEST_TIMEOUT_THRESHOLD
+})
+
+const enum Routes {
+  userLogin = '/user/profile',
+  userAbilities = '/user/abilities'
 }
 
 export function userLogin(username: string, password: string) {
-  return new Promise<EffectResponse>((resolve, reject) => {
-    setTimeout(() => {
-      if (
-        (username === 'admin' && password === 'admin') ||
-        (username === 'user' && password === 'user')
-      ) {
-        return resolve({
-          code: 200,
-          token:
-            Math.random()
-              .toString(16)
-              .slice(2) +
-            username +
-            password
-        })
-      }
-      reject({
-        code: 403,
-        msg: 'account error'
-      })
-    }, 0.1 * 1000)
-  })
+  return http.post<Record<'token', string>, Record<'token', string>>(
+    Routes.userLogin,
+    {
+      username,
+      password
+    }
+  )
 }
 
 export function fetchUserAbilities() {
-  return new Promise<EffectResponse>((resolve, reject) => {
-    setTimeout(() => {
-      const simulateFailed = Math.random() > 0.9
-      if (simulateFailed) {
-        return reject({
-          code: 403,
-          msg: 'abilities error'
-        })
-      }
-      resolve({
-        code: 200,
-        abilities: Array(Math.floor(Math.random() * 20))
-          .fill(null)
-          .map((_, index) => ({
-            id: `ability.simulator.${index}`,
-            name: `ability.simulator.${index}`,
-            createAt: Date.now() + index
-          }))
-      })
-    }, 0.1 * 1000)
-  })
+  return http.get<UserAbility[], UserAbility[]>(Routes.userAbilities)
 }
