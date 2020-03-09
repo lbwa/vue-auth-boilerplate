@@ -139,7 +139,7 @@ We also have multiple kinds of components and should be placed in [src/component
 
 | component type |                    description                    |              example              |      character       |
 | :------------: | :-----------------------------------------------: | :-------------------------------: | :------------------: |
-| presentational | represent user interface view excluding any state |          basic component          |        `Base         |
+| presentational | represent user interface view excluding any state |          basic component          |     `Base*.vue`      |
 |   container    |        state including all business logic         | any sub `views/layouts` component | `[VIEW_PREFIX]*.vue` |
 
 ## Plugins
@@ -164,7 +164,7 @@ All HTTP request function should be placed in [src/effects](src/effects) directo
 
 ### Route config
 
-We add serval `meta` property for global navigation sidebar.
+We add serval `meta` properties for global navigation sidebar.
 
 ```ts
 interface ConsoleRouteConfig extends RouteConfig {
@@ -184,7 +184,7 @@ interface ConsoleRouteConfig extends RouteConfig {
 |  `meta.icon`  |     Route `material design` icon icon in the global navigation sidebar     |
 | `meta.title`  |                Route title in the global navigation sidebar                |
 
-_Note that_ Rout only be rendered when `meta.title` is non-empty string.
+_Note that_ Route only be rendered when `meta.title` and `meta.hidden` is truthy value.
 
 ## State management
 

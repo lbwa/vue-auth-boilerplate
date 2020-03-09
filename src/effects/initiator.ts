@@ -38,7 +38,7 @@ class Initiator {
        * }
        */
       this.onResponse(({ data = {} }) => {
-        // return raw data when data structure is above structure. eg. stream
+        // return raw data when data structure isn't above structure. eg. stream
         if (!isDef(data.statusCode)) return data
 
         // reject all response include statusCode and error message
