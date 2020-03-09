@@ -15,6 +15,7 @@ const enum HttpStatus {
 }
 
 /**
+ * We use dependency injection strategy to implement Axios creation
  * NOTE that all request/response error should be handle by consumer for better
  * generality (single responsibility principle), not itself.
  */

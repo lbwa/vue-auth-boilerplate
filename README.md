@@ -78,12 +78,10 @@ Please refer `v-access` [documentation](https://github.com/lbwa/v-access#readme)
 
 ## Symbolic constants
 
-> A symbolic constant is a name given to a constant literal value. It's usually used to prevent [magic numbers][wiki-magic-number] and [hard-coding][wiki-hard-coding].
+A symbolic constant is a name given to a constant literal value. It's usually used to prevent [magic numbers][wiki-magic-number] and [hard-coding][wiki-hard-coding]. All symbolic constants should be recorded in the [src/constants.ts](src/constants.ts) file.
 
 [wiki-magic-number]: https://en.wikipedia.org/wiki/Magic_number_(programming)
 [wiki-hard-coding]: https://en.wikipedia.org/wiki/Hard_coding
-
-All symbolic constants should be recorded in the [src/constants.ts](src/constants.ts) file.
 
 ## Declarations
 
@@ -150,7 +148,24 @@ If any `Vue.js` [plugin][doc-vue-plugin] exists, it should be placed in [src/plu
 
 ## Effects
 
-All HTTP request function should be placed in [src/effects](src/effects) directory.
+All HTTP request function should be placed in [src/effects](src/effects) directory, and should be occurred by [Initiator](src/effects/initiator.ts) instance which has encapsulated `axios` creation and registered two interceptors automatically by default.
+
+```ts
+import { create } from './initiator'
+
+const { http } = createInitiator(/* support all AxiosRequestConfig */)
+
+export function fetchUserProfile(username: string, password: string) {
+  return http.post('/user/profile', {
+    username,
+    password
+  })
+}
+```
+
+Based on [single responsibility principle][wiki-single-responsibility-principle] and better universality, every request route should be a singleton. All request or response errors should be handle by Http request consumer, instead of itself.
+
+[wiki-single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 
 ## Router
 
