@@ -15,13 +15,15 @@ interface RecordItemConstructor {
   new (route: Route, next?: RecordItem): RecordItem
 }
 
+export type HistoryState = Record<'recordHead', RecordItem | null>
+
 const RecordItem = function(this: RecordItem, route: Route, next?: RecordItem) {
   if (route.name) this.name = route.name
   this.fullPath = route.fullPath
   this.next = next || null
 } as RecordItemConstructor
 
-const history: Module<Record<'recordHead', RecordItem | null>, RootState> = {
+const history: Module<HistoryState, RootState> = {
   namespaced: true,
 
   state: {

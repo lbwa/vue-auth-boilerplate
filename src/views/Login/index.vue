@@ -123,10 +123,7 @@ export default {
          * concurrent request.
          */
         try {
-          await this.$store.dispatch('user/fetchUserAbilities', {
-            instance: this,
-            routes: (this.$router.options || {}).routes || []
-          })
+          await this.$store.dispatch('user/fetchUserAbilities')
         } catch (error) {
           errorLog(error)
           if (error.code === 403) {
