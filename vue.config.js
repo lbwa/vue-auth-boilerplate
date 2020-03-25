@@ -1,7 +1,5 @@
-const version = require('./package.json').version
-const commitHash = require('child_process')
-  .execSync('git rev-parse HEAD')
-  .toString()
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const mocker = require('./mock.config.js')
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
@@ -18,8 +16,12 @@ module.exports = {
     config.plugin('define').tap(([args]) => {
       args.__DEV__ = JSON.stringify(__DEV__)
       args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
-      args.__VERSION__ = JSON.stringify(version)
-      args.__COMMIT_HASH__ = JSON.stringify(commitHash)
+      args.__VERSION__ = JSON.stringify(require('./package.json').version)
+      args.__COMMIT_HASH__ = JSON.stringify(
+        require('child_process')
+          .execSync('git rev-parse HEAD')
+          .toString()
+      )
       return [args]
     })
 
@@ -33,5 +35,11 @@ module.exports = {
     })
   },
 
-  transpileDependencies: ['vuetify']
+  transpileDependencies: __DEV__ ? [] : ['vuetify'],
+
+  devServer: {
+    before(app) {
+      mocker(app)
+    }
+  }
 }
