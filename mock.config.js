@@ -10,6 +10,9 @@ function Response(code, data) {
 }
 
 const apis = {
+  /**
+   * 'METHOD ROUTE': function requestHandler(request, response) {}
+   */
   'GET /user/abilities': function(req, res) {
     res.json(
       new Response(
