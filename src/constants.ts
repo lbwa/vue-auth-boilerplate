@@ -30,3 +30,7 @@ export const DEFAULT_NAV_ICON = 'work_outline'
 export const REQUEST_BASE_URL = process.env.VUE_APP_REQUEST_BASE_URL
 
 export const REQUEST_TIMEOUT_THRESHOLD = 1000 * 15
+
+export const PERSISTED_STATE_KEY = '__VX__'
+
+export const SHOULD_BE_PERSISTED_STATE = ['history', 'user']

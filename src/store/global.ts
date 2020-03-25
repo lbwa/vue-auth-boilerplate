@@ -1,12 +1,16 @@
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
 import cloneDeep from 'lodash.clonedeep'
+import { HistoryState } from './modules/history'
+import { UserState } from './modules/user'
 
 export type RootState = {
   DO_NOT_MUTATE: RootState
+  history: HistoryState
+  user: UserState
 }
 
 interface GlobalNamespaces {
-  state: RootState
+  state: Pick<RootState, 'DO_NOT_MUTATE'>
   getters: GetterTree<RootState, RootState>
   mutations: MutationTree<RootState>
   actions: ActionTree<RootState, RootState>

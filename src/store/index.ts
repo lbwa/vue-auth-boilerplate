@@ -5,11 +5,12 @@ import createLogger from 'vuex/dist/logger'
 import modules from './modules'
 import globalNamespace, { RootState } from './global'
 import { createResetPlugin } from '../plugins/store'
+import createPersistedPlugins from '../plugins/persisted-state'
 
 Vue.use(Vuex)
 
 const plugins = (() => {
-  const plugins = [createResetPlugin()]
+  const plugins = [createResetPlugin(), createPersistedPlugins()]
   if (__DEV__) {
     plugins.push(createLogger())
   }

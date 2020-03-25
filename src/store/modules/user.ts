@@ -1,12 +1,10 @@
-import Vue from 'vue'
 import { Module } from 'vuex'
 import { RootState } from '../global'
-import { Ability, init, RouteWithAbility, reset } from 'v-access'
+import { Ability, RouteWithAbility, reset } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
 import VueRouter from 'vue-router'
-import { FORBIDDEN_ROUTE } from '@/constants'
 
-interface UserState {
+export interface UserState {
   token: string
   abilities: Ability[]
   routes: RouteWithAbility[]
@@ -59,16 +57,7 @@ const user: Module<UserState, RootState> = {
       const { token } = await userLogin(username, password)
       token && commit('setToken', token)
     },
-    async fetchUserAbilities(
-      { commit },
-      {
-        instance,
-        routes
-      }: {
-        instance: Vue | VueRouter
-        routes: RouteWithAbility[]
-      }
-    ) {
+    async fetchUserAbilities({ commit }) {
       const abilities = await fetchUserAbilities()
 
       if (abilities && abilities.length) {
@@ -76,32 +65,6 @@ const user: Module<UserState, RootState> = {
           (ability: Record<'name', string>) => ability.name
         )
         commit('setUserAbilities', abilitiesIds)
-
-        commit(
-          'setUserRoutes',
-          Object.freeze(
-            routes.concat(
-              init({
-                vm: instance,
-                abilities: abilitiesIds,
-                redirect: FORBIDDEN_ROUTE,
-                routes: [
-                  {
-                    path: '/user',
-                    component: () =>
-                      import(
-                        /* webpackChunkName: 'user' */ '@/views/User/index.vue'
-                      ),
-                    meta: {
-                      title: 'User',
-                      ability: 'github.repo.read'
-                    }
-                  }
-                ]
-              })
-            )
-          )
-        )
       }
     },
     async logout({ dispatch }, router: VueRouter) {
