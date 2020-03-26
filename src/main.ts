@@ -8,23 +8,11 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import './styles/global.sass'
 import { FORBIDDEN_ROUTE } from './constants'
+import { routes } from './router/private-routes'
 
 Vue.config.productionTip = __DEV__
 
-connect(router, store, {
-  redirect: FORBIDDEN_ROUTE,
-  routes: [
-    {
-      path: '/user',
-      component: () =>
-        import(/* webpackChunkName: 'user' */ '@/views/User.vue'),
-      meta: {
-        title: 'User',
-        ability: 'github.repo.read'
-      }
-    }
-  ]
-})
+connect(router, store, { redirect: FORBIDDEN_ROUTE, routes })
 
 new Vue({
   router,

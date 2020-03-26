@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import routes from './routes'
+import { routes } from './public-routes'
 import { onLogin } from './guards'
 
 Vue.use(VueRouter)

@@ -1,3 +1,8 @@
+/**
+ * This file should record any public routes.
+ * All user would share those static routes
+ */
+
 import { RouteConfig } from 'vue-router'
 
 interface ConsoleRouteConfig extends RouteConfig {
@@ -9,7 +14,7 @@ interface ConsoleRouteConfig extends RouteConfig {
   }>
 }
 
-const routes: ConsoleRouteConfig[] = [
+const _routes: ConsoleRouteConfig[] = [
   {
     path: '/',
     name: 'Home',
@@ -39,7 +44,7 @@ const routes: ConsoleRouteConfig[] = [
   }
 ]
 
-export default routes.concat({
+export const routes = _routes.concat({
   path: '*',
   name: 'NotFoundError',
   component: () =>
