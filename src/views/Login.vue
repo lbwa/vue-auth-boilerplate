@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import { errorLog } from '../../shared/utils'
-import { QUERY_KEY_FOR_LOGIN_TO } from '../../constants'
-import BaseToast from '../../components/BaseToast'
+import { errorLog } from '../shared/utils'
+import { QUERY_KEY_FOR_LOGIN_TO } from '../constants'
+import BaseToast from '../components/BaseToast'
 
 const ERR_CODE = {
   wrongInfo: 'Oops! Wrong username or password.',
@@ -82,7 +82,7 @@ const ERR_CODE = {
 }
 
 export default {
-  name: 'ViewLogin',
+  name: 'Login',
 
   data() {
     return {

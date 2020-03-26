@@ -19,7 +19,7 @@ const routes: ConsoleRouteConfig[] = [
     path: '/login',
     name: 'Login',
     component: () =>
-      import(/* webpackChunkName: 'login' */ '../views/Login/index.vue'),
+      import(/* webpackChunkName: 'login' */ '../views/Login.vue'),
     meta: {
       layout: 'RFooter'
     }
@@ -28,9 +28,7 @@ const routes: ConsoleRouteConfig[] = [
     path: '/forbidden',
     name: 'ForbiddenError',
     component: () =>
-      import(
-        /* webpackChunkName: 'error-forbidden' */ '../views/Error/index.vue'
-      ),
+      import(/* webpackChunkName: 'error-forbidden' */ '../views/Error.vue'),
     props: {
       code: 403,
       message: 'Forbidden access'
@@ -45,9 +43,7 @@ export default routes.concat({
   path: '*',
   name: 'NotFoundError',
   component: () =>
-    import(
-      /* webpackChunkName: 'error-not-found' */ '../views/Error/index.vue'
-    ),
+    import(/* webpackChunkName: 'error-not-found' */ '../views/Error.vue'),
   props: {
     code: 404,
     message: 'Seems nothing could be found.'

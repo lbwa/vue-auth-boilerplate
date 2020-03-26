@@ -17,7 +17,7 @@ connect(router, store, {
     {
       path: '/user',
       component: () =>
-        import(/* webpackChunkName: 'user' */ '@/views/User/index.vue'),
+        import(/* webpackChunkName: 'user' */ '@/views/User.vue'),
       meta: {
         title: 'User',
         ability: 'github.repo.read'
