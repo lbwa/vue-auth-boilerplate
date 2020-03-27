@@ -7,6 +7,25 @@ import axios, {
 import { isDef } from '@/shared/utils'
 import { REQUEST_BASE_URL, REQUEST_TIMEOUT_THRESHOLD } from '../constants'
 
+type ParamsRequestInterceptors = Parameters<
+  AxiosInterceptorManager<AxiosRequestConfig>['use']
+>
+
+type ParamsResponseInterceptors<V> = Parameters<
+  AxiosInterceptorManager<AxiosResponse<V>>['use']
+>
+
+type OnFulfilledRequest = ParamsRequestInterceptors[0]
+
+type OnFulfilledResponse<R = unknown> = ParamsResponseInterceptors<R>[0]
+
+type OnRejectedRequestOrResponse = (error: unknown) => unknown
+
+interface DefaultResponse<T = unknown> {
+  statusCode: 200 | 300 | 400 | 500
+  data: T
+}
+
 /**
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
  */
@@ -23,32 +42,42 @@ class Initiator {
   constructor(private readonly axios: AxiosInstance, autoIntercept = true) {
     if (autoIntercept) {
       const onerror = (error: Error) => Promise.reject(error)
-      this.onRequest(config => {
-        // reject all error response code
-        // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-        config.validateStatus = status => status <= 400
 
-        return config
-      }, onerror)
+      this.intercept(
+        'request',
+        config => {
+          // reject all error response code
+          // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+          config.validateStatus = status => status <= 400
+
+          return config
+        },
+        onerror
+      )
 
       /**
-       * This interceptor is based on response structure:
+       * This default response interceptor is based on response structure:
        * {
        *    statusCode: number,
        *    data: any
        * }
        */
-      this.onResponse(({ data = {} }) => {
-        // return raw data when data structure isn't above structure. eg. stream
-        if (!isDef(data.statusCode)) return data
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this.intercept<DefaultResponse<any>>(
+        'response',
+        ({ data }) => {
+          // return raw data when data structure isn't above structure. eg. stream
+          if (!isDef(data.statusCode)) return data
 
-        // reject all response include statusCode and error message
-        if (data.statusCode !== HttpStatus.OK) {
-          return Promise.reject(data)
-        }
+          // reject all response include statusCode and error message
+          if (data.statusCode !== HttpStatus.OK) {
+            return Promise.reject(data)
+          }
 
-        return data.data
-      }, onerror)
+          return data.data
+        },
+        onerror
+      )
     }
   }
 
@@ -56,16 +85,22 @@ class Initiator {
     return this.axios
   }
 
-  onRequest(
-    ...fns: Parameters<AxiosInterceptorManager<AxiosRequestConfig>['use']>
-  ) {
-    return this.axios.interceptors.request.use(...fns)
-  }
+  intercept(type: 'request', ...callbacks: ParamsRequestInterceptors): number
 
-  onResponse(
-    ...fns: Parameters<AxiosInterceptorManager<AxiosResponse>['use']>
+  intercept<R = unknown>(
+    type: 'response',
+    ...callbacks: ParamsResponseInterceptors<R>
+  ): number
+
+  /**
+   * https://www.typescriptlang.org/docs/handbook/functions.html#overloads
+   */
+  intercept(
+    type: 'request' | 'response',
+    onFulfilled?: OnFulfilledRequest & OnFulfilledResponse,
+    onRejected?: OnRejectedRequestOrResponse
   ) {
-    return this.axios.interceptors.response.use(...fns)
+    return this.axios.interceptors[type].use(onFulfilled, onRejected)
   }
 }
 
