@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { errorLog } from '../shared/utils'
+import { errorLog, asyncTryCatch } from '../shared/utils'
 import { QUERY_KEY_FOR_LOGIN_TO } from '../constants'
 import BaseToast from '../components/BaseToast'
 
@@ -102,14 +102,15 @@ export default {
     async onLogin() {
       this.toggleLoading(true)
       if (this.isValidForm || this.$refs.form.validate()) {
-        try {
-          await this.$store.dispatch('user/login', {
+        const [, profileError] = await asyncTryCatch(
+          this.$store.dispatch('user/login', {
             username: this.username,
             password: this.password
           })
-        } catch (error) {
-          errorLog(error)
-          if (error.code === 403) {
+        )
+        if (profileError) {
+          errorLog(profileError)
+          if (profileError.code === 403) {
             this.toggleToastVisibility(true)
             this.toastMessage = ERR_CODE.wrongInfo
           }
@@ -122,20 +123,22 @@ export default {
          * request should be called after action named login, instead of
          * concurrent request.
          */
-        try {
-          await this.$store.dispatch('user/fetchUserAbilities')
-        } catch (error) {
-          errorLog(error)
-          if (error.code === 403) {
+        const [, abilitiesError] = await asyncTryCatch(
+          this.$store.dispatch('user/fetchUserAbilities')
+        )
+        if (abilitiesError) {
+          errorLog(abilitiesError)
+          if (abilitiesError.code === 403) {
             this.toggleToastVisibility(true)
             this.toastMessage = ERR_CODE.emptyAbilities
           }
           this.toggleLoading(false)
           return
         }
+
+        this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
       }
 
-      this.$router.replace(this.$route.query[QUERY_KEY_FOR_LOGIN_TO] || '/')
       this.toggleLoading(false)
     },
     toggleLoading(state) {
