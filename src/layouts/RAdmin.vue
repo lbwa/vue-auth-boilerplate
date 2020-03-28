@@ -3,6 +3,13 @@
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="isOpenDrawer = !isOpenDrawer" />
       <v-toolbar-title>Vue auth boilerplate console</v-toolbar-title>
+      <v-spacer />
+      <v-btn
+        small
+        color="primary"
+        @click="$store.dispatch('user/logout', $router)"
+        >Sign out</v-btn
+      >
     </v-app-bar>
 
     <r-admin-nav v-model="isOpenDrawer" />
