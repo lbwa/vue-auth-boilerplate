@@ -4,7 +4,7 @@ import { RootState } from '@/store/global'
 import { Store } from 'vuex'
 import VueRouter from 'vue-router'
 import { userMutationTypes } from '@/store/modules/user'
-import { RouteSetting } from '@/router/public-routes'
+import { RouteSetting } from '@/router'
 
 Vue.use(VAccess)
 

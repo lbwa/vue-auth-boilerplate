@@ -3,7 +3,7 @@ import { RootState } from '../global'
 import { Ability, reset } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
 import VueRouter from 'vue-router'
-import { RouteSetting } from '@/router/public-routes'
+import { RouteSetting } from '@/router'
 
 export interface UserState {
   token: string
