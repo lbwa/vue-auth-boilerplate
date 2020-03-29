@@ -18,6 +18,10 @@ const apis = {
       new Response(
         200,
         [
+          'github.user.read',
+          'github.user.write',
+          'github.sample.read',
+          'github.sample.write',
           'npm.org.read',
           'npm.org.write',
           'npm.package.read',
