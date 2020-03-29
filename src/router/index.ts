@@ -1,9 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { RouteWithAbility } from 'v-access'
 import { routes } from './public-routes'
 import { onLogin } from './guards'
 
 Vue.use(VueRouter)
+
+export type RouteSetting = /* intersection type */ RouteWithAbility & {
+  meta?: Partial<{
+    layout: string
+    hidden: boolean
+    icon: string
+    title: string
+  }>
+}
 
 const router = new VueRouter({
   /**

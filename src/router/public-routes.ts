@@ -3,16 +3,7 @@
  * All user would share those static routes
  */
 
-import { RouteWithAbility } from 'v-access'
-
-export type RouteSetting = RouteWithAbility & {
-  meta?: Partial<{
-    layout: string
-    hidden: boolean
-    icon: string
-    title: string
-  }>
-}
+import { RouteSetting } from './index'
 
 const _routes: RouteSetting[] = [
   {
