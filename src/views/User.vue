@@ -21,43 +21,69 @@
 </template>
 
 <script>
-function createRouteTree(routes) {
-  return routes.reduce((trees, route) => {
-    const tree = {
-      name: route.meta.title,
-      abilities: [].concat(
-        route.meta.ability || route.meta.strict || route.meta.weak
-      )
-    }
-    if (route.children && route.children.length) {
-      tree.children = createRouteTree(route.children)
-    }
-
-    trees.push(tree)
-    return trees
-  }, [])
-}
-
 export default {
   name: 'User',
 
   data() {
     return {
-      visibleRoutes: [],
+      routeTree: [],
+      routeTreeNodesMap: new Map(), // only used to fill nodes when mounted
       selectedNodes: []
     }
   },
 
   computed: {
-    routeTree() {
-      return createRouteTree(this.$store.state.user.routes)
-    },
+    /**
+     * This computed value is based on all `this.selectedNodes` elements
+     * @return {Set<string>}
+     */
     selectedAbilities() {
       return this.selectedNodes.reduce((abilities, node) => {
         ;(node.abilities || []).forEach(ability => abilities.add(ability))
         return abilities
       }, new Set()) // prevent duplicate abilities
     }
+  },
+
+  watch: {
+    '$store.state.user.routes': {
+      handler(routes) {
+        const createRouteTree = routes => {
+          return routes.reduce((tree, route) => {
+            const node = {
+              // tree node label
+              name: route.meta.title,
+              // tree node value
+              abilities: [].concat(
+                route.meta.ability || route.meta.strict || route.meta.weak
+              )
+            }
+            if (route.children && route.children.length) {
+              node.children = createRouteTree(route.children)
+            } else {
+              // optional `fill nodes` step
+              this.routeTreeNodesMap.set(node.name, node)
+            }
+
+            tree.push(node)
+            return tree
+          }, [])
+        }
+
+        this.routeTree = createRouteTree(routes)
+      },
+      immediate: true
+    }
+  },
+
+  mounted() {
+    /**
+     * Optional `fill nodes` step
+     * You can put a specific nodes map to fill `route-nodes` tree.
+     */
+    this.routeTreeNodesMap.forEach(node => {
+      this.selectedNodes.push(node)
+    })
   }
 }
 </script>

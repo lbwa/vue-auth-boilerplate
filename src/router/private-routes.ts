@@ -28,6 +28,15 @@ export const routes = [
           import(/* webpackChunkName: 'sample-read' */ '@/views/Sample.vue'),
         meta: {
           title: 'SampleRead',
+          strict: ['github.sample.read', 'npm.org.read', 'npm.org.write']
+        }
+      },
+      {
+        path: 'read-write',
+        component: () =>
+          import(/* webpackChunkName: 'sample-write' */ '@/views/Sample.vue'),
+        meta: {
+          title: 'SampleWrite',
           strict: ['github.sample.read', 'github.sample.write', 'npm.org.read']
         }
       }
