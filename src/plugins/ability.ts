@@ -1,9 +1,10 @@
 import Vue from 'vue'
-import VAccess, { init, RouteWithAbility } from 'v-access'
+import VAccess, { init } from 'v-access'
 import { RootState } from '@/store/global'
 import { Store } from 'vuex'
 import VueRouter from 'vue-router'
 import { userMutationTypes } from '@/store/modules/user'
+import { RouteSetting } from '@/router/public-routes'
 
 Vue.use(VAccess)
 
@@ -15,12 +16,7 @@ declare module 'vue-router/types/router' {
 
 interface ConnectOptions {
   redirect: string
-  routes: RouteWithAbility[]
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isVue(val: Record<string, any>): val is Vue {
-  return Object.prototype.hasOwnProperty.call(val, '_isVue') && val._isVue
+  routes: RouteSetting[]
 }
 
 export const connect = function(
@@ -31,25 +27,21 @@ export const connect = function(
   store.watch(
     state => state.user.abilities,
     abilities => {
-      if (Array.isArray(abilities) && abilities.length) {
-        let origin: RouteWithAbility[] | undefined
-        if (isVue(vm)) {
-          origin = vm.$root.$router.options.routes
-        } else {
-          origin = vm.options.routes
-        }
-        store.commit(
-          'user/' + userMutationTypes.setUserRoutes,
-          (origin || []).concat(
-            init({
-              vm,
-              abilities,
-              redirect,
-              routes
-            })
-          )
-        )
-      }
+      if (!Array.isArray(abilities) || !abilities.length) return
+
+      /**
+       * Because all private routes handle by v-access, we just store routes
+       * excluding public parts.
+       */
+      store.commit(
+        'user/' + userMutationTypes.setUserRoutes,
+        init({
+          vm,
+          abilities,
+          redirect,
+          routes
+        })
+      )
     },
     {
       immediate: true,

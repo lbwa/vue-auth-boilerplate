@@ -1,13 +1,14 @@
 import { Module } from 'vuex'
 import { RootState } from '../global'
-import { Ability, RouteWithAbility, reset } from 'v-access'
+import { Ability, reset } from 'v-access'
 import { userLogin, fetchUserAbilities } from '@/effects'
 import VueRouter from 'vue-router'
+import { RouteSetting } from '@/router/public-routes'
 
 export interface UserState {
   token: string
   abilities: Ability[]
-  routes: RouteWithAbility[]
+  routes: RouteSetting[]
 }
 
 export interface UserAbility {
@@ -28,6 +29,7 @@ const user: Module<UserState, RootState> = {
   state: {
     token: '',
     abilities: [],
+    // this is user private routes, not all routes
     routes: []
   },
 

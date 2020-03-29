@@ -3,9 +3,9 @@
  * All user would share those static routes
  */
 
-import { RouteConfig } from 'vue-router'
+import { RouteWithAbility } from 'v-access'
 
-interface ConsoleRouteConfig extends RouteConfig {
+export type RouteSetting = RouteWithAbility & {
   meta?: Partial<{
     layout: string
     hidden: boolean
@@ -14,7 +14,7 @@ interface ConsoleRouteConfig extends RouteConfig {
   }>
 }
 
-const _routes: ConsoleRouteConfig[] = [
+const _routes: RouteSetting[] = [
   {
     path: '/',
     name: 'Home',
