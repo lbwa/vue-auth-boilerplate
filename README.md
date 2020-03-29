@@ -7,6 +7,9 @@
   <a href="https://lbwa.github.io/vue-auth-boilerplate">
     <img alt="github actions - deployment" src="https://github.com/lbwa/vue-auth-boilerplate/workflows/Deployment/badge.svg">
   </a>
+  <a href="https://nodejs.org/en/download/">
+    <img alt="nodejs version" src="https://img.shields.io/badge/Node.js%20Version-%3E=8.9.0-ff69b4?logo=node.js&labelColor=3a424a"/>
+  </a>
 </p>
 
 `Vue.js` console boilerplate with authentication.
@@ -54,7 +57,7 @@ Please make sure you have installed [node.js](https://nodejs.org) version _8.9_ 
   $ npm run serve
   ```
 
-  Frontend server is running at `http://localhost:8080` and `http://<YOUR_DEVICE_LOCAL_IP>:8080` with `hot module replacement`.
+  Frontend server is running at `http://localhost:8080` and `http://<YOUR_DEVICE_LOCAL_IP>:8080` with [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/).
 
 - run unit tests
 
