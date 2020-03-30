@@ -24,6 +24,7 @@ export const routes = [
     children: [
       {
         path: 'read',
+        name: 'SampleRead',
         component: () =>
           import(/* webpackChunkName: 'sample-read' */ '@/views/Sample.vue'),
         meta: {
@@ -33,6 +34,7 @@ export const routes = [
       },
       {
         path: 'read-write',
+        name: 'SampleReadWrite',
         component: () =>
           import(/* webpackChunkName: 'sample-write' */ '@/views/Sample.vue'),
         meta: {
