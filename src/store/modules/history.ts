@@ -4,25 +4,21 @@ import invariant from 'tiny-invariant'
 import { RootState } from '../global'
 import { RECORD_MAX_VAL } from '../../constants'
 
-export type RecordItem = {
-  name?: string
-  fullPath: string
-  next: RecordItem | null
-}
-
-interface RecordItemConstructor {
-  (this: RecordItem, route: Route, next?: RecordItem): void
-  new (route: Route, next?: RecordItem): RecordItem
-}
 export interface HistoryState {
   recordHead: RecordItem | null
 }
 
-const RecordItem = function(this: RecordItem, route: Route, next?: RecordItem) {
-  if (route.name) this.name = route.name
-  this.fullPath = route.fullPath
-  this.next = next || null
-} as RecordItemConstructor
+export class RecordItem {
+  name?: string
+  fullPath: string
+
+  constructor(route: Route, public next: RecordItem | null = null) {
+    this.fullPath = route.fullPath
+    if (route.meta && route.meta.title) {
+      this.name = route.meta.title
+    }
+  }
+}
 
 const history: Module<HistoryState, RootState> = {
   namespaced: true,
@@ -99,7 +95,7 @@ const history: Module<HistoryState, RootState> = {
 
   actions: {
     append({ commit, getters }, to: Route) {
-      if (getters.isInList(to)) return
+      if (!to.meta.title || getters.isInList(to)) return
       // only add it when it doesn't exist in the linked-list
       commit('append', to)
     }
