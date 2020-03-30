@@ -14,8 +14,9 @@ interface RecordItemConstructor {
   (this: RecordItem, route: Route, next?: RecordItem): void
   new (route: Route, next?: RecordItem): RecordItem
 }
-
-export type HistoryState = Record<'recordHead', RecordItem | null>
+export interface HistoryState {
+  recordHead: RecordItem | null
+}
 
 const RecordItem = function(this: RecordItem, route: Route, next?: RecordItem) {
   if (route.name) this.name = route.name
@@ -28,6 +29,20 @@ const history: Module<HistoryState, RootState> = {
 
   state: {
     recordHead: null
+  },
+
+  getters: {
+    isInList({ recordHead }) {
+      return (route: Route) => {
+        let current = recordHead
+        while (current) {
+          if (current.fullPath === route.fullPath) return true
+          current = current.next
+        }
+
+        return false
+      }
+    }
   },
 
   mutations: {
@@ -79,6 +94,14 @@ const history: Module<HistoryState, RootState> = {
         }
         current = current.next
       }
+    }
+  },
+
+  actions: {
+    append({ commit, getters }, to: Route) {
+      if (getters.isInList(to)) return
+      // only add it when it doesn't exist in the linked-list
+      commit('append', to)
     }
   }
 }

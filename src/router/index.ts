@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { RouteWithAbility } from 'v-access'
 import { routes } from './public-routes'
-import { onLogin } from './guards'
+import { onLogin, onHistoryChange } from './guards'
 
 Vue.use(VueRouter)
 
@@ -23,5 +23,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach(onLogin)
+router.afterEach(onHistoryChange)
 
 export default router
