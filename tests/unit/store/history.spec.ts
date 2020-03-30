@@ -1,18 +1,19 @@
 import Vue from 'vue'
 import Vuex, { Store } from 'vuex'
-import moduleHistory, { RecordItem } from '../../../src/store/modules/history'
-import { RECORD_MAX_VAL } from '../../../src/constants'
+import moduleHistory, { RecordItem } from '@/store/modules/history'
+import { RECORD_MAX_VAL } from '@/constants'
+import { RootState } from '@/store/global'
 
 Vue.use(Vuex)
 
 describe('Vuex history module', () => {
-  let store: Store<Record<string, any>>
+  let store: Store<RootState>
 
   beforeEach(() => {
-    store = new Vuex.Store<Record<string, any>>({
+    store = new Vuex.Store<RootState>({
       modules: {
         history: Object.assign(moduleHistory, {
-          // make state clear
+          // clear state for every test closure
           state: {
             recordHead: null
           }
@@ -27,8 +28,20 @@ describe('Vuex history module', () => {
       fullPath: mockRoute
     })
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(mockRoute)
-    expect(recordHead.next).toBeNull()
+    expect((recordHead as RecordItem).fullPath).toEqual(mockRoute)
+    expect((recordHead as RecordItem).next).toBeNull()
+  })
+
+  it(`Should avoid append a duplicated history record`, () => {
+    const route = `/same?query=append`
+    store.dispatch('history/append', {
+      fullPath: route
+    })
+    store.dispatch('history/append', {
+      fullPath: route
+    })
+    const { recordHead } = store.state.history
+    expect((recordHead as RecordItem).next).toBeNull()
   })
 
   it('Should append multiple history records', () => {
@@ -42,10 +55,12 @@ describe('Vuex history module', () => {
       fullPath: mockSecondRoute
     })
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(mockFirstRoute)
-    expect(recordHead.next).toBeDefined()
-    expect(recordHead.next.fullPath).toEqual(mockSecondRoute)
-    expect(recordHead.next.next).toBeNull()
+    expect((recordHead as RecordItem).fullPath).toEqual(mockFirstRoute)
+    expect((recordHead as RecordItem).next).toBeDefined()
+    expect(((recordHead as RecordItem).next as RecordItem).fullPath).toEqual(
+      mockSecondRoute
+    )
+    expect(((recordHead as RecordItem).next as RecordItem).next).toBeNull()
   })
 
   it('Should append a history record until exceed', () => {
@@ -59,10 +74,12 @@ describe('Vuex history module', () => {
       })
 
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(`/mock?query=${actualOffset}`)
-    expect(recordHead.next).toBeDefined()
+    expect((recordHead as RecordItem).fullPath).toEqual(
+      `/mock?query=${actualOffset}`
+    )
+    expect((recordHead as RecordItem).next).toBeDefined()
 
-    let current: RecordItem = recordHead
+    let current: RecordItem = recordHead as RecordItem
     let size = 1
     while (current.next) {
       ++size
@@ -81,8 +98,8 @@ describe('Vuex history module', () => {
       fullPath: mockRoute
     })
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(mockRoute)
-    expect(recordHead.next).toBeNull()
+    expect((recordHead as RecordItem).fullPath).toEqual(mockRoute)
+    expect((recordHead as RecordItem).next).toBeNull()
   })
 
   it('Should prepend multiple history records', () => {
@@ -96,10 +113,12 @@ describe('Vuex history module', () => {
       fullPath: mockSecondRoute
     })
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(mockSecondRoute)
-    expect(recordHead.next).toBeDefined()
-    expect(recordHead.next.fullPath).toEqual(mockFirstRoute)
-    expect(recordHead.next.next).toBeNull()
+    expect((recordHead as RecordItem).fullPath).toEqual(mockSecondRoute)
+    expect((recordHead as RecordItem).next).toBeDefined()
+    expect(((recordHead as RecordItem).next as RecordItem).fullPath).toEqual(
+      mockFirstRoute
+    )
+    expect(((recordHead as RecordItem).next as RecordItem).next).toBeNull()
   })
 
   it('Should prepend a history record until exceed', () => {
@@ -113,12 +132,12 @@ describe('Vuex history module', () => {
       })
 
     const { recordHead } = store.state.history
-    expect(recordHead.fullPath).toEqual(
+    expect((recordHead as RecordItem).fullPath).toEqual(
       `/mock?query=${RECORD_MAX_VAL + actualOffset - 1}`
     )
-    expect(recordHead.next).toBeDefined()
+    expect((recordHead as RecordItem).next).toBeDefined()
 
-    let current: RecordItem = recordHead
+    let current: RecordItem = recordHead as RecordItem
     let size = 1
     while (current.next) {
       ++size

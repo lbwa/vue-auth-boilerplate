@@ -37,7 +37,6 @@ export default Vue.extend({
   watch: {
     $route: function(to) {
       this.layoutType = to.meta.layout || DEFAULT_LAYOUT
-      this.$store.commit('history/append', to)
     }
   }
 })
