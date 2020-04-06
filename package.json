@@ -15,7 +15,7 @@
     "normalize.css": "^8.0.1",
     "roboto-fontface": "*",
     "tiny-invariant": "^1.1.0",
-    "v-access": "^2.1.0",
+    "v-access": "^2.1.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuetify": "^2.2.11",
@@ -40,6 +40,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
+    "lint-staged": "^10.1.2",
     "material-design-icons-iconfont": "^5.0.1",
     "prettier": "^1.19.1",
     "sass": "^1.25.0",
@@ -88,5 +89,20 @@
   ],
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,json,css,scss,sass,md}": [
+      "vue-cli-service lint"
+    ]
   }
 }
