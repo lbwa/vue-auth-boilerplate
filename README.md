@@ -35,6 +35,7 @@
   - [Automatic registration](#automatic-registration)
   - [With request effects](#with-request-effects)
   - [Handle error](#handle-error)
+  - [history store module](#history-store-module)
 - [Changelog](#changelog)
 - [License](#license)
 
@@ -161,7 +162,7 @@ If any `Vue.js` [plugin][doc-vue-plugin] exists, it should be placed in [src/plu
 All HTTP request function should be placed in [src/effects](src/effects) directory, and should be occurred by [Initiator](src/effects/initiator.ts) instance which has encapsulated `axios` creation and registered two interceptors automatically by default.
 
 ```ts
-import { create } from './initiator'
+import { createInitiator } from './initiator'
 
 const { http } = createInitiator(/* support all AxiosRequestConfig */)
 
@@ -242,6 +243,10 @@ Any action internal error should be handled by action consumer, instead of actio
 ```
 action's error --> throw --as rejected promise--> handled by any action consumer
 ```
+
+### history store module
+
+We have a `history` store module that used to record any visited `vue-route record` with `meta.title` field.
 
 ## Changelog
 
