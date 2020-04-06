@@ -21,6 +21,7 @@
 - [Production build](#production-build)
 - [User authentication](#user-authentication)
 - [Symbolic constants](#symbolic-constants)
+- [Environment variables](#environment-variables)
 - [Declarations](#declarations)
 - [Layouts](#layouts)
   - [Use route-based layout](#use-route-based-layout)
@@ -81,8 +82,16 @@ Please refer `v-access` [documentation](https://github.com/lbwa/v-access#readme)
 
 A symbolic constant is a name given to a constant literal value. It's usually used to prevent [magic numbers][wiki-magic-number] and [hard-coding][wiki-hard-coding]. All symbolic constants should be recorded in the [src/constants.ts](src/constants.ts) file.
 
+- Q: When should I use symbolic constants?
+
+- A: [Feature flag](https://en.wikipedia.org/wiki/Feature_toggle), public settings, etc.
+
 [wiki-magic-number]: https://en.wikipedia.org/wiki/Magic_number_(programming)
 [wiki-hard-coding]: https://en.wikipedia.org/wiki/Hard_coding
+
+## Environment variables
+
+All `node.js` use-defined environment should be record at the `<PROJECT_ROOT>/.env*` files and start with `VUE_APP_*` prefix character. You can find more details from the [@vue/cli](https://cli.vuejs.org/guide/mode-and-env.html) documentation.
 
 ## Declarations
 
