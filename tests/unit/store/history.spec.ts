@@ -22,10 +22,22 @@ describe('Vuex history module', () => {
     })
   })
 
+  it("Shouldn't append a history record", () => {
+    const mockRoute = '/mock?query=append'
+    store.dispatch('history/append', {
+      fullPath: mockRoute
+    })
+    const { recordHead } = store.state.history
+    expect(recordHead).toBeNull()
+  })
+
   it('Should append a history record', () => {
     const mockRoute = '/mock?query=append'
-    store.commit('history/append', {
-      fullPath: mockRoute
+    store.dispatch('history/append', {
+      fullPath: mockRoute,
+      meta: {
+        title: 'route-title'
+      }
     })
     const { recordHead } = store.state.history
     expect((recordHead as RecordItem).fullPath).toEqual(mockRoute)
@@ -35,10 +47,16 @@ describe('Vuex history module', () => {
   it(`Should avoid append a duplicated history record`, () => {
     const route = `/same?query=append`
     store.dispatch('history/append', {
-      fullPath: route
+      fullPath: route,
+      meta: {
+        title: 'route-title'
+      }
     })
     store.dispatch('history/append', {
-      fullPath: route
+      fullPath: route,
+      meta: {
+        title: 'route-title'
+      }
     })
     const { recordHead } = store.state.history
     expect((recordHead as RecordItem).next).toBeNull()
@@ -48,11 +66,17 @@ describe('Vuex history module', () => {
     const mockFirstRoute = '/mock?query=prepend-one'
     const mockSecondRoute = '/mock?query=prepend-two'
 
-    store.commit('history/append', {
-      fullPath: mockFirstRoute
+    store.dispatch('history/append', {
+      fullPath: mockFirstRoute,
+      meta: {
+        title: 'route-title'
+      }
     })
-    store.commit('history/append', {
-      fullPath: mockSecondRoute
+    store.dispatch('history/append', {
+      fullPath: mockSecondRoute,
+      meta: {
+        title: 'route-title'
+      }
     })
     const { recordHead } = store.state.history
     expect((recordHead as RecordItem).fullPath).toEqual(mockFirstRoute)

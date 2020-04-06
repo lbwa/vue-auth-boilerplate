@@ -95,7 +95,7 @@ const history: Module<HistoryState, RootState> = {
 
   actions: {
     append({ commit, getters }, to: Route) {
-      if (!to.meta.title || getters.isInList(to)) return
+      if (!to.meta || !to.meta.title || getters.isInList(to)) return
       // only add it when it doesn't exist in the linked-list
       commit('append', to)
     }
