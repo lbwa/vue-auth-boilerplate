@@ -35,7 +35,7 @@
   - [Automatic registration](#automatic-registration)
   - [With request effects](#with-request-effects)
   - [Handle error](#handle-error)
-  - [history store module](#history-store-module)
+  - [History store module](#history-store-module)
 - [Changelog](#changelog)
 - [License](#license)
 
@@ -244,9 +244,9 @@ Any action internal error should be handled by action consumer, instead of actio
 action's error --> throw --as rejected promise--> handled by any action consumer
 ```
 
-### history store module
+### History store module
 
-We have a `history` store module that used to record any visited `vue-route record` with `meta.title` field.
+We have a `history` ([store/modules/history.ts](src/store/modules/history.ts)) store module that used to record any visited `vue-route record` with `meta.title` field.
 
 ## Changelog
 
