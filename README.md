@@ -77,7 +77,7 @@ Please make sure you have installed [node.js](https://nodejs.org) version _8.9_ 
 
 ## User authentication
 
-Please refer `v-access` [documentation](https://github.com/lbwa/v-access#readme).
+Please refer to `v-access` [documentation](https://github.com/lbwa/v-access#readme).
 
 ## Symbolic constants
 
