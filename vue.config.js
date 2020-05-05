@@ -10,18 +10,23 @@ module.exports = {
 
   chainWebpack(config) {
     /**
-     * Feature flags
+     * Feature flags in **compiler** time
      * @doc https://webpack.js.org/plugins/define-plugin/#feature-flags
      */
     config.plugin('define').tap(([args]) => {
       args.__DEV__ = JSON.stringify(__DEV__)
       args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
       args.__VERSION__ = JSON.stringify(require('./package.json').version)
-      args.__COMMIT_HASH__ = JSON.stringify(
-        require('child_process')
-          .execSync('git rev-parse HEAD')
-          .toString()
-      )
+      try {
+        args.__COMMIT_HASH__ = JSON.stringify(
+          require('child_process')
+            .execSync('git rev-parse HEAD')
+            .toString()
+        )
+      } catch (err) {
+        // works without git
+        args.__COMMIT_HASH__ = JSON.stringify('')
+      }
       return [args]
     })
 

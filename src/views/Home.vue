@@ -43,8 +43,12 @@ export default {
           href: `https://github.com/lbwa/vue-auth-boilerplate/releases/v${__VERSION__}`
         },
         commit: {
-          label: __COMMIT_HASH__.slice(0, 15),
-          href: `https://github.com/lbwa/vue-auth-boilerplate/commit/${__COMMIT_HASH__}`
+          label: __COMMIT_HASH__
+            ? __COMMIT_HASH__.slice(0, 15)
+            : 'Not a git repository',
+          href: __COMMIT_HASH__
+            ? `https://github.com/lbwa/vue-auth-boilerplate/commit/${__COMMIT_HASH__}`
+            : ''
         },
         latestBuild: new Date(__BUILD_TIME__).toLocaleString()
       })
