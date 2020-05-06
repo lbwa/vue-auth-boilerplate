@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
+
+if (__DEV__) {
+  require('material-design-icons-iconfont/dist/material-design-icons.css')
+  require('roboto-fontface/css/roboto/roboto-fontface.css')
+}
 
 Vue.use(Vuetify)
 
