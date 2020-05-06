@@ -30,7 +30,8 @@ const thirdParties = [
   {
     name: 'vuetify',
     library: 'Vuetify',
-    js: 'https://cdn.jsdelivr.net/npm/vuetify@2.2.x/dist/vuetify.min.js'
+    js: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'
   }
 ]
 
