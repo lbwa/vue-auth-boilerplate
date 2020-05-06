@@ -10,13 +10,13 @@
     <meta name="renderer" content="webkit" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <!-- cdn css files -->
-    <% for (var cssUrl of htmlWebpackPlugin.options.cdnCssUrls) { %>
+    <% for (var cssUrl of (htmlWebpackPlugin.options.cdnCssUrls || [])) { %>
     <link href="<%= cssUrl %>" rel="preload" as="style" />
     <link href="<%= cssUrl %>" rel="stylesheet" />
     <% } %>
     <!-- cdn js files with preload feature -->
     <% if (htmlWebpackPlugin.options.shouldPreloadCDNFiles) { %> <% for (var
-    jsUrl of htmlWebpackPlugin.options.cdnJsUrls) { %>
+    jsUrl of (htmlWebpackPlugin.options.cdnJsUrls || [])) { %>
     <link href="<%= jsUrl %>" rel="preload" as="script" />
     <% } %> <% } %>
     <title><%= htmlWebpackPlugin.options.title %></title>
@@ -32,7 +32,7 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <!-- download/execute js scripts: these js script elements would execute preloaded js files if we have enabled preload feature. In contrast, these js script elements will download directly. -->
-    <% for (var jsUrl of htmlWebpackPlugin.options.cdnJsUrls) { %>
+    <% for (var jsUrl of (htmlWebpackPlugin.options.cdnJsUrls || [])) { %>
     <script src="<%= jsUrl %>" type="text/javascript"></script>
     <% } %>
   </body>
