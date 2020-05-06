@@ -1,7 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/**
+ * SHOULD read https://cli.vuejs.org first to modify these configurations.
+ */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { externals, thirdPartiesUrls } = require('./third-parties.js')
 const mocker = require('./mock.config.js')
 
 const __DEV__ = process.env.NODE_ENV === 'development'
+const __PROD__ = process.env.NODE_ENV === 'production'
+
+// should we enable preload feature for CDN files
+const shouldPreloadCDNFiles = true
 
 module.exports = {
   publicPath: './',
@@ -30,17 +38,26 @@ module.exports = {
       return [args]
     })
 
-    config.when(__DEV__, config => {
-      /**
-       * resolve eslint-loader with symlink package error temporarily
-       * "No eslint configuration file ... at symlink package"
-       * https://webpack.js.org/configuration/resolve/#resolvesymlinks
-       */
-      config.resolve.symlinks(false)
+    /**
+     * resolve eslint-loader with symlink package error temporarily
+     * "No eslint configuration file ... at symlink package"
+     * https://webpack.js.org/configuration/resolve/#resolvesymlinks
+     */
+    config.resolve.symlinks(false)
+
+    // Only works with production building
+    config.when(__PROD__, config => {
+      // use third-parties with cdn files. instead webpack chunk files
+      config.plugin('html').tap(([args]) => {
+        args.cdnCssUrls = thirdPartiesUrls.css || []
+        args.cdnJsUrls = thirdPartiesUrls.js || []
+        args.shouldPreloadCDNFiles = shouldPreloadCDNFiles
+        return [args]
+      })
+
+      config.externals(externals)
     })
   },
-
-  transpileDependencies: __DEV__ ? [] : ['vuetify'],
 
   devServer: {
     before(app) {
