@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { externals, thirdPartiesUrls } = require('./third-parties.js')
 const mocker = require('./mock.config.js')
+const appVersion = require('./package.json').version
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 const __PROD__ = process.env.NODE_ENV === 'production'
@@ -24,7 +25,7 @@ module.exports = {
     config.plugin('define').tap(([args]) => {
       args.__DEV__ = JSON.stringify(__DEV__)
       args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
-      args.__VERSION__ = JSON.stringify(require('./package.json').version)
+      args.__VERSION__ = JSON.stringify(appVersion)
       try {
         args.__COMMIT_HASH__ = JSON.stringify(
           require('child_process')
@@ -52,6 +53,7 @@ module.exports = {
         args.cdnCssUrls = thirdPartiesUrls.css || []
         args.cdnJsUrls = thirdPartiesUrls.js || []
         args.shouldPreloadCDNFiles = shouldPreloadCDNFiles
+        args.appVersion = appVersion
         return [args]
       })
 
