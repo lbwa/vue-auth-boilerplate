@@ -9,7 +9,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="renderer" content="webkit" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <!-- cdn files with preload feature -->
+    <!-- cdn css files -->
+    <% for (var cssUrl of htmlWebpackPlugin.options.cdnCssUrls) { %>
+    <link href="<%= cssUrl %>" rel="preload" as="style" />
+    <link href="<%= cssUrl %>" rel="stylesheet" />
+    <% } %>
+    <!-- cdn js files with preload feature -->
     <% if (htmlWebpackPlugin.options.shouldPreloadCDNFiles) { %> <% for (var
     jsUrl of htmlWebpackPlugin.options.cdnJsUrls) { %>
     <link href="<%= jsUrl %>" rel="preload" as="script" />
