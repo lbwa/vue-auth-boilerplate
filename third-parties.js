@@ -36,6 +36,12 @@ const thirdParties = [
     library: 'axios',
     js: 'https://cdn.jsdelivr.net/npm/axios@0.19.x/dist/axios.min.js'
   },
+  {
+    name: 'vuex-persistedstate',
+    library: 'createPersistedState',
+    js:
+      'https://cdn.jsdelivr.net/npm/vuex-persistedstate@3.0.x/dist/vuex-persistedstate.umd.js'
+  },
   // FIXME: duplicated importation
   // {
   //   name: 'vuetify',
