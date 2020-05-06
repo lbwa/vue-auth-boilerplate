@@ -1,5 +1,9 @@
 <% if (htmlWebpackPlugin.options.appVersion) { %>
-<!--!current version: <%= htmlWebpackPlugin.options.appVersion  %>  -->
+<!--!version: <%= htmlWebpackPlugin.options.appVersion  %>  -->
+<% } %> <% if (htmlWebpackPlugin.options.buildTime) { %>
+<!--!build time: <%= htmlWebpackPlugin.options.buildTime  %>  -->
+<% } %> <% if (htmlWebpackPlugin.options.commitHash) { %>
+<!--!commit hash: <%= htmlWebpackPlugin.options.commitHash  %>  -->
 <% } %>
 <!DOCTYPE html>
 <html lang="en">
