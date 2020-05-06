@@ -1,6 +1,21 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+
+## [3.1.0](https://github.com/lbwa/vue-auth-boilerplate/compare/v3.0.0...v3.1.0) (2020-05-06)
+
+
+### Features
+
+* **cdn:** support thrid-party JS deps served by CDN ([70c88be](https://github.com/lbwa/vue-auth-boilerplate/commit/70c88bea998b3116ac3fbeec2fda6656780fd184))
+* **css-cdn:** support cdn css files injection ([4a2fbf9](https://github.com/lbwa/vue-auth-boilerplate/commit/4a2fbf9fa7041667f219c7bd057026e7dc8e70bd))
+* **html:** support appVersion injection ([1743306](https://github.com/lbwa/vue-auth-boilerplate/commit/1743306212fa5795b70350eecb27545aa4da0fa3))
+
+
+### Bug Fixes
+
+* **html:** cdn-template works with development building ([957c629](https://github.com/lbwa/vue-auth-boilerplate/commit/957c629c27262dfee14d8fdb81849356549e14ba))
+* **vue.config:** should work without git log, close [#23](https://github.com/lbwa/vue-auth-boilerplate/issues/23) ([faf6c8c](https://github.com/lbwa/vue-auth-boilerplate/commit/faf6c8cf0dd5c5579ea3982207908fa8f51f50c8))
 
 ## 3.0.0 (2020-04-06)
 
