@@ -9,6 +9,7 @@ const appVersion = require('./package.json').version
 const __DEV__ = process.env.NODE_ENV === 'development'
 const __PROD__ = process.env.NODE_ENV === 'production'
 const commitHash = { value: '' }
+const buildTime = new Date().toLocaleString()
 
 try {
   commitHash.value = require('child_process')
@@ -34,7 +35,7 @@ module.exports = {
      */
     config.plugin('define').tap(([args]) => {
       args.__DEV__ = JSON.stringify(__DEV__)
-      args.__BUILD_TIME__ = JSON.stringify(new Date().toString())
+      args.__BUILD_TIME__ = JSON.stringify(buildTime)
       args.__VERSION__ = JSON.stringify(appVersion)
       args.__COMMIT_HASH__ = JSON.stringify(commitHash.value)
       return [args]
@@ -55,7 +56,7 @@ module.exports = {
         args.cdnJsUrls = thirdPartiesUrls.js || []
         args.shouldPreloadCDNFiles = shouldPreloadCDNFiles
         args.appVersion = appVersion
-        args.buildTime = new Date().toLocaleString()
+        args.buildTime = buildTime
         args.commitHash = commitHash.value
         return [args]
       })
@@ -69,12 +70,17 @@ module.exports = {
      * @further https://github.com/facebook/create-react-app/blob/v3.4.1/packages/react-dev-utils/InlineChunkHtmlPlugin.js
      */
     config.optimization.runtimeChunk('single')
-    // TODO: inline runtime code and delete preload link
-    // config
-    //   .plugin('ScriptExtHtmlWebpackPlugin')
-    //   .use(require('script-ext-html-webpack-plugin'), [
-    //     { inline: /runtime\..+\.js$/i }
-    //   ])
+    config.plugin('preload').tap(([args]) => {
+      args.fileBlacklist = (args.fileBlacklist || []).concat(
+        /runtime\..+\.js$/i
+      )
+      return [args]
+    })
+    config
+      .plugin('ScriptExtHtmlWebpackPlugin')
+      .use(require('script-ext-html-webpack-plugin'), [
+        { inline: /runtime\..+\.js$/i }
+      ])
 
     // webpack bundles analyzer
     config.when(process.env.npm_config_report, config => {
