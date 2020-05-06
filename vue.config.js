@@ -59,6 +59,13 @@ module.exports = {
 
       config.externals(externals)
     })
+
+    // webpack bundles analyzer
+    config.when(process.env.npm_config_report, config => {
+      config
+        .plugin('webpack-bundle-analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    })
   },
 
   devServer: {

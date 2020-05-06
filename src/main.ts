@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import 'normalize.css'
 
 import router from './router'
 import store from './store'
@@ -9,6 +8,10 @@ import vuetify from './plugins/vuetify'
 import './styles/global.sass'
 import { FORBIDDEN_ROUTE } from './constants'
 import { routes } from './router/private-routes'
+
+if (__DEV__) {
+  require('normalize.css')
+}
 
 Vue.config.productionTip = __DEV__
 

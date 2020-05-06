@@ -1,11 +1,20 @@
-// Record all third-party dependencies that need to be served by CDN.
-// All these dependencies would not handle by webpack when production building.
-// {
-//   name: '',  // required, npm package name
-//   library: '', // required, global variable name in browser environment
-//   js: '', // cdn js file urls
-//   css: '' // cdn css file urls
-// }
+/**
+ * Record all third-party dependencies that need to be served by CDN.
+ *
+ * 1. All these JS dependencies would not be handled by webpack when production
+ * building.
+ * 2. ONLY SUPPORT UMD js libraries;
+ * 3. Pure CSS libraries should work with __DEV__ and require() for
+ * tree-shaking.
+ *
+ * {
+ *    name: '',  // required for js, npm package name
+ *    library: '', // required for js, global variable name in the browser
+ *    js: '', // js cdn file urls
+ *    css: '' // css cdn file urls
+ * }
+ */
+
 const thirdParties = [
   {
     name: 'vue',
@@ -27,11 +36,23 @@ const thirdParties = [
     library: 'axios',
     js: 'https://cdn.jsdelivr.net/npm/axios@0.19.x/dist/axios.min.js'
   },
+  // FIXME: duplicated importation
+  // {
+  //   name: 'vuetify',
+  //   library: 'Vuetify',
+  //   js: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js',
+  //   css: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'
+  // },
   {
-    name: 'vuetify',
-    library: 'Vuetify',
-    js: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'
+    css:
+      'https://cdn.jsdelivr.net/npm/material-design-icons-iconfont@5.0.x/dist/material-design-icons.min.css'
+  },
+  {
+    css:
+      'https://cdn.jsdelivr.net/npm/roboto-fontface@0.10.0/css/roboto/roboto-fontface.min.css'
+  },
+  {
+    css: 'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css'
   }
 ]
 
@@ -49,7 +70,7 @@ const urls = thirdParties.reduce(
     if (library.css) {
       urls.css.push(library.css)
     }
-    // Only set webpackConfig.externals for js 3rd-party library
+    // set webpackConfig.externals
     if (library.js && library.name && library.library) {
       externals[library.name] = library.library
     }

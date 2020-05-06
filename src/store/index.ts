@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import createLogger from 'vuex/dist/logger'
 
 import modules from './modules'
 import globalNamespace, { RootState } from './global'
@@ -12,7 +11,8 @@ Vue.use(Vuex)
 const plugins = (() => {
   const plugins = [createResetPlugin(), createPersistedPlugins()]
   if (__DEV__) {
-    plugins.push(createLogger())
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    plugins.push(require('vuex/dist/logger')())
   }
   return plugins
 })()
