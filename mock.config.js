@@ -53,6 +53,18 @@ module.exports = function mocker(app) {
   Object.keys(apis).forEach(api => {
     const [method, route] = api.split(' ')
 
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*'
+    }
+
+    app.use(function(request, response, next) {
+      Reflect.ownKeys(corsHeaders).forEach(header =>
+        response.setHeader(header, corsHeaders[header])
+      )
+      next()
+    })
+
     if (methodsReg.test(method) && routeReg.test(route)) {
       app[method.toLowerCase()](route, apis[api])
     } else {
