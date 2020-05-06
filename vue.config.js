@@ -63,6 +63,19 @@ module.exports = {
       config.externals(externals)
     })
 
+    /**
+     * extract and inline webpack runtime code
+     * @see https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
+     * @further https://github.com/facebook/create-react-app/blob/v3.4.1/packages/react-dev-utils/InlineChunkHtmlPlugin.js
+     */
+    config.optimization.runtimeChunk('single')
+    // TODO: inline runtime code and delete preload link
+    // config
+    //   .plugin('ScriptExtHtmlWebpackPlugin')
+    //   .use(require('script-ext-html-webpack-plugin'), [
+    //     { inline: /runtime\..+\.js$/i }
+    //   ])
+
     // webpack bundles analyzer
     config.when(process.env.npm_config_report, config => {
       config
