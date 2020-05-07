@@ -1,7 +1,6 @@
 /**
  * SHOULD read https://cli.vuejs.org first to modify these configurations.
  */
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { externals, thirdPartiesUrls } = require('./third-parties.js')
 const mocker = require('./mock.config.js')
 const appVersion = require('./package.json').version
@@ -60,27 +59,33 @@ module.exports = {
         args.commitHash = commitHash.value
         return [args]
       })
-
       config.externals(externals)
-    })
 
-    /**
-     * extract and inline webpack runtime code
-     * @see https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
-     * @further https://github.com/facebook/create-react-app/blob/v3.4.1/packages/react-dev-utils/InlineChunkHtmlPlugin.js
-     */
-    config.optimization.runtimeChunk('single')
-    config.plugin('preload').tap(([args]) => {
-      args.fileBlacklist = (args.fileBlacklist || []).concat(
-        /runtime\..+\.js$/i
-      )
-      return [args]
+      /**
+       * extract and inline webpack runtime code
+       * @see https://webpack.js.org/configuration/optimization/#optimizationruntimechunk
+       * @further https://github.com/facebook/create-react-app/blob/v3.4.1/packages/react-dev-utils/InlineChunkHtmlPlugin.js
+       */
+      config.optimization.runtimeChunk('single')
+      config.plugin('preload').tap(([args]) => {
+        args.fileBlacklist = (args.fileBlacklist || []).concat(
+          /runtime\..+\.js$/i
+        )
+        return [args]
+      })
+      config
+        .plugin('ScriptExtHtmlWebpackPlugin')
+        .before('preload')
+        .use(require('script-ext-html-webpack-plugin'), [
+          { inline: /runtime\..+\.js$/i }
+        ])
+
+      // config terser plugin options
+      config.optimization.minimizer('terser').tap(([options]) => {
+        options.terserOptions.compress.drop_console = true
+        return [options]
+      })
     })
-    config
-      .plugin('ScriptExtHtmlWebpackPlugin')
-      .use(require('script-ext-html-webpack-plugin'), [
-        { inline: /runtime\..+\.js$/i }
-      ])
 
     // webpack bundles analyzer
     config.when(process.env.npm_config_report, config => {
