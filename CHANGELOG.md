@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.2.0](https://github.com/lbwa/vue-auth-boilerplate/compare/v3.1.0...v3.2.0) (2020-05-07)
+
+
+### Features
+
+* **build:** optimization should only works with production build ([ba50cd3](https://github.com/lbwa/vue-auth-boilerplate/commit/ba50cd35f1d4a29fbb93ae43e27b0c2669d19265))
+* **html:** inject build time and commit hash ([fa2484f](https://github.com/lbwa/vue-auth-boilerplate/commit/fa2484f8d127c1a15634bb18eec8b55ea52cb7f2))
+* **runtime:** extract webpack runtime code ([77efeed](https://github.com/lbwa/vue-auth-boilerplate/commit/77efeed3bba93d12da24d4cd5371d5d0c5516daa))
+* **runtime:** inline webpack runtime code ([203ea5c](https://github.com/lbwa/vue-auth-boilerplate/commit/203ea5c868baaa09438b5e62932babeb55e7b6b0))
+
 ## [3.1.0](https://github.com/lbwa/vue-auth-boilerplate/compare/v3.0.0...v3.1.0) (2020-05-06)
 
 
