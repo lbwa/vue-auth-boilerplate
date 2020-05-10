@@ -19,6 +19,7 @@
 - [Prerequisites](#prerequisites)
 - [Development](#development)
 - [Production build](#production-build)
+  - [CDN supporting](#cdn-supporting)
 - [User authentication](#user-authentication)
 - [Symbolic constants](#symbolic-constants)
 - [Environment variables](#environment-variables)
@@ -69,10 +70,57 @@ Please make sure you have installed [node.js](https://nodejs.org) version _8.9_ 
 
 ## Production build
 
-- start build
+```bash
+$ npm run build
+# yarn build
+```
 
-  ```bash
-  $ npm run build
+### CDN supporting
+
+This project production build has supported third-party CDN libraries out of the box. All JS/CSS library CDN urls should be recorded by [third-parties.js](./third-parties.js). syntax like:
+
+```ts
+interface CDNUrl {
+  name: string // required for js, npm package name
+  library: string // required for js, global variable name in the browser
+  js: string // js cdn file urls
+  css: string // css cdn file urls
+}
+```
+
+- JS libraries
+
+  ```diff
+  const thirdParties = [
+    // ... other js/css libraries
+  +  {
+  +    name: 'vue',
+  +    library: 'Vue',
+  +    js: 'https://cdn.jsdelivr.net/npm/vue@2.6.x/dist/vue.min.js'
+  +  }
+  ]
+  ```
+
+- Pure CSS libraries
+
+  step 1. You should import pure css libraries with tree-shaking.
+
+  ```diff
+  - import 'normalize.css'
+  + if (__DEV__) { // __DEV__ is an environment variable
+  +    require('normalize.css')
+  + }
+  ```
+
+  step 2. add css library CDN link into [third-parties.js](./third-parties.js).
+
+  ```diff
+  const thirdParties = [
+    // ... other js/css libraries
+  +  {
+  +    css: 'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css'
+  +  }
+  ]
   ```
 
 ## User authentication
