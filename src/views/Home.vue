@@ -63,20 +63,24 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.home
-  height: 100%
-  width: 100%
-  text-align: center
+<style lang="scss" scoped>
+.home {
+  height: 100%;
+  width: 100%;
+  text-align: center;
 
-  &__info
-    list-style: none
+  &__info {
+    list-style: none;
+  }
 
-    &__item
-      display: flex
-      justify-content: center
-      align-items: center
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-      &-title
-        text-transform: capitalize
+  &-title {
+    text-transform: capitalize;
+  }
+}
 </style>

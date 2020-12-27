@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-container class="fill-height" fluid>
+    <v-container class="login fill-height" fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="4">
           <v-card class="elevation-3">
@@ -10,7 +10,7 @@
 
             <v-toolbar dark color="secondary">
               <v-toolbar-title>
-                <span class="login__title">Vue auth boilerplate</span>
+                <span class="login__title">Login</span>
               </v-toolbar-title>
               <v-spacer />
               <v-btn text small @click="asPreset('user')">as user</v-btn>
@@ -21,7 +21,7 @@
               <v-form ref="form" v-model="isValidForm" @submit="onLogin">
                 <v-text-field
                   prepend-icon="person"
-                  label="Username"
+                  label="Email"
                   name="username"
                   type="text"
                   clearable
@@ -30,10 +30,11 @@
                   :rules="usernameRules"
                   :disabled="isLoading"
                 />
+
                 <v-text-field
                   prepend-icon="lock"
                   id="password"
-                  label="Password"
+                  label="Senha"
                   name="password"
                   v-model="password"
                   required
@@ -88,8 +89,8 @@ export default {
     return {
       username: '',
       password: '',
-      usernameRules: [v => !!v || 'Please enter your account username.'],
-      passwordRules: [v => !!v || 'Please enter your account password.'],
+      usernameRules: [v => !!v || 'Insira nome do usuário.'],
+      passwordRules: [v => !!v || 'Insira a senha.'],
       isShowPassword: false,
       isValidForm: false,
       isLoading: false,
@@ -159,8 +160,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.login
-  &__title
-    text-transform: capitalize
+<style lang="scss" scoped>
+.login {
+  justify-content: center;
+
+  &__title {
+    text-transform: capitalize;
+  }
+}
 </style>

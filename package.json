@@ -1,6 +1,6 @@
 {
-  "name": "vue-auth-boilerplate",
-  "version": "3.2.0",
+  "name": "cordame-web",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
